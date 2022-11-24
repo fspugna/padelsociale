@@ -1,0 +1,220 @@
+<!-- card-match.twig partial -->
+<div class="card card-match" data-match-id="{{match.id}}">
+
+
+    {% if loop.index <= 1 and cardmatch is not defined or loop.index is not defined and cardmatch is not defined %}
+        <link href="/resources/assets/css/components/partials/card-match.css?v={{version}}" rel="stylesheet"/>
+    {% endif %}
+
+
+    {% set my_match = false %}
+    {% for teamPlayer in match.team1.players %}
+        {% if current_user.id == teamPlayer.id_player %}
+            {% set my_match = true %}
+        {% endif %}
+    {% endfor %}
+
+    {% if my_match == false %}
+        {% for teamPlayer in match.team2.players %}
+            {% if current_user.id == teamPlayer.id_player %}
+                {% set my_match = true %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <div class="card__inner flex flex--column">
+        <div style="justify-content: center; -webkit-justify-content: center;" class="flex">
+            <div class="card-match__team">
+
+                {% if scores[match.id] == null %}
+                    {% for teamPlayer in match.team1.players %}
+                        {% if teamPlayer.starter %}
+
+                            {% set avatar = '' %}
+                            {% for meta in teamPlayer.player.metas %}
+                                {% if meta.meta == 'avatar' %}
+                                    {% set avatar = '/storage/' ~ meta.meta_value  %}
+                                {% endif %}
+                            {% endfor %}
+                            {% if avatar == '' %}
+                                {% if teamPlayer.player.gender == 'f' %}
+                                    {% set avatar = 'https://cdn.xl.thumbs.canstockphoto.es/padel-mujer-jugador-vectores-eps_csp69229035.jpg' %}
+                                {% else %}
+                                    {% set avatar = 'https://comps.canstockphoto.es/padel-jugador-figura-vectores-eps_csp61076734.jpg' %}
+                                {% endif %}
+                            {% endif %}
+
+                            {% set player = teamPlayer.player %}
+                            {% include 'components/partials/card-match-player-left.twig' %}
+
+                        {% endif %}
+                    {% endfor %}
+
+                {% else %}
+
+                    {# Elenco giocatori che hanno effettivamente giocato la partita #}
+                    {% for player in match_players[match.id]['team1'] %}
+                        {% include 'components/partials/card-match-player-left.twig' %}
+                    {% endfor %}
+
+                {% endif %}
+
+
+            </div>
+            <div class="vs">
+                <span>VS</span>
+            </div>
+            <div class="card-match__team">
+
+                {% if scores[match.id] == null %}
+                    {% for teamPlayer in match.team2.players %}
+                        {% if teamPlayer.starter %}
+
+                            {% set player = teamPlayer.player %}
+                            {% include 'components/partials/card-match-player-right.twig' %}
+
+                        {% endif %}
+                    {% endfor %}
+
+                {% else %}
+
+                    {# Elenco giocatori che hanno effettivamente giocato la partita #}
+                    {% for player in match_players[match.id]['team2'] %}
+                        {% include 'components/partials/card-match-player-right.twig' %}
+                    {% endfor %}
+
+                {% endif %}
+
+            </div>
+        </div>
+
+        <div class="card__risultato" style=" text-align: center; color: #FFFFFF; margin-top: 10px;">
+
+            {% if scores[match.id] == null %}
+                <span style="margin-top: 0px; margin-bottom: 15px;" class="section-title section-title--no-separator section-title--small">Da Disputare</span>
+
+                {% if match.id_club and match.scores is empty %}
+                    {% if (my_match or (current_user.id_role == 3 and zone.clubs.contains('id', current_club.id) )) %}
+                        {% include 'components/partials/risultato-incontro.twig' %}
+                    {% endif %}
+                {% endif %}
+            {% else %}
+
+                {% if match.a_tavolino == 0 %}
+                    <div class="card__title__risultato" style="color: #FFE200;text-align: center;font-size: 20px; ">Risultato Finale</div>
+                {% elseif match.a_tavolino == 1 %}
+                    <div class="card__title__risultato" style="color: #FFE200;text-align: center;font-size: 20px; ">Risultato a tavolino</div>
+                {% endif %}
+                <div class="match__data" style="border-radius: 4px;display: inline-flex; justify-content: space-between;
+                -webkit-justify-content: space-between; color: #ffffff; padding: 4px; margin-bottom: 10px;">
+                    {% if match.scores %}
+                        {% if scores %}
+                            {% for curset in 1..5 %}
+                                {% if scores[match.id][curset] %}
+                                    <div>
+                                        <label style="font-size: 18px; color: #FFF; margin: auto 10px;">
+                                            {{ scores[match.id][curset]['team1'] }} - {{ scores[match.id][curset]['team2'] }}
+                                        </label>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endif %}
+                </div>
+
+                <p class="abstract_match" style="font-size: 18px;margin-top: 0px;margin-bottom: 10px;color: #FFF; text-align: center;">
+                    {{ match.note }}
+                </p>
+
+                {% if match.id_club and match.scores is not empty %}
+                    {% if (my_match or (current_user.id_role == 3 and zone.clubs.contains('id', current_club.id) )) %}
+                        {% include 'components/partials/risultato-incontro.twig' %}
+                    {% endif %}
+                {% endif %}
+
+            {% endif %}
+
+            {% if match.a_tavolino == 0 %}
+            <div class="card__separator" style="border-top: 1px solid white; margin-top: -5px;">
+                <div class="player">
+                    <div class="divTable" style="    margin-top: -5px; margin-bottom: -25px;">
+                        <div class="divTableBody">
+                            <div class="divTableRow">
+                                <div class="divTableCell" style="display: table-cell;vertical-align: middle;  max-width: 80%;">
+
+                                    <div style="overflow: hidden;">
+
+
+                                        <div class="divTableCell" style="display: table-cell; vertical-align: middle; padding: 3px;">
+                                            <table style=" margin: 10px auto; color: #fff;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="text-align: left; font-size: 18px;color: #FFE200;">Circolo:</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: left">
+                                                            {% if match.id_club %}
+                                                                <span class="rank" style="font-size: 18px; text-align: center;"><a  style="color: #ffffff;" href="/clubs/{{ match.club.id }}/show">{{ match.club.name }}</a></span>
+                                                                {% endif %}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                                    
+                                <div class="divTableCell" style="display:table-cell;vertical-align:middle;padding:3px;max-width:160px; text-align: center;"></div>
+                                <div class="divTableCell" style="display: table-cell; vertical-align: middle; width: 20%;">
+
+                                    <table style="margin-left: auto;margin-right: auto;text-align: center;color: #fff;">
+                                        <tbody>
+                                            <tr>
+
+                                                <td style="font-size: 17px;">
+                                                    {% if match.id_club %}
+                                                        {{ match.date|date("d/m/Y") }}
+                                                    {% else %}
+                                                        <div style="width: 145px;"></div>
+                                                    <td style="font-size: 18px;padding-top: 10px;">Data</td>
+                                                {% endif %}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    {% if match.id_club %}
+                                                        <span class="rank" style="font-size: 17px;color: #ffffff;display: inline-block;text-align: center;">
+                                                            {{ match.time|date("H:i") }}
+                                                        </span>
+                                                    {% else %}
+                                                        <div style="width: 145px;"></div>
+                                                    <td style="font-size: 18px;padding-top: 5px; padding-bottom: 5px;">Ora</td>
+                                                {% endif %}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>                                
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+
+            <div class="card-match__footer card-match__footer--inputDate" >
+
+                <div class="cta-container cta-container--center"></div>
+                {% if (my_match or (current_user.id_role == 3 and zone.clubs.contains('id', current_club.id) )) and match.scores is empty %}
+                    {% include 'components/partials/programma-incontro.twig' %}
+                {% endif %}
+            </div>
+
+
+        </div>
+
+    </div>

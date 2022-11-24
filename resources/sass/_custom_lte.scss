@@ -1,0 +1,32 @@
+.content-wrapper{
+    background-color:#343c45ed !important;
+    color: #fff;
+}
+
+.content-wrapper table{    
+    color: #000;
+}
+
+.content-wrapper .box-body{    
+    color: #000;
+}
+
+.swiper-pagination-bullet{
+    background: #fff !important;
+    color: #000;    
+    border: 1px solid #3c8dbc;
+}
+
+.swiper-pagination-bullet-active {
+    background: #3c8dbc !important;
+}
+
+.swiper-container-horizontal>.swiper-pagination-bullets {
+    bottom: none;
+    top: 0 !important;   
+    height: 10px;
+}
+
+.modal-content{
+    color: #000 !important;
+}

@@ -1,0 +1,17 @@
+/* macro tabs.twig styles */
+/* line 5, ../../../../../src/sass/components/partials/tabs.scss */
+.tabs { margin: 24px auto; }
+/* line 8, ../../../../../src/sass/components/partials/tabs.scss */
+.tabs .tabs__nav { border-bottom: 2px solid #fff; display: flex; width: calc(100% + 16px); margin-left: -8px; }
+/* line 14, ../../../../../src/sass/components/partials/tabs.scss */
+.tabs .tabs__nav label { border-top-left-radius: 6px; border-top-right-radius: 6px; color: #fff; font-family: "Avenir", serif; font-size: 20px; font-weight: bold; display: inline-block; padding: 7px; margin: 0 7px; text-align: center; text-shadow: 0 0 5px #000; }
+/* line 38, ../../../../../src/sass/components/partials/tabs.scss */
+.tabs input[type="radio"].maschili:checked ~ .tabs__nav label[for="maschili"] { background: #fff; color: #000; text-shadow: none; }
+/* line 53, ../../../../../src/sass/components/partials/tabs.scss */
+.tabs input[type="radio"].femminili:checked ~ .tabs__nav label[for="femminili"] { background: #fff; color: #000; text-shadow: none; }
+/* line 63, ../../../../../src/sass/components/partials/tabs.scss */
+.tabs .tabs__body { overflow: hidden; }
+/* line 69, ../../../../../src/sass/components/partials/tabs.scss */
+.tabs .tabs__body__panel { padding: 24px 16px 16px; }
+/* line 75, ../../../../../src/sass/components/partials/tabs.scss */
+.tabs .tabs__body .featured-data__item:last-child { border-bottom: none; }

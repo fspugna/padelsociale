@@ -1,0 +1,52 @@
+{% extends "base.twig" %}
+
+{% block head %}
+<title>{{ site.name}} - </title>
+{{ parent() }}
+{% endblock %}
+
+{% block bodyclass %}
+	page-zona bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+
+<!--page-zona.twig page -->
+
+<div class="page page-zona">
+	<div class="container">
+		<section>
+				<div class="cta-container">
+					<button onclick="javascript:window.history.back()" class="cta cta--enter cta--yellow cta--rounded cta--back">Torna al torneo</a>
+				</div>
+
+			<div class="section-title">				
+				<h1>{{ zone.city.name }} - {{ zone.name }}</h1>
+			</div>
+
+			<div class="card-wrapper flex flex--center flex--column">
+				
+				{% for key, cat in categories %}				
+				<div class="card flex flex--column flex--center">
+					<div class="section-title"><span>{{ key }}</span></div>
+					<ul>
+						{% for categoria in cat %}
+						<li>
+							{% if tournament.id_tournament_type == 1 %}
+							<a href="/division/{{ categoria.id }}/show" class="yellow-text-link yellow-text-link--enter">{{ categoria.category.name }}</a>
+							{% elseif tournament.id_tournament_type == 2 %}
+							<a href="/bracket/{{ categoria.id }}/show" class="yellow-text-link yellow-text-link--enter">{{ categoria.category.name }}</a>
+							{% endif %}
+						</li>					
+						{% endfor %}		
+					</ul>
+				</div>
+				{% endfor %}
+				
+			</div>
+
+
+		</section>
+	</div>
+</div>
+{% endblock %}

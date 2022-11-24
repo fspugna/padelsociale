@@ -1,0 +1,89 @@
+<div class="section-title section-title--no-separator"><span style=" margin-bottom: -10px; ">Calendario</span></div>
+<div style="margin-left: 8px; margin-right: 8px;">
+    <div class="tabs-scroller tabs-scroller-calendar">
+        <input type="hidden" id="selected_round" value="{{sel_round.id}}">
+        <nav class="tabs__nav" role="navigation">
+            {% for round in rounds %}							
+                <a id="menu_round_{{ round.id }}" href="/tournament/{{ fase_a_gironi.id }}/zone/{{ id_zone }}/category-type/{{ id_category_type }}/category/{{id_category}}/group/{{id_group}}/round/{{round.id}}/show" 
+                    {% if sel_round.id == round.id %} class="selected" {% endif %}
+                    >
+                    {% if round.name == '1' %}
+                        Prima Giornata
+                    {% elseif round.name == '2' %}
+                        Seconda Giornata
+                    {% elseif round.name == '3' %}
+                        Terza Giornata
+                    {% elseif round.name == '4' %}
+                        Quarta Giornata
+                    {% elseif round.name == '5' %}
+                        Quinta Giornata
+                    {% elseif round.name == '6' %}
+                        Sesta Giornata
+                    {% elseif round.name == '7' %}
+                        Settima Giornata
+                    {% elseif round.name == '8' %}
+                        Ottava Giornata
+                    {% elseif round.name == '9' %}
+                        Nona Giornata
+                    {% elseif round.name == '10' %}
+                        Decima Giornata
+                    {% elseif round.name == '11' %}
+                        Undicesima Giornata
+                    {% elseif round.name == '12' %}
+                        Dodicesima Giornata
+                    {% elseif round.name == '13' %}
+                        Tredicesima Giornata
+                    {% elseif round.name == '14' %}
+                        Quattordicesima Giornata
+                    {% elseif round.name == '15' %}
+                        Quindicesima Giornata
+                    {% elseif round.name == '16' %}
+                        Sedicesima Giornata
+                    {% elseif round.name == '17' %}
+                        Diciassettesima Giornata
+                    {% elseif round.name == '18' %}
+                        Diciottesima Giornata
+                    {% elseif round.name == '19' %}
+                        Diciannovesima Giornata
+                    {% elseif round.name == '20' %}
+                        Ventesima Giornata
+                    {% else %}
+                        Giornata {{ round.name }}
+                    {% endif %}
+                </a>
+            {% endfor %}
+        </nav>
+    </div>
+</div>
+
+
+<div class="flex flex--column flex--center">
+    <ul  class="flex flex--column">					
+        {% set round = sel_round %}
+
+        <div class="card-ra-div">
+            <div style="border: 2px solid #FFE200; margin-top: 30px; margin-bottom: 10px;" class="card card-ranking">
+                <link href="/resources/assets/css/components/partials/card-macro-match.css?v=1.0.4" rel="stylesheet">
+                <div class="card__inner-ranking flex flex--column">
+                    <div style="width:100%;">
+
+                        <div style="margin-bottom:5px;" class="card-content section-title section-title--no-separator section-title--small">
+                            <i>{{ round.description }}</i>
+                        </div>	
+
+                    </div>
+                </div>
+            </div>
+        </div>							
+        {% for macroMatch in round.macro_matches %}
+            {% if macroMatch.id_team1 > 0 and macroMatch.id_team2 > 0 %}
+                <div  style="margin-bottom: 0px;"  >
+                    <li style="margin: 2px;" >												
+                        {% include 'components/partials/card-macro-match.twig' %}
+                    </li>
+                </div>
+            {% endif %}
+        {% endfor %}										
+        
+    </ul>
+</div> 

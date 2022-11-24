@@ -1,0 +1,25 @@
+<!-- login.twig section -->
+{% import 'components/partials/forms.twig' as forms %}
+
+<div class="login-form">
+
+{% if loop.index <= 1 and login is not defined or loop.index is not defined and login is not defined %}
+
+<link rel="stylesheet" href="/resources/assets/css/components/sections/login-form.css?v={{version}}" />
+
+{% endif %}
+
+	<div class="container">				
+		<form name="loginform" id="loginform" method="{{ formdata.login.method }}" action="{{ formdata.login.action }}">
+		
+			{{ csrf_field() }}
+			{{ forms.inputField('email', 'email', '', 'text', 'e-mail...', '', 'required', '', true) }}
+			{{ forms.inputField('password', 'password', '', 'password', 'password...', '', 'required', '') }}
+			<div class="cta-container cta-container--center">
+				<button type="submit" class="loginform cta cta--enter cta--yellow">entra</button>
+			</div>
+
+			<a class="section-title section-title--no-separator section-title--small" href="/password/reset">Dimenticata la password?</a>
+		</form>
+	</div>
+</div>

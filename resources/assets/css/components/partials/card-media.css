@@ -1,0 +1,5 @@
+/* card-media.twig styles */
+/* line 9, ../../../../../src/sass/components/partials/card-media.scss */
+.card-media .card__thumbnail picture { padding-bottom: 70%; }
+/* line 14, ../../../../../src/sass/components/partials/card-media.scss */
+.card-media .card__content { padding: 12px; }

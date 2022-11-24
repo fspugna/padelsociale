@@ -1,0 +1,43 @@
+{% extends "base.twig" %}
+
+{% block head %}
+<title>{{ site.name}} - </title>
+{{ parent() }}
+{% endblock %}
+
+{% block bodyclass %}
+	single-categoria bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+
+<div class="single single-categoria">
+	<div class="container">
+		<section>
+			<div class="section-title section-title--small section-title--no-separator"><h2>{{ groups[0].division.categoryType.name }}</h2></div>
+			<div class="section-title section-title--big"><h1>{{ groups[0].division.category.name }}</h1></div>
+
+			<div class="cta-container flex flex--between">
+				<a href="#" onclick="javascript:window.history.back()" class="cta cta--yellow cta--rounded cta--back">Torna al torneo</a>
+				<!--a href="./page-tabellone" class="cta cta--enter cta--yellow cta--rounded">Tabellone</a-->
+			</div>
+
+			{% for group in groups %}
+			<div class="flex flex--column flex--center">
+				<a href="/group/{{ group.id }}/show" class="section-title yellow-text-link yellow-text-link--enter"><span>Girone {{ group.name }}</span></a>
+				<ul class="card-scroller flex">
+					{% for groupTeam in group.teams %}						
+						<li>
+							<a href="#">
+								{% include 'components/partials/card-team-categoria.twig' %}
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>				
+			{% endfor %}
+
+		</section>
+	</div>
+</div>
+{% endblock %}

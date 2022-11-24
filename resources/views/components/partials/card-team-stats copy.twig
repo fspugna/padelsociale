@@ -1,0 +1,97 @@
+<!-- card-team-classifica.twig partial -->
+
+<div class="card-team-classifica">
+
+{% if loop.index <= 1 and cardteamclassifica is not defined or loop.index is not defined and cardteamclassifica is not defined %}
+
+<link rel="stylesheet" href="/resources/assets/css/components/partials/card-team-classifica.css?v={{version}}" />
+
+{% endif %}
+
+	<div class="card__inner">
+	{% for teamPlayer in teamClassification.teams.players %}		
+			{% if teamPlayer.starter %}
+
+			{% set avatar = '' %}	
+			{% for meta in teamPlayer.player.metas %}
+				{% if meta.meta == 'avatar' %}
+					{% set avatar = '/storage/' ~ meta.meta_value  %}
+				{% endif %}
+			{% endfor %}
+			{% if avatar == '' %}	
+				{% if teamPlayer.player.gender == 'f' %}
+					{% set avatar = 'https://cdn.xl.thumbs.canstockphoto.es/padel-mujer-jugador-vectores-eps_csp69229035.jpg' %}
+				{% else %}
+					{% set avatar = 'https://comps.canstockphoto.es/padel-jugador-figura-vectores-eps_csp61076734.jpg' %}		
+				{% endif %}
+			{% endif %}	
+			
+		<a href="/players/{{ teamPlayer.player.id }}/show">		
+			<div class="player {% if loop.index == 2 %} player--2 {% endif %}">
+				<div class="divTable">
+				<div class="divTableBody">
+					<div class="divTableRow" style=" justify-content: space-between;">
+
+					<div style="display: table-cell;vertical-align: middle;padding: 3px;/* max-width: 150px; *//* min-width: 150px; */text-align: right;" class="divTableCell">
+						<div class="player__name" style="font-size: 13px;min-width: 70px;max-width: 70px;text-align: right;color: #fff;">{{teamPlayer.player.name }} {{teamPlayer.player.surname }}</div>
+					</div>
+
+					<div style="display: table-cell;vertical-align: middle;padding: 3px;min-width: 35px;" class="divTableCell">
+						<div style="border: 2px solid #fff;width: 35px;border-radius: 50%;overflow: hidden;">
+							<picture >
+								<img class="lazyload" data-srcset="{{ avatar }}, {{ avatar }} 2x" alt="{{teamPlayer.player.name }} {{teamPlayer.player.surname }}"/>
+							</picture>
+							<noscript>
+								<picture data-link="/players/{{ teamPlayer.player.id }}/show">
+									<!--[if IE 9]><video style="display: none;"><![endif]-->
+									<source srcset="{{ queryItem.playerTwo.srcImgAvatar }}" media="(max-width: 60px)"/>
+									<!--[if IE 9]></video><![endif]-->
+									<img src="{{ queryItem.playerTwo.srcImgAvatar }}" alt="{{teamPlayer.player.name }} {{teamPlayer.player.surname }}"/>
+								</picture>
+							</noscript>
+						</div>
+					</div>
+
+
+
+					<div style="display: table-cell; vertical-align: middle; padding: 3px;" class="divTableCell">
+
+					</div>
+					</div>
+				</div>
+				</div>
+			</div>
+		</a>
+
+		{% endif %}
+		{% endfor %}
+	</div>
+	<div class="card__footer card__footer--separated">
+			<div>
+				<span class="card__footer__value">{{ teamClassification.points }}</span>
+			</div>
+			<div>
+				<span class="card__footer__value">{{ teamClassification.played }}</span>
+			</div>
+			<div>
+				<span class="card__footer__value">{{ teamClassification.set_won }} / {{ teamClassification.set_lost }}</span>
+			</div>
+			<div>
+				<span class="card__footer__value">{{ teamClassification.games_won }} / {{ teamClassification.games_lost }}</span>
+			</div>
+	</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,59 @@
+<div class="flex flex--column flex--center">
+    <div class="section-title section-title--no-separator"><span>Classifica</span></div>
+    <div class="card card-scroller card-scroller--vertical card-classifica">
+
+        <link rel="stylesheet" href="/resources/assets/css/components/partials/card-team-classifica.css?v=1.0.4">
+
+        <table>
+            <tbody>
+                <tr>
+                    <td class="TDvalueName" ><span style="margin: 10px;">Squadre</span></td>
+                    <td class="TDvalueName" ><span style="margin: 10px;">pt.</span></td>
+                    <td class="TDvalueName" ><span style="margin: 10px;">gi.</span></td>
+                    <td class="TDvalueName" ><span style="margin: 10px;">sv/sp</span></td>
+                    <td class="TDvalueName" ><span style="margin: 10px;">gv/gp</span></td>
+                </tr>
+                {% for teamClassification in classification %}
+                    {% include 'components/partials/card-team-stats.twig' %}
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <style>
+
+            .TDvalueName {
+                text-align:center;
+                width: 100%;
+                padding: 10px 0px;
+                color: #6E96CB;
+                border-bottom: 1px solid #fff;
+                border-left: 1px solid #fff;
+            }
+
+            .TDvalue {
+                text-align:center;
+                vertical-align: middle;
+                width: 50px;
+                color: #FFE200;
+                border-left: 1px solid #fff;
+                font-size: 15px;
+            }
+
+            .lineTeam {
+                border-bottom: 1px solid #fff;
+            }
+
+            @media only screen and (max-width: 320px) {
+                .card.card-scroller.card-scroller--vertical.card-classifica {
+                    min-width: 320px;
+                    margin-left: -17px;
+                }
+                .card-team-classifica .card__inner {
+                    padding: 0px;
+                }
+            }
+
+        </style>
+
+    </div>
+</div>

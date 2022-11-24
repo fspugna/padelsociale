@@ -1,0 +1,156 @@
+{% if id_zone %}
+
+    <div class="zone-filter-js">
+        <input type="text" id="zone_filter" placeholder="Cerca il circolo o la zona..">
+        <div style="margin-left: 8px; margin-right: 8px;">
+            <div class="tabs-scroller tabs-scroller-zones">
+                <input type="hidden" id="selected_zone" value="{{ id_zone }}">
+                <nav class="tabs__nav" role="navigation">
+                    {% for z in tournament.edition.zones %}
+                        <a id="menu_zone_{{ z.zone.id }}" href="/tournament/{{ fase_a_gironi.id   }}/zone/{{ z.zone.id }}/show" class="menu_zone {% if z.zone.id == id_zone %} selected {% endif %}">{{ z.zone.name }}</a>
+                    {% endfor %}
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    {% if tournament.id_tournament_type == 1 and categoryTypes and tournament_started %}
+        <div style="margin-left: 8px; margin-right: 8px;">
+            <div class="tabs-scroller tabs-scroller-categoryType">
+                <input type="hidden" id="selected_category_type" value="{{ id_category_type }}">
+                <nav class="tabs__nav" role="navigation">
+                    {% for ct in categoryTypes %}
+                        <a id="menu_category_type_{{ ct.id }}" href="/tournament/{{ tournament.id }}/zone/{{ id_zone }}/category-type/{{ ct.id }}/category/0/show" {% if ct.id == id_category_type %} class="selected" {% endif %}>{{ ct.name }}</a>
+                    {% endfor %}
+                </nav>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if tournament.id_tournament_type == 2 and categoryTypes and tournament_started %}
+        <div style="margin-left: 8px; margin-right: 8px;">
+            <div class="tabs-scroller tabs-scroller-categoryType">
+                <input type="hidden" id="selected_category_type" value="{{ id_category_type }}">
+                <nav class="tabs__nav" role="navigation">
+                    {% for ct in categoryTypes %}
+                        <a id="menu_category_type_{{ ct.id }}" href="/tournament/{{ fase_a_gironi.id }}/zone/{{ id_zone }}/category-type/{{ ct.id }}/category/0/show" {% if ct.id == id_category_type %} class="selected" {% endif %}>{{ ct.name }}</a>
+                    {% endfor %}
+                </nav>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if tournament.id_tournament_type == 1 and categories and tournament_started %}
+        <div style="margin-left: 8px; margin-right: 8px;">
+            <div class="tabs-scroller tabs-scroller-category">
+                <input type="hidden" id="selected_category" value="{{ id_category }}">
+                <nav class="tabs__nav" role="navigation">
+
+                    <a id="menu_category_0" href="/tournament/{{ tournament.id }}/zone/{{ id_zone }}/category-type/{{ id_category_type }}/category/0/show" {% if 0 == id_category %} class="selected" {% endif %} >
+                        {% if tournament.edition.edition_type == 0 or tournament.edition.edition_type == 1 %}
+                        Coppie iscritte
+                        {% elseif tournament.edition.edition_type == 2 %}
+                        Squadre iscritte
+                        {% endif %}
+                    </a>
+
+                    {% for c in categories %}
+                        <a id="menu_category_{{ c.id }}" href="/tournament/{{ tournament.id }}/zone/{{ id_zone }}/category-type/{{ id_category_type }}/category/{{ c.id }}/show"  {% if c.id == id_category %} class="selected" {% endif %}>{{ c.name }}</a>
+                    {% endfor %}
+                </nav>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if tournament.id_tournament_type == 2 and categories and tournament_started %}
+        <div style="margin-left: 8px; margin-right: 8px;">
+            <div class="tabs-scroller tabs-scroller-category">
+
+                <input type="hidden" id="selected_category" value="{{ id_category }}">
+                <nav class="tabs__nav" role="navigation">
+
+                    <a id="menu_category_0" href="/tournament/{{ fase_a_gironi.id }}/zone/{{ id_zone }}/category-type/{{ id_category_type }}/category/0/show" {% if 0 == id_category %} class="selected" {% endif %} >
+                        {% if tournament.edition.edition_type == 0 or tournament.edition.edition_type == 1 %}
+                        Coppie iscritte
+                        {% elseif tournament.edition.edition_type == 2 %}
+                        Squadre iscritte
+                        {% endif %}
+                    </a>
+
+                    {% for c in categories %}
+                        <a id="menu_category_{{ c.id }}" href="/tournament/{{ fase_a_gironi.id }}/zone/{{ id_zone }}/category-type/{{ id_category_type }}/category/{{ c.id }}/show"  {% if c.id == id_category %} class="selected" {% endif %}>{{ c.name }}</a>
+                    {% endfor %}
+                </nav>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if tournament.id_tournament_type == 1 and groups and tournament_started %}
+        <div style="margin-left: 8px; margin-right: 8px;">
+            <div class="tabs-scroller tabs-scroller-groups">
+                <input type="hidden" id="selected_group" value="{{ id_group }}">
+                <input type="hidden" id="selected_bracket" value="{{ id_bracket }}">
+                <nav class="tabs__nav" role="navigation">
+                    {% for g in groups %}
+                        <a id="menu_group_{{ g.id }}" href="/tournament/{{ tournament.id }}/zone/{{ id_zone }}/category-type/{{ id_category_type }}/category/{{ id_category }}/group/{{ g.id }}/round/0/show" {% if g.id == id_group %} class="selected" {% endif %}>Girone {{ g.name }}</a>
+                    {% endfor %}
+
+                    {% for b in brackets %}
+                        {% if b.flag_online == 1 %}
+                            {% if id_bracket == b.id %}
+                                <a id="menu_bracket_{{ b.id }}" href="/tournament/{{ b.tournament.id }}/zone/{{ id_zone }}/category-type/{{ id_category_type }}/category/{{ id_category }}/bracket/{{ b.id }}/phase/0/show" class="selected">{{ b.tournament.name }}</a>
+                            {% else %}
+                                <a id="menu_bracket_{{ b.id }}" href="/tournament/{{ b.tournament.id }}/zone/{{ id_zone }}/category-type/{{ id_category_type }}/category/{{ id_category }}/bracket/{{ b.id }}/phase/0/show" >{{ b.tournament.name }}</a>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+
+                </nav>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if tournament.id_tournament_type == 2 and tournament_started %}
+        <div style="margin-left: 8px; margin-right: 8px;">
+            <div class="tabs-scroller tabs-scroller-groups">
+                <input type="hidden" id="selected_group" value="{{ id_group }}">
+                <input type="hidden" id="selected_bracket" value="{{ id_bracket }}">
+                <nav class="tabs__nav" role="navigation">
+                    {% for g in groups %}
+                        {% if g.flag_online == 1 %}
+                        <a id="menu_group_{{ g.id }}" href="/tournament/{{ fase_a_gironi.id }}/zone/{{ id_zone }}/category-type/{{ id_category_type }}/category/{{ id_category }}/group/{{ g.id }}/show" {% if g.id == id_group %} class="selected" {% endif %}  >Girone {{ g.name }}</a>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% for b in brackets %}
+                        {% if b.flag_online == 1 %}
+                            {% if id_bracket == b.id %}
+                                <a id="menu_bracket_{{ b.id }}" href="/tournament/{{ b.tournament.id }}/zone/{{ id_zone }}/category-type/{{ id_category_type }}/category/{{ id_category }}/bracket/{{ b.id }}/phase/0/show" class="selected">{{ b.tournament.name }}</a>
+                            {% else %}
+                                <a id="menu_bracket_{{ b.id }}" href="/tournament/{{ b.tournament.id }}/zone/{{ id_zone }}/category-type/{{ id_category_type }}/category/{{ id_category }}/bracket/{{ b.id }}/phase/0/show" >{{ b.tournament.name }}</a>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+
+                </nav>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if tournament.id_tournament_type == 2 and tournament_started %}
+        <div style="margin-left: 8px; margin-right: 8px;">
+            <div class="tabs-scroller tabs-scroller-groups">
+                <input type="hidden" id="selected_phase" value="{{ id_phase }}">
+                <nav class="tabs__nav" role="navigation">
+
+                    {% if bracket.flag_online == 1 and bracket.phases.count() > 1 %}
+                        <a id="menu_phase_0" href="/tournament/{{ tournament.id }}/zone/{{ id_zone }}/category-type/{{ id_category_type }}/category/{{ id_category }}/bracket/{{ bracket.id }}/showFull" {% if show_full == 1 %} class="selected" {% endif %}>Tabellone completo</a>
+                    {% endif %}
+
+                    {% for idphase, phase in arr_phases %}
+                        <a id="menu_phase_{{ idphase }}" href="/tournament/{{ tournament.id }}/zone/{{ id_zone }}/category-type/{{ id_category_type }}/category/{{ id_category }}/bracket/{{ bracket.id }}/phase/{{ idphase }}/show" {% if id_phase == idphase %} class="selected" {% endif %}>{{ phase['name'] }}</a>
+                    {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endif %}

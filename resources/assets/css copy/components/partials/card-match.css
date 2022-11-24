@@ -1,0 +1,23 @@
+/* card-match.twig styles */
+/* line 5, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match { background: none !important; border: none !important; margin: 0 12px 24px !important; }
+/* line 10, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match .card__inner { background-color: rgba(0, 0, 0, 0.5); border-radius: 8px; border: 2px solid #fff; display: flex; padding: 12px; justify-content: space-evenly; }
+/* line 19, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match__team { width: 50%; }
+/* line 23, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match .vs { display: flex; flex-direction: column; align-items: center; color: #FFE200; font-size: 30px; font-weight: bold; padding: 6px; }
+/* line 32, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match .vs span { padding: 12px 0px; }
+/* line 36, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match .vs:before, .card-match .vs:after { content: ''; flex: 1; width: 1px; background: rgba(255, 255, 255, 0.5); height: 100px; }
+/* line 45, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match .player { margin-bottom: 16px; }
+/* line 48, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match .player .card__thumbnail { width: 100px; height: 100px; border-radius: 50%; border: 2px solid #fff; overflow: hidden; margin: auto auto 12px; }
+/* line 57, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match .player .player__name { color: #fff; font-family: "Avenir", serif; font-weight: bold; text-align: center; }
+/* line 65, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match__result { display: flex; justify-content: center; margin: 12px 0; }
+/* line 70, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match__result span { color: #fff; font-size: 20px; font-weight: bold; margin: 0 18px; }

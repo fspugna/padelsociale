@@ -1,0 +1,68 @@
+<style>
+div.banner{margin: 20px;}
+.banner-img img{
+    display: none;
+}
+
+.banner-img.banner-selected img{
+    display:inline-block;
+}
+
+.card-banner-home{
+    max-width: 370px;
+}
+</style>
+
+{% if show_banners.count() > 0 %}
+<article class="card {{ card_class }} banner {{ banner_position|lower }}">           
+
+    {% for index, banner in show_banners %}        
+
+        {% set show = false %}                    
+
+        {% for positioning in banner.positionings %}
+            {% if positioning.position.position_name == banner_position %}
+                {% set show = true %}
+            {% endif %}
+        {% endfor %}
+
+        {% if show %}                                        
+            {% if banner_city != null and banner_edition != null %}        
+                {% if ( ( (banner.cities().count() > 0 and banner.cities.contains('id_city', banner_city)) or banner.cities.count() == 0 ) and ( banner.id_edition == null or banner.id_edition == banner_edition ) ) %}
+                    <div style="width: 100%; text-align: center" class="banner-img {% if index == 0 %} banner-selected {% endif %}" data-id-partner="{{ banner.id_partner }}">                        
+                        {% if banner.action != '' %}
+                        <a href="{{ banner.action }}">
+                        {% else %}
+                        <a href="/partner/{{ banner.id_partner }}/show">
+                        {% endif %}
+                            <img src="{{ url('/storage/' ~ banner.filename) }}" style="width: 100%; height: auto; border-radius: 5px">
+                        </a>
+                    </div>
+                {% endif %}
+            {% elseif banner_city != null and banner_edition == null %}                
+                {% if ((banner.cities().count() > 0 and banner.cities.contains('id_city', banner_city)) or banner.cities.count() == 0 ) %}
+                    <div style="width: 100%; text-align: center" class="banner-img {% if index == 0 %} banner-selected {% endif %}" data-id-partner="{{ banner.id_partner }}">                        
+                        {% if banner.action != '' %}
+                        <a href="{{ banner.action }}">
+                        {% else %}
+                        <a href="/partner/{{ banner.id_partner }}/show">
+                        {% endif %}
+                            <img src="{{ url('/storage/' ~ banner.filename) }}" style="width: 100%; height: auto; border-radius: 5px">
+                        </a>
+                    </div>
+                {% endif %}
+            {% elseif banner_city == null and banner_edition == null %}
+                <div style="width: 100%; text-align: center" class="banner-img {% if index == 0 %} banner-selected {% endif %}" data-id-partner="{{ banner.id_partner }}">                        
+                    {% if banner.action != '' %}
+                    <a href="{{ banner.action }}">
+                    {% else %}
+                    <a href="/partner/{{ banner.id_partner }}/show">
+                    {% endif %}
+                        <img src="{{ url('/storage/' ~ banner.filename) }}" style="width: 100%; height: auto; border-radius: 5px">
+                    </a>
+                </div>
+            {% endif %}
+        {% endif %}        
+    {% endfor %}
+</article>
+{% endif %}

@@ -1,0 +1,22 @@
+{% extends "base.twig" %}
+
+{% block head %}
+<title>{{ site.name}} - Login</title>
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+<!--page-login.twig page -->
+
+<div class="page page-login">
+	<section>
+		<span class="section-title section-title--inverted">Effettua il login</span>
+		{% include 'components/sections/login-form.twig' %}
+	</section>
+	<section>
+		<span class="section-title section-title--inverted">Registrati</span>
+		{% include 'components/sections/registration-form.twig' %}
+	</section>
+</div>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% macro tabs(tabs) %}
+
+
+
+<link rel="stylesheet" href="/resources/assets/css/components/partials/tabs.css?v={{version}}" />
+  <!--
+  use this macro in following way
+
+  <div class="tabs tabs--groupName">
+    {#    {{ tabs.tabs([{label:'motore', id: 'engine', group: 'groupName', checked: 'checked'},{label:'prestazioni', id: 'performance', group: 'groupName'}]) }} #}
+  </div>
+
+-->
+
+    <style>
+
+			{% for tab in tabs %}
+
+        .tabs input[type="radio"].{{tab.id}}:checked ~ .tabs__body .tabs__body__panel--{{tab.id}} {
+          opacity: 1;
+					position: relative;
+          top: 0;
+          visibility: visible;
+        }
+
+				.tabs input[type="radio"].{{tab.id}}:checked ~ .tabs-scroller .tabs__nav label[for={{tab.id}}] {
+					background: #fff;
+					color: #000;
+					text-shadow: none;
+				}
+			{% endfor %}
+
+        .tabs__body {
+          position: relative;
+        }
+
+				.tabs__nav > label {
+					width: calc(100% / {{ tabs.length }});
+					min-width: 120px;
+				}
+
+        .tabs__body .tabs__body__panel {
+          opacity: 0;
+          visibility: hidden;
+          transition: all ease-in-out 0.3s;
+          top: 100px;
+          left: 0;
+          width: 100%;
+        }
+
+        {% if tabs.length > 1 %}
+
+          .tabs__body .tabs__body__panel {
+            position: absolute;
+          }
+
+        {% endif %}
+
+        @media screen and (max-width: 767px) {
+
+          .tabs__body {
+            min-height: 378px;
+          }
+        }
+
+    </style>
+    {% for tab in tabs %}
+      <input  type="radio" id="{{ tab.id }}" value="{{ tab.id }}" class="{{ tab.id }}" name="{{ tab.group }}" {{ tab.checked }} hidden />
+    {% endfor %}
+		<div class="tabs-scroller tabs-scroller--{{ tabs[0].group }}">
+	    <div class="tabs__nav" role="navigation">
+	      {% for tab in tabs %}
+	        <label for="{{ tab.id }}">{{ tab.label|capitalize }}</label>
+	      {% endfor %}
+	    </div>
+		</div>
+    <!--
+
+    insert following body tabs in page, inside div .tabs
+
+    <div class="tabs__body">
+      <div class="tabs__body__panel tabs__body__panel--{{tabs[0].label}}...
+      <div class="tabs__body__panel tabs__body__panel--{{tabs[1].label}}...
+    </div>
+
+   -->
+
+{% endmacro %}

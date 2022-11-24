@@ -1,0 +1,249 @@
+<style>
+    .section-title--small{
+        padding: 0;
+    }
+</style>
+
+<div class="card card-match" style="padding-top: 10px;padding-bottom: 10px;">
+    <link rel="stylesheet" href="/resources/assets/css/components/partials/card-social.css?v=1.0.4">
+    <div class="card__content">
+        <div class="card__title">
+            {% if  queryItem.matchcodes.ref_type == 'round'  %}
+                <h3>{{ queryItem.matchcodes.matchRound.group.division.tournament.edition.edition_name }}</h3>
+            {% elseif queryItem.matchcodes.ref_type == 'phase'  %}
+                <h3>{{ queryItem.matchcodes.matchPhase.bracket.tournament.edition.edition_name }}</h3>
+            {% endif %}
+            <h5 style="color:#fff;text-align:center;margin-bottom: 10px;">Circolo: {{ queryItem.club.name }}</h5>
+        </div>
+        <div style="justify-content: center; -webkit-justify-content: center;"  class="flex">
+
+            <div class="card-match__team">
+                {% for teamPlayer in queryItem.team1.players %}
+                    {% if teamPlayer.starter == 1 %}
+                        <a href="/players/{{teamPlayer.id_player}}/show">
+
+                            <div class="player">
+                                <div style="display: table-cell; justify-content: space-between; -webkit-justify-content: space-between;" class="divTable">
+                                    <div class="divTableBody">
+                                        <div class="divTableRow" style=" justify-content: space-between; -webkit-justify-content: space-between;">
+                                            <div style="display: table-cell;vertical-align: middle;padding: 3px; text-align: right;" class="divTableCell">
+                                                <div class="player__name" style="font-size: 12px;min-width: 70px;max-width: 70px;text-align: right;color: #fff;">
+                                                    {{ teamPlayer.player.name }} {{ teamPlayer.player.surname }}</div>
+                                            </div>
+                                            <div style="display: table-cell;vertical-align: middle;padding: 3px;min-width: 35px;" class="divTableCell">
+                                                {% if teamPlayer.player.metas is not empty  %}
+                                                    {% set found_avatar = false %}
+                                                    {% for meta in teamPlayer.player.metas %}
+                                                        {% if meta.meta == 'avatar' %}
+                                                            {% set found_avatar = true %}
+                                                            <div style="border: 2px solid #fff;width: 35px;border-radius: 50%;overflow: hidden;">
+                                                                <picture>
+                                                                    <img class=" lazyloaded" src="/storage/{{ meta.meta_value }}" alt="" >
+                                                                </picture>
+                                                                <noscript>
+                                                                <picture>
+                                                                    <!--[if IE 9]>
+                                                                    <video style="display: none;">
+                                                                       <![endif]-->
+                                                                    <source src="/storage/{{ meta.meta_value }}" media="(max-width: 736px)"/>
+                                                                    <!--[if IE 9]>
+                                                                 </video>
+                                                                 <![endif]-->
+                                                                    <img src="/storage/{{ meta.meta_value }}" alt=""/>
+                                                                </picture>
+                                                                </noscript>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+
+                                                    {% if found_avatar == false %}
+
+                                                        {% if teamPlayer.player.gender == 'f' %}
+                                                            {% set avatar = 'https://cdn.xl.thumbs.canstockphoto.es/padel-mujer-jugador-vectores-eps_csp69229035.jpg' %}
+                                                        {% else %}
+                                                            {% set avatar = 'https://comps.canstockphoto.es/padel-jugador-figura-vectores-eps_csp61076734.jpg' %}
+                                                        {% endif %}
+
+                                                        <div style="border: 2px solid #fff;width: 35px;border-radius: 50%;overflow: hidden;">
+                                                            <picture>
+                                                                <img class=" lazyloaded" src="{{ avatar }}" alt="" >
+                                                            </picture>
+                                                            <noscript>
+                                                            <picture>
+                                                                <!--[if IE 9]>
+                                                                <video style="display: none;">
+                                                                   <![endif]-->
+                                                                <source src="{{ avatar }}" media="(max-width: 736px)"/>
+                                                                <!--[if IE 9]>
+                                                             </video>
+                                                             <![endif]-->
+                                                                <img src="{{ avatar }}" alt=""/>
+                                                            </picture>
+                                                            </noscript>
+                                                        </div>
+                                                    {% endif %}
+
+                                                {% else %}
+                                                    <div style="border: 2px solid #fff;width: 35px;border-radius: 50%;overflow: hidden;">
+                                                        <picture>
+                                                            <img class=" lazyloaded" src="https://comps.canstockphoto.es/padel-jugador-figura-vectores-eps_csp61076734.jpg" alt="" >
+                                                        </picture>
+                                                        <noscript>
+                                                        <picture>
+                                                            <!--[if IE 9]>
+                                                            <video style="display: none;">
+                                                               <![endif]-->
+                                                            <source src="https://comps.canstockphoto.es/padel-jugador-figura-vectores-eps_csp61076734.jpg" media="(max-width: 736px)"/>
+                                                            <!--[if IE 9]>
+                                                         </video>
+                                                         <![endif]-->
+                                                            <img src="https://comps.canstockphoto.es/padel-jugador-figura-vectores-eps_csp61076734.jpg" alt=""/>
+                                                        </picture>
+                                                        </noscript>
+                                                    </div>
+                                                {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div style="align-self: center;">
+                <div style="display: table-cell;padding: 3px;" class="divTableCell">
+                                        
+                    <table style=" text-align: center;color: #fff;">
+                        <tbody  style="border: 2px solid #6E96CB;">
+                            <tr>
+                                <td style="font-size: 12px; padding: 1px;">{{ queryItem.date|date('d/m/Y') }}</td>
+                            </tr>
+                            <tr>
+                                <td  style="font-size: 12px; padding: 1px;"><span class="rank" style="font-size: 12px;font-weight: bold;color: #ffffff; display: inline-block; text-align: center;">{{ queryItem.time|date('H : i') }}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+            <div class="card-match__team">
+                {% for teamPlayer in queryItem.team2.players %}
+                    {% if teamPlayer.starter == 1 %}
+                        <a href="/players/{{teamPlayer.id_player}}/show">
+                            <div class="player">
+                                <div style="display: table-cell; justify-content: space-between; -webkit-justify-content: space-between;" class="divTable">
+                                    <div class="divTableBody">
+                                        <div class="divTableRow" style="justify-content: space-between; -webkit-justify-content: space-between; margin: auto;">
+                                            <div style="display: table-cell;vertical-align: middle;padding: 3px;min-width: 35px;" class="divTableCell">
+                                                {% if teamPlayer.player.metas is not empty %}
+                                                    {% set found_avatar = false %}
+                                                    {% for meta in teamPlayer.player.metas %}
+                                                        {% if meta.meta == 'avatar' %}
+                                                            {% set found_avatar = true %}
+                                                            <div style="border: 2px solid #fff;width: 35px;border-radius: 50%;overflow: hidden;">
+                                                                <picture>
+                                                                    <img class=" lazyloaded" src="/storage/{{ meta.meta_value }}" alt="" >
+                                                                </picture>
+                                                                <noscript>
+                                                                <picture>
+                                                                    <!--[if IE 9]>
+                                                                    <video style="display: none;">
+                                                                       <![endif]-->
+                                                                    <source src="/storage/{{ meta.meta_value }}" media="(max-width: 736px)"/>
+                                                                    <!--[if IE 9]>
+                                                                 </video>
+                                                                 <![endif]-->
+                                                                    <img src="/storage/{{ meta.meta_value }}" alt=""/>
+                                                                </picture>
+                                                                </noscript>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+
+                                                    {% if found_avatar == false %}
+                                                        {% if teamPlayer.player.gender == 'f' %}
+                                                            {% set avatar = 'https://cdn.xl.thumbs.canstockphoto.es/padel-mujer-jugador-vectores-eps_csp69229035.jpg' %}
+                                                        {% else %}
+                                                            {% set avatar = 'https://comps.canstockphoto.es/padel-jugador-figura-vectores-eps_csp61076734.jpg' %}
+                                                        {% endif %}
+
+                                                        <div style="border: 2px solid #fff;width: 35px;border-radius: 50%;overflow: hidden;">
+                                                            <picture>
+                                                                <img class=" lazyloaded" src="{{ avatar }}" alt="" >
+                                                            </picture>
+                                                            <noscript>
+                                                            <picture>
+                                                                <!--[if IE 9]>
+                                                                <video style="display: none;">
+                                                                   <![endif]-->
+                                                                <source src="{{avatar}}" media="(max-width: 736px)"/>
+                                                                <!--[if IE 9]>
+                                                             </video>
+                                                             <![endif]-->
+                                                                <img src="{{ avatar }}" alt=""/>
+                                                            </picture>
+                                                            </noscript>
+                                                        </div>
+                                                    {% endif %}
+                                                {% else %}
+                                                    <div style="border: 2px solid #fff;width: 35px;border-radius: 50%;overflow: hidden;">
+
+                                                        {% if teamPlayer.player.gender == 'f' %}
+                                                            {% set avatar = 'https://cdn.xl.thumbs.canstockphoto.es/padel-mujer-jugador-vectores-eps_csp69229035.jpg' %}
+                                                        {% else %}
+                                                            {% set avatar = 'https://comps.canstockphoto.es/padel-jugador-figura-vectores-eps_csp61076734.jpg' %}
+                                                        {% endif %}
+
+                                                        <div style="border: 2px solid #fff;width: 35px;border-radius: 50%;overflow: hidden;">
+                                                            <picture>
+                                                                <img class=" lazyloaded" src="{{ avatar }}" alt="" >
+                                                            </picture>
+                                                            <noscript>
+                                                            <picture>
+                                                                <!--[if IE 9]>
+                                                                <video style="display: none;">
+                                                                   <![endif]-->
+                                                                <source src="{{avatar}}" media="(max-width: 736px)"/>
+                                                                <!--[if IE 9]>
+                                                             </video>
+                                                             <![endif]-->
+                                                                <img src="{{ avatar }}" alt=""/>
+                                                            </picture>
+                                                            </noscript>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <div style="display: table-cell;vertical-align: middle;padding: 3px; text-align: center;" class="divTableCell">
+                                                <div class="player__name" style="font-size: 12px;min-width: 70px;max-width: 70px;text-align: left;color: #fff;">{{ teamPlayer.player.name }} {{ teamPlayer.player.surname }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="card__thumbnail card__thumbnail--big">
+            <!-- card__thumbnail--podcast, card__thumbnail--video to add icons-->
+            <div class="card__inner flex flex--column"></div>
+            <div class="card-match__footer card-match__footer--inputDate">
+                <span class="section-title section-title--no-separator section-title--small" style="text-align: center">
+                    <small>
+                        {% if  queryItem.matchcodes.ref_type == 'round'  %}
+                            {{ queryItem.matchcodes.matchRound.group.division.zone.name }} <br> {{ queryItem.matchcodes.matchRound.group.division.category.name }} / Girone {{ queryItem.matchcodes.matchRound.group.name }}
+                        {% elseif queryItem.matchcodes.ref_type == 'phase'  %}
+                            {{ queryItem.matchcodes.matchPhase.bracket.tournament.name }} <br> {{ queryItem.matchcodes.matchPhase.bracket.zone.name }} / {{ queryItem.matchcodes.matchPhase.bracket.category.name }}
+                        {% endif %}
+                    </small>
+                </span>
+                <div class="cta-container cta-container--center">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

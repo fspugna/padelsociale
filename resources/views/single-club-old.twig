@@ -1,0 +1,117 @@
+{% extends "base.twig" %}
+
+{% block head %}
+<title>{{ site.name}} - </title>
+{{ parent() }}
+<link rel="stylesheet" href="/resources/assets/css/single-profilo.css" />
+{% endblock %}
+
+{% block bodyclass %}
+	single-circolo bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+
+<!--single-circolo.twig page -->
+{% set queryItem = responsabile %}
+{% set avatar = '' %}
+	{% for meta in queryItem.metas %}
+		{% if meta.meta == 'avatar' %}
+			{% set avatar = '/storage/' ~ meta.meta_value  %}
+		{% endif %}
+	{% endfor %}
+	{% if avatar == '' %}
+			{% set avatar = '/resources/assets/images/logo-ladisfidadipadel.png' %}
+	{% endif %}
+
+{% set queryItem = club %}
+
+<div class="single single-circolo">
+	<div class="cta-container flex flex--between">
+		<a href="#" onclick="javascript:window.history.back()" class="cta cta--yellow cta--rounded cta--back">Indietro</a>
+		<!--a href="./page-tabellone" class="cta cta--enter cta--yellow cta--rounded">Tabellone</a-->
+	</div>
+		<div class="container">
+			<section>
+				<div class="header-rounded-image">
+						<picture>
+							<img class="lazyload" data-srcset="{{ avatar }}, {{ avatar }} 2x" alt="{{ queryItem.name }}"/>
+						</picture>
+						<noscript>
+								<picture>
+										<!--[if IE 9]><video style="display: none;"><![endif]-->
+										<source srcset="{{ avatar }}, {{ avatar }} 2x" media="(max-width: 736px)"/>
+										<!--[if IE 9]></video><![endif]-->
+										<img src="{{ avatar }} , {{ avatar }} 2x" alt="{{ queryItem.name }}"/>
+								</picture>
+						</noscript>
+				</div>
+
+				<div class="section-title"><h1>{{ queryItem.name }}</h1></div>
+			</section>
+
+
+
+		</div>
+
+
+		<article class="card card-info--big">
+  <span class="section-title section-title--no-separator">Contatti</span>
+  <div style="width: 100%">
+    <ul>
+      <li class="list-infos">
+        <label>Paese</label><span>{{ club.city.country.name }}</span>
+      </li>
+      <li class="list-infos">
+        <label>Città</label><span>{{ club.city.name }}</span>
+      </li>
+	  <li class="list-infos">
+        <label>Numeri Utili</label><span>{{ club.phone }} {% if club.phone != '' %} / {% endif %} {{ club.mobile_phone }}</span>
+      </li>
+      <li class="list-infos">
+        <label>Indirizzo</label><span>{{ club.address }}</span>
+      </li>
+    </ul>
+  </div>
+  <!-- google-map.twig partial -->
+
+  <div class="google-map">
+
+    <style>
+      .google-map {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      //padding-bottom: 100%;
+        overflow: hidden;
+      }
+
+      #map {
+        height: 100%;
+        width: 100%;
+        }
+    </style>
+
+    <div id="map">
+          <iframe width="100%" height="275" id="gmap_canvas"
+          src="https://maps.google.com/maps?q={{ club.address }}{{ club.city.name }}{{ club.country.name }}&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+          frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+          </iframe>
+        <style>
+        .mapouter{position:relative;text-align:right;height:500px;width:600px;}
+        </style>
+    </div>
+  </div>
+</article>
+
+<section>
+				<div class="card card__inner flex flex--column flex--center">
+			    <span class="section-title section-title--no-separator">Descrizione</span>
+					<div class="editorial">
+						<p>{{ club.description }}</p>
+					</div>
+				</div>
+			</section>
+
+{% endblock %}
+

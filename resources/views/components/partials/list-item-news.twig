@@ -1,0 +1,38 @@
+<!-- list-item-news.twig partial -->
+<div class="list-item-news">
+
+	{% if loop.index <= 1  %}
+
+	<link rel="stylesheet" href="/resources/assets/css/components/partials/list-item-news.css?v={{version}}" />
+
+	{% endif %}
+	<a href="/news/{{ queryItem.permalink }}">
+		<div class="card__inner">
+			<div class="player">
+
+				<div class="card__thumbnail card__thumbnail--big"> <!-- card__thumbnail--podcast, card__thumbnail--video to add icons-->
+					<picture>
+						<img class="lazyload" data-srcset="{{ queryItem.srcImgCardBig }}, {{ queryItem.srcImgCardBigx2 }} 2x" alt="{{ queryItem.title }}"/>
+					</picture>
+					<noscript>
+							<picture>
+								<!--[if IE 9]><video style="display: none;"><![endif]-->
+								<source srcset="{{ queryItem.srcImgCardBig }}" media="(max-width: 736px)"/>
+								<!--[if IE 9]></video><![endif]-->
+								<img src="{{ queryItem.srcImgCardBig }}" alt="{{ queryItem.title }}"/>
+							</picture>
+					</noscript>
+				</div>
+				<div class="list-item__content">
+					<time datetime="{{ queryItem.excerpt }}">{{ queryItem.excerpt|date('d F Y', "Europe/Rome") }}</time>
+					<div class="player__name">
+					<span>{{queryItem.title }}</span>
+					</div>
+					<div class="abstract ">
+					<p>{{ queryItem.content|striptags | str_limit(100) }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</a>
+</div>

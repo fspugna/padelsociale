@@ -1,0 +1,10 @@
+<ul class="submenu">
+    {% for zoneClub in zone.clubs %}
+
+        {% set queryItem = zoneClub.club %}
+        <li class="header__main-menu__subitem {{subitem.name|lower}}-subitem zone-club-item" style="border-bottom: none">
+            {% include 'components/partials/list-item-circolo.twig' %}
+        </li>
+
+    {% endfor %}
+</ul>

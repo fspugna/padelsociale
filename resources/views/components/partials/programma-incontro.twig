@@ -1,0 +1,150 @@
+<div style="text-align: center; margin-top: 15px; margin-left:1px; padding: 0px 0px;">
+    {% if not match.id_club %}	
+        <!-- button popup "Programma Incontro" -->    
+        <a style="margin-top: 20px;" href="#ProgMatch_{{match.id}}" class="legenda">Programma Incontro</a>
+    {% else %}
+        <a style="margin-top: 20px;" href="#ProgMatch_{{match.id}}" class="legenda">Cambia programma</a>
+		<a style="margin-top: 20px; background-color: red; color: white;" href="javascript:void(0);" onClick="delSchedule({{match.id}})" class="legenda">Elimina Programma</a>
+    {% endif %}
+</div>
+
+
+
+
+<!-- <div style="border-bottom:1px solid #6E96CB; margin: 12px 0px;"></div> -->
+<!-- fine button popup "Programma Incontro" -->                    
+
+
+<link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v=">
+<!-- finestra popup "Programma Incontro" -->
+<a href="#x" class="overlay" id="ProgMatch_{{match.id}}"></a>
+<div class="popup">
+    <h2>Programma Incontro</h2>
+    <div class="content">
+        <div style="display: flex; justify-content: center;" class="select-div">
+            <div style="max-height: 300px;">
+                <form id="form_schedule_{{ match.id }}" action="/admin/matches/schedule" method="post">
+                    <div style="display: flex; justify-content: center; margin: 12px 0px;" class="select-div">
+                        <select id="match_club" name="match_club" class="dropdown dropdown--light">
+                            <option selected="" disabled="">Seleziona Circolo</option>                                                
+                            {% if zone %}
+                                
+                                {% for club in zone.clubs %}
+                                    <option value="{{ club.club.id }}">{{ club.club.name }}</option>
+                                {% endfor %}
+                            
+                            {% endif %}
+                        </select>
+                    </div>
+
+                    <div style="display: flex; justify-content: center; margin: 12px 0px" class="select-div">                    
+                        <input style="" type="date" name="match_date" class="date-field">                                    
+                    </div>
+
+                    <div style="display: flex; justify-content: center; margin: 12px 0px" class="select-div">                    
+                        <input style="" type="time" name="match_hours" placeholder="Orario Es: 09:00">                                    
+                    </div>
+
+                    <div class="box">
+                        <input type="hidden" name="id_match" value="{{ match.id}}">
+                        <a class="buttone"  href="javascript:void(0);" onclick="scheduleMatch({{match.id}});">Salva Programma Incontro</a>
+                    </div>
+
+                    <div class="programma_incontro_errors" style="color: red; display: none; margin-top: 5px;">
+                    </div>
+                </form>
+
+            </div>                                                    
+        </div>
+    </div>
+    <a class="close" title="Chiudere" href="#close"></a>
+</div>
+<!-- fine finestra popup "Programma Incontro" -->
+
+<script>
+function scheduleMatch(id_match){
+
+		data = [];
+
+		$("#form_schedule_"+id_match + " input").each(function(){			
+			data[ $(this).attr('name') ] = $(this).val();
+		});
+
+		$("#form_schedule_"+id_match + " select").each(function(){			
+			data[ $(this).attr('name') ] = $("option:selected", this).val();
+		});		
+		
+		console.log(data);
+
+		var errors = [];
+		if( data['match_club'] == 'Seleziona Circolo' )
+			errors.push('Selezionare un circolo');
+		if( data['match_date'] == '' )
+			errors.push('Inserire una data');
+		if( data['match_hours'] == '' )
+			errors.push('Inserire un orario');
+
+		if ( errors.length > 0 ){
+			let msg = errors.join('</li><li>');
+			$(".programma_incontro_errors").show();
+			$(".programma_incontro_errors").html('<ul><li>' + msg + '</li></ul>');
+			return;
+		}
+
+		$(".programma_incontro_errors").hide();
+		$(".programma_incontro_errors").html('');
+
+		$.ajax({
+			url: '/admin/matches/schedule',
+			data: {
+				 "_token": "{{ csrf_token() }}",
+				match_date: data['match_date'],
+				match_hours: data['match_hours'],
+				match_club: data['match_club'],
+				id_match: data['id_match']
+			},
+			type: 'post', 
+			dataType: 'json',
+			success: function(data){
+                console.log(data);
+				if(data.status == 'error'){                    
+					$(".programma_incontro_errors").html('<ul><li>' + data.msg + '</li></ul>');
+                    $(".programma_incontro_errors").show();					
+				}else{
+					$(".programma_incontro_errors").html('');
+					$(".programma_incontro_errors").hide();
+					$(".overlay").hide();
+					$(".popup").hide();
+					document.location.href = document.location.href.split('#')[0];
+				}
+			}
+		});
+    }
+
+	function delSchedule(id_match){
+		if( confirm("Rimuovere la programmazione dell'incontro?") ){
+			$.ajax({
+			url: '/admin/matches/del_schedule',
+			data: {
+				 "_token": "{{ csrf_token() }}",				
+				id_match: id_match
+			},
+			type: 'post', 
+			dataType: 'json',
+			success: function(data){
+                console.log(data);
+				if(data.status == 'error'){                    
+					$(".programma_incontro_errors").html('<ul><li>' + data.msg + '</li></ul>');
+                    $(".programma_incontro_errors").show();					
+				}else{
+					$(".programma_incontro_errors").html('');
+					$(".programma_incontro_errors").hide();
+					$(".overlay").hide();
+					$(".popup").hide();
+					document.location.href = document.location.href.split('#')[0];
+				}
+			}
+		});
+		}
+	}
+    </script>

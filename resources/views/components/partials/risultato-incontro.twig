@@ -1,0 +1,219 @@
+
+<!-- button popup "Inserisci risultato" -->
+<div style="text-align: center; margin-top: -10px; margin-left:1px;margin-bottom: 22px">    
+    <a href="#InsertScore_{{ match.id }}" class="legenda">
+    {% if match.scores is empty %}
+    Inserisci Risultato
+    {% else %}
+    Modifica Risultato
+    {% endif %}
+    </a>
+</div>
+<!-- fine button popup "Inserisci risultato" -->     
+
+
+
+		
+<!-- finestra popup "Inserisci risultato" -->
+<a href="#x" class="overlay" id="InsertScore_{{ match.id }}"></a>
+    <div class="popup" id="risultato_match_{{ match.id }}">                
+        <small style="color: #fff">{{ match.date|date("d/m/Y") }} {{ match.time|date("H:i") }}</small>
+        <h5 style="font-size:18px; color:#fff; text-align:center; margin-bottom: 10px;">Circolo: {{ match.club.name }}</h5>         
+        <h5 style="font-size:18px; color:#fff; text-align:center;">Risultato</h5>
+        <div class="content">
+            <div style="display: flex; justify-content: center;" class="select-div">
+                <div style="max-height: 300px;">
+                    <div style="display: flex; justify-content: center; margin: 12px 0px;" class="select-div">
+                    <style>
+                        table, th, td {
+                            border: 0px solid black;
+                        }
+                    </style>                
+
+                    <table>
+                        <tr id="tr_set_1">
+                            <td>
+                                <div class="input-field">
+                                    <label for="Set"></label>
+                                    <input id="score-team1-set-1" onkeypress="cleanErrors()" type="number" min="0" name="score-team1-set-1" value="" placeholder="Giochi" data-validation="" required="required">
+                                </div>
+                            </td>
+                            <td style="text-align: center">
+                                <div style="font-size: 20px; color: #fff; display: flex; margin-top: 10px;"><small style="font-size: 13px;width:  100%;">Set<br>1</small></div>
+                            </td>
+                            <th>
+                                <div class="input-field">
+                                    <label for="Set"></label>
+                                    <input id="score-team2-set-1" onkeypress="cleanErrors()" type="number" min="0" name="score-team2-set-1" value="" placeholder="Giochi" data-validation="" required="required">
+                                </div>
+                            </th>
+                        </tr>
+
+                        <tr id="tr_set_2">
+                            <td>
+                                <div class="input-field">
+                                    <label for="Set"></label>
+                                    <input id="score-team1-set-2" onkeypress="cleanErrors()" type="number" min="0" name="score-team1-set-2" value="" placeholder="Giochi" data-validation="" required="required">
+                                </div>
+                            </td>
+                            <td style="text-align: center">
+                                <div style="font-size: 20px; color: #fff; display: flex; margin-top: 10px;"><small style="font-size: 13px;width:  100%;">Set<br>2</small></div>
+                            </td>
+                            <th>
+                                <div class="input-field">
+                                    <label for="Set"></label>
+                                    <input id="score-team2-set-2" onkeypress="cleanErrors()" type="number" min="0" name="score-team2-set-2" value="" placeholder="Giochi" data-validation="" required="required">
+                                </div>
+                            </th>
+                        </tr>
+
+                        <tr id="tr_set_3">
+                            <td>
+                                <div class="input-field">
+                                    <label for="Set"></label>
+                                    <input id="score-team1-set-3" onkeypress="cleanErrors()" type="number" min="0" name="score-team1-set-3" value="" placeholder="Giochi" data-validation="" required="required">
+                                </div>
+                            </td>
+                            <td style="text-align: center">
+                                <div style="font-size: 20px; color: #fff; display: flex; margin-top: 10px;"><small style="font-size: 13px;width:  100%;">Set<br>3</small></div>
+                            </td>
+                            <th>
+                                <div class="input-field">
+                                    <label for="Set"></label>
+                                    <input id="score-team2-set-3" onkeypress="cleanErrors()" type="number" min="0" name="score-team2-set-3" value="" placeholder="Giochi" data-validation="" required="required">
+                                </div>
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: left;">
+                                <a class="buttone" style=" margin-left: 10px;" href="javascript:void(0);" onClick="addSet({{ match.id}})"> + Set </a>
+                                <a class="buttone" style=" margin-left: 10px;"  href="javascript:void(0);" onClick="delSet({{ match.id}})"> - Set </a>
+                            </td>
+                            <td>
+                                <div style="font-size: 20px; color: #fff; display: flex; margin-top: 10px;"></div>
+                            </td>
+                            <th>
+                            </th>
+                        </tr>
+
+                    </table>                                              
+                </div>
+                
+                <div class="box">
+                    <input type="hidden" id="score-id-match" name="score-id-match" value="{{ match.id }}">
+                    <input type="hidden" id="score-id-team1" name="score-id-team1" value="{{ match.id_team1 }}">
+                    <input type="hidden" id="score-id-team2" name="score-id-team2" value="{{ match.id_team2 }}">
+                    <a class="buttone"  href="javascript:void(0);" onClick="salvaRisultato({{ match.id }})">Salva Risultato Incontro</a>
+                    <div class="risultato_incontro_errors" style="color: red; display: none; margin-top: 5px;">
+                    </div>
+                </div>                        
+            </div>                                                    
+        </div>
+    </div>
+    
+    <a class="close" title="Chiudere" href="#close"></a>
+
+</div>
+<!-- fine finestra popup "Inserisci risultato" -->
+
+<script>
+function addSet(id_match){
+    var tot_set = $("#risultato_match_"+id_match).find('tr').length-1;
+
+    if( tot_set < 5) {
+
+        var set_num = tot_set + 1;
+
+        console.log("set" , tot_set, set_num);
+
+        var new_set = '<tr id="tr_set_'+set_num+'">';
+            new_set += '<td>';
+            new_set += '<div class="input-field">';
+            new_set += '<label for="Set"></label>';
+            new_set += '<input id="score-team1-set-'+set_num+'" onkeypress="cleanErrors()" type="number" min="0" name="score-team1-set-'+set_num+'" value="" placeholder="Giochi" data-validation="" required="required">';
+            new_set += '</div>';
+            new_set += '</td>';
+            new_set += '<td style="text-align: center">';
+            new_set += '<div style="font-size: 20px; color: #fff; display: flex; margin-top: 10px;"><small style="font-size: 13px;width:  100%;">Set<br>' + set_num + '</small></div>';
+            new_set += '</td>';
+            new_set += '<th>';
+            new_set += '<div class="input-field">';
+            new_set += '<label for="Set"></label>';
+            new_set += '<input id="score-team2-set-'+set_num+'" onkeypress="cleanErrors()" type="number" min="0" name="score-team2-set-'+set_num+'" value="" placeholder="Giochi" data-validation="" required="required">';
+            new_set += '</div>';
+            new_set += '</th>';
+            new_set += '</tr>';        
+       
+        $(new_set ).insertAfter("#risultato_match_"+id_match+ " #tr_set_"+tot_set );
+    }
+}
+
+function delSet(id_match){
+    var tot_set = $("#risultato_match_"+id_match).find('tr').length-1;
+
+    if( tot_set > 2) {
+        $("#tr_set_"+tot_set ).remove();
+    }
+}
+
+function cleanErrors(){   
+    $(".risultato_incontro_errors").hide();
+    $(".risultato_incontro_errors").html('');
+}
+
+function salvaRisultato(id_match){
+
+    console.log("Salva risultato", id_match);
+    
+    data = {};
+
+    $(".risultato_incontro_errors").hide();
+    $(".risultato_incontro_errors").html('');
+
+    error = false;
+        
+    $("#risultato_match_"+id_match+" tr").each(function(k, val){
+        if( $(this).attr('id') ){
+            if( $(this).attr('id').substr(0, 7) ){
+                
+                console.log(k, val, $(this).attr('id').substr(0, 7));
+
+                $(this).find('input').each(function(k, val){
+                    if( parseInt($(this).val()) >= 0 ){
+                        console.log($(this).attr('id'), $(this).val());
+                        data[$(this).attr('id')] = $(this).val();
+                    }
+                });                
+
+            }
+        }
+    });
+
+    if( !error ){
+
+        data['score-id-match'] = $("#risultato_match_"+id_match+" #score-id-match").val();
+        data['score-id-team1'] = $("#risultato_match_"+id_match+" #score-id-team1").val();
+        data['score-id-team2'] = $("#risultato_match_"+id_match+" #score-id-team2").val();
+
+        data["_token"] = "{{ csrf_token() }}";
+
+        data['ajax'] = 1;
+
+        console.log("data", data);
+        
+        $.ajax({
+            url: '/admin/scores/store',
+            data: data,
+            type: 'post', 
+            dataType: 'json',
+            success: function(data){
+                console.log(data);
+                if(data.status == 'ok')
+                    document.location.href = document.location.href.split('#')[0];
+            }
+        });
+
+    }
+}
+</script>

@@ -1,0 +1,23 @@
+<!-- card-news--big.twig partial -->
+
+<article class="card card-info--big">
+
+	{% if loop.index <= 1 and cardinfobig is not defined or loop.index is not defined and cardinfobig is not defined %}
+
+	<link rel="stylesheet" href="/resources/assets/css/components/partials/card-info--big.css?v={{version}}" />
+
+	{% endif %}
+
+	<!-- code here -->
+
+	<div class="card__thumbnail card__thumbnail--big"> <!-- card__thumbnail--podcast, card__thumbnail--video to add icons-->
+		
+		<div class="card__content card__content--overlay">
+			<div class="card__title first_title">
+				<h3>{{ queryItem.title }}</h3>
+			</div>
+			<p class="abstract">{{ queryItem.content }}</p>	
+		</div>
+	</div>
+	
+</article>

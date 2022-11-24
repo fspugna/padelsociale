@@ -1,0 +1,60 @@
+{% extends "base.twig" %}
+
+{% block head %}
+<title>{{ site.name}} - </title>
+{{ parent() }}
+{% endblock %}
+
+{% block bodyclass %}
+	single-girone bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+
+<div class="single single-girone">
+	<div class="container">
+		<section>
+
+				<div class="section-title section-title--small section-title--no-separator"><h3>{{ classification[0].group.division.tournament.name }}</h3></div>
+				<div class="section-title section-title--small section-title--no-separator"><h2>Girone {{ classification[0].group.name }}</h2></div>
+				
+				<div class="section-title section-title--big"><h1>{{ classification[0].group.division.category.name }} {{ classification[0].group.division.categoryType.name }}</h1></div>
+
+				<div class="cta-container flex flex--between">
+					<a href="./page-torneo" class="cta cta--yellow cta--rounded cta--back">Torna al torneo</a>
+					<a href="./page-tabellone" class="cta cta--enter cta--yellow cta--rounded">Tabellone</a>
+				</div>
+				
+				<div class="flex flex--column flex--center">
+						<div class="section-title section-title--no-separator"><span>Classifica</span></div>
+
+					<ul class="flex flex--column" style="width:100%; max-width: 320px">
+						{% for teamClassification in classification %}
+							<li>
+									{% include 'components/partials/card-team-stats.twig' %}
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+				{% set cardteamstats = "exists" %}
+
+				<div class="flex flex--column flex--center">
+
+					<ul class="flex flex--column" style="width:100%; max-width: 320px">					
+						{% for round in rounds %}
+							<h2>Giornata {{ round.name }}</h2>
+							<h3>{{ round.description }}</h3>
+							{% for match in round.matches %}
+							<li>
+								{% include 'components/partials/card-match.twig' %}
+							</li>
+							{% endfor %}
+						{% endfor %}
+					</ul>
+				</div>
+
+				
+		</section>
+	</div>
+</div>
+{% endblock %}

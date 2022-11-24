@@ -1,0 +1,51 @@
+<article class="card card-info--big fancybox-js">
+    <span  style="text-align: center; " class="section-title section-title--no-separator">Foto Gallery</span>
+    <div style="display: flex; justify-content: center; margin: 12px 0px;" class="select-div">
+        <style>
+            table, th, td {
+                border: 0px solid black;
+            }
+            .table-rounded-image {
+                border: 2px solid #fff;
+                box-shadow: 0 0 20px #fff;
+                width: 90px;
+                margin: 10px auto;
+                border-radius: 8px;
+                overflow: auto;
+            }
+            .foto-field {
+                padding:3px;
+            }
+        </style>
+        <div>            
+            <div>                                                
+                <table>                  
+                    {% for index, img in user.galleries %}                            
+                    {% if index == 0 %}
+                    <tr>                                
+                    {% endif %}
+                        <td>
+                            <div class="foto-field">
+                                <div style="" >                                                                       
+                                    <div class="table-rounded-image"> 
+                                    <a class="fotogallery" data-fancybox="gallery" href="{{ url('storage/' ~ img.filename) }}">                                               
+                                        <picture>
+                                            <img  src="{{ url('storage/' ~ img.filename) }}">
+                                        </picture>    
+                                    </a>                                            
+                                    </div>                                    
+                                </div>                
+                            </div>
+                        </td>                        
+                    {% if (index+1)%3 == 0 %}
+                    </tr>              
+                    <tr>                  
+                    {% endif %}
+                    {% endfor %}
+                </table>
+
+                <button id="btn_add_image" class="button" style="display: none">Aggiungi</button>
+            </div>                                                    
+        </div>
+    </div>
+</article> 

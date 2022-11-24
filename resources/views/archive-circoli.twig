@@ -1,0 +1,61 @@
+{% extends "base.twig" %}
+
+{% block head %}
+<title>{{ site.name}} - I nostri circoli</title>
+{{ parent() }}
+{% endblock %}
+
+
+{% block bodyclass %}
+	archive-circoli bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+<!--archive-circoli.twig page -->
+<div class="archive archive-giocatori">
+	<div class="section-title "><span>I nostri Circoli</span></div></br>
+	{% include 'components/partials/search-form.twig' %}
+
+	<div class="input-field input-field--select input-field--center">			
+		<select id="city_sel" name="city_sel" class="dropdown dropdown--light">			
+			<option value="" {% if selected_city == '' %} selected {% endif %}>Tutti i circoli</option>
+			{% for city in cities %}
+				<option value="{{city.slug}}" {% if selected_city == city.slug %} selected {% endif %}>{{ city.country.name }} - {{ city.name }}</option>
+			{% endfor %}
+			
+		</select>
+	</div>
+
+	<!-- BANNER START -->	
+	{% set banner_city = selected_city_id %}
+	{% set banner_edition = null %}	
+	{% set banner_position = 'BANNER_CIRCOLI_1' %}        
+	{% include 'components/partials/banner.twig' %} 
+	<!-- BANNER END -->
+
+	<div class="separator_list"></div>
+	{% for queryItem in clubs %}			
+		{% include 'components/partials/list-item-circolo.twig' %}
+	{% endfor %}
+</div>
+<section>
+<div>
+{{clubs.links()|raw}}
+</div>
+</section>
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+$(document).ready(function(){	
+	$("#city_sel").change(function(){
+		if(jQuery(this).val() != ''){
+			document.location.href = "/clubs/city/"+jQuery(this).val()+window.location.search;
+		}else{
+			document.location.href = "/clubs"+window.location.search;
+		}
+	});
+});
+</script>
+{% endblock %}

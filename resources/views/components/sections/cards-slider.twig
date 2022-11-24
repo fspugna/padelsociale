@@ -1,0 +1,24 @@
+<!-- cards-slider.twig section -->
+
+<div class="cards-slider cards-slider-js">
+
+	{% if loop.index <= 1 and cardsslider is not defined or loop.index is not defined and cardsslider is not defined %}
+
+	<link rel="stylesheet" href="/resources/assets/css/components/sections/cards-slider.css?v={{version}}" />
+
+	{% endif %}	
+
+	{% if query.type|length > 0 %}
+	<div class="cards-slider__container">
+		<div class="swiper-wrapper">
+			{% for queryItem in query.type %}
+					<a class="swiper-slide swiper-slide--full-image" href="{{queryItem.link}}">
+						{% include query.card %}
+					</a>
+
+			{% endfor %}
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+	{% endif %}
+</div>

@@ -1,0 +1,642 @@
+{% extends "base.twig" %}
+{% import 'components/partials/tabs.twig' as tabs %}
+
+{% block head %}
+<title>{{ site.name}} - </title>
+{{ parent() }}
+<link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css" />
+{% endblock %}
+
+{% block bodyclass %}
+	page-iscrizione-torneo bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+
+<style>
+.card-info--big picture {
+    padding-bottom: 100% !important;
+}
+</style>
+
+<article class="card card-info--big">
+
+	
+	<link rel="stylesheet" href="/resources/assets/css/components/partials/card-info--big.css?v=1.0.4">
+
+	
+	<!-- code here -->
+
+	<div style="text-align: center;" class="container">
+		<input type="hidden" name="id_tournament" value="85">
+		<input type="hidden" name="_token" value="GqqXneCZYEWKgx07qSMEwJGnNpsUu9k6AlkDxBDi">
+		<section>
+			<div class="section-title"><h1>{{ tournament.edition.edition_name }}</h1></div>			
+			<div class="header-rounded-image">
+					<picture>
+						<img class="lazyload" data-srcset="{{ tournament.srcImgFeaturedBig }}, {{ tournament.srcImgFeaturedBigx2 }} 2x" alt="{{ tournament.title }}"/>
+					</picture>
+					<noscript>
+							<picture>
+									<!--[if IE 9]><video style="display: none;"><![endif]-->
+									<source srcset="{{ tournament.srcImgFeaturedBig }}" media="(max-width: 736px)"/>
+									<!--[if IE 9]></video><![endif]-->
+									<img src="{{ tournament.srcImgFeaturedBig }}" alt="{{ tournament.title }}"/>
+							</picture>
+					</noscript>					
+			</div>
+		</section>
+
+
+		<style>
+			div.scrollmenu {
+				background-color: #6E96CB;
+				overflow: auto;
+				white-space: nowrap;
+			}
+
+			div.scrollmenu a {
+				display: inline-block;
+				color: white;
+				text-align: center;
+				padding: 14px;
+				text-decoration: none;
+			}
+			
+			div.scrollmenu span {
+				width: 80px;    
+    			margin-left: 10px;
+    			display: inline-block;
+			}
+
+			div.scrollmenu a.selected{
+				color: yellow;
+				font-weight: bold;
+			}
+			
+			
+		</style>
+	
+</div>
+
+	
+	
+	
+</article>
+
+
+<div>
+				<div class="tabs-scroller tabs-scroller-zones">
+					<nav class="tabs__nav" role="navigation">
+						    <a href="/login">Generalità</a>
+
+						    <a href="/register"  class="selected">Iscrizione</a>
+
+						    <a href="/register">Coppie Iscritte</a>
+          </nav>
+				</div>
+</div>
+
+
+    <span  style="text-align: center; " class="section-title section-title--no-separator">Iscriversi è molto facile ti bastano 4 semplici passi</span>
+
+
+
+ 
+<article class="card card-info--big">  
+    <span  style="text-align: center; " class="section-title section-title--no-separator">1. Scegli la Zona</span>
+    <div style="width: 100%; display: flex; justify-content: center; ">
+
+        <ul>
+              <li class="list" style="">Seleziona qui sotto la zona tra quelle in elenco dove iscrivere la tua squadra</li>          
+        </ul>
+    
+    </div>
+    
+    <link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v=1.0.4">
+
+    <div class="container">
+        <div style="justify-content: center; margin: 10px; "  class="flex">        
+            <select id="select-zone" name="select-zone" class="dropdown dropdown--light" onChange="selectZona()">
+                <option selected="" disabled="">Seleziona zona</option>
+                {% for zone in tournament.edition.zones %}
+                <option value="{{ zone.id }}">{{ zone.zone.city.name }} - {{ zone.zone.name }}</option>
+                {% endfor %}
+            </select>        
+        </div>
+    </div>
+        
+    <div>
+
+		<style>
+
+            li.list {
+                color: #FFF;
+                margin: 10px 50px;
+            }
+
+			
+			li.list:before {
+                content: "•";
+                padding-right: 8px;
+                margin-left: -15px;
+                color: #FFE200;
+            }
+            
+            li.list:after {
+                content: "";
+                padding-right: 0px;
+            }
+            
+            .dropdown--light {
+                font-size: 13px;
+            }
+
+			button.bottone_zona {
+                font-family: Courgette;
+                border: 1px solid #FFF;
+                border-radius: 8px;
+                color: #FFE200;
+                font-size: 13px;
+                padding: 13px 5px;
+                margin: 0px 2px;
+            }
+						
+		</style>        
+        
+    </div>
+  
+</article>  
+
+
+
+
+
+
+
+<article class="card card-info--big">  
+    <span  style="text-align: center; " class="section-title section-title--no-separator">2. Crea la Squadra</span>
+    <div style="width: 100%; display: flex; justify-content: center; ">
+
+        <ul>
+              <li class="list" style="">Assicurati che tutti i componenti</br>siano registrati al sito</li>
+              <li class="list" style="">Scrivi in ognuno dei campi sottostanti, 
+               nome e cognome dei due componenti della coppia. 
+               Una volta individuato, lelezionalo e cliccando sul bottone accanto "Conferma", 
+               ti comparirà subito sotto la "Composizione Squadra"</li>
+        </ul>
+    
+    </div>
+
+    <span  style="text-align: center; " class="section-title-componente">Seleziona 1 componente</span>
+
+    <link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v=1.0.4">
+
+    <div class="container">
+        <div style="justify-content: center; margin: 2px;"  class="flex">
+
+        <select id="select-player-2" name="select-player-2" class="dropdown dropdown--light" style="margin: 10px">
+                <option selected disabled >Secondo titolare...</option>
+                {% for option in players %}
+                        <option value="{{ option.id }}">{{ option.name }}</option>
+                {% endfor %}
+        </select>
+                                
+    </div>
+
+    <span  style="text-align: center; " class="section-title-componente">Seleziona 2 componente</span>
+
+    <link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v=1.0.4">
+
+    <div class="container">
+        <div   style="justify-content: center; margin: 2px;"  class="flex">
+
+        <select id="select-player-3" name="select-player-3" class="dropdown dropdown--light" style="margin: 10px">
+                <option selected disabled >Riserva...</option>
+                {% for option in players %}
+                        <option value="{{ option.id }}">{{ option.name }}</option>
+                {% endfor %}
+        </select>
+                        
+    </div>
+</div>
+
+
+{#
+<div style="justify-content: center;" class="flex">
+    <div style="margin: 10px;">
+            <span style="font-size: 20px; color: #FFE200;">
+            Composizione Squadra: 
+            </span>
+
+    </div>
+</div>    
+
+<div style="justify-content: center;" class="flex">
+    <div style="margin: 10px;">
+            <span style="font-size: 16px; color: #FFE200;">
+            1ª Componente selezionato: 
+            </span>
+
+            <div class="player__name" style="font-size: 13px;min-width: 70px;max-width: 70px;text-align: right;color: #fff;">playerX</div>
+
+
+    </div>
+</div>    
+    
+<div style="justify-content: center;" class="flex">
+    <div style="margin: 10px;">
+            <span style="font-size: 16px; color: #FFE200;">
+            2ª Componente selezionato: 
+            </span>
+
+            <div class="player__name" style="font-size: 13px;min-width: 70px;max-width: 70px;text-align: right;color: #fff;">playerY</div>
+
+
+    </div>
+</div>    
+#}  
+    
+    
+    <div class="note" style="">
+
+                <span style="font-size: 14px; padding: 5px; color: #FFF; width: 100%; ">
+                Nota bene:</br>
+                sarà comunicata al termine delle iscrizioni,
+                nel momento in cui sarà stilato l'elenco dei tornei.
+                Lorem Ipsum è un testo segnaposto utilizzato nel settore 
+                della tipografia e della stampa. 
+                Lorem Ipsu... </span>  
+    
+    </div>
+
+
+<div>
+
+		<style>
+
+            li.list {
+                color: #FFF;
+                margin: 10px 50px;
+            }
+			
+			li.list:before {
+                content: "•";
+                padding-right: 8px;
+                margin-left: -15px;
+                color: #FFE200;
+            }
+            
+            li.list:after {
+                content: "";
+                padding-right: 0px;
+            }
+            
+            .dropdown--light {
+                font-size: 13px;
+            }
+
+			button.bottone_giocatore {
+                font-family: Courgette;
+                border: 1px solid #FFF;
+                border-radius: 8px;
+                color: #FFE200;
+                font-size: 13px;
+                padding: 13px 5px;
+                margin: 0px 2px;
+            }
+            
+            span.section-title-componente {
+                font-size: 22px;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                color: #FFE200;
+                margin: 12px auto;
+            }
+						
+            .note {
+                width: 100%; 
+                display: flex; 
+                justify-content: center; 
+                padding: 5px; 
+                border-top: 1px solid #6E96CB;
+                }
+
+		
+		</style>        
+        
+</div>
+  
+</article>  
+
+
+<article class="card card-info--big">  
+    <span  style="text-align: center; " class="section-title section-title--no-separator">3. Scegli la tipologia</span>
+    <div style="width: 100%; display: flex; justify-content: center; ">
+
+        <ul>
+              <li class="list" style="">Lorem ipsum assicurati che tutti i componenti</br>siano registrati al sito</li>
+              <li class="list" style="">Lorem ipsum Scrivi in ognuno dei campi sottostanti, 
+               Lorem ipsum nome e cognome dei due componenti della coppia. 
+               Lorem ipsum Una volta individuato, lelezionalo e cliccando sul bottone accanto "Conferma", 
+               Lorem ipsum ti comparirà subito sotto la "Composizione Squadra"</li>
+        </ul>
+    
+    </div>
+
+    <link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v=1.0.4">
+
+    <div class="container">
+        
+    
+        <div class="livelli">
+                <ol class="ol_livelli">
+                	<li>
+                	Livello 1 <input type="checkbox" name="livello" value="Livello 1"><a class="link" href="">(legenda)</a><br></li>
+                	<li>
+                	Livello 2 <input type="checkbox" name="livello" value="Livello 2" checked><a class="link" href="">(legenda)</a><br></li>
+                	<li>
+                	Livello 3 <input type="checkbox" name="livello" value="Livello 3" ><a class="link" href="">(legenda)</a><br></li>
+                </ol>        
+        </div>
+        
+
+        <select id="select-player-3" name="select-player-3" class="dropdown dropdown--light" style="margin: 10px">
+                <option selected disabled >Tipoloa</option>
+                {% for option in players %}
+                        <option value="{{ option.id }}">{{ option.name }}</option>
+                {% endfor %}
+        </select>
+
+<div   style="justify-content: center; margin: 2px;"  class="flex">
+
+
+        
+        <a href="">
+            <button class="bottone_livello">
+            Conferma</button>
+        </a>
+        <a href="">
+            <button class="bottone_livello">
+            Modifica</button>
+        </a>        
+</div>
+</div>
+
+
+
+<div style="justify-content: center;" class="flex">
+    <div style="margin: 10px;">
+            <span style="font-size: 20px; color: #FFE200;">
+                    Livello Selezionato delle Squadra: Livello 2 
+            </span>
+
+    </div>
+</div>    
+    
+
+
+<div>
+
+		<style>
+
+            a.link {
+                color: #FFE200;
+            }
+            
+            input:checked + label {
+              color: red;
+            }
+            
+            ol.ol_livelli {
+                list-style-type: upper-alpha;
+                margin: 15px 50px;
+            }
+            
+            .livelli {
+                font-size: 18px;
+                color: #fff;
+                text-align: center;
+                margin: 10px 0px;
+            }
+            
+            li.list {
+                color: #FFF;
+                margin: 10px 50px;
+            }
+			
+			li.list:before {
+                content: "•";
+                padding-right: 8px;
+                margin-left: -15px;
+                color: #FFE200;
+            }
+            
+            li.list:after {
+                content: "";
+                padding-right: 0px;
+            }
+            
+            .dropdown--light {
+                font-size: 13px;
+            }
+
+			button.bottone_livello {
+                font-family: Courgette;
+                border: 1px solid #FFF;
+                border-radius: 8px;
+                color: #FFE200;
+                font-size: 13px;
+                padding: 13px 5px;
+                margin: 0px 2px;
+            }
+            
+            span.section-title-componente {
+                font-size: 22px;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                color: #FFE200;
+                margin: 12px auto;
+            }
+            
+						
+		</style>        
+        
+</div>
+  
+</article>  
+
+
+<article class="card card-info--big">  
+    <span  style="text-align: center; " class="section-title section-title--no-separator">4. Completa la registrazione</span>
+
+
+    <div class="note" style="">
+
+                <span style="font-size: 14px; padding: 5px; color: #FFF; width: 100%; ">
+                Per completare l'iscrizione della squadra
+                sarà comunicata al termine delle iscrizioni,
+                nel momento in cui sarà stile 'lelenco dei tornei.
+                Lorem Ipsum è un testo segnaposto utilizzato nel settore 
+                della tipografia e della stampa. 
+                Lorem Ipsu... </span>  
+    
+    </div>
+    
+
+
+
+
+<link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v=1.0.4">
+
+<div class="container">
+<div   style="justify-content: center; margin: 2px;"  class="flex">
+
+		<div class="cta-container cta-container--center">
+			<a href="/register-team">
+				<button style="margin: 10px;"    class="cta cta--enter cta--yellow">Registra Squadra</button>
+			</a>
+		</div>
+
+</div>
+
+</div>
+
+
+
+
+<div>
+
+		<style>
+
+            li.list {
+                color: #FFF;
+                margin: 10px 50px;
+            }
+			
+			li.list:before {
+                content: "•";
+                padding-right: 8px;
+                margin-left: -15px;
+                color: #FFE200;
+            }
+            
+            li.list:after {
+                content: "";
+                padding-right: 0px;
+            }
+            
+            .dropdown--light {
+                font-size: 13px;
+            }
+
+			button.bottone_giocatore {
+                font-family: Courgette;
+                border: 1px solid #FFF;
+                border-radius: 8px;
+                color: #FFE200;
+                font-size: 13px;
+                padding: 13px 5px;
+                margin: 0px 2px;
+            }
+            
+            span.section-title-giorno {
+                border-top: 1px solid #6E96CB;
+                font-size: 22px;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                justify-content: left;
+                text-align: left;
+                color: #FFE200;
+                margin: 10px;
+                padding: 10px 0px 0px 0px;
+            }
+            
+            span.section-disponibilità {
+                font-size: 18px;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                justify-content: left;
+                text-align: left;
+                color: #FFF;
+                margin: 10px;
+                }
+						
+            .note {
+                width: 100%; 
+                display: flex; 
+                justify-content: center; 
+                padding: 5px; 
+                border-top: 1px solid #6E96CB;
+                }
+</style>        
+        
+</div>
+  
+</article>  
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+$(document).ready(function(){
+
+    // Set the Options for "Bloodhound" suggestion engine
+    var engine = new Bloodhound({
+        remote: {
+            url: '/admin/player/search?q=%QUERY%',
+            wildcard: '%QUERY%'
+        },
+        datumTokenizer: Bloodhound.tokenizers.whitespace('q'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace
+    });
+
+    $(".search-input").change(function(){
+        $("#player_id").val('');
+    });
+
+    $(".search-input").typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 3,
+        afterSelect: function(item) {
+            console.log("afterSelect", item, this.$element);
+            this.$element[0].value = item.value
+        }
+    }, {
+        source: engine.ttAdapter(),
+
+        // This will be appended to "tt-dataset-" to form the class name of the suggestion menu.
+        name: 'usersList',
+
+        display: function(data){ return data.name },
+
+        // the key from the array we want to display (name,id,email,etc...)
+        templates: {
+            
+            empty: [
+                '<div class="list-group search-results-dropdown"><div class="list-group-item">Nothing found.</div></div>'
+            ],
+            header: [
+                '<div class="list-group search-results-dropdown">'
+            ],
+            suggestion: function (data) {
+                return '<a href="#" onClick="selectPlayer('+data.id+', '\''+data.name+'\'')" class="list-group-item">' + data.name + ' <br> ' + data.email + '</a>'
+            }
+        }
+    });
+});
+
+function selectPlayer(id_player){
+    alert(id_player);
+}
+</script>
+{% endblock %}

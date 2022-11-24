@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="it" class="no-js">
+<head>
+	{# Head #}
+	{% include 'components/partials/partial-head.twig' %}
+	{% block head %}
+	{% endblock %}
+</head>
+<body>
+	<!-- base.twig -->
+	<div class="base base-modal sticky-kit">
+		<div class="wrapper">
+			<div class="container">
+
+				
+
+				{# Block content #}
+				{% block content %}{% endblock %}
+
+			</div>
+		</div>
+		{% include 'components/sections/footer.twig' %}
+	</div>
+
+	{# Custom modules loader #}
+	{% include 'components/partials/customModulesLoader.twig' %}
+
+	<script src="/resources/assets/js/libs/picturefill.min.js"></script>
+	<script src="/resources/assets/js/libs/basket.min.js"></script>
+	<script src="/resources/assets/js/scriptloader.js"></script>
+	<script>picturefill();</script>
+</body>
+</html>

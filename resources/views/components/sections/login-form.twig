@@ -1,0 +1,106 @@
+<!-- login.twig section -->
+{% import 'components/partials/forms.twig' as forms %}
+
+<article class="card card-info--big">
+
+<span class="section-title">Accedi al mondo di</span>
+<span class="section-title">La Disfida di Padel</span>
+
+<div style="margin-left: 10px; margin-right: 10px;">
+  <div class="tabs-scroller tabs-scroller-zones">
+    <nav class="tabs__nav" role="navigation">
+      <a href="/login" class="selected">Accesso</a>
+    </nav>
+  </div>
+</div>
+
+<div class="login-form">
+  <link rel="stylesheet" href="/resources/assets/css/components/sections/login-form.css?v=1.0.4">
+  <div class="container">
+    <p class="section-title section-title--no-separator section-title--small">Login</p>
+    <p class="section-title section-title--no-separator section-title--small">Entra Nella Tua Area Riservata</p>
+
+    <form name="loginform" id="loginform" method="{{ formdata.login.method }}" action="{{ formdata.login.action }}">
+
+      {{ csrf_field() }}
+
+      <link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v=">
+
+      <div class="input-field">
+        <label for="email"></label>
+        <input id="email" type="text" name="email" value="" autocomplete="off" placeholder="e-mail o cellulare" data-validation="" required="required">
+      </div>
+
+      <div class="input-field">
+          <label for="password"></label>
+          <input id="password" type="password" name="password" value="" autocomplete="off" placeholder="password" data-validation="" required="required">
+      </div>
+
+      <div class="loginSeletcClubPlayer" style="margin:10px;" >
+        <select id="role" name="role" class="dropdown dropdown--light" style="padding: 10px;">
+            <option value="player" selected>Sono un Giocatore</option>
+            <option value="club">Sono il responsabile di un Circolo</option>
+            <option value="partner">Sono un partner</option>
+            <option value="admin">Sono l'amministratore</option>
+        </select>
+      </div>
+
+      <div class="cta-container cta-container--center">
+        <button type="submit" class="loginform cta cta--enter cta--yellow">Entra</button>
+      </div>
+    </form>
+
+    <div style="border:1px solid #fff; margin-top: 20px;"></div>
+    <div class="reset-form">
+    <form>
+
+        {#
+      <a href="/password/reset"><span style="margin-bottom: -2px;"  class="section-title section-title--no-separator section-title--small" >
+      Hai dimenticato la password?</span>
+      <a/>
+      #}
+
+        <p class="section-title" style="font-size: 18px">
+            Vuoi accedere o hai dimenticato la password ?
+            <br>
+            Contatta su WhatsApp il 3384117065
+        </p>
+
+    </form>
+    </div>
+  </div>
+</div>
+
+<script>
+jQuery("#reset_btn").click(function(){
+    var email = $('#email_reset').val();
+    var base_url = "https://www.ladisfidadipadel.it";
+    jQuery.ajax({
+        url: base_url+ '/api/password/create',
+        data: {
+            email: email
+        },
+        type: 'POST',
+        beforeSend: function(request) {
+            request.setRequestHeader("Access-Control-Allow-Headers", '*');
+        },
+        success: function(data){
+            if(data.message !== ''){
+
+                jQuery("#message").html('<br><div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-check"></i> Ok!</h4>'+data.message+'<br><a href="/">Ritorna alla Homepage</a></div>');
+
+            }else{
+
+                jQuery("#message").html('<br><div class="alert alert-error alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-check"></i> Errore</h4>Si è verificato un errore. Riprova più tardi.<br><a href="/">Ritorna alla Homepage</a></div>');
+
+            }
+
+            jQuery("#message").removeClass("hidden");
+            jQuery(".reset-form").addClass("hidden");
+        }
+    })
+});
+</script>
+
+
+</article>

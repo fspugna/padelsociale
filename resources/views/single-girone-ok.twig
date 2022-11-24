@@ -1,0 +1,141 @@
+{% extends "base.twig" %}
+{% import 'components/partials/tabs.twig' as tabs %}
+
+{% block head %}
+<title>{{ site.name}} - </title>
+{{ parent() }}
+{% endblock %}
+
+{% block bodyclass %}
+	single-girone bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+
+<!--single-girone.twig page -->
+{% set queryItem = next[0].zones[1] %}
+
+<div class="single single-girone">
+	<div class="container">
+		<section>
+
+				<div class="section-title section-title--small section-title--no-separator"><h3>{{ queryItem.name }}</h3></div>
+				<div class="section-title section-title--small section-title--no-separator"><h2>{{ queryItem.categories.male.1stcategory.name }}</h2></div>
+				<div class="section-title section-title--big"><h1>{{ queryItem.categories.male.1stcategory.rounds[0].name }}</h1></div>
+
+					<div class="cta-container flex flex--between">
+						<a href="./page-torneo" class="cta cta--yellow cta--rounded cta--back">Torna al torneo</a>
+						<a href="./single-classifica-girone" class="cta cta--yellow cta--rounded">Classifica</a>
+						<a href="./page-tabellone" class="cta cta--enter cta--yellow cta--rounded">Tabellone</a>
+					</div>
+
+				<div class="tabs tabs--giornate">
+
+						 {{ tabs.tabs([
+								 {label:'1a giornata', id: 'giornata1', group: 'giornate', checked: 'checked'},
+								 {label:'2a giornata', id: 'giornata2', group: 'giornate'},
+								 {label:'3a giornata', id: 'giornata3', group: 'giornate'},
+								 {label:'4a giornata', id: 'giornata4', group: 'giornate'},
+								 {label:'5a giornata', id: 'giornata5', group: 'giornate'},
+								 {label:'6a giornata', id: 'giornata6', group: 'giornate'},
+								 {label:'7a giornata', id: 'giornata7', group: 'giornate'},
+								 {label:'8a giornata', id: 'giornata8', group: 'giornate'},
+							 ])
+						 }}
+
+					 <div class="tabs__body">
+
+				       <div class="tabs__body__panel tabs__body__panel--giornata1">
+								 	<ul class="flex flex--column" style="width:100%; max-width: 320px">
+										{% set queryItem = matches[0].teams %}
+										{% for card in 0..8 %}
+											<li>
+													{% include 'components/partials/card-match.twig' %}
+											</li>
+										{% endfor %}
+									</ul>
+							 </div>
+
+				       <div class="tabs__body__panel tabs__body__panel--giornata2">
+								 	<ul class="flex flex--column" style="width:100%; max-width: 320px">
+										{% set queryItem = matches[0].teams %}
+										{% for card in 0..4 %}
+											<li>
+													{% include 'components/partials/card-match.twig' %}
+											</li>
+										{% endfor %}
+									</ul>
+							 </div>
+
+							 <div class="tabs__body__panel tabs__body__panel--giornata3">
+								 	<ul class="flex flex--column" style="width:100%; max-width: 320px">
+										{% set queryItem = matches[0].teams %}
+										{% for card in 0..7 %}
+											<li>
+													{% include 'components/partials/card-match.twig' %}
+											</li>
+										{% endfor %}
+									</ul>
+							 </div>
+
+							 <div class="tabs__body__panel tabs__body__panel--giornata4">
+								 	<ul class="flex flex--column" style="width:100%; max-width: 320px">
+										{% set queryItem = matches[0].teams %}
+										{% for card in 0..2 %}
+											<li>
+													{% include 'components/partials/card-match.twig' %}
+											</li>
+										{% endfor %}
+									</ul>
+							 </div>
+
+							 <div class="tabs__body__panel tabs__body__panel--giornata5">
+								 	<ul class="flex flex--column" style="width:100%; max-width: 320px">
+										{% set queryItem = matches[0].teams %}
+										{% for card in 0..5 %}
+											<li>
+													{% include 'components/partials/card-match.twig' %}
+											</li>
+										{% endfor %}
+									</ul>
+							 </div>
+
+							 <div class="tabs__body__panel tabs__body__panel--giornata6">
+								 	<ul class="flex flex--column" style="width:100%; max-width: 320px">
+										{% set queryItem = matches[0].teams %}
+										{% for card in 0..8 %}
+											<li>
+													{% include 'components/partials/card-match.twig' %}
+											</li>
+										{% endfor %}
+									</ul>
+							 </div>
+
+							 <div class="tabs__body__panel tabs__body__panel--giornata7">
+								 	<ul class="flex flex--column" style="width:100%; max-width: 320px">
+										{% set queryItem = matches[0].teams %}
+										{% for card in 0..3 %}
+											<li>
+													{% include 'components/partials/card-match.twig' %}
+											</li>
+										{% endfor %}
+									</ul>
+							 </div>
+
+							 <div class="tabs__body__panel tabs__body__panel--giornata8">
+								 	<ul class="flex flex--column" style="width:100%; max-width: 320px">
+										{% set queryItem = matches[0].teams %}
+										{% for card in 0..6 %}
+											<li>
+													{% include 'components/partials/card-match.twig' %}
+											</li>
+										{% endfor %}
+									</ul>
+							 </div>
+
+			     </div>
+				</div>
+		</section>
+	</div>
+</div>
+{% endblock %}

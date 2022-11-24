@@ -1,0 +1,34 @@
+<!-- card-events--big.twig partial -->
+<article class="card card-events--big">
+{% if loop.index <= 1 and cardeventsbig is not defined or loop.index is not defined and cardeventsbig is not defined %}
+    <link rel="stylesheet" href="/resources/assets/css/components/partials/card-events--big.css?v={{version}}" />
+{% endif %}
+
+    <div class="card__thumbnail card__thumbnail--big"> <!-- card__thumbnail--podcast, card__thumbnail--video to add icons-->
+        <picture data-link="{{ queryItem.link }}">
+            <img class="lazyload" data-srcset="{{ queryItem.srcImgFeaturedBig }}, {{ queryItem.srcImgFeaturedBigx2 }} 2x" alt="{{ queryItem.title }}"/>
+        </picture>
+        <noscript>
+            <picture>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+                <source srcset="{{ queryItem.srcImgFeaturedBig }}" media="(max-width: 736px)"/>
+                <!--[if IE 9]></video><![endif]-->
+                <img src="{{ queryItem.srcImgFeaturedBig }}" alt="{{ queryItem.name }}"/>
+            </picture>
+        </noscript>
+    </div>
+            
+    <div class="card__content">
+        <div class="card__title">
+            <h3>{{ queryItem.edition.edition_name }}</h3>
+        </div>
+        <p class="abstract">{{ queryItem.edition.edition_description|striptags }}</p>        
+    </div>
+    
+    <!-- da stampare solo nelle card di eventi futuri -->
+    <div class="card__footer">
+        <div data-countdown="{{ queryItem.startDate}}" class="countdown"></div>
+    </div>
+    <!-- -->
+
+</article>

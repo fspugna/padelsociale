@@ -1,0 +1,41 @@
+<!-- card-events--big.twig partial -->
+
+<article class="card card-events--big">
+
+    {% if loop.index <= 1 and cardeventsbig is not defined or loop.index is not defined and cardeventsbig is not defined %}
+        <link rel="stylesheet" href="/resources/assets/css/components/partials/card-events--big.css?v={{version}}" />
+    {% endif %}
+    
+    <div class="card__thumbnail card__thumbnail--big"> <!-- card__thumbnail--podcast, card__thumbnail--video to add icons-->
+        
+        {% set avatar = null %}
+        {% for meta in macro_team.club.user.metas %}
+            {% if meta.meta == 'avatar' %}
+                {% set avatar = '/storage/' ~ meta.meta_value %}
+            {% endif %}
+        {% endfor %}                
+<div class="card__thumbnail card__thumbnail--big"> <!-- card__thumbnail--podcast, card__thumbnail--video to add icons-->
+            <picture>
+                <img class="lazyload" data-srcset="{{ avatar }}, {{ avatar }} 2x" alt="{{ macro_team.club.name }}"/>
+            </picture>
+            <noscript>
+            <picture>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+                <source srcset="{{ avatar }}" media="(max-width: 736px)"/>
+                <!--[if IE 9]></video><![endif]-->
+                <img src="{{ avatar }}" alt="{{ macro_team.club.name }}"/>
+            </picture>
+            </noscript>
+	</div>        
+        
+    </div>
+    <div class="card__content">
+        <div class="card__title">
+            <h3>{{ macro_team.name }}</h3>
+        </div>
+        <p class="abstract">{{ macro_team.club.name }}</p>
+        
+    </div>
+    
+
+</article>

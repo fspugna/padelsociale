@@ -1,0 +1,9 @@
+{
+	"settings": {
+		"theme": "amatoripadel",
+		"domain": "amatoripadel.local",
+		"test": "local",
+		"urlBuild": "",
+		"buildFolder": "resources"
+	}
+}

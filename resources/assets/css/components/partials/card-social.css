@@ -1,0 +1,13 @@
+/* card-social.twig styles */
+/* line 5, ../../../../../src/sass/components/partials/card-social.scss */
+.card-social { padding: 16px; max-width: 370px; }
+/* line 11, ../../../../../src/sass/components/partials/card-social.scss */
+.card-social .card__title h3 { text-align: center; }
+/* line 16, ../../../../../src/sass/components/partials/card-social.scss */
+.card-social p { text-align: center; }
+/* line 20, ../../../../../src/sass/components/partials/card-social.scss */
+.card-social .social-comment { font-size: 18px; line-height: 32px; background-size: 32px auto; padding-left: 33px; padding-right: 33px; margin-bottom: -11px; }
+/* line 28, ../../../../../src/sass/components/partials/card-social.scss */
+.card-social .social-comment.social-comment--fb-icon { background-position: 0 -125px; margin-left: 29px; }
+/* line 32, ../../../../../src/sass/components/partials/card-social.scss */
+.card-social .social-comment.social-comment--tw-icon { background-position: 0 -174px; margin-left: 29px; }

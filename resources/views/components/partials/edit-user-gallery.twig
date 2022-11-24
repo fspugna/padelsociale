@@ -1,0 +1,105 @@
+<article class="card card-info--big fancybox-js">
+    <span  style="text-align: center; " class="section-title section-title--no-separator">Foto Gallery</span>
+    <div style="text-align: center;">
+        <input type="file" id="input_add_img" name="gallery[]" multiple> 
+    </div> 
+    <div style="display: flex; justify-content: center; margin: 12px 0px;" class="select-div">
+        <style>
+            table, th, td {
+                border: 0px solid black;
+            }
+            .table-rounded-image {
+                border: 2px solid #fff;
+                box-shadow: 0 0 20px #fff;
+                width: 90px;
+                margin: 10px auto;
+                border-radius: 8px;
+                overflow: auto;
+            }
+            .foto-field {
+                padding:3px;
+            }
+        </style>
+        <div>            
+            <div>                                                
+                <table>                  
+                    {% for index, img in current_user.galleries %}                            
+                    {% if index == 0 %}
+                    <tr>                                
+                    {% endif %}
+                        <td>
+                            <div class="foto-field">
+                                <div style="" >                                                                       
+                                    <div class="table-rounded-image"> 
+                                    <a class="fotogallery" data-fancybox="gallery" href="{{ url('storage/' ~ img.filename) }}">                                               
+                                        <picture>
+                                            <img  src="{{ url('storage/' ~ img.filename) }}">
+                                        </picture>    
+                                    </a>                                            
+                                    </div>
+                                    <a href="#del_gallery_img" onClick="setModalImgId({{img.id}});">
+                                        <label style="text-align:center; color:#fff; ">Elimina</label>
+                                    </a>
+                                </div>                
+                            </div>
+                        </td>                        
+                    {% if (index+1)%3 == 0 %}
+                    </tr>              
+                    <tr>                  
+                    {% endif %}
+                    {% endfor %}
+                </table>
+
+                <button id="btn_add_image" class="button" style="display: none">Aggiungi</button>
+            </div>                                                               
+        </div>        
+    </div>    
+</article> 
+
+<!-- finestra popup -->
+<a href="#x" class="overlay" id="del_gallery_img"></a>
+<div class="popup">
+	<h2>Cancellazione immagine</h2>
+	<div class="content">
+		<div style="display: flex; justify-content: center;" class="select-div">
+			<div class="editorial">						
+				<p style="text-align: center">
+                    <strong>
+                    Eliminare l'immagine selezionata?
+                    </strong>                    
+                </p>		
+                <p style="text-align: center">
+                    <input type="hidden" id="img_id" name="img_id" value="">
+                    <a class="button"  href="#close" style="text-decoration: none; cursor: pointer;">Annulla</a>
+                    <a class="button"  href="javascript:void(0);" onclick="deleteImage();"  style="text-decoration: none; cursor: pointer; background-color: #FFE200; border-radius: 5px; color: rgba(0, 0, 0, 0.7); padding: 5px;">Conferma</a>
+                </p>		
+			</div>                                                    
+		</div>
+	</div>
+	<a class="close" title="Chiudere" href="#close"></a>
+</div>
+
+<script>
+
+function setModalImgId(id){
+    document.getElementById('img_id').value = id;
+}
+
+function deleteImage(){
+    
+    var id = document.getElementById('img_id').value;
+
+    $.ajax({
+        url: '/gallery/image/'+id+'/delete',
+        data: {
+            "_token": "{{ csrf_token() }}",                
+        },
+        type: "POST",
+        success: function(data){
+            var url = document.location.href.split('#')[0];
+            document.location.href = url;
+        }
+    });
+
+}
+</script>

@@ -1,0 +1,29 @@
+/* card-tornei-giocati.twig styles */
+/* line 29, /Users/giordano.zannoni/Triboo/GIT/rogiostrap.ladisfidadipadel/src/sass/_mixins.scss */
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */ color: #445C69; }
+
+/* line 33, /Users/giordano.zannoni/Triboo/GIT/rogiostrap.ladisfidadipadel/src/sass/_mixins.scss */
+::-moz-placeholder { /* Firefox 19+ */ color: #445C69; opacity: 1; }
+
+/* line 38, /Users/giordano.zannoni/Triboo/GIT/rogiostrap.ladisfidadipadel/src/sass/_mixins.scss */
+:-ms-input-placeholder { /* IE 10+ */ color: #445C69; }
+
+/* line 42, /Users/giordano.zannoni/Triboo/GIT/rogiostrap.ladisfidadipadel/src/sass/_mixins.scss */
+:-moz-placeholder { /* Firefox 18- */ color: #445C69; }
+
+/* line 7, ../../../sass/components/partials/card-tornei-giocati.scss */
+.card-tornei-giocati { margin-top: 32px !important; }
+/* line 10, ../../../sass/components/partials/card-tornei-giocati.scss */
+.card-tornei-giocati .card__thumbnail { border-radius: 50%; border: 2px solid #fff; position: absolute; left: 50%; overflow: hidden; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); width: 92px; }
+/* line 24, ../../../sass/components/partials/card-tornei-giocati.scss */
+.card-tornei-giocati .card__content { padding: 56px 16px 16px; }
+/* line 27, ../../../sass/components/partials/card-tornei-giocati.scss */
+.card-tornei-giocati .card__content h3 { color: #fff; margin-bottom: 12px; text-align: center; }
+/* line 33, ../../../sass/components/partials/card-tornei-giocati.scss */
+.card-tornei-giocati .card__content p { color: #fff; display: block; display: -webkit-box; height: 56px; text-overflow: ellipsis; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+/* line 40, ../../../sass/components/partials/card-tornei-giocati.scss */
+.started-events .card-tornei-giocati .card__content time { display: none; }
+/* line 48, ../../../sass/components/partials/card-tornei-giocati.scss */
+.started-events .card-tornei-giocati .card__footer { display: none; }
+
+/*# sourceMappingURL=../../maps/card-tornei-giocati.min.css.map */

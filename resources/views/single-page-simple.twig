@@ -1,0 +1,136 @@
+{% extends "base.twig" %}
+{% import 'components/partials/tabs.twig' as tabs %}
+
+{% block head %}
+<title>{{ site.name}} - </title>
+{{ parent() }}
+<link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css" />
+
+<link rel="stylesheet" href="/resources/assets/css/components/partials/list-item-giocatore.css?v=1.0.4">
+{% endblock %}
+
+{% block bodyclass %}
+	page-torneo bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+
+		<style>
+
+            .card-info--big picture {
+                padding-bottom: 100%;
+            }
+            
+            
+            .list-item-presidente {
+                padding: 5px 0;
+                display: flex;
+                justify-content: center;
+            }            
+            
+            .lazyload {
+                opacity: 1;
+                transition: opacity 0.3s;
+            }
+            picture img {
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                min-width: 100%;
+                min-height: 100%;
+                transform: translate(-50%, -50%);
+            }
+            img {
+                display: block;
+                max-width: 100%;
+                height: auto;
+            }			
+
+
+			.divTableCell1 {
+                display: table-cell;
+                vertical-align: middle;
+                padding: 3px;
+                width: 155px;
+                /* height: 155px; */
+            }
+            
+            .sottoTablaCell {
+                border: 2px solid #fff;
+                width: 120px;
+                height: 140px;
+                border-radius: 14px;
+                overflow: hidden;
+            }
+
+			.divTableCell2 {
+                display: table-cell; 
+                vertical-align: middle; 
+                padding: 3px;
+            }
+
+			.sottoTablaCell2 {
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                color: #fff;
+                line-height: 22px;
+            }
+
+            .card-news--big picture {
+                padding-bottom: 100%;
+            }
+
+			i.fab.fa-facebook-square {
+                font-size: 35px;
+                margin-bottom: 10px;
+            }
+
+			i.fab.fa-instagram {
+                font-size: 35px;
+                margin-bottom: 10px;
+            }
+            
+            i.fab.fa-twitter-square {
+                font-size: 35px;
+                margin-bottom: 10px;
+            }
+
+		</style>
+
+
+
+<!--page-iscrizione-torneo.twig page -->
+
+<div class="page page-iscrizione-torneo">
+	<div class="container">
+	
+		<section>
+
+			<div class="cta-container flex flex--between">
+				<a href="javascript:window.history.back();" class="cta cta--yellow cta--rounded cta--back">Indietro</a>
+				<!--a href="./page-tabellone" class="cta cta--enter cta--yellow cta--rounded">Tabellone</a-->
+			</div>
+
+			<article class="card card-news--big">
+
+				<link rel="stylesheet" href="/resources/assets/css/components/partials/card-news--big.css?v={{version}}" />
+
+				<div class="card__content">
+					<div class="card__title">
+						<h1 Class="section-title">{{ page.title }}</h1>
+					</div>
+					<div class="editorial">{{ page.content|raw }}</div>
+				</div>
+			</article>
+
+            <!-- BANNER START -->
+            {% set banner_city = zone.id_city %}
+            {% set banner_edition = tournament.edition.id %}
+            {% set banner_position = 'BANNER_TORNEI_3' %}            
+            {% include 'components/partials/banner.twig' %} 
+            <!-- BANNER END -->
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+<!-- card-team-torneo.twig partial -->
+
+<div class="card card-team-torneo">
+
+	{% if loop.index <= 1 and cardteamtorneo is not defined or loop.index is not defined and cardteamtorneo is not defined %}
+
+	<link rel="stylesheet" href="/resources/assets/css/components/partials/card-team-torneo.css?v={{version}}" />
+
+	{% endif %}
+	<div class="card__inner">
+                        	
+            {% set avatar = '' %}	
+            {% for meta in subscription.team.club.user.metas %}
+                    {% if meta.meta == 'avatar' %}
+                            {% set avatar = '/storage/' ~ meta.meta_value  %}
+                    {% endif %}
+            {% endfor %}
+            {% if avatar == '' %}	
+                    {% if teamPlayer.player.gender == 'f' %}
+                            {% set avatar = 'https://cdn.xl.thumbs.canstockphoto.es/padel-mujer-jugador-vectores-eps_csp69229035.jpg' %}
+                    {% else %}
+                            {% set avatar = 'https://comps.canstockphoto.es/padel-jugador-figura-vectores-eps_csp61076734.jpg' %}		
+                    {% endif %}
+            {% endif %}	
+
+            <div class="player">
+
+                    <div class="card__thumbnail card__thumbnail--big"> <!-- card__thumbnail--podcast, card__thumbnail--video to add icons-->
+                            <picture data-link="/macro_teams/{{ subscription.team.id }}/show">						
+                                <img class="lazyload" data-srcset="{{ avatar }}, {{ avatar }} 2x" alt="{{ teamPlayer.player.name }} {{ teamPlayer.player.surname }}"/>						
+                            </picture>
+                            <noscript>
+                                <picture>
+                                        <!--[if IE 9]><video style="display: none;"><![endif]-->
+                                        <source srcset="{{ avatar }}" media="(max-width: 736px)"/>
+                                        <!--[if IE 9]></video><![endif]-->
+                                        <img src="{{ avatar }}" alt="{{ teamPlayer.player.name }} {{ teamPlayer.player.surname }}"/>
+                                </picture>
+                            </noscript>
+                    </div>
+                    <div class="player__name" style="max-width: max-content">
+                        <a href="/macro_teams/{{ subscription.team.id }}/show"><span>{{ subscription.team.name }}</span></a>
+                    </div>
+            </div>
+
+		
+	</div>
+	
+	{% if subscription.category %}
+	<div class="card__footer--separated">	
+		<span>{{ subscription.category.name }}</span>		
+	</div>	
+	{% endif %}
+</div>

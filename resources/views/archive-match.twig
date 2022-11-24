@@ -1,0 +1,91 @@
+{% extends "base.twig" %}
+
+{% block head %}
+	<title>{{ site.name}} - Calendar</title>
+	{{ parent() }}
+{% endblock %}
+
+{% block bodyclass %}
+	front-page bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+	<!--front-page.twig page -->
+	<div class="archive archive-giocatori">
+		<div class="section-title "><span>Match disputati</span></div></br>
+
+		<input type="hidden" id="id_event" name="id_event" value="{{id_event}}">
+
+		<link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v=1.0.4" />
+
+		<div class="input-field input-field--select input-field--center">			
+			<select id="select-city" name="select-city" class="dropdown dropdown--light">
+				<option value="">Tutte le città</option>
+				{% for city in cities %}
+					<option value="{{ city.slug }}" {% if selected_city == city.slug %} selected {% endif %}>{{ city.name }}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div style="margin-bottom: 50px;" class="input-field input-field--select input-field--center">			
+			<select id="select-club" name="select-club" class="dropdown dropdown--light">
+				<option value="">Tutti circoli</option>
+				{% for club in clubs %}
+					<option value="{{ club.id }}" {% if selected_club == club.id %} selected {% endif %}>{{ club.name }}</option>
+				{% endfor %}
+			</select>
+		</div>
+			
+		{% for match_date in matches_dates %}				
+			<div class="section-title "><span>{{match_date}}</span></div></br>
+			{% for match in calendar[match_date] %}						
+				<div  style="margin-bottom: 0px;"  >
+					<li style="margin: 2px;" >			
+						{% include 'components/partials/card-match-visualization.twig' %}			
+					</li>
+				</div>
+				
+			{% endfor %}
+		{% endfor %}
+	</div>
+
+	<section>
+		<div>
+			{{rankings.links()|raw}}
+		</div>
+	</section>
+	
+{% endblock %}
+
+
+
+{% block scripts %}
+	<script>
+	var id_event = document.getElementById("id_event").value;	
+	var cities = document.getElementById("select-city");	
+
+	cities.addEventListener("change", function() {
+		if(cities.value != ""){
+			document.location.href="/match-archive/event/"+id_event+"/city/"+cities.value;
+		}else{
+			document.location.href="/match-archive/event/"+id_event;
+		}
+	});	
+
+	
+	var clubs = document.getElementById("select-club");
+	if(clubs){
+		clubs.addEventListener("change", function() {
+			if(clubs.value != ""){
+				document.location.href="/match-archive/event/"+id_event+"/city/"+cities.value+'/club/'+clubs.value;
+			}else{				
+				if(cities.value != ""){
+					document.location.href="/match-archive/event/"+id_event+"/city/"+cities.value;
+				}else{
+					document.location.href="/match-archive/event/"+id_event+"/city/";
+				}
+			}
+		});	
+	}
+	</script>
+{% endblock %}

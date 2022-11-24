@@ -1,0 +1,45 @@
+<!-- login.twig section -->
+{% import 'components/partials/forms.twig' as forms %}
+
+<div class="login">
+
+{% if loop.index <= 1 and login is not defined or loop.index is not defined and login is not defined %}
+
+<link rel="stylesheet" href="/resources/assets/css/components/sections/login.css?v={{version}}" />
+
+{% endif %}
+<div class="container">
+<span class="section-title">Effettua il login</span>
+	<form name="loginform" id="loginform">
+
+		{{ forms.inputField('email', 'email', '', 'text', 'e-mail...', '', 'required', '', true) }}
+		{{ forms.inputField('password', 'password', '', 'password', 'password...', '', 'required', '') }}
+		<div class="cta-container cta-container--center">
+			<button type="submit" class="loginform cta cta--enter">entra</button>
+		</div>
+
+	</form>
+	
+	
+	<form name="registrationform" id="registrationform" action="/register" method="post">
+
+		{{ csrf_field() }}
+
+		<div class="input-field input-field--file forms-js">
+			<input type="file" id="image" name="image" onchange="readURL(this);" hidden />
+			<label for="image"><span>+</span></label>
+			<div class="input__image-container">
+				<img id="input__image-container__preview" src="/resources/assets/images/avatar-placeholder.svg" alt="il tuo avatar" />
+			</div>
+		</div>
+		{{ forms.inputField('name', 'name', '', 'text', 'nome...', '', 'required', '') }}
+		{{ forms.inputField('lastname', 'lastname', '', 'text', 'cognome...', '', 'required', '') }}
+		{{ forms.inputField('city', 'city', '', 'text', 'città...', '', 'required', '') }}
+		{{ forms.inputField('mobile', 'mobile', '', 'tel', 'cellulare...', '', 'required', '') }}
+		<div class="cta-container cta-container--center">
+			<button type="submit" class="loginform cta cta--enter">iscriviti</button>
+		</div>
+	</form>
+
+	</div>
+</div>

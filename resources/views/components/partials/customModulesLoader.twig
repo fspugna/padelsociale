@@ -1,0 +1,96 @@
+<script>
+	window.tribooScriptModules = [
+		{
+			countdown: {
+				exists: document.getElementsByClassName('slide-countdown-js').length,
+				params: {
+					url: '/resources/assets/js/components/partials/card-events--big.js',
+					key: 'card-events-js',
+				},
+				require: [  // to write this object follow logic loading
+					{
+						name: 'countdown-js',
+						url: '/resources/assets/js/libs/jquery.countdown.min.js'
+					}
+				]
+			}
+		},{
+			mainJs: {
+				exists: document.getElementsByClassName('main-ladisfidadipadel-js').length,
+				params: {
+					url: '/resources/assets/js/main-ladisfidadipadel.js',
+					key: 'main-ladisfidadipadel-js',
+				}
+			}
+		},{
+			forms: {
+				exists: document.getElementsByClassName('forms-js').length,
+				params: {
+					url: '/resources/assets/js/components/partials/forms.js',
+					key: 'forms-js',
+				}
+			}
+		},{
+			cardsSlider: {
+				exists: document.getElementsByClassName('cards-slider-js').length,
+				params: {
+					url: '/resources/assets/js/components/sections/cards-slider.js',
+					key: 'cards-slider-js',
+				}
+			}
+		},{
+			fancybox: {
+				exists: document.getElementsByClassName('fancybox-js').length,
+				params: {
+					url: '/resources/assets/js/components/partials/fancybox-gallery.js',
+					key: 'fancybox-gallery-js',
+				},
+				require: [  // to write this object follow logic loading
+					{
+						name: 'jquery-fancybox-js',
+						url: '/resources/assets/js/libs/jquery.fancybox.min.js'
+					}
+				]
+			}
+		},{
+			summernote: {
+				exists: document.getElementsByClassName('summernote-js').length,
+				params: {
+					url: '/resources/assets/js/components/partials/summernote.js',
+					key: 'summernote-js',
+				},
+				require: [  // to write this object follow logic loading
+					{
+						name: 'summernote-js',
+						url: '/resources/assets/js/libs/summernote-lite.min.js'
+					}
+				]
+			}
+		},{
+			menu_torneo: {
+				exists: document.getElementsByClassName('menu-torneo-js').length,
+				params: {
+					url: '/resources/assets/js/components/partials/menu-torneo.js',
+					key: 'menu-torneo-js',
+				},
+				skipCache: true
+			}
+		},{
+			menu_logo: {
+				exists: document.getElementsByClassName('user-logo-js').length,
+				params: {
+					url: '/resources/assets/js/components/partials/user-logo.js',
+					key: 'menu-torneo-js',
+				}
+			}
+		},{
+			zone_filter: {
+				exists: document.getElementsByClassName('zone-filter-js').length,
+				params: {
+					url: '/resources/assets/js/components/partials/zone-filter.js',
+					key: 'zone-filter-js',
+				}
+			}
+		}
+	];
+</script>

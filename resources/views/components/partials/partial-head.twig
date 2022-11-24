@@ -1,0 +1,22 @@
+<!-- partial-head.twig -->
+
+{# Block head #}
+{% block head %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="{{ site.description }}">
+    <meta name="viewport" content="width=device-width, maximum-scale=5">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/resources/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/resources/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/resources/assets/images/favicon-16x16.png">
+    <link rel="mask-icon" color="#5bbad5" href="/resources/assets/images/safari-pinned-tab.svg">
+
+    {# HTTP/2 Server pushed global CSS - Used on every page #}
+    <link rel="stylesheet" href="/resources/assets/css/custom.css?v={{version}}">
+
+    <title>La Disfida di Padel</title>
+
+{% endblock %}

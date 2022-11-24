@@ -1,0 +1,70 @@
+{% extends "base.twig" %}
+{% import 'components/partials/tabs.twig' as tabs %}
+
+{% block head %}
+
+    <meta property="og:url"                content="{{ actual_link }}" />
+    <meta property="og:type"               content="article" />
+    <meta property="og:title"              content="{{  news.title }}" />
+    <meta property="og:description"        content="{{  raw_content }}" />
+    <meta property="og:image"              content="https://www.ladisfidadipadel.it/storage/{{ news.image }}" />
+
+<title>{{ site.name}} - </title>
+{{ parent() }}
+<link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css" />
+{% endblock %}
+
+{% block bodyclass %}
+	page-torneo bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+
+<!--page-iscrizione-torneo.twig page -->
+
+<div class="page page-iscrizione-torneo">
+	<div class="container">
+
+		<section>
+
+			<div class="cta-container flex flex--between">
+				<a href="javascript:history.go(-1);"  class="cta cta--yellow cta--rounded cta--back">Indietro</a>
+				<!--a href="./page-tabellone" class="cta cta--enter cta--yellow cta--rounded">Tabellone</a-->
+			</div>
+
+			<!-- BANNER START -->
+			{% set banner_city = null %}
+			{% set banner_edition = null %}
+			{% set banner_position = 'BANNER_NEWS' %}
+			{% include 'components/partials/banner.twig' %}
+			<!-- BANNER END -->
+
+			<article class="card card-news--big">
+
+				<link rel="stylesheet" href="/resources/assets/css/components/partials/card-news--big.css?v={{version}}" />
+
+				<div class="card__thumbnail card__thumbnail--big"> <!-- card__thumbnail--podcast, card__thumbnail--video to add icons-->
+					<picture >
+						<img class="lazyload" data-srcset="/storage/{{ news.image }}, /storage/{{ news.image}} 2x" alt="{{ news.title }}"/>
+					</picture>
+					<noscript>
+							<picture>
+									<!--[if IE 9]><video style="display: none;"><![endif]-->
+									<source srcset="/storage/{{ news.image }}" media="(max-width: 736px)"/>
+									<!--[if IE 9]></video><![endif]-->
+									<img src="/storage/{{ news.image }}" alt="{{ news.title }}"/>
+							</picture>
+					</noscript>
+				</div>
+				<div class="card__content">
+					<div class="card__title">
+						<h1 Class="section-title">{{ news.title }}</h1>
+					</div>
+					<time datetime="{{ news.excerpt }}">{{ news.excerpt|date('d F Y', "Europe/Rome") }}</time>
+					<div class="editorial">{{ news.content|raw }}</div>
+				</div>
+
+			</article>
+	</div>
+</div>
+{% endblock %}

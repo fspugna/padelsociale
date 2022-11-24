@@ -1,0 +1,52 @@
+{% extends "base.twig" %}
+
+{% block head %}
+<title>{{ site.name}} - Ranking</title>
+{{ parent() }}
+{% endblock %}
+
+
+{% block bodyclass %}
+	front-page bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+<!--front-page.twig page -->
+<div class="archive archive-giocatori">
+	<div class="section-title "><span>Ranking</span></div></br>
+	
+	<div class="input-field input-field--select input-field--center">			
+		<select id="sesso" name="sesso" class="dropdown dropdown--light">			
+			
+			<option value="m" {% if selected_gender == 'm' %} selected {% endif %}>Classifica maschile</option>
+			<option value="f" {% if selected_gender == 'f' %} selected {% endif %}>Classifica femminile</option>
+			
+		</select>
+	</div>
+	
+	<div class="separator_list"></div>
+
+	{% include 'components/partials/search-form.twig' %}	
+
+	{% for rank in rankings %}		
+		{% set queryItem = players[rank.id_player] %}		
+		{% include 'components/partials/card-ranking.twig' %}
+		
+	{% endfor %}
+</div>
+<section>
+<div>
+{{rankings.links()|raw}}
+</div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+$(document).ready(function(){	
+	$("#sesso").change(function(){
+		document.location.href = "/rankings/"+jQuery(this).val()+'/live';
+	});
+});
+</script>
+{% endblock %}

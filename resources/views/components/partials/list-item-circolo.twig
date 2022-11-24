@@ -1,0 +1,50 @@
+<!-- list-item-giocatore.twig partial -->
+<div class="list-item-giocatore">
+
+    {% if loop.index <= 1  %}
+        <link rel="stylesheet" href="/resources/assets/css/components/partials/list-item-giocatore.css?v={{version}}" />
+    {% endif %}
+    <style>
+        div.player{
+            justify-content: left !important;
+        }
+        .list-item-giocatore .card__inner .player__name {
+            width: 200px !important;
+            max-width: 200px !important;
+            min-width: 200px !important;
+            text-align:left !important;
+        }
+    </style>
+    {% set avatar = '' %}
+    {% for meta in queryItem.user.metas %}
+        {% if meta.meta == 'avatar' %}
+            {% set avatar = '/storage/' ~ meta.meta_value  %}
+        {% endif %}
+    {% endfor %}
+    {% if avatar == '' %}
+        {% set avatar = '/resources/assets/images/logo-ladisfidadipadel.png 2x' %}
+    {% endif %}
+
+    <a href="/clubs/{{ queryItem.id }}/show">
+        <div class="card__inner">
+            <div class="player">
+                <div class="card__thumbnail card__thumbnail--big"> <!-- card__thumbnail--podcast, card__thumbnail--video to add icons-->
+                    <picture data-link="/players/{{ queryItem.id }}/show">
+                        <img class="lazyload" data-srcset="{{ avatar }}, {{  avatar }} 2x" alt="{{ queryItem.name  }}"/>
+                    </picture>
+                    <noscript>
+                    <picture>
+                        <!--[if IE 9]><video style="display: none;"><![endif]-->
+                        <source srcset="{{ avatar }}" media="(max-width: 736px)"/>
+                        <!--[if IE 9]></video><![endif]-->
+                        <img src="{{ avatar }}" alt="{{ queryItem.name  }}"/>
+                    </picture>
+                    </noscript>
+                </div>
+                <div class="player__name">
+                    <span>{{queryItem.name  }}</span>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>

@@ -1,0 +1,7 @@
+/* registration-form.twig styles */
+/* line 5, ../../../sass/components/sections/registration-form.scss */
+.registration-form { margin: 16px 0; }
+/* line 8, ../../../sass/components/sections/registration-form.scss */
+.registration-form button[type=submit] { min-width: 150px; }
+
+/*# sourceMappingURL=../../maps/registration-form.min.css.map */

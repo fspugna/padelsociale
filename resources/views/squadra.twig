@@ -1,0 +1,68 @@
+{% extends "base.twig" %}
+
+{% block head %}
+    <title>{{ site.name}} - Calendar</title>
+    {{ parent() }}
+{% endblock %}
+
+
+{% block bodyclass %}
+    front-page bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+    <!--front-page.twig page -->
+    <div class="archive archive-giocatori">
+        <div class="section-title "><span>
+                {% if is_my_team %} La mia squadra {% else %} Squadra {% endif %}
+            </span></div></br>	                
+
+        {% if can_change and my_team['players']|length > 2 %}
+            <form action="/teams/changePlayer" method="post">               
+
+                <input name="_token" type="hidden" value="{{ csrf_token() }}">
+
+            {% endif %}
+
+
+            {% for player in my_team['players'] %}
+                {% set queryItem = player.player %}
+                {% include 'components/partials/list-item-player.twig' %}
+            {% endfor %}
+
+            {% if can_change and my_team['players']|length > 2 %}
+                <div style="margin-bottom:10px;" class="cta-container cta-container--center">
+                    <input type="hidden" name="id_team" value="{{ id_team }}">                                     
+                    <button type="submit" name="btn_submit_profile" value="save_profile" class="loginform cta cta--enter cta--yellow">Salva Squadra</button>
+                </div>
+            </form>
+        {% endif %}
+        
+
+        {% if  my_team['team'].flag_change == 1 and my_team['players']|length > 2%}
+            <h3 style="text-align: center; color: #FFE200">Hai già effettuato una sostituzione</h3>
+        {% elseif can_change and my_team['players']|length > 2 %}
+            <h3 style="text-align: center; color: #FFE200">Puoi ancora effettuare una sostituzione</h3>
+        {% endif %}
+
+    </div>
+    <section>
+        <div>
+            {{rankings.links()|raw}}
+        </div>
+    </section>
+{% endblock %}
+
+
+
+{% block scripts %}
+    <script>
+        $("#select-city").change(function () {
+            if ($(this).val() != '') {
+                document.location.href = "/calendar/" + $(this).val();
+            } else {
+                document.location.href = "/calendar";
+            }
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.twig" %}
+
+{% block head %}
+<title>{{ site.name}} - I nostri giocatori</title>
+{{ parent() }}
+{% endblock %}
+
+
+{% block bodyclass %}
+	archive-giocatori bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+<!--archive-giocatori.twig page -->
+<div class="archive archive-giocatori">
+	<div class="section-title "><span>I nostri partners</span></div></br>
+	{% include 'components/partials/search-form.twig' %}	
+
+	<div class="input-field input-field--select input-field--center">			
+		<select id="city_sel" name="city_sel" class="dropdown dropdown--light">			
+			<option value="" {% if selected_city == '' %} selected {% endif %}>Filtra per città</option>
+			{% for city in cities %}
+				<option value="{{city.slug}}" {% if selected_city == city.slug %} selected {% endif %}>{{ city.country.name }} - {{ city.name }}</option>
+			{% endfor %}
+			
+		</select>
+	</div>
+
+	<div class="separator_list"></div>
+	{% for queryItem in partners %}			
+		{% include 'components/partials/list-item-partner.twig' %}
+	{% endfor %}
+</div>
+<section>
+<div>
+{{partners.links()|raw}}
+</div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+	
+	var cities = document.getElementById("city_sel");	
+	cities.addEventListener("change", function() {
+		if( cities.value != '' ){
+			document.location.href = "/partners/city/"+cities.value+window.location.search;
+		}else{
+			document.location.href = "/partners/"+window.location.search;
+		}
+	});
+
+</script>
+{% endblock %}

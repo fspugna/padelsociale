@@ -1,0 +1,27 @@
+<!-- card-circolo.twig partial -->
+
+<div class="card card-circolo">
+
+	{% if loop.index <= 1 and cardcircolo is not defined or loop.index is not defined and cardcircolo is not defined %}
+
+	<link rel="stylesheet" href="/resources/assets/css/components/partials/card-circolo.css?v={{version}}" />
+
+	{% endif %}
+
+	<div class="card__content">
+		<div class="card__title">
+			<h3>Gestisci un circolo?</h3>
+		</div>
+		<p class="abstract">Entra nella nostra comunità,<br>co-oganizzando con noi eventi, in cui poter coinvolgere gli appassionati di questo sport. Per registrarti gratuitamente contattaci al 338.4117065</p>
+	</div>
+	{#
+	<div class="card__footer">
+		<div class="cta-container cta-container--center">
+			<a href="/register">
+				<button class="cta cta--enter cta--yellow">Iscrivi il tuo circolo</button>
+			</a>
+		</div>
+	</div>
+	#}
+
+</div>

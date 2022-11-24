@@ -1,0 +1,52 @@
+<!-- card-team-categoria.twig partial -->
+
+<div class="card-team-categoria">
+
+{% if loop.index <= 1 and cardteamcategoria is not defined or loop.index is not defined and cardteamcategoria is not defined %}
+
+<link rel="stylesheet" href="/resources/assets/css/components/partials/card-team-categoria.css?v={{version}}" />
+
+{% endif %}
+
+	<div class="card__inner flex flex--column">
+		{% for teamPlayer in groupTeam.team.players %}
+			{% if teamPlayer.starter %}
+
+			{% set avatar = '' %}	
+				{% for meta in teamPlayer.player.metas %}
+					{% if meta.meta == 'avatar' %}
+						{% set avatar = '/storage/' ~ meta.meta_value  %}
+					{% endif %}
+				{% endfor %}
+				{% if avatar == '' %}	
+					{% if teamPlayer.player.gender == 'f' %}
+						{% set avatar = 'https://cdn.xl.thumbs.canstockphoto.es/padel-mujer-jugador-vectores-eps_csp69229035.jpg' %}
+					{% else %}
+						{% set avatar = 'https://comps.canstockphoto.es/padel-jugador-figura-vectores-eps_csp61076734.jpg' %}		
+					{% endif %}
+				{% endif %}	
+			
+			<div class="player">
+				<div class="card__thumbnail card__thumbnail--big"> <!-- card__thumbnail--podcast, card__thumbnail--video to add icons-->
+					<picture data-link="/players/{{ teamPlayer.player.id }}/show">
+						<img class="lazyload" data-srcset="/storage/{{ avatar }}, /storage/{{ avatar }} 2x" alt="{{ teamPlayer.player.name }} {{ teamPlayer.player.surname }}"/>
+					</picture>
+					<noscript> 
+						<picture>
+							<!--[if IE 9]><video style="display: none;"><![endif]-->
+							<source srcset="{{ queryItem.playerOne.srcImgAvatar }}" media="(max-width: 736px)"/>
+							<!--[if IE 9]></video><![endif]-->
+							<img src="{{ queryItem.playerOne.srcImgAvatar }}" alt="{{ queryItem.playerTwo.name }}"/>
+						</picture>
+					</noscript>
+				</div>
+				<div class="player__name">
+					<a href="/players/{{ teamPlayer.player.id }}/show">	<span>{{ teamPlayer.player.name }} {{ teamPlayer.player.surname }}</span></a>
+				</div>
+			</div>
+			{% endif %}
+		{% endfor %}
+		
+	</div>
+
+</div>

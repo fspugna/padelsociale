@@ -1,0 +1,144 @@
+{% extends "base.twig" %}
+
+{% block head %}    
+    <title>{{ site.name}} - homepage</title>
+    {{ parent() }}
+{% endblock %}
+
+
+{% block bodyclass %}
+    front-page bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+    <!--front-page.twig page -->
+
+    <div class="page front-page">
+
+        <!-- BANNER START -->
+        {% set banner_city = null %}
+        {% set banner_edition = null %}
+        {% set card_class = 'card-banner-home' %}
+        {% set banner_position = 'BANNER_HOME_1' %}
+        {% include 'components/partials/banner.twig' %}
+        <!-- BANNER END -->
+
+        <!--- INFO START -->
+        {%
+		set query = {
+			card: 'components/partials/card-info--big.twig',
+			type: infos
+		}
+        %}
+        <section>
+            {% include 'components/sections/cards-slider.twig' %}
+            {% set cardinfobig = defined %}
+        </section>
+        <!--- INFO END -->
+
+        <!-- PROSSIMI EVENTI START -->
+        {% if next is not empty %}
+            <section>
+                <div class="section-title"><span>Prossimi eventi</span></div>
+                <div class="cards-slider__container">
+                    <div class="swiper-wrapper">
+                        {% for queryItem in next %}
+                            <div class="swiper-slide slide-countdown-js">
+                                <a href="{{ queryItem.link }}">
+                                    {% include 'components/partials/card-events--big.twig' %}
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </section>
+        {% endif %}
+        <!-- PROSSIMI EVENTI END -->
+
+        <!-- EVENTI IN CORSO START --> 
+        {% if currents is not empty %}
+            <section class="started-events">
+                <div class="section-title"><span>Eventi in corso</span></div>
+                <div class="cards-slider__container">
+                    <div class="swiper-wrapper">
+                        {% for queryItem in currents %}
+                            <div class="swiper-slide">
+                                <a href="{{ queryItem.link }}">
+                                    {% include 'components/partials/card-events--big.twig' %}
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                {% set cardeventsbig = defined %}
+            </section>
+        {% endif %}
+        <!-- EVENTI IN CORSO END --> 
+
+        <!-- BANNER START -->
+        {% set banner_city = null %}
+        {% set banner_edition = null %}
+        {% set banner_position = 'BANNER_HOME_2' %}
+        {% include 'components/partials/banner.twig' %}
+        <!-- BANNER END -->
+
+        <!-- NEWS START -->
+        <section>
+            <div class="section-title section-news"><span>News</span></div>
+
+            <div class="cards-slider__container">
+                <div class="swiper-wrapper">
+                    {% for queryItem in news %}
+                        <div class="swiper-slide">
+                            {% include 'components/partials/card-news--big.twig' %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            {% set cardnewsbig = defined %}
+        </section>   
+        <!-- NEWS END -->
+
+        <!-- BANNER START -->
+        {% set banner_city = null %}
+        {% set banner_edition = null %}
+        {% set banner_position = 'BANNER_HOME_3' %}
+        {% include 'components/partials/banner.twig' %}
+        <!-- BANNER END -->
+
+        <!-- MATCH IN PROGRAMMA START -->
+        {% if auth_check() and calendar is not empty %}
+            <section>
+                <div class="section-title section-news"><span>Match in programma</span></div>
+                <div class="cards-slider-auto__container">
+                    <div class="swiper-wrapper">
+                        {% for queryItem in calendar %}
+                            <div class="swiper-slide">
+                                {% include 'components/partials/card-match-programma.twig' %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {# <div class="swiper-pagination"></div> #}
+                </div>
+                {% set cardmatchbig = defined %}
+            </section>
+        {% endif %}        
+        <!-- MATCH IN PROGRAMMA END -->
+                             
+        <section>
+            {% include 'components/partials/card-social.twig' %}
+        </section>
+        <section>
+            {% include 'components/partials/card-circolo.twig' %}
+        </section>        
+
+        <section>
+            <div class="section-title"><span>Utenti registrati</span></div>
+            <span class="total-users">{{ tot_users }}</span>
+        </section>
+    </div>
+{% endblock %}

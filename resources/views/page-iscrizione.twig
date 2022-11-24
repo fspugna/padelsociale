@@ -1,0 +1,89 @@
+{% extends "base.twig" %}
+{% import 'components/partials/forms.twig' as forms %}
+
+{% block head %}
+<title>{{ site.name}} - </title>
+{{ parent() }}
+<link rel="stylesheet" href="resources/css/components/partials/forms.css" />
+{% endblock %}
+
+{% block bodyclass %}
+	page-iscrizione bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+
+<!--page-iscrizione.twig page -->
+{% set queryItem = tournament %}
+{% set zone = zone %}
+
+<div class="page page-iscrizione">
+	<div class="container">
+		<section>
+			<div class="section-title"><h1>{{ queryItem.edition.name }}</h1></div>
+			<div class="header-rounded-image">
+					<picture>
+						<img class="lazyload" data-srcset="{{ queryItem.srcImgFeaturedBig }}, {{ queryItem.srcImgFeaturedBigx2 }} 2x" alt="{{ queryItem.title }}"/>
+					</picture>
+					<noscript>
+							<picture>
+									<!--[if IE 9]><video style="display: none;"><![endif]-->
+									<source srcset="{{ queryItem.srcImgFeaturedBig }}" media="(max-width: 736px)"/>
+									<!--[if IE 9]></video><![endif]-->
+									<img src="{{ queryItem.srcImgFeaturedBig }}" alt="{{ queryItem.title }}"/>
+							</picture>
+					</noscript>
+			</div>
+
+			<div class="flex flex--center">
+				<div class="section-title section-title--small"><span>Stai iscrivendo una squadra nella zona</span></div>
+				<div class="section-title section-title--big"><span>{{ zone.city.name }} - {{ zone.name }}</span></div>
+			</div>
+
+
+		</section>
+
+		<section>
+			<div class="section-title"><span>SQUADRA</span></div>
+			<form id="register-team" action="/subscribe" method="post">
+			    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<input type="hidden" name="id_tournament" value="{{ id_tournament }}">
+				<input type="hidden" name="id_zone" value="{{ id_zone }}">
+
+				<div class="input-field input-field--select input-field--center">
+					<select id="select-category-type" name="select-category-type" class="dropdown dropdown--light">
+							<option selected disabled >Seleziona Tipologia</option>
+							{% for option in category_types %}
+									<option value="{{ option.id_category_type }}">{{ option.categoryType.name }}</option>
+							{% endfor %}
+					</select>
+				</div>
+
+				<div class="input-field input-field--select input-field--center">
+					<select id="select-player-1" name="select-player-1" class="dropdown dropdown--light">
+							<option selected disabled >Giocatore 1 titolare...</option>
+							{% for option in players %}
+									<option value="{{ option.id }}">{{ option.name }}</option>
+							{% endfor %}
+					</select>
+					<select id="select-player-2" name="select-player-2" class="dropdown dropdown--light">
+							<option selected disabled >Giocatore 2 titolare...</option>
+							{% for option in players %}
+									<option value="{{ option.id }}">{{ option.name }}</option>
+							{% endfor %}
+					</select>
+					<select id="select-player-3" name="select-player-3" class="dropdown dropdown--light">
+							<option selected disabled >Giocatore 3 riserva...</option>
+							{% for option in players %}
+									<option value="{{ option.id }}">{{ option.name }}</option>
+							{% endfor %}
+					</select>
+				</div>
+				<div class="cta-container cta-container--center">
+					<button type="submit" class="cta cta--enter cta--yellow">Registra squadra</a>
+				</div>
+			</form>
+		</section>
+	</div>
+</div>
+{% endblock %}

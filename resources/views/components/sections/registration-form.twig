@@ -1,0 +1,163 @@
+<!-- registration-form.twig section -->
+{% import 'components/partials/forms.twig' as forms %}
+
+<article class="card card-info--big">
+
+	<span class="section-title">Accedi al mondo di</span>
+	<span class="section-title">La Disfida di Padel</span>
+
+	<div style="margin-left: 10px; margin-right: 10px;">
+		<div class="tabs-scroller tabs-scroller-zones">
+			<nav class="tabs__nav" role="navigation">
+				<a href="/login">Accesso</a>
+				<a href="/register"  class="selected">Registrazione</a>
+			</nav>
+		</div>
+	</div>
+
+	<div class="login-form">
+
+		<link rel="stylesheet" href="/resources/assets/css/components/sections/login-form.css?v=1.0.4">
+
+		<div class="container">
+			<p style="font-size: 18px; line-height: 24px; padding: 8px 20px; color: #ffffff; text-align: center; font-weight: bold;">
+			Crea il tuo account</br>
+			Giocatore o Circolo</br>
+			con la Registrazione Gratuita</p>
+
+			<div style="border:1px solid #fff; margin-top: 20px;"></div>
+
+			<span class="section-title">Registrazione Giocatore</span>
+
+			<form name="registrationform" id="registrationform" method="post" action="register" enctype="multipart/form-data">
+				{{ csrf_field() }}
+
+				<input type="hidden" name="id_role" value="2">
+
+                <div class="input-field input-field--select input-field--center">
+				<select id="id_city" name="id_city" class="dropdown dropdown--light">
+					<option selected disabled >Seleziona una città...</option>
+
+					{% for city in cities %}
+						<option value="{{ city.id }}">{{ city.name }}</option>
+					{% endfor %}
+				</select>
+                </div>
+
+                <div class="input-field input-field--select input-field--center">
+				<select id="gender" name="gender" class="dropdown dropdown--light">
+					<option selected disabled required>Sesso</option>
+					<option value="m">Maschio</option>
+					<option value="f">Femmina</option>
+				</select>
+                </div>
+
+
+				<div class="input-field">
+					<label for="name"></label>
+					<input id="name" type="text" name="name" value="" autocomplete="off" placeholder="nome" data-validation="" required="required">
+				</div>
+
+				<div class="input-field">
+					<label for="surname"></label>
+					<input id="surname" type="text" name="surname" value="" autocomplete="off" placeholder="cognome" data-validation="" required="required">
+				</div>
+
+				<div class="input-field">
+					<label for="mobile_phone"></label>
+					<input id="mobile_phone" type="text" name="mobile_phone" value="" autocomplete="off" placeholder="cellulare" data-validation="">
+				</div>
+
+				<div class="input-field">
+					<label for="email"></label>
+					<input id="email" type="email" name="email" value="" autocomplete="off" placeholder="email" data-validation="">
+				</div>
+
+				<div class="input-field">
+					<label for="password"></label>
+					<input id="password" type="password" name="password" value="" autocomplete="off" placeholder="password" data-validation="" required="required">
+				</div>
+
+				<div class="input-field">
+					<label for="confirm_password"></label>
+					<input id="confirm_password" type="password" name="confirm_password" value="" autocomplete="off" placeholder="conferma password" data-validation="" required="required">
+				</div>
+
+				<div class="cta-container cta-container--center">
+					<button type="submit" class="loginform cta cta--enter cta--yellow">iscriviti</button>
+				</div>
+			</form>
+
+			<div style="border:1px solid #fff; margin-top: 20px;"></div>
+
+			<span class="section-title">Registrazione circolo</span>
+
+			<!-- registration-form.twig section -->
+			<div class="registration-form">
+
+				<link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v=1.0.4">
+
+				<div class="container">
+					<form name="registrationform" id="registrationform" method="post" action="register-club" enctype="multipart/form-data">
+						{{ csrf_field() }}
+
+						<input type="hidden" name="id_role" value="3">
+                		<div class="input-field input-field--select input-field--center">
+							<select id="id_city" name="id_city" class="dropdown dropdown--light">
+								<option selected disabled >Seleziona una città...</option>
+
+								{% for city in cities %}
+									<option value="{{ city.id }}">{{ city.name }}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+						<div class="input-field">
+							<label for="name"></label>
+							<input id="name" type="text" name="name" value="" autocomplete="off" placeholder="nome responsabile" data-validation="" required="required">
+						</div>
+
+						<div class="input-field">
+							<label for="surname"></label>
+							<input id="surname" type="text" name="surname" value="" autocomplete="off" placeholder="cognome responsabile" data-validation="" required="required">
+						</div>
+
+						<div class="input-field">
+							<label for="club_name"></label>
+							<input id="club_name" type="text" name="club_name" value="" autocomplete="off" placeholder="nome circolo" data-validation="" required="required">
+						</div>
+
+						<div class="input-field">
+							<label for="email"></label>
+							<input id="email" type="email" name="email" value="" autocomplete="off" placeholder="email" data-validation="" required="required">
+						</div>
+
+						<div class="input-field">
+							<label for="mobile_phone"></label>
+							<input id="mobile_phone" type="text" name="mobile_phone" value="" autocomplete="off" placeholder="cellulare" data-validation="" required="required">
+						</div>
+
+						<div class="input-field">
+							<label for="indirizzo"></label>
+							<input id="indirizzo" type="text" name="indirizzo" value="" autocomplete="off" placeholder="indirizzo" data-validation="" required="required">
+						</div>
+
+						<div class="input-field">
+							<label for="password"></label>
+							<input id="password" type="password" name="password" value="" autocomplete="off" placeholder="password" data-validation="" required="required">
+						</div>
+
+						<div class="input-field">
+							<label for="confirm_password"></label>
+							<input id="confirm_password" type="password" name="confirm_password" value="" autocomplete="off" placeholder="conferma password" data-validation="" required="required">
+						</div>
+
+						<div class="cta-container cta-container--center">
+							<button type="submit" class="loginform cta cta--enter cta--yellow">iscriviti</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</article>

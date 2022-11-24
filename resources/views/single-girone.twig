@@ -1,0 +1,64 @@
+{% extends "base.twig" %}
+{% import 'components/partials/tabs.twig' as tabs %}
+
+{% block head %}
+<title>{{ site.name}} - </title>
+{{ parent() }}
+{% endblock %}
+
+{% block bodyclass %}
+	single-girone bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+
+<!--single-girone.twig page -->
+{% set queryItem = next[0].zones[1] %}
+
+<div class="single single-girone">
+	<div class="container">
+		<section>
+
+				
+
+					<div class="cta-container flex flex--between">
+						<a href="./page-torneo" class="cta cta--yellow cta--rounded cta--back">Torna al torneo</a>
+						<a href="./single-classifica-girone" class="cta cta--yellow cta--rounded">Classifica</a>
+						<a href="./page-tabellone" class="cta cta--enter cta--yellow cta--rounded">Tabellone</a>
+					</div>
+
+				<div class="tabs tabs--giornate">
+
+						 {{ tabs.tabs([
+								 {label:'Roma Sud', id: 'romasud', link: '/', group: 'zone', checked: 'checked'},
+								 {label:'Roma Nord', id: 'romanord', link: '/', group: 'zone'},
+								 {label:'Roma Centro', id: 'romacentro', link: '/', group: 'zone'},								 
+							 ])
+						 }}
+
+
+						 {{ tabs.tabs([
+								 {label:'1a giornata..', id: 'giornata1', group: 'giornate', checked: 'checked'},
+								 {label:'2a giornata', id: 'giornata2', group: 'giornate'},
+								 {label:'3a giornata', id: 'giornata3', group: 'giornate'},								 
+							 ])
+						 }}
+
+						 {{ tabs.tabs([
+								 {label:'1a giornata', id: 'giornata1', group: 'giornate', checked: 'checked'},
+								 {label:'2a giornata', id: 'giornata2', group: 'giornate'},
+								 {label:'3a giornata', id: 'giornata3', group: 'giornate'},
+								 {label:'4a giornata', id: 'giornata4', group: 'giornate'},
+								 {label:'5a giornata', id: 'giornata5', group: 'giornate'},
+								 {label:'6a giornata', id: 'giornata6', group: 'giornate'},
+								 {label:'7a giornata', id: 'giornata7', group: 'giornate'},
+								 {label:'8a giornata', id: 'giornata8', group: 'giornate'},
+							 ])
+						 }}
+
+					 
+				</div>
+		</section>
+	</div>
+</div>
+{% endblock %}

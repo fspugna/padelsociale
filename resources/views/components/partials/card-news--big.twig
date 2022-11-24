@@ -1,0 +1,56 @@
+<!-- card-news--big.twig partial -->
+
+<article class="card card-news--big">
+
+	{% if loop.index <= 1 and cardnewsbig is not defined or loop.index is not defined and cardnewsbig is not defined %}
+
+	<link rel="stylesheet" href="/resources/assets/css/components/partials/card-news--big.css?v={{version}}" />
+
+	{% endif %}
+
+	<div class="card__thumbnail card__thumbnail--big"> <!-- card__thumbnail--podcast, card__thumbnail--video to add icons-->
+		<picture  data-link="/news/{{ queryItem.permalink }}">
+			<img class="lazyload" data-srcset="{{ queryItem.srcImgCardBig }}, {{ queryItem.srcImgCardBigx2 }} 2x" alt="{{ queryItem.title }}"/>
+		</picture>
+		<noscript>
+				<picture>
+						<!--[if IE 9]><video style="display: none;"><![endif]-->
+						<source srcset="{{ queryItem.srcImgCardBig }}" media="(max-width: 736px)"/>
+						<!--[if IE 9]></video><![endif]-->
+						<img src="{{ queryItem.srcImgCardBig }}" alt="{{ queryItem.title }}"/>
+				</picture>
+		</noscript>
+
+	</div>
+	<div class="card__content">
+		<a href="/news/{{ queryItem.permalink }}">
+			<div class="card__title">
+				<h3>{{ queryItem.title }}</h3>
+			</div>
+			<time datetime="{{ queryItem.excerpt }}">{{ queryItem.excerpt|date('d F Y', "Europe/Rome") }}</time>
+			<p class="abstract_news ">{{ queryItem.content|striptags|str_limit(100) }} </p>
+		</a>
+	</div>
+	<div class="card__separator">
+		<div style="padding: 0px 30px; justify-content: center;"  class="card_footer_news ">
+			<ul>
+				<li style="padding: 0px 25px;"><a href="https://www.facebook.com/ladisfidadipadel/" target="_blank">
+				<i style="font-size: 32px; margin-left: 0px; margin-bottom: 12px;" class="fab fa-facebook-square"></i>
+				<span></span>
+				</a>
+				</li>
+				<li style="padding: 0px 25px;"><a href="https://www.instagram.com/amatori_padel/?hl=it" target="_blank">
+				<i style="font-size: 32px; margin-left: 0px; margin-bottom: 12px;"  class="fab fa-instagram"></i>
+				<span></span>
+				</a>
+				</li>
+				<li style="padding: 0px 25px;"><a href="https://twitter.com/ladisfidadipadel" target="_blank">
+				<i style="font-size: 32px; margin-left: 0px;margin-bottom: 12px;"  class="fab fa-twitter-square"></i></a>
+				</li>
+				<li style="padding: 0px 25px;"><a href="https://www.youtube.com/channel/UC5JI2Rs696XhT9kCpSS6h9g?view_as=subscriber" target="_blank">
+				<i style="font-size: 32px; margin-left: 0px; margin-bottom: 12px;"  class="fab  fa-youtube-square"></i></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</article>

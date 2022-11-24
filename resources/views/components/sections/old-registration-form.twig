@@ -1,0 +1,37 @@
+<!-- registration-form.twig section -->
+{% import 'components/partials/forms.twig' as forms %}
+
+<div class="registration-form">
+
+{% if loop.index <= 1 and registrationform is not defined or loop.index is not defined and registrationform is not defined %}
+
+<link rel="stylesheet" href="/resources/assets/css/components/sections/registration-form.css?v={{version}}" />
+
+{% endif %}
+
+
+	<div class="container">
+		<form name="registrationform" id="registrationform" method="post" action="register" enctype="multipart/form-data">
+			{{ csrf_field() }}
+
+			<input type="hidden" name="id_role" value="2">
+
+			<div class="input-field input-field--file forms-js">
+				<input type="file" id="image" name="profile_image" onchange="readURL(this);" hidden />
+				<label for="image"><span>+</span></label>
+				<div class="input__image-container">
+					<img id="input__image-container__preview" src="/resources/assets/images/avatar-placeholder-white.svg" alt="il tuo avatar" />
+				</div>
+			</div>
+			<p class="section-title section-title--no-separator section-title--small">Sei un circolo? Registrati <a href="/register-club">qui</a></p>
+			{{ forms.inputField('name', 'name', '', 'text', 'nome completo', '', 'required', '') }}
+			{{ forms.inputField('email', 'email', '', 'email', 'email', '', 'required', '') }}
+			{{ forms.inputField('password', 'password', '', 'password', 'password', '', 'required', '') }}
+			{{ forms.inputField('confirm_password', 'confirm_password', '', 'password', 'conferma password', '', 'required', '') }}
+			<div class="cta-container cta-container--center">
+				<button type="submit" class="loginform cta cta--enter cta--yellow">iscriviti</button>
+			</div>
+		</form>
+	</div>
+
+</div>

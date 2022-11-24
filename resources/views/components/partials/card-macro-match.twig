@@ -1,0 +1,342 @@
+<!-- card-macro-match.twig partial -->
+<div class="card card-match" data-match-id="{{match.id}}" style="transition: height 0.15s ease-out;">
+
+    <div class="card__inner flex flex--column">
+        <div style="justify-content: center; -webkit-justify-content: center;" class="flex">
+            <div class="card-match__team">
+
+                <div class="player">
+                    <div class="divTable" style="display: table-cell;justify-content: space-between;">
+                        <div class="divTableBody">
+                            <div class="divTableRow" style=" justify-content: space-between;">
+
+                                <div class="divTableCell" style="display: table-cell;vertical-align: middle;padding: 3px;/* max-width: 150px; *//* min-width: 150px; */text-align: right;">
+                                    <div class="player__name" style="font-size: 13px;min-width: 70px;max-width: 70px;text-align: right;">
+                                        <a href="/macro_teams/{{macroMatch.team1.id}}/show">{{ macroMatch.team1.name }}</a>
+                                    </div>
+                                </div>
+
+                                {% set avatar = '' %}
+                                {% for meta in macroMatch.team1.club.user.metas %}
+                                    {% if meta.meta == 'avatar' %}
+                                        {% set avatar = '/storage/' ~ meta.meta_value %}
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if avatar != '' %}
+                                    <div style="display: table-cell;vertical-align: middle;padding: 3px;min-width: 35px;" class="divTableCell">
+                                        <div style="border: 2px solid #fff;width: 35px;border-radius: 50%;overflow: hidden;">
+
+                                            <picture>
+                                                <img class=" lazyloaded"
+                                                     data-srcset="{{avatar}}, {{avatar}} 2x"
+                                                     alt="{{ macroTeam.name }}"
+                                                     srcset="{{avatar}}, {{avatar}} 2x">
+                                            </picture>
+
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="vs-macro">
+                <span>VS</span>
+            </div>
+            <div class="card-match__team">
+
+                <div class="player">
+                    <div class="divTable" style="display: table-cell;justify-content: space-between;">
+                        <div class="divTableBody">
+                            <div class="divTableRow" style=" justify-content: space-between;">
+
+                                {% set avatar = '' %}
+                                {% for meta in macroMatch.team2.club.user.metas %}
+                                    {% if meta.meta == 'avatar' %}
+                                        {% set avatar = '/storage/' ~ meta.meta_value %}
+                                    {% endif %}
+                                {% endfor %}
+
+                                <div class="divTableCell" style="display: table-cell;vertical-align: middle;padding: 3px;min-width: 35px;">
+                                    <div style="border: 2px solid #fff;width: 35px;border-radius: 50%;overflow: hidden;">
+                                        <picture data-link="/players/{{ player.id }}/show">
+                                            <img class="lazyload" data-srcset="{{ avatar }}, {{ avatar }} 2x" alt="{{ player.name }} {{ player.surname }}"/>
+                                        </picture>
+                                        <noscript>
+                                        <picture>
+                                            <!--[if IE 9]><video style="display: none;"><![endif]-->
+                                            <source
+                                                srcset="{{ avatar }}" media="(max-width: 736px)"/>
+                                            <!--[if IE 9]></video><![endif]-->
+                                            <img src="{{ avatar }}" alt="{{ player.name }} {{ player.surname }}"/>
+                                        </picture>
+                                        </noscript>
+                                    </div>
+                                </div>
+
+                                <div class="divTableCell" style="display: table-cell;vertical-align: middle;padding: 3px;/* max-width: 150px; *//* min-width: 150px; */text-align: right;">
+                                    <div class="player__name" style="font-size: 13px;min-width: 70px;max-width: 70px;text-align: left;">
+                                        <a href="/macro_teams/{{macroMatch.team2.id}}/show">{{ macroMatch.team2.name }}</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        {# Risultato #}
+        <div class="card__risultato" style=" text-align: center; color: #FFFFFF; margin-top: 10px;">
+
+            {% if macro_scores[macroMatch.id] == null %}
+                <span style="margin-top: 0px; margin-bottom: 15px;" class="section-title section-title--no-separator section-title--small">Da Disputare</span>
+            {% else %}
+
+                {% if macroMatch.a_tavolino == 0 %}
+                    <div class="card__title__risultato" style="color: #FFE200;text-align: center;font-size: 20px; ">Risultato</div>
+                {% elseif macroMatch.a_tavolino == 1 %}
+                    <div class="card__title__risultato" style="color: #FFE200;text-align: center;font-size: 20px; ">Risultato a tavolino</div>
+                {% endif %}
+                <div class="match__data" style="border-radius: 4px;display: inline-flex; justify-content: space-between;
+                -webkit-justify-content: space-between; color: #ffffff; padding: 4px; margin-bottom: 10px;">
+
+                    <div>
+                        <label style="font-size: 18px; color: #FFF; margin: auto 10px;">
+                            {{ macro_scores[macroMatch.id]['team1'] }} - {{ macro_scores[macroMatch.id]['team2'] }}
+                        </label>
+                    </div>
+
+                </div>
+
+                <p class="abstract_match" style="font-size: 18px;margin-top: 0px;margin-bottom: 10px;color: #FFF; text-align: center;">
+                    {{ macroMatch.note }}
+                </p>
+            {% endif %}
+        </div>
+        {# Fine risultato #}
+
+        {% if macroMatch.a_tavolino == 0 %}
+        <div class="card__separator" style="border-top: 1px solid white; margin-top: -5px;">
+            <div class="player">
+                <div class="divTable">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell" style="display: table-cell;vertical-align: middle;  max-width: 80%;">
+
+                                <div style="overflow: hidden;">
+
+
+                                    <div class="divTableCell" style="display: table-cell; vertical-align: middle; padding: 3px;">
+                                        <table style=" margin: 10px auto; color: #fff;">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="text-align: left; font-size: 18px;color: #FFE200;">Circolo:</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: left">
+                                                        {% if macroMatch.id_club %}
+                                                            <span class="rank" style="font-size: 18px; text-align: center;"><a  style="color: #ffffff;" href="/clubs/{{ macroMatch.club.id }}/show">{{ macroMatch.club.name }}</a></span>
+                                                            {% endif %}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="divTableCell" style="display:table-cell;vertical-align:middle;padding:3px;max-width:160px; text-align: center;"></div>
+                            <div class="divTableCell" style="display: table-cell; vertical-align: middle; width: 20%;">
+
+                                {# Check covid #}
+                                {% if current_user.id_role == 1 %}
+                                <table style="margin-left: auto;margin-right: auto;text-align: center;color: #fff;">
+                                    <tbody>
+                                        <tr>
+
+                                            <td style="font-size: 17px;">
+                                                {% if macroMatch.id_club %}
+                                                    {{ macroMatch.date|date("d/m/Y") }}
+                                                {% else %}
+                                                    <div style="width: 145px;"></div>
+                                                <td style="font-size: 18px;padding-top: 10px;">Data</td>
+                                            {% endif %}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {% if macroMatch.id_club %}
+                                                    <span class="rank" style="font-size: 17px;color: #ffffff;display: inline-block;text-align: center;">
+                                                        {{ macroMatch.time|date("H:i") }}
+                                                    </span>
+                                                {% else %}
+                                                    <div style="width: 145px;"></div>
+                                                <td style="font-size: 18px;padding-top: 5px; padding-bottom: 5px;">Ora</td>
+                                            {% endif %}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card__separator" style="width: 100%; text-align: center; padding-top: 5px; border-top: 1px solid white;">
+                <a id="link_mostra_incontri_{{macroMatch.id}}" href="javascript:void(0);" onClick="mostraIncontri({{macroMatch.id}})">Mostra incontri</a>
+            </div>
+        </div>
+        {% endif %}
+
+        <div id="submatches_{{macroMatch.id}}" class="submatches" style="display: none;">
+            {# Jolly #}
+        <div style="justify-content: center; -webkit-justify-content: center; margin-bottom: 20px;" class="flex">
+            <div class="card-match__team">
+                {% if macroMatch.jolly_team1 is not empty %}
+                <div class="player">
+                    <div class="divTable" style="display: table-cell;justify-content: space-between;">
+                        <div class="divTableBody">
+                            <div class="divTableRow" style=" justify-content: space-between;">
+
+                                    <div class="divTableCell" style="display: table-cell;vertical-align: middle;padding: 3px;/* max-width: 150px; *//* min-width: 150px; */text-align: right;">
+
+                                        <div class="player__name" style="font-size: 11px;min-width: 70px;max-width: 140px;text-align: right;color:#FFE200">
+                                            <strong>Jolly</strong>
+                                        </div>
+
+                                        <div class="player__name" style="font-size: 13px;min-width: 70px;max-width: 140px;text-align: right;">
+
+                                            {{ macroMatch.jolly1.name }} {{ macroMatch.jolly1.surname }}
+
+                                        </div>
+                                    </div>
+
+                                    {% set avatar = '' %}
+                                    {% for meta in macroMatch.team1.club.user.metas %}
+                                        {% if meta.meta == 'avatar' %}
+                                            {% set avatar = '/storage/' ~ meta.meta_value %}
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {% if avatar != '' %}
+                                        <div style="display: table-cell;vertical-align: middle;padding: 3px;min-width: 35px;" class="divTableCell">
+                                            <div style="border: 2px solid #fff;width: 35px;border-radius: 50%;overflow: hidden;">
+
+                                                <picture>
+                                                    <img class=" lazyloaded"
+                                                         data-srcset="{{avatar}}, {{avatar}} 2x"
+                                                         alt="{{ macroTeam.name }}"
+                                                         srcset="{{avatar}}, {{avatar}} 2x">
+                                                </picture>
+
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <div></div>
+
+            <div class="card-match__team">
+                {% if macroMatch.jolly_team2 is not empty %}
+                <div class="player">
+                    <div class="divTable" style="display: table-cell;justify-content: space-between;">
+                        <div class="divTableBody">
+
+                            <div class="divTableRow" style=" justify-content: space-between;">
+
+                                {% set avatar = '' %}
+                                {% for meta in macroMatch.team2.club.user.metas %}
+                                    {% if meta.meta == 'avatar' %}
+                                        {% set avatar = '/storage/' ~ meta.meta_value %}
+                                    {% endif %}
+                                {% endfor %}
+
+                                <div class="divTableCell" style="display: table-cell;vertical-align: middle;padding: 3px;min-width: 35px;">
+                                    <div style="border: 2px solid #fff;width: 35px;border-radius: 50%;overflow: hidden;">
+                                        <picture data-link="/players/{{ player.id }}/show">
+                                            <img class="lazyload" data-srcset="{{ avatar }}, {{ avatar }} 2x" alt="{{ player.name }} {{ player.surname }}"/>
+                                        </picture>
+                                        <noscript>
+                                        <picture>
+                                            <!--[if IE 9]><video style="display: none;"><![endif]-->
+                                            <source
+                                                srcset="{{ avatar }}" media="(max-width: 736px)"/>
+                                            <!--[if IE 9]></video><![endif]-->
+                                            <img src="{{ avatar }}" alt="{{ player.name }} {{ player.surname }}"/>
+                                        </picture>
+                                        </noscript>
+                                    </div>
+                                </div>
+
+                                <div class="divTableCell" style="display: table-cell;vertical-align: middle;padding: 3px;/* max-width: 150px; *//* min-width: 150px; */text-align: right;">
+                                    <div class="player__name" style="font-size: 11px;min-width: 70px;max-width: 140px;text-align: left;color:#FFE200">
+                                        <strong>Jolly</strong>
+                                    </div>
+                                    <div class="player__name" style="font-size: 13px;min-width: 70px;max-width: 140px;text-align: left;">
+                                        {{ macroMatch.jolly2.name }} {{ macroMatch.jolly2.surname }}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+        {# fine jolly #}
+            <ul>
+                {% for match in macroMatch.subMatches %}
+                    <div  style="margin-bottom: 0px;"  >
+                        <li style="margin: 2px;" >
+                            {% include 'components/partials/card-submatch.twig' %}
+                        </li>
+                    </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    function mostraIncontri(id_macro_match){
+        $(".submatches").hide();
+        $("#submatches_"+id_macro_match).toggle();
+
+        if( $("#link_mostra_incontri_"+id_macro_match).text() == 'Mostra incontri' ){
+            $("#submatches_"+id_macro_match).show();
+            $("#link_mostra_incontri_"+id_macro_match).text("Nascondi incontri");
+        }else{
+            $("#submatches_"+id_macro_match).hide();
+            $("#link_mostra_incontri_"+id_macro_match).text("Mostra incontri");
+        }
+
+        var link_mi = document.getElementById("#link_mostra_incontri_"+id_macro_match);
+        if(link_mi){
+            window.scrollTo({
+              'behavior': 'smooth',
+              'left': 0,
+              'top': link_mi.offsetTop
+            });
+        }
+
+    }
+</script>

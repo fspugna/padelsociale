@@ -1,0 +1,82 @@
+<tr class="lineTeam">
+    <td>
+        <div class="card-team-classifica">
+            <div class="card__inner">
+
+                {% set macroTeam = teamClassification['team'] %}
+                                                                
+                
+                    <div class="player ">
+                        <div class="divTable">
+                            <div class="divTableBody">
+                                <div class="divTableRow" style=" justify-content: space-between;">
+
+                                    <div style="display: table-cell;vertical-align: middle;padding: 3px; text-align: right;" class="divTableCell">
+                                        <div class="player__name" style="font-size: 13px;min-width: 70px;max-width: 70px;text-align: right;color: #fff;">
+                                            <a href="/macro_teams/{{ macroTeam.id }}/show">{{ macroTeam.name }}</a>
+                                            
+                                            {% set avatar = '' %}
+                                            {% for meta in macroTeam.club.user.metas %}
+                                                {% if meta.meta == 'avatar' %}
+                                                    {% set avatar = '/storage/' ~ meta.meta_value %}
+                                                {% endif %}
+                                            {% endfor %}
+                                                                                        
+                                        </div>
+                                    </div>
+
+                                        
+                                    {% if avatar != '' %}
+                                    <div style="display: table-cell;vertical-align: middle;padding: 3px;min-width: 35px;" class="divTableCell">
+                                        <div style="border: 2px solid #fff;width: 35px;border-radius: 50%;overflow: hidden;">
+                                            <a href="/macro_teams/{{ macroTeam.id }}/show">
+                                            <picture>
+                                                <img class=" lazyloaded" 
+                                                data-srcset="{{avatar}}, {{avatar}} 2x" 
+                                                alt="{{ macroTeam.name }}" 
+                                                srcset="{{avatar}}, {{avatar}} 2x">
+                                            </picture>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    
+                                    <div style="display: table-cell; vertical-align: middle; padding: 3px;" class="divTableCell">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+
+            </div>
+        </div>
+    </td>
+
+
+    <td class="TDvalue">
+        <div class="card__footer card__footer--separated">
+            <div>
+                <span class="card__footer__value">{{ teamClassification['classification']['games_won'] - teamClassification['classification']['games_lost'] }}</span>
+            </div>
+        </div>
+    </td>
+   
+     <td class="TDvalue">
+        <div class="card__footer card__footer--separated">
+            <div>
+                <span class="card__footer__value">{{ teamClassification['classification']['played'] }}</span>
+            </div>
+        </div>
+    </td>
+   
+    
+     <td class="TDvalue">
+        <div class="card__footer card__footer--separated">
+            <div>
+                <span class="card__footer__value" >{{ teamClassification['classification']['games_won'] }} / {{ teamClassification['classification']['games_lost'] }}</span>
+            </div>
+        </div>
+    </td>
+   
+</tr>

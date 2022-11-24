@@ -1,0 +1,11 @@
+/* card-team-categoria.twig styles */
+/* line 5, ../../../../../src/sass/components/partials/card-team-categoria.scss */
+.card-team-categoria { background: none !important; border: none !important; margin: 0 12px 24px !important; }
+/* line 10, ../../../../../src/sass/components/partials/card-team-categoria.scss */
+.card-team-categoria .card__inner { background-color: rgba(0, 0, 0, 0.5); border-radius: 8px; border: 2px solid #fff; display: flex; padding: 12px; justify-content: space-evenly; }
+/* line 19, ../../../../../src/sass/components/partials/card-team-categoria.scss */
+.card-team-categoria .player { margin-bottom: 16px; }
+/* line 22, ../../../../../src/sass/components/partials/card-team-categoria.scss */
+.card-team-categoria .player .card__thumbnail { width: 100px; height: 100px; border-radius: 50%; border: 2px solid #fff; overflow: hidden; margin-bottom: 12px; }
+/* line 31, ../../../../../src/sass/components/partials/card-team-categoria.scss */
+.card-team-categoria .player .player__name { color: #fff; font-family: "Avenir", serif; font-weight: bold; text-align: center; }

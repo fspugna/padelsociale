@@ -1,0 +1,21 @@
+{% extends "base.twig" %}
+
+{% block head %}
+<title>{{ site.name}} - Login</title>
+{{ parent() }}
+{% endblock %}
+
+{% block bodyclass %}
+	login-page bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+
+<!--page-login.twig page -->
+
+<div class="page page-login">
+	<section>
+		{% include 'components/sections/login-form.twig' %}
+	</section>
+</div>
+{% endblock %}

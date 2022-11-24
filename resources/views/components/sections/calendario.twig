@@ -1,0 +1,56 @@
+<div class="section-title section-title--no-separator"><span style=" margin-bottom: -10px; ">Calendario</span></div>
+<div class="flex flex--column flex--center">
+    <ul  class="flex flex--column">					
+        {% for round in rounds %}
+            <div class="card-ra-div">
+                <div style="border: 2px solid #FFE200; margin-top: 30px; margin-bottom: 10px;" class="card card-ranking">
+                    <link href="/resources/assets/css/components/partials/card-match.css?v=1.0.4" rel="stylesheet">
+                    <div class="card__inner-ranking flex flex--column">
+                        <div style="width:100%;">
+
+                            <div style="margin-bottom: -10px; margin-top: 5px;" class="card-content section-title section-title--no-separator section-title--small">					
+                                {% if round.name == '1' %}
+                                    Prima Giornata
+                                {% elseif round.name == '2' %}
+                                    Seconda Giornata
+                                {% elseif round.name == '3' %}
+                                    Terza Giornata
+                                {% elseif round.name == '4' %}
+                                    Quarta Giornata
+                                {% elseif round.name == '5' %}
+                                    Quinta Giornata
+                                {% elseif round.name == '6' %}
+                                    Sesta Giornata
+                                {% elseif round.name == '7' %}
+                                    Settima Giornata
+                                {% elseif round.name == '8' %}
+                                    Ottava Giornata
+                                {% elseif round.name == '9' %}
+                                    Nona Giornata
+                                {% elseif round.name == '10' %}
+                                    Decima Giornata
+                                {% else %}
+                                    Giornata {{ round.name }}
+                                {% endif %}
+                            </div>
+
+                            <div style="margin-bottom:5px;" class="card-content section-title section-title--no-separator section-title--small">
+                                <i>{{ round.description }}</i>
+                            </div>	
+
+                        </div>
+                    </div>
+                </div>
+            </div>							
+            {% for match in round.matches %}
+                {% if match.id_team1 > 0 or match.id_team2 > 0 %}
+                    <div  style="margin-bottom: 0px;"  >
+                        <li style="margin: 2px;" >												
+                            {% include 'components/partials/card-match.twig' %}
+                        </li>
+                    </div>
+                {% endif %}
+            {% endfor %}										
+        {% endfor %}
+    </ul>
+</div>

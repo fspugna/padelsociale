@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="it" class="no-js">
+<head>
+
+	{# Head #}
+	{% include 'components/partials/partial-head.twig' %}
+	{% block head %}{% endblock %}
+</head>
+<body class="{% block bodyclass %}{% endblock %}">
+
+	<!-- base.twig -->
+	<div class="base swiper chosen-js main-ladisfidadipadel-js">
+		{% include 'components/sections/header.twig' %}
+		<div class="wrapper">
+			<div class="container">
+
+				{# Block content #}
+				{% block content %}{% endblock %}
+
+			</div>
+			{% include 'components/sections/footer.twig' %}
+		</div>
+	</div>
+	<div class="bg-container">
+		<img class="bg-frontpage" src="/resources/assets/images/bg-frontpage.jpg" />
+	</div>
+
+        <script src="/resources/assets/js/libs/jquery.min.js"></script>
+
+	{# Custom modules loader #}
+	{% include 'components/partials/customModulesLoader.twig' %}
+
+	<script src="/resources/assets/js/libs/picturefill.min.js"></script>
+	<script src="/resources/assets/js/libs/basket.min.js"></script>
+	<script src="/resources/assets/js/scriptloader.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha256-bqVeqGdJ7h/lYPq6xrPv/YGzMEb6dNxlfiTUHSgRCp8=" crossorigin="anonymous"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+
+	<script>picturefill();</script>
+
+	<script>
+	jQuery(document).ready(function(){
+
+		jQuery("#user-logo").click(function(){
+			jQuery("#user-menu").toggle();
+		});
+	});
+	</script>
+
+	<script>
+  /**
+   * forEach implementation for Objects/NodeLists/Arrays, automatic type loops and context options
+   *
+   * @private
+   * @author Todd Motto
+   * @link https://github.com/toddmotto/foreach
+   * @param {Array|Object|NodeList} collection - Collection of items to iterate, could be an Array, Object or NodeList
+   * @callback requestCallback      callback   - Callback function for each iteration.
+   * @param {Array|Object|NodeList} scope=null - Object/NodeList/Array that forEach is iterating over, to use as the this value when executing callback.
+   * @returns {}
+   */
+    var forEach=function(t,o,r){if("[object Object]"===Object.prototype.toString.call(t))for(var c in t)Object.prototype.hasOwnProperty.call(t,c)&&o.call(r,t[c],c,t);else for(var e=0,l=t.length;l>e;e++)o.call(r,t[e],e,t)};
+    var hamburgers = document.querySelectorAll(".hamburger");
+
+    if (hamburgers.length > 0) {
+      forEach(hamburgers, function(hamburger) {
+        hamburger.addEventListener("click", function() {
+          this.classList.toggle("is-active");
+        }, false);
+      });
+    }
+  </script>
+
+    <script>
+    function hideAlert() {
+      var alert = document.querySelector('.alert');
+        alert.style.display = "none";
+    }
+    </script>
+
+
+	{% block scripts %}{% endblock %}
+
+    <div class="alertDiv">
+	{% if errors.any() %}
+		<div class="alert alert-danger">
+		<ul>
+			{% for error in errors.all() %}
+			<li>{{ error }}</li>
+			{% endfor %}</ul>
+            <button type="button" style="color:yellow; border:2px solid #fff;" onclick="hideAlert()">OK</button>
+        </div>
+	{% endif %}
+     </div>
+
+
+
+
+    <div class="alertBlockDiv">
+
+	{% if  session_get('message') %}
+	<div class="alert alert-message alert-block">
+		{{ session_get('message') }}
+            <button style="color:yellow; border:2px solid #fff;" onclick="hideAlert()">OK</button>
+	</div>
+	{% endif %}
+
+    </div>
+
+
+<script>
+
+		document.addEventListener("DOMContentLoaded", function(){
+
+			showBanners();
+
+			setInterval(function(){
+				showBanners();
+			}, 3000);
+
+		});
+
+		function showBanners(){
+			var interval = [];
+			var banners_positions = document.querySelectorAll('article.banner');
+
+			var prev_banner = null;
+			var prev_partner = null;
+
+			for(var i=0; i<banners_positions.length; i++){
+				var current_banner = banners_positions[i];
+				var banners = current_banner.querySelectorAll('.banner-img');
+
+				for(var j=0; j<banners.length; j++){
+					if( banners[j].classList.contains('banner-selected') ){
+						banners[j].classList.remove('banner-selected')
+						prev_banner = j;
+						prev_partner = banners[j].dataset.idPartner;
+					}
+				}
+
+				if( banners.length > 1){
+					attempts = 0;
+					do{
+						min = 0;
+						max = banners.length;
+						sel_banner = Math.floor(Math.random() * (max - min)) + min;
+						new_partner = banners[sel_banner].dataset.idPartner;
+						attempts++;
+					}while( (sel_banner==prev_banner || new_partner==prev_partner) && attempts<10);
+					//console.log("trovato", prev_partner, new_partner, attempts);
+				}else{
+					sel_banner = 0;
+				}
+
+				banners[sel_banner].classList.add('banner-selected');
+			}
+		}
+
+	</script>
+
+</body>
+</html>

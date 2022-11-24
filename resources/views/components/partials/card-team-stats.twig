@@ -1,0 +1,100 @@
+<tr class="lineTeam" data-id-team="{{ teamClassification['classification']['id_team'] }}">
+        <td>
+        <div class="card-team-classifica">
+        	<div class="card__inner">
+
+				{% for teamPlayer in teamClassification['players'] %}	
+
+					{% if teamPlayer.starter %}
+						
+						{% set avatar = '' %}	
+						{% for meta in teamPlayer.player.metas %}
+							{% if meta.meta == 'avatar' %}								
+								{% set avatar = '/storage/' ~ meta.meta_value  %}
+							{% endif %}
+						{% endfor %}						
+
+						{% if avatar == '' %}	
+							{% if teamPlayer.player.gender == 'f' %}
+								{% set avatar = 'https://cdn.xl.thumbs.canstockphoto.es/padel-mujer-jugador-vectores-eps_csp69229035.jpg' %}
+							{% else %}
+								{% set avatar = 'https://comps.canstockphoto.es/padel-jugador-figura-vectores-eps_csp61076734.jpg' %}		
+							{% endif %}
+						{% endif %}							
+
+						
+							<div class="player ">
+								<div class="divTable">
+								<div class="divTableBody">
+									<div class="divTableRow" style=" justify-content: space-between;">
+				
+									<div style="display: table-cell;vertical-align: middle;padding: 3px; text-align: right;" class="divTableCell">
+										<div class="player__name" style="font-size: 13px;min-width: 70px;max-width: 70px;text-align: right;color: #fff;">
+                                                                                    <a href="/players/{{ teamPlayer.id_player }}/show">{{ teamPlayer.player.name }} {{ teamPlayer.player.surname }}</a>
+										</div>
+									</div>
+				
+									<div style="display: table-cell;vertical-align: middle;padding: 3px;min-width: 35px;" class="divTableCell">
+										<div style="border: 2px solid #fff;width: 35px;border-radius: 50%;overflow: hidden;">
+											<picture data-link="/players/{{ teamPlayer.id_player }}/show">
+												<img class=" lazyloaded" 
+												data-srcset="{{avatar}}, {{avatar}} 2x" 
+												alt="{{ teamPlayer.player.name }} {{ teamPlayer.player.surname }}" 
+												srcset="{{avatar}}, {{avatar}} 2x">
+											</picture>
+											<noscript>
+												<picture>
+													<!--[if IE 9]><video style="display: none;"><![endif]-->
+													<source srcset="" media="(max-width: 60px)"/>
+													<!--[if IE 9]></video><![endif]-->
+													<img src="" alt="{{ teamPlayer.player.name }} {{ teamPlayer.player.surname }}"/>
+												</picture>
+											</noscript>
+										</div>
+									</div>
+									<div style="display: table-cell; vertical-align: middle; padding: 3px;" class="divTableCell">
+									</div>
+									</div>
+								</div>
+								</div>
+							</div>
+						
+					{% endif %}
+				{% endfor %}							        		
+        
+        	</div>
+        </div>
+        </td>
+
+		
+		<td class="TDvalue">
+    		<div class="card__footer card__footer--separated">
+    			<div>
+				<span class="card__footer__value">{{ teamClassification['classification']['points'] }}</span>
+    			</div>
+    		</div>
+        </td>
+		<td class="TDvalue">
+    		<div class="card__footer card__footer--separated">
+    			<div>
+				<span class="card__footer__value">{{ teamClassification['classification']['played'] }}</span>
+    			</div>
+    		</div>
+        </td>
+		<td class="TDvalue">
+    		<div class="card__footer card__footer--separated">
+    			<div>
+				<span class="card__footer__value">{{ teamClassification['classification']['set_won'] }} / {{ teamClassification['classification']['set_lost'] }}</span>
+    			</div>
+    		</div>
+        </td>
+		<td class="TDvalue">
+    		<div class="card__footer card__footer--separated">
+    			<div>
+				<span class="card__footer__value">{{ teamClassification['classification']['games_won'] }} / {{ teamClassification['classification']['games_lost'] }}</span>
+    			</div>
+    		</div>
+        </td>
+
+
+</tr>

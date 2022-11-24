@@ -1,0 +1,31 @@
+{% extends "base.twig" %}
+{% import 'components/partials/forms.twig' as forms %}
+
+{% block head %}
+<title>{{ site.name}} - </title>
+{{ parent() }}
+<link rel="stylesheet" href="resources/assets/css/components/partials/forms.css" />
+{% endblock %}
+
+{% block bodyclass %}
+	page-iscrizione bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+
+<div class="page page-iscrizione">
+	<div class="container">
+
+		<section>
+			<div class="section-title"><h1>Richiesta d'Iscrizione inviata con successo!</h1></div>			
+			<div class="card-content section-title section-title--no-separator section-title--small"><p class="abstract">Abbiamo ricevuto la tua richiesta d'iscrizione al torneo. Non appena sarai inserito nelle liste del torneo riceverai una nostra comunicazione!</p></div>
+		</section>
+
+		<div class="cta-container flex flex--between">
+			<a href="#" onclick="javascript:window.history.back()" class="cta cta--yellow cta--rounded cta--back">Torna al torneo</a>
+			<!--a href="./page-tabellone" class="cta cta--enter cta--yellow cta--rounded">Tabellone</a-->
+		</div>
+		
+	</div>
+</div>
+{% endblock %}

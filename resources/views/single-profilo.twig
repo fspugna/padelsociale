@@ -1,0 +1,435 @@
+{% extends "base.twig" %}
+
+{% block head %}
+	<title>{{ site.name}}
+		- Profilo giocatore</title>
+	{{ parent() }}
+	<link rel="stylesheet" href="/resources/assets/css/single-profilo.css"/>
+{% endblock %}
+
+{% block bodyclass %}
+	single-profilo bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+
+
+	<!--single-profilo.twig page -->
+	{% set queryItem = player %}
+
+	{% set avatar = '' %}
+
+	{% if metas['avatar'] != '' %}
+		{% set avatar = '/storage/' ~ metas['avatar']  %}
+	{% else %}
+		{% if queryItem.gender == 'f' %}
+			{% set avatar = 'https://cdn.xl.thumbs.canstockphoto.es/padel-mujer-jugador-vectores-eps_csp69229035.jpg' %}
+		{% else %}
+			{% set avatar = 'https://comps.canstockphoto.es/padel-jugador-figura-vectores-eps_csp61076734.jpg' %}
+		{% endif %}
+	{% endif %}
+
+
+	<div class="single single-profilo">
+		<div class="cta-container flex flex--between">
+			<a href="#" onclick="javascript:window.history.back()" class="cta cta--yellow cta--rounded cta--back">Indietro</a>
+			<!--a href="./page-tabellone" class="cta cta--enter cta--yellow cta--rounded">Tabellone</a-->
+		</div>
+
+
+		<div class="card card__inner flex flex--column card--teacher">
+
+			<span class="section-title section-title--no-separator">{{queryItem.name }}
+				{{queryItem.surname }}</span>
+
+			<div style="border: 1px solid #6E96CB;"></div>
+
+
+			<div style="border-top: 1px solid #6E96CB;" class="flex flex--between flex--row flex--center">
+
+				<div style="border-right: 1px solid #6E96CB; width: 50%; padding: 10px; align-items: center;" class="flex flex--column flex--between">
+
+
+					<div style="border-bottom: 1px solid #6E96CB; width: 100%;" class="circolo__name flex flex--column flex--center">
+						<div style="display: table-cell;justify-content: space-between;" class="divTable">
+							<div class="divTableBody">
+								<div class="divTableRow" style=" justify-content: space-between; margin: 10px;">
+									<div style=" display: table-cell;vertical-align: middle;padding: 3px; " class="divTableCell">
+										<div class="player__paese" style="font-size: 14px;min-width: 70px; color: #FFE200; text-align: center;">Paese:</div>
+										<div class="player__name_paese" style="font-size: 14px;min-width: 70px; color: #FFF; text-align: center;">{{ player.city.country.name }}</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="circolo__name flex flex--column flex--center" style="width: 100%;">
+						<div style="display: table-cell;justify-content: space-between;" class="divTable">
+							<div class="divTableBody">
+								<div class="divTableRow" style="justify-content: space-between; margin: 10px;">
+									<div style="display: table-cell;vertical-align: middle;padding: 3px;" class="divTableCell">
+										<div class="player__città" style="font-size: 14px; min-width: 70px;color: #FFE200; text-align: center;">Città:</div>
+										<div class="player__name_città" style="font-size: 14px; min-width: 70px;color: #FFF; text-align: center;">{{ player.city.name }}</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div style="border-top: 1px solid #6E96CB; width: 100%;" class="circolo__name flex flex--column flex--center">
+						<div style="display: table-cell;justify-content: space-between;" class="divTable">
+							<div class="divTableBody">
+								<div class="divTableRow" style=" justify-content: space-between; margin: 10px 0px 0px 0px;">
+									<div style="display: table-cell;vertical-align: middle;padding: 3px;" class="divTableCell">
+										<div class="player__paese" style="font-size: 14px;min-width: 110px; color: #FFE200; text-align: center;">Circolo preferito:</div>
+										<div class="player__name_paese" style="font-size: 14px;min-width: 110px; color: #FFF; text-align: center;">
+											<a href="/clubs/{{player.clubs.id}}/show">{{ player.clubs.name|raw }}</a>
+										</div>
+									</div>
+									<div style="display: flex; justify-content: center; vertical-align: middle;padding: 3px;min-width: 45px;" class="divTableCell">
+										{% if avatar_club %}
+											<a href="/clubs/{{player.clubs.id}}/show">
+												<div style="border: 1px solid #6E96CB; width: 45px;border-radius: 50%;overflow: hidden;">
+													<picture>
+														<img class=" lazyloaded" data-srcset="{{ avatar_club }} 2x" alt="Flavio Spugna" srcset="{{ avatar_club }}, {{ avatar_club }} 2x">
+													</picture>
+													<noscript>
+														<picture>
+															<!--[if IE 9]>
+															                              <video style="display: none;">
+															                                 <![endif]-->
+															<source
+															srcset="{{ avatar_club }}" media="(max-width: 736px)"/>
+															<!--[if IE 9]>
+															                              </video>
+															                              <![endif]-->
+															<img src="{{ avatar_club }}" alt=""/>
+														</picture>
+													</noscript>
+												</div>
+											</a>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+
+
+				<div style="display: inline-grid; width: 50%; padding: 10px; align-items: center;">
+
+					<div
+						style="border-radius: 50%; border: 1px solid #6E96CB;  margin: auto; width: 102%; overflow: auto;" class="">
+						<!-- card__thumbnail--podcast, card__thumbnail--video to add icons-->
+						<picture data-link="">
+							<img class=" lazyloaded" data-srcset="{{ avatar }}, {{ avatar }} 2x" alt="" srcset="{{ avatar }}, {{ avatar }} 2x">
+						</picture>
+					</div>
+				</div>
+
+
+			</div>
+
+			<div class="flex flex--between flex--row flex--center" style="border: 1px solid #6E96CB;">
+
+				<div class="flex flex--column flex--between" style="width: 100%; padding: 10px; align-items: center; border-right: 1px solid #6E96CB;">
+					<div class="circolo__name flex flex--column flex--center">
+						<span style="font-size: 22px;color: #fff; font-weight: bold">Ranking</span>
+						<span style="font-size: 26px;color: #FFE200; font-weight: bold">
+						{% if posizoine > 0 %}
+						{{ posizione }}
+						{% else %}
+						-
+						{% endif %}
+						</span>
+					</div>
+				</div>
+
+				<div class="flex flex--column flex--between" style="width: 100%; padding: 10px; align-items: center">
+					<div style="width: 100%;" class="circolo__name flex flex--column flex--center">
+						<span style="font-size: 14px;padding: 5px;color: #FFE200; border-bottom: 1px solid #6E96CB;text-align: center;width: 100%;">Punti:
+							<span style="font-size: 14px;padding: 5px; color: #fff; border-bottom: 1px solid #6E96CB;text-align: center; width: 100%;">							
+								{% if punti > 0 %}
+									{{ punti }}
+								{% else %}
+									-
+								{% endif %}
+							</span>
+						</span>
+						<span style="font-size: 14px; padding: 5px;color: #FFE200; text-align: center;width: 100%;">Livello:
+							<span style="font-size: 14px; padding: 5px; color: #fff; text-align: center; width: 100%;">
+								{% for key, meta in metas %}
+									{% if key == 'livello_di_gioco' %}
+										{{ meta_values[key][meta] }}
+									{% endif %}
+								{% endfor %}
+							</span>
+						</span>
+					</div>
+				</div>
+
+			</div>
+
+
+		</div>
+
+		<div class="card card__inner flex flex--column flex--center">
+			<span class="section-title section-title--no-separator">Info</span>
+			<div style="width: 100%">
+				<ul>
+					{% for key, meta in meta_values %}
+
+						{% if key != 'livello_di_gioco' and meta_private[key] == 0 %}
+							<li class="list-infos">
+								{% if meta_types[key] == 'string' %}
+									<label>{{ meta_labels[key] }}</label>
+									<span>
+										{% if metas[key] %}
+											{{ metas[key] }}
+										{% endif %}
+									</span>
+								{% elseif meta_types[key] == 'date' %}
+									<label>{{ meta_labels[key] }}
+									</label>
+									<span>
+										{% if metas[key] %}
+											{{ metas[key]|date('d/m/Y') }}
+										{% endif %}
+									</span>
+								{% elseif meta_types[key] == 'select'  %}
+									<label>{{ meta_labels[key] }}</label>
+									<span>{{ meta_values[key][metas[key]] }}</span>
+								{% endif %}
+							</li>
+						{% endif %}
+					{% endfor %}
+
+				</ul>
+			</div>
+		</div>
+
+
+		{#
+		  <div class="card card__inner flex flex--column flex--center">
+		    <span class="section-title section-title--no-separator">Valutazione dei giocatori</span>
+		    <div style="width: 100%">
+		      <ul>
+		        <li class="list-infos">
+		          <label>Dritto</label>
+		          <div class="progress-bar">
+		            <span style="--value: {{ sliders['dritto'] ?  sliders['dritto'] : "n.d"  }}%"></span>
+		          </div>
+		        </li>
+		        <li class="list-infos">
+		          <label>Rovescio</label>
+		          <div class="progress-bar">
+		            <span style="--value: {{ sliders['rovescio'] }}%"></span>
+		          </div>
+		        </li>
+		        <li class="list-infos">
+		          <label>Velocità</label>
+		          <div class="progress-bar">
+		            <span style="--value: {{ sliders['velocita'] }}%"></span>
+		          </div>
+		        </li>
+		        <li class="list-infos">
+		          <label>Potenza</label>
+		          <div class="progress-bar">
+		            <span style="--value: {{ sliders['potenza'] }}%"></span>
+		          </div>
+		        </li>
+		        <li class="list-infos">
+		          <label>Servizio</label>
+		          <div class="progress-bar">
+		            <span style="--value: {{ sliders['servizio'] }}%"></span>
+		          </div>
+		        </li>
+		        <li class="list-infos">
+		          <label>Attacco</label>
+		          <div class="progress-bar">
+		            <span style="--value: {{ sliders['attacco'] }}%"></span>
+		          </div>
+		        </li>
+		        <li class="list-infos">
+		          <label>Difesa</label>
+		          <div class="progress-bar">
+		            <span style="--value: {{ sliders['difesa'] }}%"></span>
+		          </div>
+		        </li>
+		        <li class="list-infos">
+		          <label>Esperienza</label>
+		          <div class="progress-bar">
+		            <span style="--value: {{ sliders['esperienza'] }}%"></span>
+		          </div>
+		        </li>
+		        <li class="list-infos">
+		          <label>Livello complessivo</label>
+		          <div class="progress-bar">
+		            <span style="--value: {{ sliders['livello_complessivo'] }}%"></span>
+		          </div>
+		        </li>
+		      </ul>
+		    </div>
+		  </div>
+
+
+
+		  #}
+
+        {#
+		<div class="card card__inner flex flex--column flex--center">
+			<span class="section-title section-title--no-separator">Statistiche</span>
+			<div style="width: 100%">
+				<ul>
+					<li class="list-infos">
+						<label>Eventi giocati</label>
+						<span>{{stats['eventi']}}</span>
+					</li>
+					<li class="list-infos">
+						<label>Partite giocate</label>
+						<span>{{stats['giocate']}}</span>
+					</li>
+					<li class="list-infos">
+						<label>Partite vinte</label>
+						<span>{{stats['vinte']}}</span>
+					</li>
+					<li class="list-infos">
+						<label>Partite perse</label>
+						<span>{{stats['perse']}}</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+        #}
+
+
+		<div class="card card__inner flex flex--column flex--center">
+
+			<nav class="header__main-menu">
+				<ul class="header__main-menu__body flex flex--column">
+					<li class="header__main-menu__item dropdown-matches-item block-item">
+						<input id="dropdown-matches-check" hidden type="checkbox"/>
+						<label style="border-top: none;" for="dropdown-matches-check" class="item-label item-label--opener ">Partite giocate</label>
+						<ul class="submenu">
+							{% for subitem in matches %}
+								<li style="margin: 5px" class="header__main-menu__subitem {{subitem.name|lower}}-subitem">
+									{% set match = subitem.match %}
+									{% if match.scores is not empty  %}
+										{% include 'components/partials/card-match.twig' %}
+									{% endif %}
+								</li>
+							{% endfor %}
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+		<div class="card card__inner flex flex--column flex--center">
+			<nav class="header__main-menu">
+				<ul class="header__main-menu__body flex flex--column">
+					<li class="header__main-menu__item dropdown-tournaments-item block-item">
+						<input id="dropdown-tournaments-check" hidden type="checkbox"/>
+						<label style="border-top: none; margin-bottom: 40px" for="dropdown-tournaments-check" class="item-label item-label--opener">Tornei Giocati</label>
+						<ul class="submenu">
+							{% for queryItem in editions %}
+								<li style="margin: 5px" class="header__main-menu__subitem {{subitem.name|lower}}-subitem" style="margin-top: 50px">
+									{% include 'components/partials/card-tornei-giocati.twig' %}
+								</li>
+							{% endfor %}
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+
+		<div class="card card__inner flex flex--column flex--center">
+			<span class="section-title section-title--no-separator">Preferenze di Gioco</span>
+
+			<div style="width: 100%">
+				<ul>
+					<li class="list-infos">
+						<label>Lunedi</label>
+						<span>{{ queryItem.lun }}</span>
+					</li>
+					<li class="list-infos">
+						<label>Martedi</label>
+						<span>{{ queryItem.mar }}</span>
+					</li>
+					<li class="list-infos">
+						<label>Mercoledi</label>
+						<span>{{ queryItem.mer }}</span>
+					</li>
+					<li class="list-infos">
+						<label>Giovedi</label>
+						<span>{{ queryItem.gio }}</span>
+					</li>
+					<li class="list-infos">
+						<label>Venerdi</label>
+						<span>{{ queryItem.ven }}</span>
+					</li>
+					<li class="list-infos">
+						<label>Sabato</label>
+						<span>{{ queryItem.sab }}</span>
+					</li>
+					<li class="list-infos">
+						<label>Domenica</label>
+						<span>{{ queryItem.dom }}</span>
+					</li>
+				</ul>
+			</div>
+
+			{% if queryItem.note_disp != '' %}
+				<span style="font-size: 18px;padding: 5px;color: #FFE200; text-align: center;width: 100%;">Note</span>
+				<span style="font-size: 18px;padding: 5px;color: #FFF; text-align: center;width: 100%;">{{ queryItem.note_disp }}</span>
+			{% endif %}
+		</div>
+
+		{% set user = queryItem %}
+		{% include 'components/partials/user-gallery.twig' %}
+
+		<!-- BANNER START -->
+		{% set banner_city = queryItem.id_city %}
+		{% set banner_edition = null %}
+		{% set banner_position = 'BANNER_GIOCATORI_2' %}
+		{% include 'components/partials/banner.twig' %}
+	<!-- BANNER END -->
+
+		{#
+
+		<div class="card card__inner flex flex--column flex--center">
+		        <span class="section-title section-title--no-separator">Media</span>
+
+			    <div style="width: 100%; display: flex; justify-content: center;">
+
+		        <!-- <span class="section-title section-title--no-separator">Fotogallery</span> -->
+
+		        <a href="javascript:;" data-match="2395,2456,1234" class="fotogallery yellow-text-link yellow-text-link--enter">Fotogallery</a>
+
+
+			      <ul class="flex flex--between" style="flex-wrap: wrap">
+							{% for queryItem in news %}
+				        <li style="
+									width: calc(50% - 12px);
+									max-width: 280px;
+									min-width: 264px;
+									margin: 0 6px 6px;
+									">
+				          {% include 'components/partials/card-media.twig' %}
+				        </li>
+							{% endfor %}
+			      </ul>
+			    </div>
+			  </div>
+
+		</div>
+		#}
+
+
+	{% endblock %}

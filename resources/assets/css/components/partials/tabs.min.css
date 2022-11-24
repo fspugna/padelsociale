@@ -1,0 +1,15 @@
+/* macro tabs.twig styles */
+/* line 5, ../../../sass/components/partials/tabs.scss */
+.tabs { margin: 24px auto; }
+/* line 8, ../../../sass/components/partials/tabs.scss */
+.tabs .tabs__nav { border-bottom: 2px solid #fff; display: -webkit-box; display: -ms-flexbox; display: flex; width: calc(100% + 16px); margin-left: -8px; }
+/* line 14, ../../../sass/components/partials/tabs.scss */
+.tabs .tabs__nav label { border-top-left-radius: 6px; border-top-right-radius: 6px; color: #fff; font-family: "Avenir", serif; font-size: 20px; font-weight: bold; display: inline-block; padding: 7px; margin: 0 7px; text-align: center; text-shadow: 0 0 5px #000; }
+/* line 34, ../../../sass/components/partials/tabs.scss */
+.tabs .tabs__body { overflow: hidden; }
+/* line 40, ../../../sass/components/partials/tabs.scss */
+.tabs .tabs__body__panel { padding: 24px 16px 16px; }
+/* line 46, ../../../sass/components/partials/tabs.scss */
+.tabs .tabs__body .featured-data__item:last-child { border-bottom: none; }
+
+/*# sourceMappingURL=../../maps/tabs.min.css.map */

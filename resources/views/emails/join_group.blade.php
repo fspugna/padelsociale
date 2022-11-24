@@ -1,0 +1,1 @@
+<h1>Sei stato inserito nel gruppo {!! $group->name !!}</h1>

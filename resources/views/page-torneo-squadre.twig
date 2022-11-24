@@ -1,0 +1,546 @@
+{% extends "base.twig" %}
+{% import 'components/partials/tabs.twig' as tabs %}
+
+{% block head %}
+    <title>{{ site.name}} - </title>
+    {{ parent() }}
+    <link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css" />
+    <link rel="stylesheet" href="/resources/assets/css/jquery-fancybox.min.css" />
+{% endblock %}
+
+{% block bodyclass %}
+    page-torneo bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+
+    <!--page-iscrizione-torneo.twig page -->
+
+    <style>
+
+        <!-- banner -->
+        .popup h1,
+        .popup h2,
+        .popup h3 {
+            color: #ffe200;
+            text-shadow: 0 1px 3px rgba(0,0,0,.3);
+            font-weight: normal;
+        }
+        .popup h1 { /* titolo 1 */
+            font-size:24px;
+        }
+        .popup h2 { /* titolo 2 */
+            font-size: 1.5em;
+        }
+        .popup h3 { /* titolo3 3 */
+            font-size: 1.2em;
+        }
+
+        /* Stili di base di ombreggiatura e finestra modale  */
+        .overlay {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 9999;
+            visibility: hidden;
+            /* sfondo oscurante */
+            background-color: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            position: fixed; /* posizionamento fisso */
+            cursor: default; /* tipo del cursore */
+            -webkit-transition: all 0.6s;
+            -moz-transition: all 0.6s;
+            -ms-transition: all 0.6s;
+            -o-transition: all 0.6s;
+            transition: all 0.6s;
+        }
+        .overlay:target {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Stili delle finestre modali */
+        .popup {
+            top: 0;
+            right: 50%;
+            left: 50%;
+            font-size: 14px;
+            z-index: 10000;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 320px;
+            max-height: 390px;
+            overflow: auto;
+            /* Posizionamento fisso, finestra rimane icolata allo scorimento della pagina */
+            position: fixed;
+            padding: 5px;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid #fff;
+
+            /* arrotondamento dei angoli */
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            -ms-border-radius: 4px;
+            border-radius: 8px;
+
+            /* ombra esetrna */
+            -webkit-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+            -moz-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+            -ms-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+            -o-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+            box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+
+            /* trasformazioni */
+            -webkit-transform: translate(-50%, -150%);
+            -ms-transform: translate(-50%, -150%);
+            -o-transform: translate(-50%, -150%);
+            transform: translate(-50%, -150%);
+
+            /* trasformazioni animate */
+            -webkit-transition: transform 0.6s ease-out;
+            -moz-transition: transform 0.6s ease-out;
+            -ms-transition: transform 0.6s ease-out;
+            -o-transition: transform 0.6s ease-out;
+            transition: transform 0.6s ease-out;
+        }
+
+        .overlay:target+.popup {
+            top: 50%;
+            -webkit-transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .close {
+            position: absolute;
+            padding: 0;
+            top: 1px;
+            right: 1px;
+            width: 22px;
+            height: 22px;
+            border: 2px solid #ccc;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            border-radius: 50%;
+            background-color: rgba(61, 61, 61, 0.8);
+            -webkit-box-shadow: 0px 0px 10px #000;
+            -moz-box-shadow: 0px 0px 10px #000;
+            box-shadow: 0px 0px 10px #000;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            line-height: 20px;
+            -webkit-transition: background-color ease .7s;
+            -moz-transition:  background-color ease .7s;
+            -ms-transition:  background-color ease .7s;
+            -o-transition:  background-color ease .7s;
+            transition: background-color ease .7s;
+        }
+
+        .close:before {
+            color: rgba(255, 255, 255, 0.9);
+            content: '\2715';
+            text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
+            font-size: 12px;
+
+        }
+
+        .close:hover {
+            background-color: #FFE200;
+        }
+        .popup p {
+            margin: 0;
+            padding: 10px;
+        }
+
+        .zone-club-item .list-item-giocatore{
+            border-bottom: 0;
+        }
+
+        /* tablet */
+        @media only screen and (min-width: 768px) and (max-width: 959px) {
+            .popup {
+                width: 95%;
+                margin-top: 50px;
+            }
+        }
+        /* smartfone*/
+        @media only screen and (min-width: 320px) and (max-width: 767px) {
+            .popup {
+                width:85%;
+                margin-top: 50px;
+            }
+        }
+
+
+    </style>
+
+
+
+    <div class="page page-iscrizione-torneo fancybox-js" >
+        <div class="container">
+
+            <article class="card">
+                <input type="hidden" name="id_tournament" value="{{ tournament.id }}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <section>
+                    <div class="section-title"><h4>{{ tournament.edition.edition_name }}</h4></div>
+                    <div class="header-rounded-image">
+                        <picture>
+                            <img class="lazyload" data-srcset="{{ tournament.srcImgFeaturedBig }}, {{ tournament.srcImgFeaturedBigx2 }} 2x" alt="{{ tournament.title }}"/>
+                        </picture>
+                        <noscript>
+                        <picture>
+                            <!--[if IE 9]><video style="display: none;"><![endif]-->
+                            <source srcset="{{ tournament.srcImgFeaturedBig }}" media="(max-width: 736px)"/>
+                            <!--[if IE 9]></video><![endif]-->
+                            <img src="{{ tournament.srcImgFeaturedBig }}" alt="{{ tournament.title }}"/>
+                        </picture>
+                        </noscript>
+                    </div>
+
+                    {# <div class="section-title "><h2>{{ tournament.name }}</h2></div> #}
+                    <div class="card-content section-title section-title--no-separator section-title--small"><i>{{ tournament.date_start|date('d/m/Y') }} - {{ tournament.date_end|date('d/m/Y') }}</i></div>
+                    <div style="margin-bottom: -10px;" class="card-content section-title section-title--no-separator section-title--small">{{ tournament.description }}</div>
+                </section>
+            </article>
+
+            <div class=""></div>
+
+            <article class="card card-info--big">
+
+
+                <link rel="stylesheet" href="/resources/assets/css/components/partials/card-info--big.css?v=1.0.4">
+
+
+                <!-- code here -->
+
+                <div style="text-align: center;" class="container">
+
+                    <a href="/edition/{{ tournament.edition.id }}/rules"><button style="text-align: left; font-family: Courgette; border-bottom:1px solid #6E96CB; width: 90%;color: #FFE200;font-size: 20px; padding: 5px; cursor: pointer !important;" class="cta--enter">Regolamento Generale</button></a>
+                    <a href="/edition/{{ tournament.edition.id }}/awards"><button style="text-align: left; font-family: Courgette;width: 90%;color: #FFE200;font-size: 20px; padding: 5px; cursor: pointer !important;" class="cta--enter">Premiazione</button></a>
+
+                </div>
+
+            </article>
+
+            <!-- BANNER START -->
+            {% set banner_city = zone.id_city %}
+            {% set banner_edition = tournament.edition.id %}
+            {% set banner_position = 'BANNER_TORNEI_1' %}
+            {% include 'components/partials/banner.twig' %}
+            <!-- BANNER END -->
+
+            {% if zone.clubs.count() <= 3 %}
+                {% include 'components/partials/zone_clubs.twig' %}
+            {% else %}
+            <div  style="margin-bottom: 20px; background-color: rgba(0, 0, 0, 0.6); border: 2px solid #fff; border-radius: 8px; padding: 5px;">
+                <nav class="header__main-menu">
+                    <ul class="header__main-menu__body flex flex--column">
+                        <li class="header__main-menu__item dropdown-matches-item block-item">
+                            <input id="dropdown-matches-check" hidden type="checkbox" />
+                            <label for="dropdown-matches-check" class="item-label item-label--opener matches-check" style="border-top: none">Circoli di {{ zone.city.name }} {% if zone.name != zone.city.name %} {{ zone.name }} {% endif %}</label>
+                            {% include 'components/partials/zone_clubs.twig' %}
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            {% endif %}
+
+            <section class="menu-torneo-js">
+
+                {% include 'components/sections/menu-torneo.twig' %}
+
+                <br>
+
+                {% if id_zone %}
+
+                    {% if tournament_started  %}
+                        {% if tournament.id_tournament_type == 1 and classification and id_category != 0 %}
+
+                            {% include 'components/sections/classifica-macro.twig' %}
+
+                            <!-- BANNER START -->
+                            {% set banner_city = zone.id_city %}
+                            {% set banner_edition = tournament.edition.id %}
+                            {% set banner_position = 'BANNER_TORNEI_2' %}
+                            {% include 'components/partials/banner.twig' %}
+                            <!-- BANNER END -->
+
+                            {% set cardteamstats = "exists" %}
+
+                            {% include 'components/sections/calendario-macro.twig' %}
+
+                        {% elseif tournament.id_tournament_type == 2 %}
+
+                            <div class="flex flex--column flex--center">
+                                <ul class="flex flex--column">
+                                    {% if phase.description != '' or ( phase.name == '1' and phase.bracket.note != '' ) %}
+                                        <div class="card card-circolo" style="width: 100%; color: #fff; padding: 5px;">
+                                            <div class="card__content">
+                                                <div style="margin-bottom:5px;" class="card-content section-title section-title--no-separator section-title--small">
+                                                    <i>{{ phase.description }}</i>
+                                                </div>
+                                                {% if phase.name == '1' and phase.bracket.note != '' %}
+                                                    {{ phase.bracket.note }}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                    {% for macroMatch in phase.macro_matches %}
+                                        <div  style="margin-bottom: 0px;"  >
+                                            <li style="margin: 2px;">
+                                                {% include 'components/partials/card-macro-match.twig' %}
+                                            </li>
+                                        </div>
+                                    {% endfor %}
+
+                                </ul>
+                            </div>
+
+                            <!-- BANNER START -->
+                            {% set banner_city = zone.id_city %}
+                            {% set banner_edition = tournament.edition.id %}
+                            {% set banner_position = 'BANNER_TORNEI_2' %}
+                            {% include 'components/partials/banner.twig' %}
+                            <!-- BANNER END -->
+
+                            <style>
+
+                                .card-ranking .card__inner-ranking {
+                                    background-color: rgba(0, 0, 0, 0.5);
+                                    border-radius: 8px;
+                                    display: flex;
+                                    display: -webkit-flex;
+                                    padding: 12px;
+                                    justify-content: space-evenly;
+                                    -webkit-justify-content: space-eventy;
+                                    width: 100%;
+                                }
+
+                                .card.card-ranking {
+                                    display: flex;
+                                    justify-content: center;
+                                    display: -webkit-flex;
+                                    -webkit-justify-content: center;
+                                }
+                                .card-ranking {
+                                    background: none !important;
+                                    border: none !important;
+                                    margin: 0 0px 10px !important;
+                                }
+                                @media only screen and (max-width: 320px) {
+                                    article.card, div.card {
+                                        min-width: 320px;
+                                        margin-left: -16.5px;
+                                    }
+                                }
+
+                            </style>
+
+
+                        {% endif %}
+
+                    {% else %}
+
+                        {% if can_subscribe %}
+
+                            {% if logged_in %}
+
+                                {% if subscribed %}
+
+                                    <div class="section-title "><h2>Sei gi&agrave; iscritto a questo torneo</h2></div>
+                                {% else %}
+                                    <div class="section-title "><h2>Iscrivi la tua squadra a questo torneo</h2></div>
+                                    <div class="card-content section-title section-title--no-separator section-title--small"><p class="abstract">Seleziona il secondo giocatore titolare e la riserva</p></div>
+
+                                    <form id="register-team" action="/subscribe" method="post">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="hidden" name="id_tournament" value="{{ tournament.id }}">
+                                        <input type="hidden" name="id_zone" value="{{ id_zone }}">
+                                        <input type="hidden" name="select-category-type" value="{{ id_category_type }}">
+                                        <input type="hidden" name="select-player-1" value="{{ current_user.id }}">
+
+                                        <div class="input-field input-field--select input-field--center">
+                                            <select id="select-player-2" name="select-player-2" class="dropdown dropdown--light">
+                                                <option selected disabled >Secondo titolare...</option>
+                                                {% for option in players %}
+                                                    <option value="{{ option.id }}">{{ option.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <select id="select-player-3" name="select-player-3" class="dropdown dropdown--light">
+                                                <option selected disabled >Riserva...</option>
+                                                {% for option in players %}
+                                                    <option value="{{ option.id }}">{{ option.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="cta-container cta-container--center">
+                                            <button type="submit" class="cta cta--enter cta--yellow">Registra squadra</a>
+                                        </div>
+                                    </form>
+                                    <div class="section-title section-title--no-separator section-title--small"></div>
+                                {% endif %}
+
+                            {% else %}
+
+                                <div class="section-title "><h2>Devi effettuare l'accesso per isciverti al torneo</h2></div>
+
+                            {% endif %}
+
+
+                        {% else %}
+
+                            <div class="section-title "><h2>Il {{ tournament.registration_deadline_date|date('d/m/Y') }} &egrave; scaduto il termine ultimo per le iscrizioni al torneo</h2></div>
+
+                        {% endif %}
+
+                    {% endif %}
+
+                    {% if id_category == 0%}
+                        {# Iscritti al torneo #}
+                        {% for subscription in subscriptions %}
+                            {% include 'components/partials/card-team-torneo-macro.twig' %}
+                        {% endfor %}
+                    {% endif %}
+
+                {% endif %}
+
+
+
+            </section>
+
+            <style>
+                div.scrollmenu {
+                    background-color: #6E96CB;
+                    overflow: auto;
+                    white-space: nowrap;
+                }
+
+                div.scrollmenu a {
+                    display: inline-block;
+                    color: white;
+                    text-align: center;
+                    padding: 14px;
+                    text-decoration: none;
+                }
+
+                div.scrollmenu span {
+                    width: 80px;
+                    margin-left: 10px;
+                    display: inline-block;
+                }
+
+                div.scrollmenu a.selected{
+                    color: yellow;
+                    font-weight: bold;
+                }
+
+                @media only screen and (max-width: 320px) {
+                    li.header__main-menu__subitem.-subitem {
+                        margin-left: 11px;
+                    }
+                }
+
+
+
+            </style>
+        </div>
+    </div>
+
+    <!-- finestra popup -->
+    <a href="#x" class="overlay" id="win2"></a>
+    <div class="popup">
+        <h2 style="color: #ffe200; text-align: center;">Zone e circoli</h2>
+        <div class="content">
+            <div style="display: flex; justify-content: center; display: -webkit-flex; -webkit-justify-content: center;" class="select-div">
+                <div class="editorial">
+                    <p style="text-align: center"><strong></strong></p>
+                    <p>
+                        {% for index, clubZona in zone_clubs %}
+                            <strong>Zona: {{ index }}</strong>
+                            <br>
+                            {% for club in clubZona %}
+                            <p style="text-align: left">Circolo: {{ club['name'] }} <small>{{ club['address'] }}</small></p>
+                        {% endfor %}
+                    {% endfor %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <a class="close" title="Chiudere" href="#close"></a>
+    </div>
+    <!-- fine finestra popup -->
+
+
+    <script>
+        window.galleryArray = [];
+        {% for id_match, items in images %}
+            {% for src in items %}
+                window.galleryArray.push({match: "{{ id_match }}", src: "https://www.ladisfidadipadel.it/storage/app/{{ src }}"});
+            {% endfor %}
+        {% endfor %}
+
+            function scheduleMatch(id_match) {
+
+                data = [];
+
+                $("#form_schedule_" + id_match + " input").each(function () {
+                    data[ $(this).attr('name') ] = $(this).val();
+                });
+
+                $("#form_schedule_" + id_match + " select").each(function () {
+                    data[ $(this).attr('name') ] = $("option:selected", this).val();
+                });
+
+                console.log(data);
+
+                var errors = [];
+                if (data['match_club'] == 'Seleziona Circolo')
+                    errors.push('Selezionare un circolo');
+                if (data['match_date'] == '')
+                    errors.push('Inserire una data');
+                if (data['match_hours'] == '')
+                    errors.push('Inserire un orario');
+
+                if (errors.length > 0) {
+                    let msg = errors.join('</li><li>');
+                    $(".programma_incontro_errors").show();
+                    $(".programma_incontro_errors").html('<ul><li>' + msg + '</li></ul>');
+                    return;
+                }
+
+                $(".programma_incontro_errors").hide();
+                $(".programma_incontro_errors").html('');
+
+                $.ajax({
+                    url: '/admin/matches/schedule',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        match_date: data['match_date'],
+                        match_hours: data['match_hours'],
+                        match_club: data['match_club'],
+                        id_match: data['id_match']
+                    },
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.status == 'error') {
+                            $(".programma_incontro_errors").html('data.msg');
+                        } else {
+                            $(".programma_incontro_errors").html('');
+                            $(".programma_incontro_errors").hide();
+                            $(".overlay").hide();
+                            $(".popup").hide();
+                            document.location.href = document.location.href.split('#')[0];
+                        }
+                    }
+                });
+            }
+    </script>
+{% endblock %}

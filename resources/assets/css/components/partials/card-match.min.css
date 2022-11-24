@@ -1,0 +1,25 @@
+/* card-match.twig styles */
+/* line 5, ../../../sass/components/partials/card-match.scss */
+.card-match { background: none !important; border: none !important; margin: 0 12px 24px !important; }
+/* line 10, ../../../sass/components/partials/card-match.scss */
+.card-match .card__inner { background-color: rgba(0, 0, 0, 0.5); border-radius: 8px; border: 2px solid #fff; display: -webkit-box; display: -ms-flexbox; display: flex; padding: 12px; -webkit-box-pack: space-evenly; -ms-flex-pack: space-evenly; justify-content: space-evenly; }
+/* line 19, ../../../sass/components/partials/card-match.scss */
+.card-match__team { width: 50%; }
+/* line 23, ../../../sass/components/partials/card-match.scss */
+.card-match .vs { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-align: center; -ms-flex-align: center; align-items: center; color: #FFE200; font-size: 30px; font-weight: bold; padding: 6px; }
+/* line 32, ../../../sass/components/partials/card-match.scss */
+.card-match .vs span { padding: 12px 0px; }
+/* line 36, ../../../sass/components/partials/card-match.scss */
+.card-match .vs:before, .card-match .vs:after { content: ''; -webkit-box-flex: 1; -ms-flex: 1; flex: 1; width: 1px; background: rgba(255, 255, 255, 0.5); height: 100px; }
+/* line 45, ../../../sass/components/partials/card-match.scss */
+.card-match .player { margin-bottom: 16px; }
+/* line 48, ../../../sass/components/partials/card-match.scss */
+.card-match .player .card__thumbnail { width: 100px; height: 100px; border-radius: 50%; border: 2px solid #fff; overflow: hidden; margin: auto auto 12px; }
+/* line 57, ../../../sass/components/partials/card-match.scss */
+.card-match .player .player__name { color: #fff; font-family: "Avenir", serif; font-weight: bold; text-align: center; }
+/* line 65, ../../../sass/components/partials/card-match.scss */
+.card-match__result { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; margin: 12px 0; }
+/* line 70, ../../../sass/components/partials/card-match.scss */
+.card-match__result span { color: #fff; font-size: 20px; font-weight: bold; margin: 0 18px; }
+
+/*# sourceMappingURL=../../maps/card-match.min.css.map */

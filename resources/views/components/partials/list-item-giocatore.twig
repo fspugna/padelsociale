@@ -1,0 +1,68 @@
+<!-- list-item-giocatore.twig partial -->
+<div class="list-item-giocatore">
+
+    {% if loop.index <= 1  %}
+        <link rel="stylesheet" href="/resources/assets/css/components/partials/list-item-giocatore.css?v={{version}}" />
+    {% endif %}
+
+    {% set avatar = '' %}	
+    {% for meta in queryItem.metas %}
+        {% if meta.meta == 'avatar' %}
+            {% set avatar = '/storage/' ~ meta.meta_value  %}
+        {% endif %}
+    {% endfor %}
+    {% if avatar == '' %}	
+        {% if queryItem.gender == 'f' %}
+            {% set avatar = 'https://cdn.xl.thumbs.canstockphoto.es/padel-mujer-jugador-vectores-eps_csp69229035.jpg' %}
+        {% else %}
+            {% set avatar = 'https://comps.canstockphoto.es/padel-jugador-figura-vectores-eps_csp61076734.jpg' %}		
+        {% endif %}
+    {% endif %}			
+
+    <a href="/players/{{ queryItem.id }}/show">
+        <div class="card__inner">
+            <div class="player">
+                <div style="display: table-cell;" class="divTable">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div style="display: table-cell; vertical-align: middle; padding: 3px; min-width: 70px;" class="divTableCell">           
+                                <div style="border: 2px solid #fff; width: 65px; border-radius: 50%; overflow: hidden;">
+                                    <picture data-link="/players/{{ queryItem.id_player }}/show">
+                                        <img class="lazyload" data-srcset="{{ avatar }}, {{  avatar }} 2x" alt="{{ queryItem.name  }}"/>
+                                    </picture>
+                                    <noscript>
+                                    <picture>
+                                        <!--[if IE 9]><video style="display: none;"><![endif]-->
+                                        <source srcset="{{ avatar }}" media="(max-width: 736px)"/>
+                                        <!--[if IE 9]></video><![endif]-->
+                                        <img src="{{ avatar }}" alt="{{ queryItem.player.name  }} {{ queryItem.player.surname  }}"/>
+                                    </picture>
+                                    </noscript>
+                                </div>
+                            </div>
+                                    
+                            <div style="display: table-cell; vertical-align: middle; padding: 10px; " class="divTableCell">
+                                <div class="player__name">{{queryItem.name  }} {{queryItem.surname  }}</div>
+                            </div>
+                            
+                            <div style="display: table-cell; vertical-align: middle; padding: 3px;" class="divTableCell">                                
+                                <table style=" margin-right: 30px; text-align: center; color: #fff;">
+                                    {#
+                                    <tbody>
+                                        <tr>
+                                            <td>  Rank</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="rank" style="font-size: 26px; font-weight: bold; color: #000000; background-color: #ffe200; border-radius: 50%; width: 50px; height: 50px; display: inline-block; line-height: 50px; text-align: center;">{% if posizioni[queryItem.id] > 0 %} {{ posizioni[queryItem.id] }} {% else %} - {% endif %}</span></td>
+                                        </tr>
+                                    </tbody>
+                                    #}
+                                </table>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>	
+    </a>
+</div>

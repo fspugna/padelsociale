@@ -1,0 +1,48 @@
+{% extends "base.twig" %}
+
+{% block head %}
+<title>{{ site.name}} - homepage</title>
+{{ parent() }}
+{% endblock %}
+
+
+{% block bodyclass %}
+	front-page bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+<!--front-page.twig page -->
+
+<div class="page front-page">
+
+	<section>
+		<div class="cta-container flex flex--between">
+				<a href="#" onclick="javascript:window.history.back()" class="cta cta--yellow cta--rounded cta--back">Indietro</a>
+				<!--a href="./page-tabellone" class="cta cta--enter cta--yellow cta--rounded">Tabellone</a-->
+			</div>
+			
+		<div class="section-title"><span>Elenco partecipanti</span></div>
+
+		<div >
+			<div >
+				{# Iscritti al torneo #}
+				{% for subscription in subscriptions %}						
+					{% if tournament.id_tournament_type == 1 %}		
+						{% set team = subscription %}
+						{% include 'components/partials/card-team-torneo.twig' %}				
+					{% else %}
+						{% set team = subscription %}
+						{% include 'components/partials/card-team-torneo.twig' %}				
+					{% endif %}
+				{% endfor %}			
+			</div>
+		</div>
+		{% set cardnewsbig = defined %}
+	</section>
+	<section>
+	<div>
+	{{news.links()|raw}}
+	</div>
+	</section>
+</div>
+{% endblock %}

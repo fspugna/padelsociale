@@ -1,0 +1,7 @@
+/* card-circolo.twig styles */
+/* line 5, ../../../../../src/sass/components/partials/card-circolo.scss */
+.card-circolo { padding: 16px; max-width: 370px; }
+/* line 11, ../../../../../src/sass/components/partials/card-circolo.scss */
+.card-circolo .card__title h3 { text-align: center; }
+/* line 16, ../../../../../src/sass/components/partials/card-circolo.scss */
+.card-circolo p { text-align: center; }

@@ -1,0 +1,69 @@
+{% extends "base.twig" %}
+
+{% block head %}
+<title>{{ site.name}} - </title>
+{{ parent() }}
+{% endblock %}
+
+{% block bodyclass %}
+	single-classifica-girone bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+
+<!--single-classifica-girone.twig page -->
+{% set queryItem = next[0].zones[1] %}
+
+<div class="single single-classifica-girone">
+		<div class="container"> 
+			<section>
+
+					<div class="section-title section-title--small section-title--no-separator"><h3>{{ queryItem.name }}</h3></div>
+					<div class="section-title section-title--small section-title--no-separator"><h2>{{ queryItem.categories.male.1stcategory.name }}</h2></div>
+					<div class="section-title section-title--big"><h1>{{ queryItem.categories.male.1stcategory.rounds[0].name }}</h1></div>
+
+						<div class="cta-container flex flex--between">
+							<a href="./single-girone" class="cta cta--yellow cta--rounded cta--back">Torna al girone</a>
+							<a href="./page-tabellone" class="cta cta--enter cta--yellow cta--rounded">Tabellone</a>
+						</div>
+
+
+					<div class="flex flex--column flex--center">
+							<div class="section-title section-title--no-separator"><span>Classifica</span></div></br>
+
+							<div class="card card-scroller card-scroller--vertical">
+								<div class="card-scroller--vertical__header">
+									<div class="spacer"></div>
+									<div>
+										<span>pt.</span>
+										<span>gi.</span>
+										<span>sv/sp</span>
+										<span>gv/gp</span>
+									</div>
+								</div>
+								<ul class="card-scroller--vertical__body flex flex--column">
+									{% for queryItem in queryItem.categories.male.1stcategory.rounds[0].teams %}
+										<li>
+												{% include 'components/partials/card-team-classifica.twig' %}
+										</li>
+									{% endfor %}
+								</ul>
+
+							</div>
+
+						<!-- <ul class="flex flex--column" style="width:100%; max-width: 320px">
+
+							{% for queryItem in queryItem.categories.male.1stcategory.rounds[0].teams %}
+								<li>
+										{% include 'components/partials/card-team-stats.twig' %}
+								</li>
+							{% endfor %}
+						</ul> -->
+
+					</div>
+					{#% set cardteamstats = "exists" %#}
+
+			</section>
+		</div>
+</div>
+{% endblock %}

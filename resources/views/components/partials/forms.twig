@@ -1,0 +1,106 @@
+<!-- forms.twig macros -->
+{% macro input(id, name, value, type, placeholder, dataValidation, required, css) %}
+  {% if css|default(false) %}
+      <link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v={{version}}" />
+  {% endif %}
+      <input id="{{ id }}" type="{{ type|default('text') }}" name="{{ name }}" value="{{ value|e }}" autocomplete="off" placeholder="{{ placeholder }}" data-validation="{{ dataValidation }}" required="{{ required }}" />
+{% endmacro %}
+
+{% macro inputField(id, name, value, type, placeholder, dataValidation, required, label, css) %}
+  {% if css|default(false) %}
+      <link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v={{version}}" />
+  {% endif %}
+    <div class="input-field">
+        <label for="{{ id }}">{{ label }}</label>
+        <input id="{{ id }}" type="{{ type|default('text') }}" name="{{ name }}" value="{{ value|e }}" autocomplete="off" placeholder="{{ placeholder }}" data-validation="{{ dataValidation }}" required="{{ required }}" />
+    </div>
+{% endmacro %}
+
+{% macro textAreaField(id, name, value, placeholder, dataValidation, required, label, css) %}
+  {% if css|default(false) %}
+      <link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v={{version}}" />
+  {% endif %}
+    <div class="input-field input-field--textarea">
+        <label for="{{ id }}">{{ label }}</label>
+        <textarea id="{{ id }}" name="{{ name }}" value="{{ value }}" placeholder="{{ placeholder }}" data-validation="{{ dataValidation }}" required="{{ required }}"></textarea>
+    </div>
+{% endmacro %}
+
+{% macro selectField(id, label, name, placeholder, options, dataValidation, required, css, class) %}
+  {% if css|default(false) %}
+      <link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v={{version}}" />
+  {% endif %}
+    <div class="input-field input-field--select {{ class }}">
+        <label for="{{ id }}">{{ label }}</label>
+        <select id="{{ id }}" name="{{ name }}" data-placeholder="{{ placeholder }}" data-validation="{{ dataValidation }}" required="{{ required }}"  class="dropdown dropdown--light chosen-select">
+            {% if placeholder != "" %}
+              <option selected disabled>{{ placeholder }}</option>
+            {% endif %}
+            {% for option in options %}
+                <option value="{{ option.value }}">{{ option.label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+{% endmacro %}
+
+{% macro radiocouple(label1, label2, id, id1, id2, groupName, description, dataValidation, required, css) %}
+  {% if css|default(false) %}
+      <link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v={{version}}" />
+  {% endif %}
+    <div class="newsletter__check">
+        <div class="rad">
+            <fieldset id="{{ id }}">
+                <div>
+                    <input id="{{ id1 }}" type="radio" value="1" name="{{ groupName }}" data-validation="{{ dataValidation }}" required="{{ required }}" />
+                    <label for="{{ id1 }}"><span>{{ label1 }}</span></label>
+                </div>
+                <div>
+                    <input id="{{ id2 }}" type="radio" value="0" name="{{ groupName }}" data-validation="{{ dataValidation }}" required="{{ required }}" />
+                    <label for="{{ id2 }}"><span>{{ label2 }}</span></label>
+                </div>
+            </fieldset>
+            <label for="{{ id }}">{{ description }}</label>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro checkbox(label, value, checked, css) %}
+  {% if css|default(false) %}
+      <link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v={{version}}" />
+  {% endif %}
+
+  <div class="input-field input-field--checkbox">
+      <input id="{{ value }}" type="checkbox" class="input-field__checkbox" value="{{ value }}"></button>
+      <label for="{{ value }}">{{ label }}</label>
+  </div>
+{% endmacro %}
+
+{% macro newsletter(id, name, value, type, placeholder, dataValidation, required, css) %}
+  {% if css|default(false) %}
+      <link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v={{version}}" />
+  {% endif %}
+    <div class="newsletter__field">
+        <input id="{{ id }}" type="{{ type|default('text') }}" name="{{ name }}" value="{{ value|e }}" autocomplete="off" placeholder="{{ placeholder }}" data-validation="{{ dataValidation }}" required="{{ required }}" />
+        <button type="submit" class="newsletter__field__submit">iscriviti</button>
+    </div>
+{% endmacro %}
+
+{% macro search(name, value, type, placeholder, css) %}
+  {% if css|default(false) %}
+      <link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v={{version}}" />
+  {% endif %}
+    <div class="search__field">
+        <input type="{{ type|default('text') }}" name="{{ name }}" value="{{ value|e }}" autocomplete="off" placeholder="{{ placeholder }}" />
+        <button type="submit" class="search__field__submit">cerca</button>
+    </div>
+{% endmacro %}
+
+{% macro pagination(name, value, type, min, max, placeholder, css) %}
+  {% if css|default(false) %}
+      <link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v={{version}}" />
+  {% endif %}
+    <div class="pagination__field">
+        <input type="{{ type|default('number') }}" name="{{ name }}" value="{{ value|e }}" min="{{ min }}" max="{{ max }}" autocomplete="off" placeholder="{{ placeholder }}" />
+        <button type="submit" class="pagination__field__submit">vai</button>
+    </div>
+{% endmacro %}

@@ -1,0 +1,321 @@
+{% extends "base.twig" %}
+
+{% block head %}
+<title>{{ site.name}} - Profilo circolo</title>
+{{ parent() }}
+<link rel="stylesheet" href="/resources/assets/css/single-profilo.css" />
+{% endblock %}
+
+{% block bodyclass %}
+	single-profilo bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+
+
+<!--single-profilo.twig page -->
+{% set queryItem = user %}
+
+{% set avatar = '' %}
+
+{% if metas['avatar'] != '' %}
+    {% set avatar = '/storage/' ~ metas['avatar']  %}
+{% else %}
+  {% if queryItem.gender == 'f' %}
+    {% set avatar = 'https://cdn.xl.thumbs.canstockphoto.es/padel-mujer-jugador-vectores-eps_csp69229035.jpg' %}
+  {% else %}
+    {% set avatar = 'https://comps.canstockphoto.es/padel-jugador-figura-vectores-eps_csp61076734.jpg' %}
+  {% endif %}
+{% endif %}
+
+
+<div class="single single-profilo">
+  <div class="cta-container flex flex--between">
+    <a href="#" onclick="javascript:window.history.back()" class="cta cta--yellow cta--rounded cta--back">Indietro</a>
+    <!--a href="./page-tabellone" class="cta cta--enter cta--yellow cta--rounded">Tabellone</a-->
+  </div>
+</div>
+
+<!-- BANNER START -->
+{% set banner_city = queryItem.id_city %}
+{% set banner_edition = null %}
+{% set banner_position = 'BANNER_CIRCOLI_1' %}
+{% include 'components/partials/banner.twig' %}
+<!-- BANNER END -->
+
+<article class="card card-info--big">
+
+  <div>
+    <span  style="text-align: center; " class="section-title section-title--no-separator">{{ club.name }}</span>
+
+    <div style="display: grid; justify-content: center;" >
+
+
+      <div class="header-rounded-image">
+            <picture data-link="">
+                  <img class=" lazyloaded" data-srcset="{{ avatar }},  {{ avatar }} 2x" alt="" srcset="{{ avatar }}, {{ avatar }} 2x">
+            </picture>
+
+      </div>
+    </div>
+  </div>
+
+  <style>
+    span.section-title-selection {
+        font-size: 18px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        text-align: left;
+        color: #FFE200;
+        margin: 10px;
+        padding: 10px 0px 0px 0px;
+    }
+
+
+
+    label {
+        padding: 10px;
+        color: yellow;
+        display: block;
+    }
+
+    a.legenda {
+        background-color: #6E96CB;
+        border-radius: 8px;
+        border: 2px solid #000;
+        color: #fff;
+        /* display: inline-block; */
+        font-size: 12px;
+        padding: 2px;
+        text-shadow: -1px 0 black, 0 1px black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+
+    /*the container must be positioned relative:*/
+    .autocomplete {
+      position: relative;
+      display: inline-block;
+    }
+
+    input {
+      background: rgba(0,0,0,0.1);
+      border-radius: 8px;
+      border: 1px solid #fff;
+      color: white;
+      padding:10px;
+    }
+
+    input[type=submit] {
+      background-color: rgba(0,0,0,0.7);
+      color: yellow;
+      cursor: pointer;
+    }
+
+    .autocomplete-items {
+      position: absolute;
+      border: 1px solid #000;
+      border-bottom: none;
+      border-top: none;
+      z-index: 99;
+      /*position the autocomplete items to be the same width as the container:*/
+      top: 100%;
+      left: 0;
+      right: 0;
+    }
+
+    .autocomplete-items div {
+      padding: 10px;
+      cursor: pointer;
+      background-color: #fff;
+      border-bottom: 1px solid #fff;
+    }
+
+    /*when hovering an item:*/
+    .autocomplete-items div:hover {
+      background-color: #e9e9e9;
+    }
+
+    /*when navigating through the items using the arrow keys:*/
+    .autocomplete-active {
+      background-color: DodgerBlue !important;
+      color: #ffffff;
+    }
+
+  </style>
+</article>
+
+
+
+<article class="card card-info--big">
+  <span class="section-title section-title--no-separator">Contatti</span>
+  <div style="width: 100%">
+    <ul>
+      <li class="list-infos">
+        <label>Numeri Utili</label><span>{{ club.phone }} {# if club.phone != '' %} / {% endif %} {{ club.mobile_phone }} #}</span>
+      </li>
+      <li class="list-infos">
+        <label>E-email</label><span>{{ club.user.email }}</span>
+      </li>
+      <li class="list-infos">
+        <label>Referenze</label><span>{{ club.user.name }} {{ club.user.surname }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <style>
+    span.section-title-selection {
+        font-size: 18px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        text-align: left;
+        color: #FFE200;
+        margin: 10px;
+        padding: 10px 0px 0px 0px;
+    }
+
+
+
+    label {
+        padding: 10px;
+        color: yellow;
+        display: block;
+    }
+
+    a.legenda {
+        background-color: #6E96CB;
+        border-radius: 8px;
+        border: 2px solid #000;
+        color: #fff;
+        /* display: inline-block; */
+        font-size: 12px;
+        padding: 2px;
+        text-shadow: -1px 0 black, 0 1px black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+
+    /*the container must be positioned relative:*/
+    .autocomplete {
+      position: relative;
+      display: inline-block;
+    }
+
+    input {
+      background: rgba(0,0,0,0.1);
+      border-radius: 8px;
+      border: 1px solid #fff;
+      color: white;
+      padding:10px;
+    }
+
+    input[type=submit] {
+      background-color: rgba(0,0,0,0.7);
+      color: yellow;
+      cursor: pointer;
+    }
+
+    .autocomplete-items {
+      position: absolute;
+      border: 1px solid #000;
+      border-bottom: none;
+      border-top: none;
+      z-index: 99;
+      /*position the autocomplete items to be the same width as the container:*/
+      top: 100%;
+      left: 0;
+      right: 0;
+    }
+
+    .autocomplete-items div {
+      padding: 10px;
+      cursor: pointer;
+      background-color: #fff;
+      border-bottom: 1px solid #fff;
+    }
+
+    /*when hovering an item:*/
+    .autocomplete-items div:hover {
+      background-color: #e9e9e9;
+    }
+
+    /*when navigating through the items using the arrow keys:*/
+    .autocomplete-active {
+      background-color: DodgerBlue !important;
+      color: #ffffff;
+    }
+  </style>
+
+</article>
+
+
+<article class="card card-info--big">
+  <span class="section-title section-title--no-separator">Dove Siamo</span>
+  <div style="width: 100%">
+    <ul>
+      <li class="list-infos">
+        <label>Paese</label><span>{{ club.city.country.name }}</span>
+      </li>
+      <li class="list-infos">
+        <label>Città</label><span>{{ club.city.name }}</span>
+      </li>
+      <li class="list-infos">
+        <label>Indirizzo</label><span>{{ club.address }}</span>
+      </li>
+    </ul>
+  </div>
+  <!-- google-map.twig partial -->
+
+  <div class="google-map">
+
+    <style>
+      .google-map {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      //padding-bottom: 100%;
+        overflow: hidden;
+      }
+
+      #map {
+        height: 100%;
+        width: 100%;
+        }
+    </style>
+
+    <div id="map">
+          <iframe width="100%" height="275" id="gmap_canvas"
+          src="https://maps.google.com/maps?q={{ club.address }}{{ club.city.name }}{{ club.country.name }}&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+          frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+          </iframe>
+        <style>
+        .mapouter{position:relative;text-align:right;height:500px;width:600px;}
+        </style>
+    </div>
+  </div>
+</article>
+
+
+<section>
+  <div class="card card__inner flex flex--column flex--center">
+    <span class="section-title section-title--no-separator">Descrizione</span>
+    <div class="editorial">
+      <p>{{ club.description|raw }}</p>
+    </div>
+  </div>
+</section>
+
+{% set user = club.user %}
+{% include 'components/partials/user-gallery.twig' %}
+
+<!-- BANNER START -->
+{% set banner_city = queryItem.id_city %}
+{% set banner_edition = null %}
+{% set banner_position = 'BANNER_CIRCOLI_2' %}
+{% include 'components/partials/banner.twig' %}
+<!-- BANNER END -->
+
+{# ATENZIONE!!!!!!!!!!!!!!!!!!!!      MODIFICARE ANCHE single-club #}
+
+{% endblock %}
+

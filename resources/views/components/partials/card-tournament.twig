@@ -1,0 +1,233 @@
+<section>
+    <link href="/resources/assets/css/components/partials/card-match.css?v=1.0.4" rel="stylesheet">
+    <div class="card__inner flex flex--column">
+        <div style="justify-content: center; -webkit-justify-content: center;" class="flex">
+
+            <div class="tournament-container">                                    
+
+                {% for index, fase in matches %}                                       
+                    {% if fase|length == 1 %}
+                        
+                        <div class="tournament-brackets" style="margin-right: 15px;">
+                            <ul class="bracket bracket-1">
+                              <li class="team-item3">
+                                <!-- card-match ottavo con una sola squadra 1 -->
+                                {% for match in fase %}
+                                    {% include 'components/partials/card-match.twig' %}
+                                {% endfor %}
+                                <!-- fine card-match ottavo con una sola squadra 1 -->
+                              </li>
+                            </ul>
+			</div>                                           
+                                
+                    {% elseif fase|length == 2 %}
+                        
+                        <div class="tournament-brackets">
+                            <ul class="bracket bracket-1">	
+                                {% for match in fase %}
+                                    <li class="team-item">
+                                        {% include 'components/partials/card-match.twig' %}
+                                    </li>
+                                {% endfor %}                                                              
+                            </ul>
+                            <ul class="bracket bracket-2">
+                                <li class="team-item2">
+                                <!-- qui nn inserire card -->
+                                <!--fine elemento nn inserire card -->
+                                </li>
+                            </ul>
+			</div>
+                        
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .tournament-container {}
+        .tournament-headers {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            border-bottom: 1px solid #ccc;
+
+            h3 {
+                width: 25%;
+                text-align:center;
+                font-weight: 400;
+                border-right: 0px dashed #ccc;
+                margin: 0;
+                padding:1rem;
+            }
+        }
+        .tournament-brackets {
+            display: flex;
+            flex-direction: row;
+            list-style-type: none;
+            margin-bottom: 0px;
+        }
+        .bracket {
+            padding-left: 0;
+            display: flex;
+            margin: 0;
+            /* padding: 30px 0; */
+            flex-grow: 1;
+            flex-direction: column;
+            justify-content: space-around;
+            list-style-type: none;
+            border-right: 0px dashed #ccc;
+            flex: 1;
+        }
+        .team-item {
+            padding: .5rem;
+            display: block;
+            margin: .5rem 10px;
+            position: relative;
+            vertical-align: middle;
+            line-height: 2;
+            text-align: center;
+            margin-left: 30px;
+            margin-bottom: -5px;
+        }
+        .team-item:after {
+            content:'';
+            border-color: #fff;
+            border-width: 2px;
+            position: absolute;
+            display: block;
+            width: 20px;
+            right: -11px;
+        }
+        .team-item:nth-of-type(odd):after {
+            border-right-style: solid;
+            border-top-style: solid;
+            height: 100%;
+            top: 50%;
+            border-radius: 4px;
+        }
+        .team-item:nth-of-type(even):after {
+            border-right-style: solid;
+            border-bottom-style: solid;
+            height: 100%;
+            top: -50%;
+            border-radius: 4px;
+        }
+        .team-item:before {
+            content:'';
+            border-top: 0px solid #fff;
+            position: absolute;
+            height: 2px;
+            width: 10px;
+            left: -10px;
+            top: 50%;
+        }
+        .team-item2 {
+            padding: .5rem;
+            display: block;
+            margin: .5rem 0px;
+            position: relative;
+            vertical-align: middle;
+            line-height: 2;
+            text-align: center;
+        }
+        .team-item2:after {
+            content: '';
+            border-color: #fff;
+            border-width: 2px;
+            position: absolute;
+            display: block;
+            width: 265px;
+            right: -250px;
+        }
+        .team-item2:nth-of-type(odd):after {
+            border-right-style: solid;
+            border-top-style: solid;
+            top: 50%;
+            border-radius: 4px;
+        }
+        .team-item2:nth-of-type(even):after {
+            border-right-style: solid;
+            border-bottom-style: solid;
+            height: 100%;
+            top: -50%;
+            border-radius: 4px;
+        }
+        .team-item2:before {
+            content:'';
+            border-top: 0px solid #fff;
+            position: absolute;
+            height: 2px;
+            width: 20px;
+            left: -10px;
+            top: 50%;
+        }
+        ul.bracket.bracket-2 {
+            .team-item:nth-of-type(odd):after {
+                height: 200%;
+                top: 50%;
+            }
+            .team-item:nth-of-type(even):after {
+                height: 200%;
+                top: -150%;
+            }
+        }
+        .bracket:first-of-type {
+            .team-item:before {
+                display: none;
+            }
+        }
+        .bracket:last-of-type {
+            .team-item:before,
+                .team-item:after {
+                display: none;
+            }
+        }
+        .team-item3 {
+            padding: .5rem;
+            display: block;
+            margin: .5rem 10px;
+            position: relative;
+            vertical-align: middle;
+            line-height: 2;
+            text-align: center;
+            margin-left: 30px;
+            margin-bottom: -5px;
+        }
+        .team-item3:after {
+            content:'';
+            border-color: #fff;
+            border-width: 2px;
+            position: absolute;
+            display: block;
+            width: 260px;
+            right: -250px;
+        }
+        .team-item3:nth-of-type(odd):after {
+            border-right-style: solid;
+            border-top-style: solid;
+            height: 0;
+            top: 50%;
+            border-radius: 4px;
+        }
+        .team-item3:nth-of-type(even):after {
+            border-right-style: solid;
+            border-bottom-style: solid;
+            height: 100%;
+            top: -50%;
+            border-radius: 4px;
+        }
+        .team-item3:before {
+            content:'';
+            border-top: 2px solid #fff;
+            position: absolute;
+            height: 2px;
+            width: 20px;
+            left: -10px;
+            top: 50%;
+        }
+    </style>
+
+</section>

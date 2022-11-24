@@ -1,0 +1,13 @@
+<!-- page-demo.twig -->
+{% extends "base.twig" %}
+
+{% block head %}
+	<title>{{ site.name }}</title>
+	{{ parent() }}
+{% endblock %}
+
+{% block content %}
+	<div class="page-demo">
+		<h1>Hello World!</h1>
+	</div>
+{% endblock %}

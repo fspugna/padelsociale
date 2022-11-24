@@ -1,0 +1,30 @@
+{% extends "base.twig" %}
+
+{% block head %}
+<title>{{ site.name}} - Elenco News</title>
+{{ parent() }}
+{% endblock %}
+
+
+{% block bodyclass %}
+	front-page bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+<!--front-page.twig page -->
+<div class="archive archive-giocatori">
+	<div class="section-title "><span>News</span></div></br>
+	{% include 'components/partials/search-form.twig' %}
+	<div class="separator_list"></div>
+	{% for queryItem in news %}
+			<div class="swiper-slide">
+				{% include 'components/partials/list-item-news.twig' %}
+			</div>
+	{% endfor %}
+</div>
+<section>
+<div>
+{{news.links()|raw}}
+</div>
+</section>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "base.twig" %}
+
+{% block head %}
+<title>{{ site.name}} - homepage</title>
+{{ parent() }}
+{% endblock %}
+
+
+{% block bodyclass %}
+	front-page bg-frontpage
+{% endblock %}
+
+{% block content %}
+<!--front-page.twig page -->
+
+<div class="page front-page">
+	{%
+		set query = {
+			card: 'components/partials/card-info--big.twig',
+			type: infos
+		}
+	%}
+	<section>
+		{% include 'components/sections/cards-slider.twig' %}
+		{% set cardinfobig = defined %}
+	</section>
+
+	<section>
+		<div class="section-title"><span>News</span></div>
+
+		<div class="cards-slider__container">
+			<div class="swiper-wrapper">
+				{% for queryItem in news %}
+						<div class="swiper-slide">
+							{% include 'components/partials/card-news--big.twig' %} 
+						</div>
+				{% endfor %}
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+		{% set cardnewsbig = defined %}
+	</section>
+
+	<section>
+		<div class="section-title"><span>Eventi in corso</span></div>
+
+		<div class="cards-slider__container">
+			<div class="swiper-wrapper">
+				{% for queryItem in currents %}
+						<div class="swiper-slide">
+							{% include 'components/partials/card-events--big.twig' %}
+						</div>
+				{% endfor %}
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+
+			{% set cardeventsbig = defined %}
+	</section>
+
+	<section>
+		<div class="section-title"><span>Prossimi eventi</span></div>
+
+		<div class="cards-slider__container">
+			<div class="swiper-wrapper">
+				{% for queryItem in next %}
+						<div class="swiper-slide slide-countdown-js">
+							{% include 'components/partials/card-events--big.twig' %}
+						</div>
+				{% endfor %}
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+
+	</section>
+
+	<section>
+		{% include 'components/partials/card-social.twig' %}
+	</section>
+	<section>
+		{% include 'components/partials/card-circolo.twig' %}
+	</section>
+	<section>
+		<div class="section-title"><span>Utenti registrati</span></div>
+		<span class="total-users">634</span>
+	</section>
+</div>
+{% endblock %}

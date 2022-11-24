@@ -1,0 +1,45 @@
+<!-- registration-form.twig section -->
+{% import 'components/partials/forms.twig' as forms %}
+
+<div class="registration-form">
+
+{% if loop.index <= 1 and registrationform is not defined or loop.index is not defined and registrationform is not defined %}
+
+<link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v={{version}}" />
+
+{% endif %}
+
+
+	<div class="container">
+		<form name="registrationform" id="registrationform" method="post" action="register-club" enctype="multipart/form-data">
+			{{ csrf_field() }}
+
+			<input type="hidden" name="id_role" value="3">
+ 			<div class="input-field input-field--select input-field--center">
+			<select id="select-zone" name="select-zone" class="dropdown dropdown--light">
+				<option selected disabled >Seleziona zona...</option>
+
+				{% for zone in zones %}
+						<option value="{{ zone.id }}">{{ zone.city.name }} - {{ zone.name }}</option>
+				{% endfor %}
+			</select>
+			</div>
+			{{ forms.inputField('name', 'name', '', 'text', 'nome responsabile', '', 'required', '') }}
+
+			{{ forms.inputField('club_name', 'club_name', '', 'text', 'nome circolo', '', 'required', '') }}
+
+			{{ forms.inputField('email', 'email', '', 'email', 'email', '', 'required', '') }}
+
+			{{ forms.inputField('mobile_phone', 'mobile_phone', '', 'text', 'Cellulare', '', 'required', '') }}
+			{{ forms.inputField('indirizzo', 'indirizzo', '', 'text', 'indirizzo', '', 'required', '') }}
+
+			{{ forms.inputField('password', 'password', '', 'password', 'password', '', 'required', '') }}
+			{{ forms.inputField('confirm_password', 'confirm_password', '', 'password', 'conferma password', '', 'required', '') }}
+			
+			<div class="cta-container cta-container--center">
+				<button type="submit" class="loginform cta cta--enter cta--yellow">iscriviti</button>
+			</div>
+		</form>
+	</div>
+
+</div>

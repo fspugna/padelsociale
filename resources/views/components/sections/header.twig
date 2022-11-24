@@ -1,0 +1,808 @@
+<!--header.twig section -->
+
+<header class="header">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha256-siyOpF/pBWUPgIcQi17TLBkjvNgNQArcmwJB8YvkAgg=" crossorigin="anonymous" />
+
+    <!--link per icon-font -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- Typeahead -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.10.6/jquery.typeahead.min.css" />
+    <link rel="stylesheet" href="/resources/assets/css/jquery-fancybox.min.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/resources/assets/css/summernote-lite.min.css" type="text/css" media="screen" />
+
+    <div class="header__top flex flex-row">
+
+        <button class="hamburger hamburger--slider" type="button" >
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>
+
+        <div class="logo">
+            <a href="/">
+                <picture class="logo__picture">
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source srcset="/resources/assets/images/logo-ladisfidadipadel@2x.png 2x"/>
+                    <!--[if IE 9]></video><![endif]-->
+                    <img data-srcset="/resources/assets/images/logo-ladisfidadipadel.png" alt="logo La Disfida di Padel"/>
+                </picture>
+            </a>
+        </div>
+
+        {% if current_user.id %}
+
+            <!-- Navbar Right Menu -->
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!-- User Account Menu -->
+                    <li id="user-logo" class="dropdowns user user-menu open user-logo-js">
+                        <!-- Menu Toggle Button -->
+                        <a href="#" class="dropdowns-toggle" data-toggle="dropdowns" aria-expanded="true">
+                            <img src="{{ avatar }}" class="img-circle"
+                                 style="width: 40px; height: 40px; margin-top: -5px;">
+                        </a>
+                        <ul id="user-menu-toggle" class="dropdowns-menu" style="display: none">
+                            <!-- The user image in the menu -->
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+
+                                {% if current_user.id_role == 2 %}
+								    <a href="/players/{{ current_user.id }}/show" class="btn">Profilo Publico</a>
+								{% elseif current_user.id_role == 3 %}
+								    <a href="/clubs/{{ current_club.id }}/show" class="btn">Profilo Publico</a>
+								{% elseif current_user.id_role == 4 %}
+								    <a href="/partner/{{ current_user.partners[0].id }}/show" class="btn">Profilo Publico</a>
+								{% endif %}
+
+                                {% if current_user.id_role in [2, 3, 4] %}
+                                <!--div style="margin: 5px; border:1px solid #6E96CB;"></div-->
+                                    <a href="/edit-profile" class="btn" >Modifica Profilo</a>
+                                {% endif %}
+
+                                <!--div style="margin: 5px; border:1px solid #6E96CB;"></div-->
+                                {% if current_user.id_role == 1 %}
+                                    <a href="/admin/home" class="btn" >Amministrazione</a>
+                                {% endif %}
+
+                                <a href="/logout" class="btn">Esci</a>
+
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        {% else %}
+
+            <a href="/login" class="login" role="button"></a>
+
+        {% endif %}
+
+
+        <!-- style di dropdown e elementi menu(<a>...) -->
+        <style>
+
+            @media (max-width: 767px)
+            .main-header .navbar-custom-menu {
+                float: right;
+            }
+            .main-header .navbar-custom-menu, .main-header .navbar-right {
+                float: right;
+            }
+            * {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+            div {
+                display: block;
+            }
+
+            @media (max-width: 991px)
+            .navbar-custom-menu>.navbar-nav {
+                float: right;
+            }
+            @media (max-width: 991px)
+            .navbar-custom-menu .navbar-nav {
+                margin: 0;
+                float: left;
+            }
+            .navbar-nav {
+                margin: 7.5px -15px;
+            }
+            .nav {
+                padding-left: 0;
+                margin-bottom: 0;
+                list-style: none;
+            }
+            * {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+
+            small.nomeCognome {
+                color: #fff;
+                font-size: 26px;
+            }
+
+            .navbar-custom-menu>.navbar-nav>li {
+                position: static;
+            }
+            .navbar-custom-menu>.navbar-nav>li {
+                position: relative;
+            }
+            .navbar-custom-menu .navbar-nav>li {
+                float: left;
+            }
+            .nav>li {
+                position: relative;
+                display: block;
+            }
+            .dropdowns, .dropup {
+                position: relative;
+            }
+            * {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+            li {
+                display: block;
+                text-align: -webkit-match-parent;
+            }
+            .nav {
+                padding-left: 0;
+                margin-bottom: 0;
+                list-style: none;
+            }
+
+
+            .skin-blue-light .main-header .navbar .nav>li>a {
+                color: #fff;
+            }
+
+            .navbar-custom-menu .navbar-nav>li>a {
+                padding-top: 15px;
+                padding-bottom: 15px;
+                margin-left: -20px;
+                line-height: 20px;
+            }
+
+            .main-header .navbar-custom-menu a, .main-header .navbar-right a {
+                background: transparent;
+            }
+            .navbar-nav>li>a {
+                margin-right: 30px;
+                margin-top: -10px;
+                margin-left: -5px;
+            }
+            .nav>li>a {
+                position: relative;
+                display: block;
+                padding: 10px 15px;
+            }
+
+
+            .nav>li>a>img {
+                max-width: none;
+                border: 2px solid #fff;
+            }
+            .img-circle {
+                border-radius: 50%;
+            }
+            img {
+                vertical-align: middle;
+            }
+            img {
+                border: 0;
+            }
+
+            .hidden-xs {
+                display: none!important;
+            }
+            * {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+            .skin-blue-light .main-header .navbar .nav>li>a {
+                color: #fff;
+            }
+
+            a:-webkit-any-link {
+                cursor: pointer;
+            }
+
+            .nav {
+                padding-left: 0;
+                margin-bottom: 0;
+                list-style: none;
+            }
+
+
+            .navbar-custom-menu>.navbar-nav>li>.dropdowns-menu {
+                background: rgba(0,0,0,0.7);
+                border-radius: 8px;
+                border: 2px solid #fff;
+                position: absolute;
+                top: 70px;
+                right: 1px;
+                left: auto;
+                margin-right: 15px;
+            }
+            .navbar-nav>.user-menu>.dropdowns-menu, .navbar-nav>.user-menu>.dropdowns-menu>.user-body {
+                border-bottom-right-radius: 4px;
+                border-bottom-left-radius: 4px;
+            }
+
+            .navbar-nav>.user-menu>.dropdowns-menu {
+                border-top-right-radius: 0;
+                border-top-left-radius: 0;
+                padding: 1px 0 0 0;
+                border-top-width: 0;
+                border: 2px solid #fff;
+                border-radius: 8px;
+            }
+
+            .navbar-nav .open .dropdowns-menu {
+                position: static;
+                float: none;
+                width: auto;
+                margin-top: 0;
+                background-color: transparent;
+                border: 0;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+            }
+            .navbar-nav>li>.dropdowns-menu {
+                margin-top: 0;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+            .open>.dropdowns-menu {
+                display: block;
+            }
+            .dropdowns-menu {
+                box-shadow: none;
+                border-color: #eee;
+            }
+            .dropdowns-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                z-index: 1000;
+                display: none;
+                float: left;
+                min-width: 160px;
+                padding: 5px 0;
+                margin: 2px 0 0;
+                font-size: 14px;
+                text-align: left;
+                list-style: none;
+                background: rgba(0,0,0,0.5);
+                -webkit-background-clip: padding-box;
+                background-clip: padding-box;
+                border: 1px solid #ccc;
+                border: 1px solid rgba(0,0,0,.15);
+                border-radius: 4px;
+                -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+                box-shadow: 0 6px 12px rgba(0,0,0,.175);
+            }
+
+            .navbar-nav>.user-menu>.dropdowns-menu>li.user-header {
+                height: 175px;
+                padding: 10px;
+                text-align: center;
+            }
+            .skin-blue-light .main-header li.user-header {
+                background-color: rgba(0,0,0,0.5);
+            }
+            * {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+
+            .navbar-nav>.user-menu>.dropdowns-menu>.user-footer {
+                padding: 10px;
+                width: 100%;
+                display: grid;
+                justify-content: center;
+                display:-webkit-grid;
+                -webkit-justify-content: center;
+            }
+
+            * {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+            li {
+                display: block;
+                text-align: -webkit-match-parent;
+            }
+
+            * {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+            div {
+                display: block;
+            }
+
+
+            .navbar-nav>.user-menu>.dropdowns-menu>.user-footer .btn-default {
+                color: #fff;
+                border-radius: 8px;
+                background: black;
+                border: 1px solid #fff;
+                margin: 1px;
+                width: 100%;
+            }
+
+            .skin-blue-light .main-header .navbar .dropdowns-menu li a {
+                color: #fff;
+            }
+
+
+            .btn.btn-flat {
+                border-radius: 0;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+                border-width: 1px;
+            }
+            .btn-default {
+                background-color: #f4f4f4;
+                color: #444;
+                border-color: #ddd;
+            }
+            .btn {
+                border-radius: 3px;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                border: 1px solid transparent;
+            }
+            .btn-default {
+                background-color: #fff;
+                border-color: #ccc;
+            }
+            .btn {
+                display: inline-block;
+                padding: 6px 12px;
+                margin-bottom: 0;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 1.42857143;
+                text-align: center;
+                white-space: nowrap;
+                vertical-align: middle;
+                -ms-touch-action: manipulation;
+                touch-action: manipulation;
+                cursor: pointer;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                background-image: none;
+                border: 1px solid transparent;
+                border-radius: 4px;
+            }
+
+            .skin-blue-light .main-header .navbar {
+                background-color: rgba(0,0,0,0.5);
+            }
+
+            .main-header .navbar {
+                margin: 0;
+            }
+
+            .main-header .logo, .main-header .navbar {
+                width: 100%;
+                float: none;
+            }
+            .main-header .navbar {
+                -webkit-transition: margin-left .3s ease-in-out;
+                -o-transition: margin-left .3s ease-in-out;
+                transition: margin-left .3s ease-in-out;
+                margin-bottom: 0;
+                margin-left: 230px;
+                border: none;
+                min-height: 50px;
+                border-radius: 0;
+            }
+            .navbar-static-top {
+                z-index: 1000;
+                border-width: 0 0 1px;
+            }
+            .navbar {
+                position: relative;
+                min-height: 50px;
+                margin-bottom: 20px;
+                border: 1px solid transparent;
+            }
+
+            nav {
+                display: block;
+            }
+
+            .main-header .navbar-custom-menu {
+                float: right;
+            }
+            .main-header .navbar-custom-menu, .main-header .navbar-right {
+                float: right;
+            }
+
+
+
+            <!-- elementi menu partite giocate -->
+            ul.header__main-menu__body.flex.flex--column {
+                padding: 0;
+            }
+
+            a.yellow-text-link.yellow-text-link--enter {
+                margin-left: 27px;
+                margin-right: 27px;
+                width: calc(100% - 50px);
+            }
+
+            <!-- elementi hamburger -->
+            .hamburger.close {
+                width: 50px;
+                height: 50px;
+                background-position: 27px -731px;
+            }
+
+            .hamburger {
+                padding: 15px 0px 30px 23px;
+                display: inline-block;
+                cursor: pointer;
+                transition-property: opacity, filter;
+                transition-duration: 0.15s;
+                transition-timing-function: linear;
+                font: inherit;
+                color: inherit;
+                text-transform: none;
+                background-color: transparent;
+                border: 0;
+                margin: 0;
+                overflow: visible; }
+            .hamburger:hover {
+                opacity: 0.7; }
+            .hamburger.is-active:hover {
+                opacity: 0.7; }
+            .hamburger.is-active .hamburger-inner,
+            .hamburger.is-active .hamburger-inner::before,
+            .hamburger.is-active .hamburger-inner::after {
+                background-color: #fff; }
+
+            .hamburger-box {
+                width: 40px;
+                margin-left: 10px;
+                margin-top: -5px;
+                height: 24px;
+                display: inline-block;
+                position: relative; }
+
+            .hamburger-inner {
+                display: block;
+                top: 50%;
+                margin-top: -2px; }
+
+            .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+                width: 35px;
+                height: 2px;
+                background-color: #fff;
+                border-radius: 4px;
+                position: absolute;
+                transition-property: transform;
+                transition-duration: 0.15s;
+                transition-timing-function: ease; }
+            .hamburger-inner::before, .hamburger-inner::after {
+                content: "";
+                display: block; }
+            .hamburger-inner::before {
+                top: -10px; }
+            .hamburger-inner::after {
+                bottom: -10px; }
+
+
+            /*
+               * Slider
+               */
+            .hamburger--slider .hamburger-inner {
+                top: 2px; }
+            .hamburger--slider .hamburger-inner::before {
+                top: 10px;
+                transition-property: transform, opacity;
+                transition-timing-function: ease;
+                transition-duration: 0.15s; }
+            .hamburger--slider .hamburger-inner::after {
+                top: 20px; }
+
+            .hamburger--slider.is-active .hamburger-inner {
+                transform: translate3d(0, 10px, 0) rotate(45deg); }
+            .hamburger--slider.is-active .hamburger-inner::before {
+                transform: rotate(-45deg) translate3d(-5.71429px, -6px, 0);
+                opacity: 0; }
+            .hamburger--slider.is-active .hamburger-inner::after {
+                transform: translate3d(0, -20px, 0) rotate(-90deg); }
+
+            .lightblue-text-link { color: #6E96CB; display: inline-block; font-size: 18px; font-weight: bold; margin: 0 0 18px; margin-top: 7px; margin-bottom: 7px; padding: 0 40px 0 20px; }
+
+            .lightblue-text-link:hover { color: white; }
+
+            /* line 571, ../../../src/sass/_customCore.scss */
+            .lightblue-text-link--enter { background-image: url("../images/submenu-caret.svg"); background-repeat: no-repeat; background-position: right 0px top 48%; }
+
+            a.lightblue-text-link.lightblue-text-link--enter {
+                margin-left: 27px;
+                margin-right: 27px;
+                width: calc(100% - 50px);
+            }
+
+        </style>
+
+
+
+
+
+
+        <!-- elementi display: none; menu -->
+        <nav class="header__main-menu">
+
+            <div class="header__main-menu__head">
+                <div class="main-menu__close button--close" role="button"></div>
+
+                <div class="profile-image__container">
+                    <img src="https://www.ladisfidadipadel.it/resources/assets/images/logo-ladisfidadipadel@2x.png">
+                </div>
+
+                <a href="/login" class="login" role="button"></a>
+            </div>
+            <!-- fine elementi display: none; menu -->
+
+            <ul class="header__main-menu__body flex flex--column">
+                <li class="header__main-menu__item home-item single-item"><a class="item-label" href="/"><i class="fas fa-home"></i>  Home</a></li>
+
+                {% if current_user.id %}
+                    <li class="header__main-menu__item info-profilo-item block-item">
+                        <input id="info-profilo-check" hidden type="checkbox" />
+                        <label for="info-profilo-check" class="item-label item-label--opener noarrow">
+                            <i class="fas fa-user-circle"></i>  {{current_user.name}} {{current_user.surname}}</label>
+
+                        <ul class="submenu2">
+
+                            {% if current_user.id and current_user.id_role != 1 %}
+                                <li class="header__main-menu__subitem info-profilo-profiloPublico-subitem">
+                                    {% if current_user.id_role == 2 %}
+									<a class="yellow-text-link yellow-text-link--enter" href="/players/{{ current_user.id }}/show">
+									{% elseif current_user.id_role == 3 %}
+									<a class="yellow-text-link yellow-text-link--enter" href="/clubs/{{ current_club.id }}/show">
+									{% elseif current_user.id_role == 4 %}
+									<a class="yellow-text-link yellow-text-link--enter" href="/partner/{{ current_partner.id }}/show">
+									{% endif %}
+                                        <i class="fas fa-id-card"></i>   Il mio profilo pubblico</a>
+                                </li>
+                                <li class="header__main-menu__subitem info-profilo-profiloEdit-subitem">
+                                    <a class="yellow-text-link yellow-text-link--enter" href="/edit-profile">
+                                        <i class="fas fa-user-edit"></i>   Modifica profilo</a>
+                                </li>
+                            {% endif %}
+
+                            {% if current_user.id_role == 1 %}
+                                <li class="header__main-menu__subitem info-profilo-profiloAmministrazione-subitem">
+                                    <a class="yellow-text-link yellow-text-link--enter" href="/admin/home">
+                                        <i class="fas fa-tools"></i>   Amministrazione</a>
+                                </li>
+                            {% endif %}
+
+                            <li class="header__main-menu__subitem info-profilo-profiloExit-subitem">
+                                <a class="yellow-text-link yellow-text-link--enter" href="/logout">
+                                    <i class="fas fa-sign-out-alt"></i>   Uscita / Logout</a>
+                            </li>
+
+                        </ul>
+
+                        <ul style="margin-left: 20px; margin-right: 20px;" class="submenu2">
+                            {% if my_editions is not empty %}
+
+                                <li class="header__main-menu__item {{edition.edition_name|lower}}-item block-item">
+                                    <input id="{{edition.edition_name|lower}}-check" hidden type="checkbox" />
+                                    <label for="{{edition.edition_name|lower}}-check" class="item-label item-label--opener noarrow">
+                                    {% if current_user.id_role == 2 %}
+                                        I tornei in cui sono iscritto
+                                    {% elseif current_user.id_role == 3 %}
+                                        I tornei del mio circolo
+                                    {% endif %}
+                                    </label>
+                                    <ul class="submenu2">
+                                        {% for id_edition, edition in my_editions %}
+                                            {% for id_division, division in edition %}
+                                                <li class="header__main-menu__subitem {{division.tournament.edition.edition_name|lower}}-subitem">
+                                                    <a href="{{ my_editions_links[id_edition][id_division] }}" class="yellow-text-link yellow-text-link--enter">
+                                                        {% if current_user.id_role == 2 %}
+                                                        {{division.tournament.edition.edition_name}} - {{division.zone.name}} - {{ division.categoryType.name }}
+                                                        {% elseif current_user.id_role == 3 %}
+                                                        {{division.tournament.edition.edition_name}} - {{division.category.name}} - {{ division.categoryType.name }}
+                                                        {% endif %}
+                                                    </a>
+                                                    {% if current_user.id_role == 2 and division.tournament.edition.edition_type > 0 %}
+                                                        <a href="/teams/{{my_editions_teams[id_edition][division.id].id}}/show" class="lightblue-text-link lightblue-text-link--enter"> - La mia squadra</a>
+                                                    {% endif %}
+                                                </li>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+
+                            {% endif %}
+                        </ul>
+
+                    </li>
+                {% endif %}
+
+
+                <li class="header__main-menu__item chisiamo-item block-item">
+                    <input id="chisiamo-check" hidden type="checkbox" />
+                    <label for="chisiamo-check" class="item-label item-label--opener"><i class="fab fa-battle-net"></i>  Chi Siamo</label>
+                    <ul class="submenu">
+                        <li class="header__main-menu__subitem chisiamo-inrelazionecon-subitem">
+                            <a href="/pages/in-relazione-con" class="yellow-text-link yellow-text-link--enter"><i class="far fa-handshake"></i>  In Relazione Con</a>
+                        </li>
+                        <li class="header__main-menu__subitem chisiamo-comitato-subitem">
+                            <a href="/pages/staff" class="yellow-text-link yellow-text-link--enter"><i class="fas fa-sitemap"></i>  Staff</a>
+                        </li>
+                        <li class="header__main-menu__subitem chisiamo-contatti-subitem">
+                            <a href="/pages/contatti" class="yellow-text-link yellow-text-link--enter"><i class="far fa-edit"></i>  Contatti</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="header__main-menu__item info-generali-item block-item">
+                    <input id="info-generali-check" hidden type="checkbox" />
+                    <label for="info-generali-check" class="item-label item-label--opener"><i class="fab fa-audible"></i>  Info Generali</label>
+                    <ul class="submenu">
+                        <li class="header__main-menu__subitem info-generali-inrelazionecon-subitem">
+                            <a href="/pages/come-funziona" class="yellow-text-link yellow-text-link--enter"><i class="fas fa-laptop-code"></i>  Come Funziona</a>
+                        </li>
+                        <li class="header__main-menu__subitem info-generali-tesseramento-subitem">
+                            <a href="/pages/tesseramento" class="yellow-text-link yellow-text-link--enter"><i class="fas fa-credit-card"></i>  Tesseramento</a>
+                        </li>
+                        <li class="header__main-menu__subitem info-generali-regolamenti-subitem">
+                            <a href="/pages/regolamenti" class="yellow-text-link yellow-text-link--enter"><i style="padding: 2px;" class="fas fa-copy"></i>  Regolamenti</a>
+                        </li>
+                        <li class="header__main-menu__subitem info-generali-assistenza-subitem">
+                            <a href="/pages/assistenza" class="yellow-text-link yellow-text-link--enter"><i class="fas fa-chalkboard-teacher"></i>  Assistenza</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="header__main-menu__item news-item block-item">
+                    <input id="news-check" hidden type="checkbox" />
+                    <label for="news-check" class="item-label item-label--opener"><i class="far fa-newspaper"></i>  News</label>
+                    <ul class="submenu">
+                        <li class="header__main-menu__subitem news-tutte-subitem">
+                            <a href="/news" class="yellow-text-link yellow-text-link--enter"> Tutte le notizie</a>
+                        </li>
+
+                        {% for newscat in news_categories %}
+                            <li class="header__main-menu__subitem news-tutte-subitem">
+                                <a href="/news/category/{{newscat.slug}}" class="yellow-text-link yellow-text-link--enter"> {{ newscat.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+
+
+                {# if auth_check() and (current_user.id_role != 4) #}
+                <li class="header__main-menu__item info-eventi-item block-item">
+                    <input id="info-eventi-check" hidden type="checkbox" />
+                    <label for="info-eventi-check" class="item-label item-label--opener"><i class="fas fa-running"></i>  Info Eventi</label>
+                    <ul class="submenu">
+                        <li class="header__main-menu__subitem info-eventi-eventiincorso-subitem">
+                            <a href="/current-events" class="yellow-text-link yellow-text-link--enter"><i class="fas fa-calendar-alt"></i>  Eventi In Corso</a>
+                        </li>
+
+                        <li class="header__main-menu__subitem info-eventi-prossimieventi-subitem">
+                            <a href="/next-events" class="yellow-text-link yellow-text-link--enter"><i class="fas fa-clipboard-list"></i>  Prossimi Eventi</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="header__main-menu__item circuitogiropadel-item block-item">
+                    <input id="circuitogiropadel-check" hidden type="checkbox" />
+                    <label for="circuitogiropadel-check" class="item-label item-label--opener"><i class="fas fa-table-tennis"></i>   Circuito GiroPadel</label>
+                    <ul style="margin-left: 20px; margin-right: 20px;" class="submenu">
+                        {% for label, item in menu_tournaments %}
+                            {% if item.items is defined %}
+                                <li class="header__main-menu__item {{label|lower}}-item block-item">
+                                    <input id="{{label|lower}}-check" hidden type="checkbox" />
+                                    <label for="{{label|lower}}-check" class="item-label item-label--opener">{{label}}</label>
+                                    <ul class="submenu">
+                                        {% for subitem in item.items %}
+                                            <li class="header__main-menu__subitem {{subitem.name|lower}}-subitem">
+                                                <a href="{{subitem.link}}" class="yellow-text-link yellow-text-link--enter">{{subitem.edition_name}}<br>{{ subitem.name }}</a>
+                                                <a href="/calendar/event/{{item.id_edition}}/city/{{subitem.slug}}" class="yellow-text-link yellow-text-link--enter">  <span style="font-size: 13px">&nbsp;&nbsp;&nbsp;Match In Programma</span></a>
+                                                <a href="/match-archive/event/{{item.id_edition}}/city/{{subitem.slug}}" class="yellow-text-link yellow-text-link--enter">  <span style="font-size: 13px">&nbsp;&nbsp;&nbsp;Match Disputati</span></a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% else %}
+                                <li class="header__main-menu__item {{label|lower}}-item single-item"><a class="item-label" href="{{item.link}}">{{label}}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                    </ul>
+                </li>
+
+                <li class="header__main-menu__item giocatori-item single-item">
+                    <a class="item-label" href="/players/m">
+                        <i class="far fa-address-card"></i>   Giocatori
+                    </a>
+                </li>
+
+
+                <li class="header__main-menu__item ranking-item block-item">
+                    <input id="ranking-check" hidden type="checkbox" />
+                    <label for="ranking-check" class="item-label item-label--opener"><i class="fas fa-award"></i>  Ranking</label>
+                    <ul class="submenu">
+                        <li class="header__main-menu__subitem ranking-punteggi-subitem">
+                            <a href="/pages/regolamento-punteggi" class="yellow-text-link yellow-text-link--enter">  Regolamento Punteggi</a>
+                        </li>
+                        <li class="header__main-menu__subitem ranking-classifiche-subitem">
+                            <a href="/rankings/m" class="yellow-text-link yellow-text-link--enter">  Visualizza Le Classifiche</a>
+                        </li>
+                    </ul>
+                </li>
+
+                {# endif #}
+
+
+                <li class="header__main-menu__item news-item circoli-item">
+                    <a class="item-label" href="/clubs"><i class="fab fa-fort-awesome"></i>   Circoli</a>
+                </li>
+
+                {# if auth_check() and (current_user.id_role != 3 and current_user.id_role != 4) #}
+                <li class="header__main-menu__item news-item archivio-item">
+                    <a class="item-label" href="/archive/matches"><i class="fab fa-buffer"></i>   Archivio</a>
+                </li>
+                {# endif #}
+
+                <li class="header__main-menu__item news-item partners-item">
+                    <a class="item-label" href="/partners"><i class="fas fa-handshake"></i>   Partners</a>
+                </li>
+
+                <li class="header__main-menu__item news-item social-item">
+                    <a class="item-label" href="/pages/social-network"><i class="fas fa-globe"></i>   Social Network</a>
+                </li>
+
+                <style>
+
+                    ul.header__main-menu__body.flex.flex--column {
+                        padding: 0;
+                    }
+
+                    a.yellow-text-link.yellow-text-link--enter {
+                        margin-left: 27px;
+                        margin-right: 27px;
+                        width: calc(100% - 50px);
+                    }
+
+                </style>
+
+
+            </ul>
+        </nav>
+        {# % include '../../components/partials/partial-search-form.twig' % #}
+    </div>
+</header>

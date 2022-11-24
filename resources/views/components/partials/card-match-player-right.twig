@@ -1,0 +1,46 @@
+{% set avatar = '' %}
+{% for meta in player.metas %}
+    {% if meta.meta == 'avatar' %}
+        {% set avatar = '/storage/' ~ meta.meta_value  %}
+    {% endif %}
+{% endfor %}
+{% if avatar == '' %}
+    {% if player.gender == 'f' %}
+        {% set avatar = 'https://cdn.xl.thumbs.canstockphoto.es/padel-mujer-jugador-vectores-eps_csp69229035.jpg' %}
+    {% else %}
+        {% set avatar = 'https://comps.canstockphoto.es/padel-jugador-figura-vectores-eps_csp61076734.jpg' %}
+    {% endif %}
+{% endif %}
+
+<div class="player">
+    <div class="divTable" style="display: table-cell;justify-content: space-between;">
+        <div class="divTableBody">
+            <div class="divTableRow" style=" justify-content: space-between;">                
+
+                <div class="divTableCell" style="display: table-cell;vertical-align: middle;padding: 3px;min-width: 35px;">
+                    <div style="border: 2px solid #fff;width: 35px;border-radius: 50%;overflow: hidden;">
+                        <picture data-link="/players/{{ player.id }}/show">
+                            <img class="lazyload" data-srcset="{{ avatar }}, {{ avatar }} 2x" alt="{{ player.name }} {{ player.surname }}"/>
+                        </picture>
+                        <noscript>
+                            <picture>
+                                <!--[if IE 9]><video style="display: none;"><![endif]-->
+                                <source
+                                srcset="{{ avatar }}" media="(max-width: 736px)"/>
+                                <!--[if IE 9]></video><![endif]-->
+                                <img src="{{ avatar }}" alt="{{ player.name }} {{ player.surname }}"/>
+                            </picture>
+                        </noscript>
+                    </div>
+                </div>
+
+                <div class="divTableCell" style="display: table-cell;vertical-align: middle;padding: 3px;/* max-width: 150px; *//* min-width: 150px; */text-align: right;">
+                    <div class="player__name" style="font-size: 13px;min-width: 70px;max-width: 70px;text-align: left;">
+                        <a href="/players/{{ player.id }}/show">{{ player.name }} {{ player.surname }}</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

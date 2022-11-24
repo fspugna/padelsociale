@@ -1,0 +1,588 @@
+{% extends "base.twig" %}
+
+{% block head %}
+<title>{{ site.name}} - Login</title>
+{{ parent() }}
+{% endblock %}
+
+{% block bodyclass %}
+	edit-profilo-partner bg-image bg-frontpage
+{% endblock %}
+
+{% block content %}
+
+<!--page-login.twig page -->
+
+<style>
+
+    label {
+        padding: 10px;
+        color: yellow;
+        display: block;
+        text-decoration: none;
+    }
+
+    * {
+    box-sizing: border-box;
+    }
+                    
+    /*the container must be positioned relative:*/
+    .autocomplete {
+    position: relative;
+    display: inline-block;
+    }
+
+    input {
+    background: rgba(0,0,0,0.1); 
+    border-radius: 8px; 
+    border: 1px solid #fff; 
+    color: white;
+    padding:10px;
+    }
+                
+    input[type=submit] {
+    background-color: rgba(0,0,0,0.7);
+    color: yellow;
+    cursor: pointer;
+    }
+
+    .autocomplete-items {
+    position: absolute;
+    border: 1px solid #000;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+    }
+
+    .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff; 
+    border-bottom: 1px solid #fff; 
+    }
+
+    /*when hovering an item:*/
+    .autocomplete-items div:hover {
+    background-color: #e9e9e9; 
+    }
+
+    /*when navigating through the items using the arrow keys:*/
+    .autocomplete-active {
+    background-color: DodgerBlue !important; 
+    color: #ffffff; 
+    }
+
+    span.section-title-selection {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+    color: #FFE200;
+    margin: 10px;
+    padding: 10px 0px 0px 0px;
+    }
+
+
+    a.legenda {
+    background-color: #6E96CB;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    color: #fff;
+    /* display: inline-block; */
+    font-size: 12px;
+    padding: 2px;
+    text-shadow: -1px 0 black, 0 1px black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+
+    /*the container must be positioned relative:*/
+    .autocomplete {
+    position: relative;
+    display: inline-block;
+    }
+
+    input {
+    background: rgba(0,0,0,0.1); 
+    border-radius: 8px; 
+    border: 1px solid #fff; 
+    color: white;
+    padding:10px;
+    }
+
+    input[type=submit] {
+    background-color: rgba(0,0,0,0.7);
+    color: yellow;
+    cursor: pointer;
+    }
+
+    .autocomplete-items {
+    position: absolute;
+    border: 1px solid #000;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+    }
+
+    .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff; 
+    border-bottom: 1px solid #fff; 
+    }
+
+    /*when hovering an item:*/
+    .autocomplete-items div:hover {
+    background-color: #e9e9e9; 
+    }
+
+    /*when navigating through the items using the arrow keys:*/
+    .autocomplete-active {
+    background-color: DodgerBlue !important; 
+    color: #ffffff; 
+    }
+
+    li.list {
+    color: #FFF;
+    margin: 10px 50px;
+    }
+
+    li.list:before {
+    content: "•";
+    padding-right: 8px;
+    margin-left: -10px;  margin-right: 10px;
+    color: #FFE200;
+    }
+
+    li.list:after {
+    content: "";
+    padding-right: 0px;
+    }
+
+    .dropdown--light {
+    font-size: 16px;
+    }
+
+    button.bottone_giocatore {
+    font-family: Courgette;
+    border: 1px solid #FFF;
+    border-radius: 8px;
+    color: #FFE200;
+    font-size: 13px;
+    padding: 13px 5px;
+    margin: 0px 2px;
+    }
+
+    span.section-title-giorno {
+    border-top: 1px solid #6E96CB;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+    color: #FFE200;
+    margin: 10px;
+    padding: 10px 0px 0px 0px;
+    }
+
+    span.section-title-Note {
+    border-top: 1px solid #6E96CB;
+    font-size: 22px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+    color: #FFE200;
+    margin: 10px;
+    padding: 10px 0px 0px 0px;
+    }
+
+
+    span.section-title-disp {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+    color: #FFE200;
+    margin: 10px;
+    padding: 10px 0px 0px 0px;
+    }
+
+
+    span.section-disponibilità {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+    color: #FFF;
+    margin: 10px;
+    }
+
+    .note {
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
+    padding: 5px; 
+    border-top: 1px solid #6E96CB;
+    }
+
+    span.section-title-del {
+        font-size: 22px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        text-align: left;
+        color: #FFE200;
+        margin: 10px;
+        padding: 10px 0px 0px 0px;
+    }
+
+    .note {
+        width: 100%; 
+        display: flex; 
+        justify-content: center; 
+        padding: 5px; 
+        border-top: 1px solid #6E96CB;
+        }
+
+
+<!-- banner -->
+.popup h1,
+.popup h2,
+.popup h3 {
+color: #ffe200;
+text-shadow: 0 1px 3px rgba(0,0,0,.3);
+font-weight: normal;
+}
+.popup h1 { /* titolo 1 */
+font-size:24px;
+}
+.popup h2 { /* titolo 2 */
+font-size: 1.5em;
+}
+.popup h3 { /* titolo3 3 */
+font-size: 1.2em;
+}
+
+/* Stili di base di ombreggiatura e finestra modale  */
+.overlay {
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+z-index: 9999;
+visibility: hidden;
+/* sfondo oscurante */
+background-color: rgba(0, 0, 0, 0.7);
+opacity: 0;
+position: fixed; /* posizionamento fisso */
+cursor: default; /* tipo del cursore */
+-webkit-transition: all 0.6s;
+-moz-transition: all 0.6s;
+-ms-transition: all 0.6s;
+-o-transition: all 0.6s;
+transition: all 0.6s;
+}
+.overlay:target {
+visibility: visible;
+opacity: 1;
+}
+
+/* Stili delle finestre modali */
+.popup {
+top: 0;
+right: 0;
+left: 50%;
+font-size: 14px;
+z-index: 10000;
+margin: 0 auto;
+width: 100%;
+min-width: 270px;
+max-width: 315px;
+
+/* Posizionamento fisso, finestra rimane icolata allo scorimento della pagina */
+position: absolute;
+padding: 5px;
+background: rgba(0,0,0,0.5);
+border: 1px solid #fff;
+
+/* arrotondamento dei angoli */
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+-ms-border-radius: 4px;
+border-radius: 8px;
+
+/* ombra esetrna */
+-webkit-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+-moz-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+-ms-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+-o-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+
+/* trasformazioni */
+-webkit-transform: translate(-50%, -150%);
+-ms-transform: translate(-50%, -150%);
+-o-transform: translate(-50%, -150%);
+transform: translate(-50%, -150%);
+
+/* trasformazioni animate */
+-webkit-transition: transform 0.6s ease-out;
+-moz-transition: transform 0.6s ease-out;
+-ms-transition: transform 0.6s ease-out;
+-o-transition: transform 0.6s ease-out;
+transition: transform 0.6s ease-out;
+}
+
+.overlay:target+.popup {
+top: 80%;
+-webkit-transform: translate(-50%,-50%);
+-ms-transform: translate(-50%, -50%);
+-o-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);
+}
+
+.close {
+position: absolute;
+padding: 0;
+top: 1px;
+right: 1px;
+width: 22px;
+height: 22px;
+border: 2px solid #ccc;
+-webkit-border-radius: 50%;
+-moz-border-radius: 50%;
+-ms-border-radius: 50%;
+-o-border-radius: 50%;
+border-radius: 50%;
+background-color: rgba(61, 61, 61, 0.8);
+-webkit-box-shadow: 0px 0px 10px #000;
+-moz-box-shadow: 0px 0px 10px #000;
+box-shadow: 0px 0px 10px #000;
+text-align: center;
+text-decoration: none;
+font-weight: bold;
+line-height: 20px;
+-webkit-transition: background-color ease .7s;
+-moz-transition:  background-color ease .7s;
+-ms-transition:  background-color ease .7s;
+-o-transition:  background-color ease .7s;
+transition: background-color ease .7s;
+}
+
+.close:before {
+color: rgba(255, 255, 255, 0.9);
+content: '\2715';
+text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
+font-size: 12px;
+ 
+}
+
+.close:hover {
+background-color: #FFE200;
+}
+.popup p {
+margin: 0;
+padding: 10px;
+}
+/* tablet */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+	.popup {
+		width: 95%;
+	}
+}
+/* smartfone*/
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+	.popup {
+		width:85%;
+	}
+}
+
+
+                    
+</style>
+
+
+
+<div class="page page-login">
+
+    <form action="{{ route('update_profile') }}" method="POST" enctype="multipart/form-data">                
+    
+	<section>		
+        
+		<article class="card card-info--big">            
+        
+                <input name="_token" type="hidden" value="{{ csrf_token() }}">
+
+                <span style="text-align: center; " class="section-title section-title--no-separator">Profilo Utente</span>                                                        
+                    
+                <div style="display: grid; justify-content: center;" >                         
+
+                    <div class="header-rounded-image">
+                        <picture>
+                            <img class=" lazyloaded" data-srcset="{{ avatar }} , {{ avatar }} 2x" srcset="{{avatar}} , {{avatar }} 2x">
+                        </picture>
+                        <noscript>
+                            <picture>
+                                <!--[if IE 9]><video style="display: none;"><![endif]-->
+                                <source srcset="{{ avatar }}, {{ avatar }} 2x" media="(max-width: 736px)"/>
+                                <!--[if IE 9]></video><![endif]-->
+                                <img src="{{ avatar }}" alt=""/>
+                            </picture>
+                        </noscript>					
+                    </div>
+                    <div style="">
+                        <input type="file" name="profile_image"> 
+                    </div>
+                </div>                
+
+
+                <div  style="width: 100%; display: grid; padding: 5px;" class="">  
+
+                    <!-- Name Field -->
+                    <div class="text-center">                        
+                        <label style="text-align: center;"  for="club_name">Nome Partner</label>
+                        <input class="form-control" name="club_name" type="text" value="{{ partner.name }}" id="name">
+                    </div>
+
+                    <!-- Name Field -->
+                    <div class="text-center">                        
+                        <label style="text-align: center;"  for="name">Nome Responsabile</label>
+                        <input class="form-control" name="name" type="text" value="{{ current_user.name }}" id="name">
+                    </div>
+
+                    <!-- Surname Field -->
+                    <div class="text-center">                        
+                        <label  style="text-align: center;"  for="surname">Cognome Responsabile</label>
+                        <input class="form-control" name="surname" type="text" value="{{ current_user.surname }}" id="surname">
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="text-center">
+                        <label  style="text-align: center;"  for="email">Email</label>
+                        <input class="form-control" name="email" type="text" value="{{ current_user.email }}" id="email">
+                    </div>               
+
+                    <!-- Cogname Field -->
+                    <div class="text-center">                        
+                        <label  style="text-align: center;"  for="mobile_phone">Cellulare</label>
+                        <input class="form-control" name="mobile_phone" type="text" value="{{ current_user.mobile_phone }}" id="mobile_phone">
+                    </div>     
+                                                                                                                                                                                           
+                </div>                 
+
+        </article>
+
+        <article class="card card-info--big">            
+        
+            <span  style="text-align: center; " class="section-title section-title--no-separator">Contatti</span>
+                    
+            <div  style="width: 100%; display: grid; padding: 5px;" class="">  
+                <!-- Name Field -->
+                <div class="text-center">                        
+                    <label style="text-align: center;"  for="name">Telefono</label>
+                    <input class="form-control" name="phone" type="text" value="{{ partner.phone }}" id="name">
+                </div>                
+
+                <div class="text-center">          
+                    <!-- Sesso Field -->
+                    <label  style="text-align: center;" for="id_city">Città</label>                                                                                                              
+                    <select id="id_city" name="id_city" class="dropdown dropdown--light">
+                        <option selected="" disabled="" required="">Città</option>					
+
+                        {% for city in cities %}
+                        <option value="{{ city.id }}" {% if partner.id_city == city.id %} selected {% endif %}>{{ city.country.name }} - {{ city.name }}</option>					
+                        {% endfor %}
+                    </select>
+                </div>       
+
+                <!-- Email Field -->
+                <div class="text-center">
+                    <label  style="text-align: center;"  for="email">Indirizzo</label>
+                    <input class="form-control" name="address" type="text" value="{{ partner.address }}" id="email">
+                </div>
+
+                <!-- Website Field -->
+                    <div class="text-center">
+                        <label  style="text-align: center;"  for="website">Sito Web</label>
+                        <input class="form-control" name="website" type="text" value="{{ partner.website }}" id="website">
+                    </div>
+                                                                                                                                                                                                
+            </div>
+                
+        </article>
+
+        <article class="card card-info--big summernote-js">
+            <span class="section-title section-title--no-separator">Descrizione</span>
+            <textarea class="summernote" name="description" id="description" cols="30" rows="10">
+            {{ partner.description }}
+            </textarea>
+        </article>    
+
+        <style>
+            label {
+                padding: 10px;
+                color: yellow;
+                display: block;
+            }
+
+            
+
+            input, textarea { 
+                color: #dedede;
+                font-family: Courgette, sans-serif;                
+            }
+            input, textarea { 
+            / Stili per il campo di testo e per la textarea /
+                background: #1C1C1C;
+                border: 1px solid #323232;
+                color: #fff;
+                height: 30px;
+                line-height: 18px;
+                font-size: 18px;
+                width: 93%;
+                height: 100%;
+                padding: 10px;
+                margin: 10px;
+                border-radius: 8px;
+                border: 2px solid #fff;
+            }
+            
+            textarea { 
+                overflow: auto; 
+            }
+
+            textarea#messaggio:focus {
+                border-bottom: 2px solid #FFE200; 
+            }    
+            
+            
+        </style>
+
+        {% set user = current_user %}  
+        {% include 'components/partials/edit-user-gallery.twig' %}                           
+
+        <div style="margin-bottom:10px;" class="cta-container cta-container--center">
+            <button type="submit" name="btn_submit_profile" value="save_profile" class="loginform cta cta--enter cta--yellow">Salva Profilo</button>
+        </div>
+
+	</section>
+</div>
+
+<link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v=1.0.4">
+
+{% endblock %}

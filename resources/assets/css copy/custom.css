@@ -1,0 +1,2961 @@
+@charset "UTF-8";
+/** Swiper 4.0.7 Most modern mobile touch slider and framework with hardware accelerated transitions http://www.idangero.us/swiper/  Copyright 2014-2017 Vladimir Kharlampidi  Released under the MIT License  Released on: November 28, 2017 */
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container { margin: 0 auto; position: relative; overflow: hidden; list-style: none; padding: 0; z-index: 1; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-no-flexbox .swiper-slide { float: left; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-vertical > .swiper-wrapper { -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-wrapper { position: relative; width: 100%; height: 100%; z-index: 1; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-transition-property: -webkit-transform; transition-property: -webkit-transform; -o-transition-property: transform; transition-property: transform; transition-property: transform,-webkit-transform; -webkit-box-sizing: content-box; box-sizing: content-box; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-android .swiper-slide, .swiper-wrapper { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-multirow > .swiper-wrapper { -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-free-mode > .swiper-wrapper { -webkit-transition-timing-function: ease-out; -o-transition-timing-function: ease-out; transition-timing-function: ease-out; margin: 0 auto; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-slide { -webkit-flex-shrink: 0; -ms-flex-negative: 0; flex-shrink: 0; width: 100%; height: 100%; position: relative; -webkit-transition-property: -webkit-transform; transition-property: -webkit-transform; -o-transition-property: transform; transition-property: transform; transition-property: transform,-webkit-transform; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-invisible-blank-slide { visibility: hidden; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-autoheight, .swiper-container-autoheight .swiper-slide { height: auto; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-autoheight .swiper-wrapper { -webkit-box-align: start; -webkit-align-items: flex-start; -ms-flex-align: start; align-items: flex-start; -webkit-transition-property: height,-webkit-transform; transition-property: height,-webkit-transform; -o-transition-property: transform,height; transition-property: transform,height; transition-property: transform,height,-webkit-transform; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-3d { -webkit-perspective: 1200px; perspective: 1200px; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-3d .swiper-cube-shadow, .swiper-container-3d .swiper-slide, .swiper-container-3d .swiper-slide-shadow-bottom, .swiper-container-3d .swiper-slide-shadow-left, .swiper-container-3d .swiper-slide-shadow-right, .swiper-container-3d .swiper-slide-shadow-top, .swiper-container-3d .swiper-wrapper { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-3d .swiper-slide-shadow-bottom, .swiper-container-3d .swiper-slide-shadow-left, .swiper-container-3d .swiper-slide-shadow-right, .swiper-container-3d .swiper-slide-shadow-top { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-3d .swiper-slide-shadow-left { background-image: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0.5)), to(transparent)); background-image: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.5), transparent); background-image: -o-linear-gradient(right, rgba(0, 0, 0, 0.5), transparent); background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)); }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-3d .swiper-slide-shadow-right { background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.5)), to(transparent)); background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), transparent); background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5), transparent); background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)); }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-3d .swiper-slide-shadow-top { background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.5)), to(transparent)); background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5), transparent); background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5), transparent); background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)); }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-3d .swiper-slide-shadow-bottom { background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(transparent)); background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), transparent); background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.5), transparent); background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)); }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-wp8-horizontal, .swiper-container-wp8-horizontal > .swiper-wrapper { -ms-touch-action: pan-y; touch-action: pan-y; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-wp8-vertical, .swiper-container-wp8-vertical > .swiper-wrapper { -ms-touch-action: pan-x; touch-action: pan-x; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-button-next, .swiper-button-prev { position: absolute; top: 50%; width: 27px; height: 44px; margin-top: -22px; z-index: 10; cursor: pointer; background-size: 27px 44px; background-position: center; background-repeat: no-repeat; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled { opacity: .35; cursor: auto; pointer-events: none; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E"); left: 10px; right: auto; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E"); right: 10px; left: auto; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-button-prev.swiper-button-white, .swiper-container-rtl .swiper-button-next.swiper-button-white { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E"); }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-button-next.swiper-button-white, .swiper-container-rtl .swiper-button-prev.swiper-button-white { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E"); }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-button-prev.swiper-button-black, .swiper-container-rtl .swiper-button-next.swiper-button-black { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E"); }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-button-next.swiper-button-black, .swiper-container-rtl .swiper-button-prev.swiper-button-black { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E"); }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination { position: absolute; text-align: center; -webkit-transition: .3s opacity; -o-transition: .3s opacity; transition: .3s opacity; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); z-index: 10; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination.swiper-pagination-hidden { opacity: 0; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction { bottom: 10px; left: 0; width: 100%; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination-bullets-dynamic { overflow: hidden; font-size: 0; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination-bullets-dynamic .swiper-pagination-bullet { -webkit-transform: scale(0.33); -ms-transform: scale(0.33); transform: scale(0.33); position: relative; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active { -webkit-transform: scale(1); -ms-transform: scale(1); transform: scale(1); }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev { -webkit-transform: scale(0.66); -ms-transform: scale(0.66); transform: scale(0.66); }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev-prev { -webkit-transform: scale(0.33); -ms-transform: scale(0.33); transform: scale(0.33); }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next { -webkit-transform: scale(0.66); -ms-transform: scale(0.66); transform: scale(0.66); }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next-next { -webkit-transform: scale(0.33); -ms-transform: scale(0.33); transform: scale(0.33); }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination-bullet { width: 8px; height: 8px; display: inline-block; border-radius: 100%; background: #000; opacity: .2; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+button.swiper-pagination-bullet { border: none; margin: 0; padding: 0; -webkit-box-shadow: none; box-shadow: none; -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination-clickable .swiper-pagination-bullet { cursor: pointer; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination-bullet-active { opacity: 1; background: #007aff; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-vertical > .swiper-pagination-bullets { right: 10px; top: 50%; -webkit-transform: translate3d(0, -50%, 0); transform: translate3d(0, -50%, 0); }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-vertical > .swiper-pagination-bullets .swiper-pagination-bullet { margin: 6px 0; display: block; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-vertical > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic { top: 50%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); width: 8px; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-vertical > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet { display: inline-block; -webkit-transition: .2s top,.2s -webkit-transform; transition: .2s top,.2s -webkit-transform; -o-transition: .2s transform,.2s top; transition: .2s transform,.2s top; transition: .2s transform,.2s top,.2s -webkit-transform; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet { margin: 0 4px; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-horizontal > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic { left: 50%; -webkit-transform: translateX(-50%); -ms-transform: translateX(-50%); transform: translateX(-50%); white-space: nowrap; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-horizontal > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet { -webkit-transition: .2s left,.2s -webkit-transform; transition: .2s left,.2s -webkit-transform; -o-transition: .2s transform,.2s left; transition: .2s transform,.2s left; transition: .2s transform,.2s left,.2s -webkit-transform; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-horizontal.swiper-container-rtl > .swiper-pagination-bullets-dynamic .swiper-pagination-bullet { -webkit-transition: .2s right,.2s -webkit-transform; transition: .2s right,.2s -webkit-transform; -o-transition: .2s transform,.2s right; transition: .2s transform,.2s right; transition: .2s transform,.2s right,.2s -webkit-transform; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination-progressbar { background: rgba(0, 0, 0, 0.25); position: absolute; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill { background: #007aff; position: absolute; left: 0; top: 0; width: 100%; height: 100%; -webkit-transform: scale(0); -ms-transform: scale(0); transform: scale(0); -webkit-transform-origin: left top; -ms-transform-origin: left top; transform-origin: left top; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-rtl .swiper-pagination-progressbar .swiper-pagination-progressbar-fill { -webkit-transform-origin: right top; -ms-transform-origin: right top; transform-origin: right top; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-horizontal > .swiper-pagination-progressbar { width: 100%; height: 4px; left: 0; top: 0; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-vertical > .swiper-pagination-progressbar { width: 4px; height: 100%; left: 0; top: 0; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination-white .swiper-pagination-bullet-active { background: #fff; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination-progressbar.swiper-pagination-white { background: rgba(255, 255, 255, 0.25); }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination-progressbar.swiper-pagination-white .swiper-pagination-progressbar-fill { background: #fff; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination-black .swiper-pagination-bullet-active { background: #000; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination-progressbar.swiper-pagination-black { background: rgba(0, 0, 0, 0.25); }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-pagination-progressbar.swiper-pagination-black .swiper-pagination-progressbar-fill { background: #000; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-scrollbar { border-radius: 10px; position: relative; -ms-touch-action: none; background: rgba(0, 0, 0, 0.1); }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-horizontal > .swiper-scrollbar { position: absolute; left: 1%; bottom: 3px; z-index: 50; height: 5px; width: 98%; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-vertical > .swiper-scrollbar { position: absolute; right: 3px; top: 1%; z-index: 50; width: 5px; height: 98%; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-scrollbar-drag { height: 100%; width: 100%; position: relative; background: rgba(0, 0, 0, 0.5); border-radius: 10px; left: 0; top: 0; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-scrollbar-cursor-drag { cursor: move; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-zoom-container { width: 100%; height: 100%; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; text-align: center; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-zoom-container > canvas, .swiper-zoom-container > img, .swiper-zoom-container > svg { max-width: 100%; max-height: 100%; -o-object-fit: contain; object-fit: contain; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-slide-zoomed { cursor: move; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-lazy-preloader { width: 42px; height: 42px; position: absolute; left: 50%; top: 50%; margin-left: -21px; margin-top: -21px; z-index: 10; -webkit-transform-origin: 50%; -ms-transform-origin: 50%; transform-origin: 50%; -webkit-animation: swiper-preloader-spin 1s steps(12, end) infinite; animation: swiper-preloader-spin 1s steps(12, end) infinite; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-lazy-preloader:after { display: block; content: ''; width: 100%; height: 100%; background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%20120%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3Axlink%3D'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink'%3E%3Cdefs%3E%3Cline%20id%3D'l'%20x1%3D'60'%20x2%3D'60'%20y1%3D'7'%20y2%3D'27'%20stroke%3D'%236c6c6c'%20stroke-width%3D'11'%20stroke-linecap%3D'round'%2F%3E%3C%2Fdefs%3E%3Cg%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(30%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(60%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(90%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(120%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(150%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.37'%20transform%3D'rotate(180%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.46'%20transform%3D'rotate(210%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.56'%20transform%3D'rotate(240%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.66'%20transform%3D'rotate(270%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.75'%20transform%3D'rotate(300%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.85'%20transform%3D'rotate(330%2060%2C60)'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"); background-position: 50%; background-size: 100%; background-repeat: no-repeat; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-lazy-preloader-white:after { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%20120%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3Axlink%3D'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink'%3E%3Cdefs%3E%3Cline%20id%3D'l'%20x1%3D'60'%20x2%3D'60'%20y1%3D'7'%20y2%3D'27'%20stroke%3D'%23fff'%20stroke-width%3D'11'%20stroke-linecap%3D'round'%2F%3E%3C%2Fdefs%3E%3Cg%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(30%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(60%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(90%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(120%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(150%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.37'%20transform%3D'rotate(180%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.46'%20transform%3D'rotate(210%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.56'%20transform%3D'rotate(240%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.66'%20transform%3D'rotate(270%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.75'%20transform%3D'rotate(300%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.85'%20transform%3D'rotate(330%2060%2C60)'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"); }
+
+@-webkit-keyframes swiper-preloader-spin { 100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+@keyframes swiper-preloader-spin { 100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container .swiper-notification { position: absolute; left: 0; top: 0; pointer-events: none; opacity: 0; z-index: -1000; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-fade.swiper-container-free-mode .swiper-slide { -webkit-transition-timing-function: ease-out; -o-transition-timing-function: ease-out; transition-timing-function: ease-out; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-fade .swiper-slide { pointer-events: none; -webkit-transition-property: opacity; -o-transition-property: opacity; transition-property: opacity; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-fade .swiper-slide .swiper-slide { pointer-events: none; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-fade .swiper-slide-active, .swiper-container-fade .swiper-slide-active .swiper-slide-active { pointer-events: auto; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-cube { overflow: visible; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-cube .swiper-slide { pointer-events: none; -webkit-backface-visibility: hidden; backface-visibility: hidden; z-index: 1; visibility: hidden; -webkit-transform-origin: 0 0; -ms-transform-origin: 0 0; transform-origin: 0 0; width: 100%; height: 100%; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-cube .swiper-slide .swiper-slide { pointer-events: none; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-cube.swiper-container-rtl .swiper-slide { -webkit-transform-origin: 100% 0; -ms-transform-origin: 100% 0; transform-origin: 100% 0; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-cube .swiper-slide-active, .swiper-container-cube .swiper-slide-active .swiper-slide-active { pointer-events: auto; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-cube .swiper-slide-active, .swiper-container-cube .swiper-slide-next, .swiper-container-cube .swiper-slide-next + .swiper-slide, .swiper-container-cube .swiper-slide-prev { pointer-events: auto; visibility: visible; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-cube .swiper-slide-shadow-bottom, .swiper-container-cube .swiper-slide-shadow-left, .swiper-container-cube .swiper-slide-shadow-right, .swiper-container-cube .swiper-slide-shadow-top { z-index: 0; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-cube .swiper-cube-shadow { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; background: #000; opacity: .6; -webkit-filter: blur(50px); filter: blur(50px); z-index: 0; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-flip { overflow: visible; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-flip .swiper-slide { pointer-events: none; -webkit-backface-visibility: hidden; backface-visibility: hidden; z-index: 1; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-flip .swiper-slide .swiper-slide { pointer-events: none; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-flip .swiper-slide-active, .swiper-container-flip .swiper-slide-active .swiper-slide-active { pointer-events: auto; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-flip .swiper-slide-shadow-bottom, .swiper-container-flip .swiper-slide-shadow-left, .swiper-container-flip .swiper-slide-shadow-right, .swiper-container-flip .swiper-slide-shadow-top { z-index: 0; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+
+/* line 12, ../../../node_modules/rogiostrap/src/sass/libs/_swiper.min.scss */
+.swiper-container-coverflow .swiper-wrapper { -ms-perspective: 1200px; }
+
+/*!
+Chosen, a Select Box Enhancer for jQuery and Prototype
+by Patrick Filler for Harvest, http://getharvest.com
+
+Version 1.8.5
+Full source at https://github.com/harvesthq/chosen
+Copyright (c) 2011-2018 Harvest http://getharvest.com
+
+MIT License, https://github.com/harvesthq/chosen/blob/master/LICENSE.md
+This file is generated by `grunt build`, do not edit it by hand.
+*/
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container { position: relative; display: inline-block; vertical-align: middle; font-size: 13px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container * { -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container .chosen-drop { position: absolute; top: 100%; z-index: 1010; width: 100%; border: 1px solid #aaa; border-top: 0; background: #fff; -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15); box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15); display: none; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container.chosen-with-drop .chosen-drop { display: block; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container a { cursor: pointer; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container .chosen-single .group-name, .chosen-container .search-choice .group-name { margin-right: 4px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-weight: 400; color: #999; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container .chosen-single .group-name:after, .chosen-container .search-choice .group-name:after { content: ":"; padding-left: 2px; vertical-align: top; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-single .chosen-single { position: relative; display: block; overflow: hidden; padding: 0 0 0 8px; height: 25px; border: 1px solid #aaa; border-radius: 5px; background-color: #fff; background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #fff), color-stop(50%, #f6f6f6), color-stop(52%, #eee), to(#f4f4f4)); background: linear-gradient(#ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%); background-clip: padding-box; -webkit-box-shadow: 0 0 3px #fff inset, 0 1px 1px rgba(0, 0, 0, 0.1); box-shadow: 0 0 3px #fff inset, 0 1px 1px rgba(0, 0, 0, 0.1); color: #444; text-decoration: none; white-space: nowrap; line-height: 24px; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-single .chosen-single input[type=text] { cursor: pointer; opacity: 0; position: absolute; width: 0; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-single .chosen-default { color: #999; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-single .chosen-single span { display: block; overflow: hidden; margin-right: 26px; text-overflow: ellipsis; white-space: nowrap; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-single .chosen-single-with-deselect span { margin-right: 38px; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-single .chosen-single abbr { position: absolute; top: 6px; right: 26px; display: block; width: 12px; height: 12px; background: url(chosen-sprite.png) -42px 1px no-repeat; font-size: 1px; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-single .chosen-single abbr:hover { background-position: -42px -10px; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-single.chosen-disabled .chosen-single abbr:hover { background-position: -42px -10px; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-single .chosen-single div { position: absolute; top: 0; right: 0; display: block; width: 18px; height: 100%; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-single .chosen-single div b { display: block; width: 100%; height: 100%; background: url(chosen-sprite.png) no-repeat 0 2px; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-single .chosen-search { position: relative; z-index: 1010; margin: 0; padding: 3px 4px; white-space: nowrap; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-single .chosen-search input[type=text] { margin: 1px 0; padding: 4px 20px 4px 5px; width: 100%; height: auto; outline: 0; border: 1px solid #aaa; background: url(chosen-sprite.png) no-repeat 100% -20px; font-size: 1em; font-family: sans-serif; line-height: normal; border-radius: 0; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-single .chosen-drop { margin-top: -1px; border-radius: 0 0 4px 4px; background-clip: padding-box; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-single.chosen-container-single-nosearch .chosen-search { position: absolute; opacity: 0; pointer-events: none; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container .chosen-results { color: #444; position: relative; overflow-x: hidden; overflow-y: auto; margin: 0 4px 4px 0; padding: 0 0 0 4px; max-height: 240px; -webkit-overflow-scrolling: touch; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container .chosen-results li { display: none; margin: 0; padding: 5px 6px; list-style: none; line-height: 15px; word-wrap: break-word; -webkit-touch-callout: none; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container .chosen-results li.active-result { display: list-item; cursor: pointer; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container .chosen-results li.disabled-result { display: list-item; color: #ccc; cursor: default; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container .chosen-results li.highlighted { background-color: #3875d7; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #3875d7), color-stop(90%, #2a62bc)); background-image: linear-gradient(#3875d7 20%, #2a62bc 90%); color: #fff; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container .chosen-results li.no-results { color: #777; display: list-item; background: #f4f4f4; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container .chosen-results li.group-result { display: list-item; font-weight: 700; cursor: default; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container .chosen-results li.group-option { padding-left: 15px; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container .chosen-results li em { font-style: normal; text-decoration: underline; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-multi .chosen-choices { position: relative; overflow: hidden; margin: 0; padding: 0 5px; width: 100%; height: auto; border: 1px solid #aaa; background-color: #fff; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #eee), color-stop(15%, #fff)); background-image: linear-gradient(#eeeeee 1%, #ffffff 15%); cursor: text; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-multi .chosen-choices li { float: left; list-style: none; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-multi .chosen-choices li.search-field { margin: 0; padding: 0; white-space: nowrap; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-multi .chosen-choices li.search-field input[type=text] { margin: 1px 0; padding: 0; height: 25px; outline: 0; border: 0 !important; background: 0 0 !important; -webkit-box-shadow: none; box-shadow: none; color: #999; font-size: 100%; font-family: sans-serif; line-height: normal; border-radius: 0; width: 25px; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-multi .chosen-choices li.search-choice { position: relative; margin: 3px 5px 3px 0; padding: 3px 20px 3px 5px; border: 1px solid #aaa; max-width: 100%; border-radius: 3px; background-color: #eee; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #f4f4f4), color-stop(50%, #f0f0f0), color-stop(52%, #e8e8e8), to(#eee)); background-image: linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%); background-size: 100% 19px; background-repeat: repeat-x; background-clip: padding-box; -webkit-box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0, 0, 0, 0.05); box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0, 0, 0, 0.05); color: #333; line-height: 13px; cursor: default; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-multi .chosen-choices li.search-choice span { word-wrap: break-word; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-multi .chosen-choices li.search-choice .search-choice-close { position: absolute; top: 4px; right: 3px; display: block; width: 12px; height: 12px; background: url(chosen-sprite.png) -42px 1px no-repeat; font-size: 1px; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-multi .chosen-choices li.search-choice .search-choice-close:hover { background-position: -42px -10px; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-multi .chosen-choices li.search-choice-disabled { padding-right: 5px; border: 1px solid #ccc; background-color: #e4e4e4; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #f4f4f4), color-stop(50%, #f0f0f0), color-stop(52%, #e8e8e8), to(#eee)); background-image: linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%); color: #666; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-multi .chosen-choices li.search-choice-focus { background: #d4d4d4; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-multi .chosen-choices li.search-choice-focus .search-choice-close { background-position: -42px -10px; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-multi .chosen-results { margin: 0; padding: 0; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-multi .chosen-drop .result-selected { display: list-item; color: #ccc; cursor: default; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-active .chosen-single { border: 1px solid #5897fb; -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-active.chosen-with-drop .chosen-single { border: 1px solid #aaa; border-bottom-right-radius: 0; border-bottom-left-radius: 0; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #eee), color-stop(80%, #fff)); background-image: linear-gradient(#eeeeee 20%, #ffffff 80%); -webkit-box-shadow: 0 1px 0 #fff inset; box-shadow: 0 1px 0 #fff inset; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-active.chosen-with-drop .chosen-single div { border-left: none; background: 0 0; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-active.chosen-with-drop .chosen-single div b { background-position: -18px 2px; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-active .chosen-choices { border: 1px solid #5897fb; -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-container-active .chosen-choices li.search-field input[type=text] { color: #222 !important; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-disabled { opacity: 0.5 !important; cursor: default; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-disabled .chosen-single { cursor: default; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-disabled .chosen-choices .search-choice .search-choice-close { cursor: default; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-rtl { text-align: right; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-rtl .chosen-single { overflow: visible; padding: 0 8px 0 0; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-rtl .chosen-single span { margin-right: 0; margin-left: 26px; direction: rtl; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-rtl .chosen-single-with-deselect span { margin-left: 38px; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-rtl .chosen-single div { right: auto; left: 3px; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-rtl .chosen-single abbr { right: auto; left: 26px; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-rtl .chosen-choices li { float: right; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-rtl .chosen-choices li.search-field input[type=text] { direction: rtl; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-rtl .chosen-choices li.search-choice { margin: 3px 5px 3px 0; padding: 3px 5px 3px 19px; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-rtl .chosen-choices li.search-choice .search-choice-close { right: auto; left: 4px; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-rtl.chosen-container-single .chosen-results { margin: 0 0 4px 4px; padding: 0 4px 0 0; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-rtl .chosen-results li.group-option { padding-right: 15px; padding-left: 0; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-rtl.chosen-container-active.chosen-with-drop .chosen-single div { border-right: none; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-rtl .chosen-search input[type=text] { padding: 4px 5px 4px 20px; background: url(chosen-sprite.png) no-repeat -30px -20px; direction: rtl; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-rtl.chosen-container-single .chosen-single div b { background-position: 6px 2px; }
+
+/* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+.chosen-rtl.chosen-container-single.chosen-with-drop .chosen-single div b { background-position: -12px 2px; }
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi), only screen and (min-resolution: 1.5dppx) { /* line 11, ../../../node_modules/rogiostrap/src/sass/libs/_chosen.min.scss */
+  .chosen-container .chosen-results-scroll-down span, .chosen-container .chosen-results-scroll-up span, .chosen-container-multi .chosen-choices .search-choice .search-choice-close, .chosen-container-single .chosen-search input[type=text], .chosen-container-single .chosen-single abbr, .chosen-container-single .chosen-single div b, .chosen-rtl .chosen-search input[type=text] { background-image: url(chosen-sprite@2x.png) !important; background-size: 52px 37px !important; background-repeat: no-repeat !important; } }
+/* line 5, ../../../src/sass/_mixins.scss */
+.container, section, .container-cycle-col-1, .container-cycle-span-1, .container-cycle-col-2, .container-cycle-span-2, .container-cycle-col-3, .container-cycle-span-3, .container-cycle-col-4, .container-cycle-span-4, .container-cycle-col-5, .container-cycle-span-5, .container-cycle-col-6, .container-cycle-span-6, .container-cycle-col-7, .container-cycle-span-7, .container-cycle-col-8, .container-cycle-span-8, .container-cycle-col-9, .container-cycle-span-9, .container-cycle-col-10, .container-cycle-span-10, .container-cycle-col-11, .container-cycle-span-11, .container-cycle-col-12, .container-cycle-span-12 { *zoom: 1; }
+/* line 8, ../../../src/sass/_mixins.scss */
+.container:before, section:before, .container-cycle-col-1:before, .container-cycle-span-1:before, .container-cycle-col-2:before, .container-cycle-span-2:before, .container-cycle-col-3:before, .container-cycle-span-3:before, .container-cycle-col-4:before, .container-cycle-span-4:before, .container-cycle-col-5:before, .container-cycle-span-5:before, .container-cycle-col-6:before, .container-cycle-span-6:before, .container-cycle-col-7:before, .container-cycle-span-7:before, .container-cycle-col-8:before, .container-cycle-span-8:before, .container-cycle-col-9:before, .container-cycle-span-9:before, .container-cycle-col-10:before, .container-cycle-span-10:before, .container-cycle-col-11:before, .container-cycle-span-11:before, .container-cycle-col-12:before, .container-cycle-span-12:before, .container:after, section:after, .container-cycle-col-1:after, .container-cycle-span-1:after, .container-cycle-col-2:after, .container-cycle-span-2:after, .container-cycle-col-3:after, .container-cycle-span-3:after, .container-cycle-col-4:after, .container-cycle-span-4:after, .container-cycle-col-5:after, .container-cycle-span-5:after, .container-cycle-col-6:after, .container-cycle-span-6:after, .container-cycle-col-7:after, .container-cycle-span-7:after, .container-cycle-col-8:after, .container-cycle-span-8:after, .container-cycle-col-9:after, .container-cycle-span-9:after, .container-cycle-col-10:after, .container-cycle-span-10:after, .container-cycle-col-11:after, .container-cycle-span-11:after, .container-cycle-col-12:after, .container-cycle-span-12:after { content: ""; display: table; }
+/* line 13, ../../../src/sass/_mixins.scss */
+.container:after, section:after, .container-cycle-col-1:after, .container-cycle-span-1:after, .container-cycle-col-2:after, .container-cycle-span-2:after, .container-cycle-col-3:after, .container-cycle-span-3:after, .container-cycle-col-4:after, .container-cycle-span-4:after, .container-cycle-col-5:after, .container-cycle-span-5:after, .container-cycle-col-6:after, .container-cycle-span-6:after, .container-cycle-col-7:after, .container-cycle-span-7:after, .container-cycle-col-8:after, .container-cycle-span-8:after, .container-cycle-col-9:after, .container-cycle-span-9:after, .container-cycle-col-10:after, .container-cycle-span-10:after, .container-cycle-col-11:after, .container-cycle-span-11:after, .container-cycle-col-12:after, .container-cycle-span-12:after { clear: both; }
+
+/* line 29, ../../../src/sass/_mixins.scss */
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */ color: #445C69; }
+
+/* line 33, ../../../src/sass/_mixins.scss */
+::-moz-placeholder { /* Firefox 19+ */ color: #445C69; opacity: 1; }
+
+/* line 38, ../../../src/sass/_mixins.scss */
+:-ms-input-placeholder { /* IE 10+ */ color: #445C69; }
+
+/* line 42, ../../../src/sass/_mixins.scss */
+:-moz-placeholder { /* Firefox 18- */ color: #445C69; }
+
+/* line 46, ../../../src/sass/_mixins.scss */
+.social-comment, .cta--enter, .cta--back, .yellow-text-link, .header__top .hamburger, .header__top .login, .header__main-menu .main-menu__close, .header__main-menu li.single-item a, footer.footer .footer__info > a { background-image: url("../images/icons.svg"); background-repeat: no-repeat; background-size: 24px 2700px; }
+
+@font-face { font-family: 'Roboto'; src: local("Roboto-Bold"), local("Roboto Bold"), url("../fonts/Roboto-Bold.woff") format("woff"); font-display: swap; font-weight: 700; font-style: normal; }
+@font-face { font-family: 'Roboto'; src: local("Roboto-Light"), local("Roboto Light"), url("../fonts/Roboto-Light.woff") format("woff"); font-display: swap; font-weight: 300; font-style: normal; }
+@font-face { font-family: 'Roboto'; src: local("Roboto-Medium"), local("Roboto Medium"), url("../fonts/Roboto-Medium.woff") format("woff"); font-display: swap; font-weight: 600; font-style: normal; }
+@font-face { font-family: 'Roboto'; src: local("Roboto-Regular"), local("Roboto Regular"), url("../fonts/Roboto-Regular.woff") format("woff"); font-display: swap; font-weight: 400; font-style: normal; }
+@font-face { font-family: 'Avenir'; src: local("AvenirNextCondensed-Bold"), local("Avenir Next Condensed Bold"), url("../fonts/AvenirNextCondensed-Bold.ttf") format("ttf"); font-display: swap; font-weight: 800; font-style: normal; }
+/* line 1, ../../../node_modules/rogiostrap/src/sass/core/_reset.scss */
+*, *:before, *:after { box-sizing: border-box; }
+
+/* line 5, ../../../node_modules/rogiostrap/src/sass/core/_reset.scss */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; vertical-align: baseline; }
+
+/* line 25, ../../../node_modules/rogiostrap/src/sass/core/_reset.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+
+/* line 30, ../../../node_modules/rogiostrap/src/sass/core/_reset.scss */
+ol, ul { list-style: none; }
+
+/* line 34, ../../../node_modules/rogiostrap/src/sass/core/_reset.scss */
+table { border-collapse: collapse; border-spacing: 0; }
+
+/* line 39, ../../../node_modules/rogiostrap/src/sass/core/_reset.scss */
+img { display: block; max-width: 100%; height: auto; }
+
+/* line 45, ../../../node_modules/rogiostrap/src/sass/core/_reset.scss */
+input { outline: none; border: none; border-radius: 0; }
+
+/* line 55, ../../../node_modules/rogiostrap/src/sass/core/_reset.scss */
+input:focus, textarea:focus, button:focus { outline: none !important; }
+
+/* line 1, ../../../node_modules/rogiostrap/src/sass/core/_settings.scss */
+*[data-link] { cursor: pointer; }
+
+/*
+textarea {
+	@extend %input;
+	line-height: 20px;
+	min-height: 200px;
+	padding: 8px 16px;
+	resize: vertical;
+
+	&:focus {
+		border: 1px solid $primaryColor !important;
+	}
+}
+
+input[type=text]:focus,
+input[type=email]:focus,
+.select2-selection[aria-expanded="true"] {
+	border: 1px solid $secondaryColor !important;
+}*/
+/* line 25, ../../../node_modules/rogiostrap/src/sass/core/_settings.scss */
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */ color: rgba(255, 226, 0, 0.8); }
+
+/* line 29, ../../../node_modules/rogiostrap/src/sass/core/_settings.scss */
+::-moz-placeholder { /* Firefox 19+ */ color: rgba(255, 226, 0, 0.8); opacity: 1; }
+
+/* line 34, ../../../node_modules/rogiostrap/src/sass/core/_settings.scss */
+:-ms-input-placeholder { /* IE 10+ */ color: rgba(255, 226, 0, 0.8); }
+
+/* line 38, ../../../node_modules/rogiostrap/src/sass/core/_settings.scss */
+:-moz-placeholder { /* Firefox 18- */ color: rgba(255, 226, 0, 0.8); }
+
+/*
+button[type="submit"] {
+	background-color: transparent;
+	border: none;
+	border: 0;
+	-webkit-appearance: none;
+	appearance: none;
+	cursor: pointer;
+}
+
+.sticky-element, .sticky-banner{
+	transition: all ease-out 0.3s;
+
+	&.is_stuck {
+		//position: fixed !important;
+
+		body.nav-down & {
+			top: 80px !important;
+			bottom: auto !important;
+
+			&.at_bottom {
+				bottom: 0 !important;
+				top: auto !important;
+			}
+		}
+
+		body.nav-up &.at_bottom {
+
+		}
+	}
+}
+
+.banner {
+	margin: 0 auto;
+}
+
+.banner300X250 {
+	height: 250px;
+	width: 300px;
+}
+*/
+/* line 83, ../../../node_modules/rogiostrap/src/sass/core/_settings.scss */
+.lazyload { opacity: 0; }
+
+/* line 87, ../../../node_modules/rogiostrap/src/sass/core/_settings.scss */
+.lazyloading { opacity: 1; display: block; position: absolute !important; left: 0 !important; top: 0 !important; width: 100% !important; height: 100% !important; background: rgba(110, 150, 203, 0.01); margin: 0 !important; z-index: 1; transform: translate(0, 0); }
+/* line 100, ../../../node_modules/rogiostrap/src/sass/core/_settings.scss */
+.lazyloading:after { content: url("../images/loading.svg"); position: absolute; display: block; top: 50%; left: 50%; width: 32px; height: 32px; margin: -16px auto auto -16px; -webkit-animation: loading-spin 0.7s infinite linear; animation: loading-spin 0.7s infinite linear; filter: drop-shadow(0px 0px 0px #000000); -webkit-filter: drop-shadow(0px 0px 0px #000000); }
+
+/* line 116, ../../../node_modules/rogiostrap/src/sass/core/_settings.scss */
+.lazyloaded { opacity: 1; transition: opacity 0.3s; }
+
+/*
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+*/
+/* line 131, ../../../node_modules/rogiostrap/src/sass/core/_settings.scss */
+.line-clamp-2 { display: block; display: -webkit-box; height: 52px; text-overflow: ellipsis; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+
+/* line 135, ../../../node_modules/rogiostrap/src/sass/core/_settings.scss */
+.line-clamp-3 { display: block; display: -webkit-box; height: 78px; text-overflow: ellipsis; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+
+/* line 139, ../../../node_modules/rogiostrap/src/sass/core/_settings.scss */
+.line-clamp-4 { display: block; display: -webkit-box; height: 104px; text-overflow: ellipsis; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; }
+
+/*
+*[class$="--section"] {
+	@extend %cf;
+}
+*/
+/* line 148, ../../../node_modules/rogiostrap/src/sass/core/_settings.scss */
+section { margin-bottom: 24px; }
+
+/* line 153, ../../../node_modules/rogiostrap/src/sass/core/_settings.scss */
+picture { display: block; position: relative; height: 0; overflow: hidden; padding-bottom: 100%; }
+/* line 160, ../../../node_modules/rogiostrap/src/sass/core/_settings.scss */
+picture img { display: block; position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); }
+
+/* line 172, ../../../node_modules/rogiostrap/src/sass/core/_settings.scss */
+.ga-experiment { display: none; }
+
+/* line 1, ../../../node_modules/rogiostrap/src/sass/core/_typography.scss */
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 { color: #000; font-weight: bold; }
+
+/* line 7, ../../../node_modules/rogiostrap/src/sass/core/_typography.scss */
+h1, .h1 { font-size: 36px; line-height: 40px; }
+
+/* line 13, ../../../node_modules/rogiostrap/src/sass/core/_typography.scss */
+h2, .h2 { font-size: 28px; line-height: 32px; }
+
+/* line 19, ../../../node_modules/rogiostrap/src/sass/core/_typography.scss */
+h3, .h3, h4, .h4 { font-size: 24px; line-height: 28px; }
+
+/* line 26, ../../../node_modules/rogiostrap/src/sass/core/_typography.scss */
+h5, .h5, h6, .h6 { font-size: 20px; line-height: 26px; }
+
+/* line 33, ../../../node_modules/rogiostrap/src/sass/core/_typography.scss */
+p, p a { color: #000; font-size: 18px; line-height: 26px; -webkit-font-smoothing: antialiased; }
+
+/* line 70, ../../../node_modules/rogiostrap/src/sass/core/_typography.scss */
+a { color: #3897F0; text-decoration: none; outline: none !important; cursor: pointer; }
+/* line 76, ../../../node_modules/rogiostrap/src/sass/core/_typography.scss */
+a:hover { color: #208bee; }
+
+/* line 89, ../../../node_modules/rogiostrap/src/sass/core/_typography.scss */
+b, strong, .bold { font-weight: bold; }
+
+/* line 95, ../../../node_modules/rogiostrap/src/sass/core/_typography.scss */
+i, em, .italic { font-style: italic; }
+
+/* line 101, ../../../node_modules/rogiostrap/src/sass/core/_typography.scss */
+u, .underline { text-decoration: underline; }
+
+/* line 106, ../../../node_modules/rogiostrap/src/sass/core/_typography.scss */
+q, blockquote { position: relative; quotes: none; }
+
+/* line 112, ../../../node_modules/rogiostrap/src/sass/core/_typography.scss */
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+
+/* line 118, ../../../node_modules/rogiostrap/src/sass/core/_typography.scss */
+.editorial { margin-bottom: 24px; }
+
+/* line 121, ../../../node_modules/rogiostrap/src/sass/core/_typography.scss */
+.description { font-style: italic; margin-bottom: 24px; }
+
+@media print { /* line 2, ../../../node_modules/rogiostrap/src/sass/core/_print.scss */
+  .sidebar, .breadcrumbs, .mp-code, .mp-code-container, .str-adunit { display: none; }
+  /* line 11, ../../../node_modules/rogiostrap/src/sass/core/_print.scss */
+  .editorial img { display: none; } }
+/* line 1, ../../../node_modules/rogiostrap/src/sass/core/_basics.scss */
+.wrapper { position: relative; width: 1012px; max-width: 100%; background-color: #FFF; margin: 0 auto; overflow: hidden; }
+@media screen and (max-width: 736px) { /* line 1, ../../../node_modules/rogiostrap/src/sass/core/_basics.scss */
+  .wrapper { width: 100%; border-radius: 0; padding: 0; margin: 0; } }
+/* line 15, ../../../node_modules/rogiostrap/src/sass/core/_basics.scss */
+.wrapper > .container { position: relative; padding: 0 16px; margin: 0; }
+@media screen and (max-width: 736px) { /* line 1, ../../../node_modules/rogiostrap/src/sass/core/_basics.scss */
+  .wrapper { padding: 0; }
+  /* line 24, ../../../node_modules/rogiostrap/src/sass/core/_basics.scss */
+  .wrapper > .container { padding: 0 8px; } }
+
+@media screen and (max-width: 736px) { /* line 32, ../../../node_modules/rogiostrap/src/sass/core/_basics.scss */
+  .card-scroller { overflow-x: scroll; }
+  /* line 37, ../../../node_modules/rogiostrap/src/sass/core/_basics.scss */
+  .card-scroller section { display: flex; flex-wrap: nowrap; min-width: 800px; }
+  /* line 42, ../../../node_modules/rogiostrap/src/sass/core/_basics.scss */
+  .card-scroller section .card__content { min-height: 142px; }
+  /* line 47, ../../../node_modules/rogiostrap/src/sass/core/_basics.scss */
+  .card-scroller section .card__content .card__title h3 { display: block; display: -webkit-box; height: 56px; text-overflow: ellipsis; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+  /* line 53, ../../../node_modules/rogiostrap/src/sass/core/_basics.scss */
+  .card-scroller section > div[class^="col-"] { width: 30.61224%; margin-left: 0%; margin-right: 4.08163%; }
+  /* line 58, ../../../node_modules/rogiostrap/src/sass/core/_basics.scss */
+  .card-scroller section > div[class^="col-"]:last-child { margin-right: 0%; } }
+
+/*html {
+	width: 100%;
+	max-width: 100%;
+}*/
+/*
+body {
+	width: 100%;
+	max-width: 100%;
+	color: $paragraphColor;
+	font-family: $primaryFont;
+	font-size: 18px;
+	line-height: 26px;
+	background: #FFF;
+	margin-left: auto; // non usare margin: npx npx npx npx perché il margin-top subisce variazioni dall'adv
+	margin-right: auto;
+	-webkit-overflow-scrolling: touch;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	&.modal {
+		background: $modalColor;
+	}
+}*/
+/*
+.wrapper {
+	position: relative;
+	min-width: 1012px;
+	padding: 0;
+	margin: 0 auto;
+	width: 100%;
+	@extend %cf;
+
+	@include smartphone {
+		position: relative;
+		width: 100%;
+		min-width: 0;
+		padding: 10px;
+	}
+}*/
+/* line 109, ../../../node_modules/rogiostrap/src/sass/core/_basics.scss */
+.container, section { position: relative; }
+
+/*
+.section-container {
+	margin-bottom: 24px;
+	@extend %cf;
+}*/
+/*
+a {
+
+	&:hover {
+		color: darken($secondaryColor, 10%);
+	}
+
+	> * {
+
+		&:hover {
+			color: darken($secondaryColor, 10%);
+		}
+	}
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-weight: bold;
+}*/
+/*
+textarea {
+	@extend %input;
+	border-radius: 0px;
+	line-height: 20px;
+	min-height: 200px;
+	padding: 8px 16px;
+	resize: vertical;
+
+	&:focus {
+		border: 1px solid $secondaryColor !important;
+	}
+}
+
+input[type=text]:focus,
+input[type=email]:focus,
+.select2-selection[aria-expanded="true"] {
+	border: 1px solid $secondaryColor !important;
+}*/
+/* line 159, ../../../node_modules/rogiostrap/src/sass/core/_basics.scss */
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */ color: rgba(255, 226, 0, 0.8); }
+
+/* line 163, ../../../node_modules/rogiostrap/src/sass/core/_basics.scss */
+::-moz-placeholder { /* Firefox 19+ */ color: rgba(255, 226, 0, 0.8); opacity: 1; }
+
+/* line 168, ../../../node_modules/rogiostrap/src/sass/core/_basics.scss */
+:-ms-input-placeholder { /* IE 10+ */ color: rgba(255, 226, 0, 0.8); }
+
+/* line 172, ../../../node_modules/rogiostrap/src/sass/core/_basics.scss */
+:-moz-placeholder { /* Firefox 18- */ color: rgba(110, 150, 203, 0.8); }
+
+/*
+.textual-link {
+	color: $secondaryColor;
+
+	&:hover {
+		color: darken($secondaryColor, 15%);
+	}
+}*/
+/*
+.title {
+	font-weight: bold;
+	font-size: 26px;
+	line-height: 32px;
+	font-weight: bold;
+	color: $titleColor;
+
+	&--big-title {
+		display: inline-block;
+		font-size: 42px;
+		line-height: 48px;
+		margin-bottom: 24px;
+
+		@include smartphone {
+			font-size: 38px;
+			line-height: 42px;
+		}
+	}
+
+	&--medium-title {
+		display: inline-block;
+		font-size: 22px;
+		line-height: 26px;
+		margin-bottom: 20px;
+	}
+
+	&--small-title {
+		display: inline-block;
+		font-size: 18px;
+		line-height: 24px;
+		margin-bottom: 20px;
+	}
+
+	.sidebar & {
+		display: block;
+		padding: 5px 0;
+		border-bottom: 1px solid #ccc;
+		margin-bottom: 20px;
+	}
+}
+
+.big-title {
+	display: inline-block;
+	font-size: 42px;
+	line-height: 48px;
+	font-weight: bold;
+	margin-bottom: 24px;
+}
+
+.post__head {
+
+	.featured-image {
+
+		& + .description {
+			padding: 0 16px;
+		}
+	}
+
+	.description {
+		padding-left: 0;
+	}
+}
+
+.btn {
+	background-color: transparent;
+	border-radius: 8px;
+	padding: 6px;
+	color: #29A4E5;
+	font-size: 12px;
+	white-space: nowrap;
+	cursor: pointer;
+
+	&--light {
+
+		&:hover {
+			background-color: rgba(255,255,255,0.2);
+		}
+	}
+
+	&--dark {
+
+		&:hover {
+			background-color: rgba(0,0,0,0.05);
+		}
+	}
+
+	&--close {
+		@extend %icons;
+		background-position: 15px -731px;
+		width: 50px;
+		height: 50px;
+	}
+
+	&--back {
+		@extend %icons;
+		background-position: 7px -1225px;
+		background-size: 80px auto !important;
+		width: 50px;
+		height: 50px;
+	}
+
+	svg {
+		display: block;
+	}
+}
+
+.cta-container {
+	margin: 24px 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.cta {
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	padding: 8px 15px;
+	margin: 0 auto;
+	color: #000;
+	background-color: $primaryColor;
+	transition: all ease-out 0.2s;
+
+	&:hover {
+		background-color: darken($primaryColor, 10%);
+		color: #fff !important;
+	}
+
+	&--external {
+		border-radius: 25px;
+		height: 50px;
+
+		&--icon {
+			@extend %icons;
+			background-position: 109% -1104px;
+			background-size: 70px auto;
+			padding-right: 50px;
+			font-weight: 700;
+			line-height: 30px;
+		}
+	}
+
+	&--write {
+		font-weight: bold;
+		padding-right: 50px;
+		@extend %icons;
+		background-position: 115% -663px;
+	}
+
+	&--sign {
+		@extend %icons;
+		background-position: 133% -1399px;
+		padding-right: 40px;
+	}
+}*/
+/*
+.dropdown {
+	background-color: $secondaryColor;
+	background-image: url('../images/select-caret-light.svg');
+	border-radius: 5px;
+	color: #fff;
+}*/
+/*
+.card {
+	@extend %cf;
+	position: relative;
+	margin-bottom: 20px;
+
+	.card__top {
+		display: flex;
+		margin-bottom: 12px;
+
+		.card__details {
+			display: flex;
+			width: stretch;
+
+			@include smartphone {
+				flex-direction: column;
+
+				.cta-container {
+					align-self: start !important;
+					margin: 12px auto 12px 0 !important;
+				}
+			}
+
+			.cta-container {
+				align-self: center;
+				margin-left: auto;
+			}
+		}
+	}
+
+	.card__thumbnail {
+		min-width: 120px;
+		margin-right: 10px;
+		float: left;
+
+		&--big {
+			margin-right: 0;
+			margin-bottom: 10px;
+			float: none;
+		}
+
+		@include smartphone {
+			//margin-right: 0;
+		}
+	}
+
+	&__title {
+		margin-bottom: 10px;
+
+		a {
+
+			h3 {
+				font-weight: bold;
+				font-size: 20px;
+				line-height: 24px;
+				text-transform: capitalize;
+			}
+		}
+
+		&--overlay {
+
+			a {
+
+				h3 {
+
+					&:hover {
+						color: $primaryColor !important;
+					}
+				}
+			}
+		}
+	}
+
+	&--no-image {
+
+		picture {
+			display: none;
+		}
+	}
+
+	&-video {
+
+		.card__thumbnail {
+			position: relative;
+			overflow: hidden;
+
+			&:before, &:after {
+				content: '';
+				width: 100%;
+				height: 15px;
+				background-color: #000;
+				position: absolute;
+				left: 0;
+				transition: top ease-out 0.15s;
+				z-index: 2;
+			}
+
+			&:before {
+				top: -15px;
+			}
+
+			&:after {
+				top: 100%;
+			}
+
+			&:hover {
+
+				&:before {
+					top: 0;
+				}
+
+				&:after {
+					top: calc(100% - 15px);
+				}
+			}
+
+			picture {
+				padding-bottom: 56.25%;
+
+				&:before {
+					content: '';
+					background-image: url('../images/ico-video.svg');
+					background-position: center center;
+					background-size: 100% auto;
+					//opacity: 0.4;
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50% , -50%);
+					transition: all ease-out 0.2s;
+					width: 20%;
+					height: 0;
+					padding-bottom: 20%;
+					z-index: 1;
+				}
+
+
+				&:hover {
+
+					&:before {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+
+	&__related-posts {
+		position: relative;
+		padding-left: 25px;
+		margin-top: 20px;
+
+		&__item {
+
+			&:before {
+				content: '';
+				position: absolute;
+				display: block;
+				width: 25px;
+				height: 25px;
+				left: 0;
+				@extend %icons;
+			}
+		}
+
+		&:before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 23px;
+			width: 20px;
+			@extend %icons;
+			background-position: 5px -272px;
+		}
+
+		ul {
+			padding: 10px 0 0 0;
+
+			li {
+				position: relative;
+				padding-bottom: 20px;
+				padding-left: 30px;
+
+				&:after {
+					content: '';
+					background-color: #ccc;
+					display: block;
+					position: absolute;
+					top: 25px;
+					left: 13px;
+					width: 1px;
+					height: calc(100% - 25px);
+				}
+
+				a {
+					font-weight: bold;
+					color: #000;
+					font-size: 14px;
+
+					&:hover {
+						color: darken($secondaryColor, 15%);
+					}
+				}
+
+				&:last-child {
+
+					&:after {
+						content: none;
+					}
+				}
+			}
+		}
+
+		&__item--post {
+
+			&:before {
+				background-position: 3px -425px
+			}
+		}
+
+		&__item--video {
+
+		}
+
+		&__item--applicazione {
+
+			&:before {
+				background-position: 3px -396px
+			}
+		}
+
+		&__item--esperto {
+
+			&:before {
+				background-position: 3px -396px
+			}
+		}
+
+		&__item--percorso {
+
+			&:before {
+				background-position: 3px -370px
+			}
+		}
+
+		&__item--guida {
+
+			&:before {
+				background-position: 3px -335px
+			}
+		}
+
+		&__item--lezione {
+
+			&:before {
+				background-position: 3px -305px
+			}
+		}
+	}
+}*/
+/*
+.category-label {
+	background-color: $primaryColor;
+	text-transform: uppercase;
+	padding: 3px 5px;
+	font-size: 12px;
+}
+
+.sponsor {
+	display: flex;
+	align-items: center;
+}
+
+.divider {
+	margin: 20px 0;
+	height: 1px;
+	background: #ccc;
+	width: 100%;
+}*/
+/*
+.editorial {
+	font-size: 18px;
+	line-height: 26px;
+	overflow: hidden;
+
+	.single & {
+		padding-left: 48px;
+
+		@include smartphone {
+			padding: 0;
+		}
+	}
+
+	a {
+		color: $linkColor;
+		font-weight: bold;
+		text-decoration: underline;
+		outline: none !important;
+
+		&:hover {
+			color: #5AA5DE;
+		}
+
+		body.modal & {
+			color: #FFFFFF !important
+		}
+
+		body.modal.modal--light & {
+			color: #ddd !important
+		}
+	}
+
+	img {
+		display: block;
+		margin: 0 auto 24px auto;
+	}
+
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-weight: bold;
+		padding: 0;
+		margin: 32px 0 0;
+
+		body.modal & {
+			color: #FFFFFF !important
+		}
+
+		body.modal.modal--light & {
+			color: #000 !important
+		}
+	}
+
+	h2 {
+		font-size: 28px;
+		line-height: 34px;
+	}
+
+	h3,
+	h4 {
+		font-size: 24px;
+		line-height: 30px;
+	}
+
+	h5,
+	h6 {
+		font-size: 20px;
+		line-height: 26px;
+	}
+
+
+	h4 {
+
+		> a {
+			display: block;
+			font-size: 18px;
+			font-weight: bold;
+			text-decoration: underline;
+			line-height: 26px;
+			margin: 0 0 24px;
+		}
+	}
+
+	p {
+		font-size: 16px;
+		line-height: 24px;
+		margin: 0 0 24px;
+		hyphens: auto;
+
+		body.modal & {
+			color: #FFFFFF
+		}
+
+		body.modal.modal--light & {
+			color: #000;
+		}
+
+		&:last-child {
+			margin: 0;
+		}
+	}
+
+	> ul {
+		margin: 24px;
+
+		li {
+			font-size: 18px;
+			line-height: 26px;
+			margin: 0 0 12px;
+
+			body.modal & {
+				color: #FFFFFF
+			}
+
+			body.modal.modal--light & {
+				color: #000 !important
+			}
+
+			&:before {
+				content: '';
+				background: $secondaryColor;
+				width: 10px;
+				height: 10px;
+				display: inline-block;
+				margin-right: 10px;
+
+				body.modal & {
+					color: #FFFFFF
+				}
+
+				body.modal.modal--light & {
+					color: #ddd !important
+				}
+			}
+		}
+		@include smartphone {
+			margin: 24px 0;
+		}
+	}
+
+	> ol {
+		margin: 24px;
+		counter-reset: my-counter;
+
+		&[type="a"] li:before {
+			content: counter(my-counter, lower-alpha);
+		}
+
+		&[type="i"] li:before {
+			content: counter(my-counter, lower-roman);
+		}
+
+		li {
+			font-size: 18px;
+			line-height: 26px;
+			margin: 0 0 12px;
+
+			body.modal & {
+				color: #FFFFFF
+			}
+
+			body.modal.modal--light & {
+				color: #000 !important
+			}
+
+			&:before {
+				content: counter(my-counter);
+				counter-increment: my-counter;
+				margin-right: 10px;
+				font-size: 1.4em;
+				font-weight: bold;
+				color: $secondaryColor;
+
+				body.modal & {
+					color: #FFFFFF
+				}
+
+				body.modal.modal--light & {
+					color: #ddd !important
+				}
+			}
+		}
+		@include smartphone {
+			margin: 24px 0;
+		}
+	}
+
+	b, strong {
+		font-weight: bold;
+	}
+
+	i, em {
+		font-style: italic;
+	}
+
+	u {
+		text-decoration: underline;
+	}
+
+	blockquote {
+		display: block;
+		font-size: 20px;
+		font-style: italic;
+		line-height: 28px;
+		padding: 18px;
+		margin: 0 0 24px;
+
+		&:before,
+		&:after {
+			content: '"';
+			font-size: 2em;
+			color: transparentize($secondaryColor,0.5);
+			float: left;
+			margin: 0 10px 0 -30px;
+		}
+
+		&:after {
+			float: right;
+			margin: -8 -12px 0 0;
+		}
+
+		p {
+			display: block !important;
+			font-size: 20px;
+			font-style: italic;
+			line-height: 28px;
+			padding: 0 !important;
+			float: none;
+		}
+	}
+
+	.table-wrapper {
+		width: 100%;
+		overflow-x: auto;
+		margin-bottom: 20px;
+		border: 1px solid #ccc;
+		border: 2px solid #003F74;
+		box-shadow: inset 0 0 5px 0px #000;
+	}
+
+	table {
+		width: 100%;
+		white-space: nowrap;
+		@include smartphone {
+			border: none;
+			margin: 0;
+		}
+
+		thead,
+		caption {
+			background-color: $primaryColor;
+			color: #FFFFFF;
+			text-align: center;
+			font-weight: bold;
+			text-transform: uppercase;
+			padding: 7px;
+		}
+
+		tr {
+
+			td,
+			th {
+				padding: 7px;
+				border: 1px solid rgb(175, 194, 213);
+				font-size: 13px;
+				line-height: 16px;
+				min-width: 200px;
+				white-space: normal;
+
+				* {
+					font-size: 13px;
+					line-height: 16px;
+				}
+			}
+
+			&:first-child {
+				background-color: transparentize($primaryColor, 0.5);
+
+				td,
+				th {
+					//font-weight: bold;
+				}
+			}
+		}
+	}
+
+	.syntaxhighlighter {
+		padding: 10px;
+		background-color: #dadada;
+		clear: both;
+		color: #000000;
+		margin: 20px 0;
+	}
+
+	div[id^="containerNodeId"] {
+
+		> div {
+			left: 50% !important;
+			transform: translateX(-50%);
+		}
+	}
+}*/
+/* line 7, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.main-content { width: 100%; padding-bottom: 24px; }
+/* line 11, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.main-content.main-content--left { width: 680px; float: left; padding-right: 40px; }
+/* line 17, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.main-content.main-content--right { width: 680px; float: right; }
+@media screen and (max-width: 736px) { /* line 22, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content.main-content--left, .main-content.main-content--right { width: 100%; float: none; padding: 0; } }
+
+/* line 32, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.sidebar { min-width: 300px; width: 300px; min-height: 250px; }
+@media screen and (max-width: 736px) { /* line 32, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .sidebar { width: 100%; padding: 0 !important; } }
+/* line 42, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.sidebar.sidebar--right { float: right; }
+/* line 46, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.sidebar.sidebar--left { float: left; }
+
+@media screen and (max-width: 736px) { /* line 51, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-count-2, .col-count-3, .col-count-4, .col-count-5, .col-count-6 { column-count: 1 !important; column-gap: 0 !important; } }
+
+/* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-1 { float: left; clear: none; text-align: inherit; width: 4.59184%; margin-left: 0%; margin-right: 4.08163%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-1::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-1:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-1 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-1::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-1:last-child { margin-right: 0%; } }
+/* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.main-content .col-1, .col-8 .col-1 { float: left; clear: none; text-align: inherit; width: 2.94118%; margin-left: 0%; margin-right: 5.88235%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-1::after, .col-8 .col-1::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-1:last-child, .col-8 .col-1:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-1, .col-8 .col-1 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-1::after, .col-8 .col-1::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-1:last-child, .col-8 .col-1:last-child { margin-right: 0%; } }
+
+@media screen and (max-width: 736px) { /* line 77, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-mobile-1 { float: left; clear: none; text-align: inherit; width: 4.59184%; margin-left: 0%; margin-right: 4.08163%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-1::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-1:last-child { margin-right: 0%; } }
+@media screen and (max-width: 736px) { /* line 83, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-mobile-1, .col-8 .col-mobile-1 { float: left; clear: none; text-align: inherit; width: 2.94118%; margin-left: 0%; margin-right: 5.88235%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-1::after, .col-8 .col-mobile-1::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-1:last-child, .col-8 .col-mobile-1:last-child { margin-right: 0%; } }
+
+/* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.span-1 { float: left; clear: none; text-align: inherit; width: 8.33333%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.span-1::after { content: ''; display: table; clear: both; }
+@media screen and (max-width: 736px) { /* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .span-1 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .span-1::after { content: ''; display: table; clear: both; } }
+
+/* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-col-1 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 1.80072%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-1 > *::after { content: ''; display: table; clear: both; }
+/* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-1 > *:nth-child(n) { margin-right: 1.80072%; float: left; clear: none; }
+/* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-1 > *:nth-child(1n) { margin-right: 0%; float: right; }
+/* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-1 > *:nth-child(1n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-col-1 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-1 > *::after { content: ''; display: table; clear: both; }
+  /* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-1 > *:nth-child(n) { margin-right: 0%; float: left; clear: none; }
+  /* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-1 > *:nth-child(1n) { margin-right: 0%; float: right; }
+  /* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-1 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-span-1 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-1 > *::after { content: ''; display: table; clear: both; }
+/* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-1 > *:nth-child(n) { float: left; clear: none; }
+/* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-1 > *:nth-child(1n) { float: right; }
+/* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-1 > *:nth-child(1n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-span-1 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-1 > *::after { content: ''; display: table; clear: both; }
+  /* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-1 > *:nth-child(n) { float: left; clear: none; }
+  /* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-1 > *:nth-child(1n) { float: right; }
+  /* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-1 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-2 { float: left; clear: none; text-align: inherit; width: 13.26531%; margin-left: 0%; margin-right: 4.08163%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-2::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-2:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-2 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-2::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-2:last-child { margin-right: 0%; } }
+/* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.main-content .col-2, .col-8 .col-2 { float: left; clear: none; text-align: inherit; width: 11.76471%; margin-left: 0%; margin-right: 5.88235%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-2::after, .col-8 .col-2::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-2:last-child, .col-8 .col-2:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-2, .col-8 .col-2 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-2::after, .col-8 .col-2::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-2:last-child, .col-8 .col-2:last-child { margin-right: 0%; } }
+
+@media screen and (max-width: 736px) { /* line 77, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-mobile-2 { float: left; clear: none; text-align: inherit; width: 13.26531%; margin-left: 0%; margin-right: 4.08163%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-2::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-2:last-child { margin-right: 0%; } }
+@media screen and (max-width: 736px) { /* line 83, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-mobile-2, .col-8 .col-mobile-2 { float: left; clear: none; text-align: inherit; width: 11.76471%; margin-left: 0%; margin-right: 5.88235%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-2::after, .col-8 .col-mobile-2::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-2:last-child, .col-8 .col-mobile-2:last-child { margin-right: 0%; } }
+
+/* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.span-2 { float: left; clear: none; text-align: inherit; width: 16.66667%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.span-2::after { content: ''; display: table; clear: both; }
+@media screen and (max-width: 736px) { /* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .span-2 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .span-2::after { content: ''; display: table; clear: both; } }
+
+/* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-col-2 > * { float: left; clear: none; text-align: inherit; width: 49.09964%; margin-left: 0%; margin-right: 1.80072%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-2 > *::after { content: ''; display: table; clear: both; }
+/* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-2 > *:nth-child(n) { margin-right: 1.80072%; float: left; clear: none; }
+/* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-2 > *:nth-child(2n) { margin-right: 0%; float: right; }
+/* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-2 > *:nth-child(2n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-col-2 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-2 > *::after { content: ''; display: table; clear: both; }
+  /* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-2 > *:nth-child(n) { margin-right: 0%; float: left; clear: none; }
+  /* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-2 > *:nth-child(1n) { margin-right: 0%; float: right; }
+  /* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-2 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-span-2 > * { float: left; clear: none; text-align: inherit; width: 50%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-2 > *::after { content: ''; display: table; clear: both; }
+/* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-2 > *:nth-child(n) { float: left; clear: none; }
+/* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-2 > *:nth-child(2n) { float: right; }
+/* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-2 > *:nth-child(2n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-span-2 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-2 > *::after { content: ''; display: table; clear: both; }
+  /* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-2 > *:nth-child(n) { float: left; clear: none; }
+  /* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-2 > *:nth-child(1n) { float: right; }
+  /* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-2 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-3 { float: left; clear: none; text-align: inherit; width: 21.93878%; margin-left: 0%; margin-right: 4.08163%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-3::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-3:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-3 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-3::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-3:last-child { margin-right: 0%; } }
+/* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.main-content .col-3, .col-8 .col-3 { float: left; clear: none; text-align: inherit; width: 20.58824%; margin-left: 0%; margin-right: 5.88235%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-3::after, .col-8 .col-3::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-3:last-child, .col-8 .col-3:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-3, .col-8 .col-3 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-3::after, .col-8 .col-3::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-3:last-child, .col-8 .col-3:last-child { margin-right: 0%; } }
+
+@media screen and (max-width: 736px) { /* line 77, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-mobile-3 { float: left; clear: none; text-align: inherit; width: 21.93878%; margin-left: 0%; margin-right: 4.08163%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-3::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-3:last-child { margin-right: 0%; } }
+@media screen and (max-width: 736px) { /* line 83, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-mobile-3, .col-8 .col-mobile-3 { float: left; clear: none; text-align: inherit; width: 20.58824%; margin-left: 0%; margin-right: 5.88235%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-3::after, .col-8 .col-mobile-3::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-3:last-child, .col-8 .col-mobile-3:last-child { margin-right: 0%; } }
+
+/* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.span-3 { float: left; clear: none; text-align: inherit; width: 25%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.span-3::after { content: ''; display: table; clear: both; }
+@media screen and (max-width: 736px) { /* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .span-3 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .span-3::after { content: ''; display: table; clear: both; } }
+
+/* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-col-3 > * { float: left; clear: none; text-align: inherit; width: 32.13285%; margin-left: 0%; margin-right: 1.80072%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-3 > *::after { content: ''; display: table; clear: both; }
+/* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-3 > *:nth-child(n) { margin-right: 1.80072%; float: left; clear: none; }
+/* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-3 > *:nth-child(3n) { margin-right: 0%; float: right; }
+/* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-3 > *:nth-child(3n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-col-3 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-3 > *::after { content: ''; display: table; clear: both; }
+  /* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-3 > *:nth-child(n) { margin-right: 0%; float: left; clear: none; }
+  /* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-3 > *:nth-child(1n) { margin-right: 0%; float: right; }
+  /* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-3 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-span-3 > * { float: left; clear: none; text-align: inherit; width: 33.33333%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-3 > *::after { content: ''; display: table; clear: both; }
+/* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-3 > *:nth-child(n) { float: left; clear: none; }
+/* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-3 > *:nth-child(3n) { float: right; }
+/* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-3 > *:nth-child(3n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-span-3 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-3 > *::after { content: ''; display: table; clear: both; }
+  /* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-3 > *:nth-child(n) { float: left; clear: none; }
+  /* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-3 > *:nth-child(1n) { float: right; }
+  /* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-3 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-4 { float: left; clear: none; text-align: inherit; width: 30.61224%; margin-left: 0%; margin-right: 4.08163%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-4::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-4:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-4 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-4::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-4:last-child { margin-right: 0%; } }
+/* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.main-content .col-4, .col-8 .col-4 { float: left; clear: none; text-align: inherit; width: 29.41176%; margin-left: 0%; margin-right: 5.88235%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-4::after, .col-8 .col-4::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-4:last-child, .col-8 .col-4:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-4, .col-8 .col-4 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-4::after, .col-8 .col-4::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-4:last-child, .col-8 .col-4:last-child { margin-right: 0%; } }
+
+@media screen and (max-width: 736px) { /* line 77, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-mobile-4 { float: left; clear: none; text-align: inherit; width: 30.61224%; margin-left: 0%; margin-right: 4.08163%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-4::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-4:last-child { margin-right: 0%; } }
+@media screen and (max-width: 736px) { /* line 83, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-mobile-4, .col-8 .col-mobile-4 { float: left; clear: none; text-align: inherit; width: 29.41176%; margin-left: 0%; margin-right: 5.88235%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-4::after, .col-8 .col-mobile-4::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-4:last-child, .col-8 .col-mobile-4:last-child { margin-right: 0%; } }
+
+/* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.span-4 { float: left; clear: none; text-align: inherit; width: 33.33333%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.span-4::after { content: ''; display: table; clear: both; }
+@media screen and (max-width: 736px) { /* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .span-4 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .span-4::after { content: ''; display: table; clear: both; } }
+
+/* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-col-4 > * { float: left; clear: none; text-align: inherit; width: 23.64946%; margin-left: 0%; margin-right: 1.80072%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-4 > *::after { content: ''; display: table; clear: both; }
+/* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-4 > *:nth-child(n) { margin-right: 1.80072%; float: left; clear: none; }
+/* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-4 > *:nth-child(4n) { margin-right: 0%; float: right; }
+/* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-4 > *:nth-child(4n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-col-4 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-4 > *::after { content: ''; display: table; clear: both; }
+  /* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-4 > *:nth-child(n) { margin-right: 0%; float: left; clear: none; }
+  /* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-4 > *:nth-child(1n) { margin-right: 0%; float: right; }
+  /* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-4 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-span-4 > * { float: left; clear: none; text-align: inherit; width: 25%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-4 > *::after { content: ''; display: table; clear: both; }
+/* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-4 > *:nth-child(n) { float: left; clear: none; }
+/* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-4 > *:nth-child(4n) { float: right; }
+/* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-4 > *:nth-child(4n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-span-4 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-4 > *::after { content: ''; display: table; clear: both; }
+  /* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-4 > *:nth-child(n) { float: left; clear: none; }
+  /* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-4 > *:nth-child(1n) { float: right; }
+  /* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-4 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-5 { float: left; clear: none; text-align: inherit; width: 39.28571%; margin-left: 0%; margin-right: 4.08163%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-5::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-5:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-5 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-5::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-5:last-child { margin-right: 0%; } }
+/* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.main-content .col-5, .col-8 .col-5 { float: left; clear: none; text-align: inherit; width: 38.23529%; margin-left: 0%; margin-right: 5.88235%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-5::after, .col-8 .col-5::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-5:last-child, .col-8 .col-5:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-5, .col-8 .col-5 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-5::after, .col-8 .col-5::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-5:last-child, .col-8 .col-5:last-child { margin-right: 0%; } }
+
+@media screen and (max-width: 736px) { /* line 77, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-mobile-5 { float: left; clear: none; text-align: inherit; width: 39.28571%; margin-left: 0%; margin-right: 4.08163%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-5::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-5:last-child { margin-right: 0%; } }
+@media screen and (max-width: 736px) { /* line 83, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-mobile-5, .col-8 .col-mobile-5 { float: left; clear: none; text-align: inherit; width: 38.23529%; margin-left: 0%; margin-right: 5.88235%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-5::after, .col-8 .col-mobile-5::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-5:last-child, .col-8 .col-mobile-5:last-child { margin-right: 0%; } }
+
+/* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.span-5 { float: left; clear: none; text-align: inherit; width: 41.66667%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.span-5::after { content: ''; display: table; clear: both; }
+@media screen and (max-width: 736px) { /* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .span-5 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .span-5::after { content: ''; display: table; clear: both; } }
+
+/* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-col-5 > * { float: left; clear: none; text-align: inherit; width: 18.55942%; margin-left: 0%; margin-right: 1.80072%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-5 > *::after { content: ''; display: table; clear: both; }
+/* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-5 > *:nth-child(n) { margin-right: 1.80072%; float: left; clear: none; }
+/* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-5 > *:nth-child(5n) { margin-right: 0%; float: right; }
+/* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-5 > *:nth-child(5n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-col-5 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-5 > *::after { content: ''; display: table; clear: both; }
+  /* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-5 > *:nth-child(n) { margin-right: 0%; float: left; clear: none; }
+  /* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-5 > *:nth-child(1n) { margin-right: 0%; float: right; }
+  /* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-5 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-span-5 > * { float: left; clear: none; text-align: inherit; width: 20%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-5 > *::after { content: ''; display: table; clear: both; }
+/* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-5 > *:nth-child(n) { float: left; clear: none; }
+/* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-5 > *:nth-child(5n) { float: right; }
+/* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-5 > *:nth-child(5n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-span-5 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-5 > *::after { content: ''; display: table; clear: both; }
+  /* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-5 > *:nth-child(n) { float: left; clear: none; }
+  /* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-5 > *:nth-child(1n) { float: right; }
+  /* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-5 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-6 { float: left; clear: none; text-align: inherit; width: 47.95918%; margin-left: 0%; margin-right: 4.08163%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-6::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-6:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-6 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-6::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-6:last-child { margin-right: 0%; } }
+/* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.main-content .col-6, .col-8 .col-6 { float: left; clear: none; text-align: inherit; width: 47.05882%; margin-left: 0%; margin-right: 5.88235%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-6::after, .col-8 .col-6::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-6:last-child, .col-8 .col-6:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-6, .col-8 .col-6 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-6::after, .col-8 .col-6::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-6:last-child, .col-8 .col-6:last-child { margin-right: 0%; } }
+
+@media screen and (max-width: 736px) { /* line 77, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-mobile-6 { float: left; clear: none; text-align: inherit; width: 47.95918%; margin-left: 0%; margin-right: 4.08163%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-6::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-6:last-child { margin-right: 0%; } }
+@media screen and (max-width: 736px) { /* line 83, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-mobile-6, .col-8 .col-mobile-6 { float: left; clear: none; text-align: inherit; width: 47.05882%; margin-left: 0%; margin-right: 5.88235%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-6::after, .col-8 .col-mobile-6::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-6:last-child, .col-8 .col-mobile-6:last-child { margin-right: 0%; } }
+
+/* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.span-6 { float: left; clear: none; text-align: inherit; width: 50%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.span-6::after { content: ''; display: table; clear: both; }
+@media screen and (max-width: 736px) { /* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .span-6 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .span-6::after { content: ''; display: table; clear: both; } }
+
+/* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-col-6 > * { float: left; clear: none; text-align: inherit; width: 15.16607%; margin-left: 0%; margin-right: 1.80072%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-6 > *::after { content: ''; display: table; clear: both; }
+/* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-6 > *:nth-child(n) { margin-right: 1.80072%; float: left; clear: none; }
+/* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-6 > *:nth-child(6n) { margin-right: 0%; float: right; }
+/* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-6 > *:nth-child(6n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-col-6 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-6 > *::after { content: ''; display: table; clear: both; }
+  /* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-6 > *:nth-child(n) { margin-right: 0%; float: left; clear: none; }
+  /* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-6 > *:nth-child(1n) { margin-right: 0%; float: right; }
+  /* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-6 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-span-6 > * { float: left; clear: none; text-align: inherit; width: 16.66667%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-6 > *::after { content: ''; display: table; clear: both; }
+/* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-6 > *:nth-child(n) { float: left; clear: none; }
+/* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-6 > *:nth-child(6n) { float: right; }
+/* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-6 > *:nth-child(6n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-span-6 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-6 > *::after { content: ''; display: table; clear: both; }
+  /* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-6 > *:nth-child(n) { float: left; clear: none; }
+  /* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-6 > *:nth-child(1n) { float: right; }
+  /* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-6 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-7 { float: left; clear: none; text-align: inherit; width: 56.63265%; margin-left: 0%; margin-right: 4.08163%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-7::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-7:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-7 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-7::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-7:last-child { margin-right: 0%; } }
+/* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.main-content .col-7, .col-8 .col-7 { float: left; clear: none; text-align: inherit; width: 55.88235%; margin-left: 0%; margin-right: 5.88235%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-7::after, .col-8 .col-7::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-7:last-child, .col-8 .col-7:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-7, .col-8 .col-7 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-7::after, .col-8 .col-7::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-7:last-child, .col-8 .col-7:last-child { margin-right: 0%; } }
+
+@media screen and (max-width: 736px) { /* line 77, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-mobile-7 { float: left; clear: none; text-align: inherit; width: 56.63265%; margin-left: 0%; margin-right: 4.08163%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-7::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-7:last-child { margin-right: 0%; } }
+@media screen and (max-width: 736px) { /* line 83, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-mobile-7, .col-8 .col-mobile-7 { float: left; clear: none; text-align: inherit; width: 55.88235%; margin-left: 0%; margin-right: 5.88235%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-7::after, .col-8 .col-mobile-7::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-7:last-child, .col-8 .col-mobile-7:last-child { margin-right: 0%; } }
+
+/* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.span-7 { float: left; clear: none; text-align: inherit; width: 58.33333%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.span-7::after { content: ''; display: table; clear: both; }
+@media screen and (max-width: 736px) { /* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .span-7 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .span-7::after { content: ''; display: table; clear: both; } }
+
+/* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-col-7 > * { float: left; clear: none; text-align: inherit; width: 12.74224%; margin-left: 0%; margin-right: 1.80072%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-7 > *::after { content: ''; display: table; clear: both; }
+/* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-7 > *:nth-child(n) { margin-right: 1.80072%; float: left; clear: none; }
+/* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-7 > *:nth-child(7n) { margin-right: 0%; float: right; }
+/* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-7 > *:nth-child(7n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-col-7 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-7 > *::after { content: ''; display: table; clear: both; }
+  /* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-7 > *:nth-child(n) { margin-right: 0%; float: left; clear: none; }
+  /* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-7 > *:nth-child(1n) { margin-right: 0%; float: right; }
+  /* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-7 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-span-7 > * { float: left; clear: none; text-align: inherit; width: 14.28571%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-7 > *::after { content: ''; display: table; clear: both; }
+/* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-7 > *:nth-child(n) { float: left; clear: none; }
+/* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-7 > *:nth-child(7n) { float: right; }
+/* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-7 > *:nth-child(7n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-span-7 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-7 > *::after { content: ''; display: table; clear: both; }
+  /* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-7 > *:nth-child(n) { float: left; clear: none; }
+  /* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-7 > *:nth-child(1n) { float: right; }
+  /* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-7 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-8 { float: left; clear: none; text-align: inherit; width: 65.30612%; margin-left: 0%; margin-right: 4.08163%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-8::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-8:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-8 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-8::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-8:last-child { margin-right: 0%; } }
+/* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.main-content .col-8, .col-8 .col-8 { float: left; clear: none; text-align: inherit; width: 64.70588%; margin-left: 0%; margin-right: 5.88235%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-8::after, .col-8 .col-8::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-8:last-child, .col-8 .col-8:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-8, .col-8 .col-8 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-8::after, .col-8 .col-8::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-8:last-child, .col-8 .col-8:last-child { margin-right: 0%; } }
+
+@media screen and (max-width: 736px) { /* line 77, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-mobile-8 { float: left; clear: none; text-align: inherit; width: 65.30612%; margin-left: 0%; margin-right: 4.08163%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-8::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-8:last-child { margin-right: 0%; } }
+@media screen and (max-width: 736px) { /* line 83, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-mobile-8, .col-8 .col-mobile-8 { float: left; clear: none; text-align: inherit; width: 64.70588%; margin-left: 0%; margin-right: 5.88235%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-8::after, .col-8 .col-mobile-8::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-8:last-child, .col-8 .col-mobile-8:last-child { margin-right: 0%; } }
+
+/* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.span-8 { float: left; clear: none; text-align: inherit; width: 66.66667%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.span-8::after { content: ''; display: table; clear: both; }
+@media screen and (max-width: 736px) { /* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .span-8 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .span-8::after { content: ''; display: table; clear: both; } }
+
+/* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-col-8 > * { float: left; clear: none; text-align: inherit; width: 10.92437%; margin-left: 0%; margin-right: 1.80072%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-8 > *::after { content: ''; display: table; clear: both; }
+/* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-8 > *:nth-child(n) { margin-right: 1.80072%; float: left; clear: none; }
+/* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-8 > *:nth-child(8n) { margin-right: 0%; float: right; }
+/* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-8 > *:nth-child(8n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-col-8 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-8 > *::after { content: ''; display: table; clear: both; }
+  /* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-8 > *:nth-child(n) { margin-right: 0%; float: left; clear: none; }
+  /* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-8 > *:nth-child(1n) { margin-right: 0%; float: right; }
+  /* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-8 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-span-8 > * { float: left; clear: none; text-align: inherit; width: 12.5%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-8 > *::after { content: ''; display: table; clear: both; }
+/* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-8 > *:nth-child(n) { float: left; clear: none; }
+/* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-8 > *:nth-child(8n) { float: right; }
+/* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-8 > *:nth-child(8n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-span-8 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-8 > *::after { content: ''; display: table; clear: both; }
+  /* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-8 > *:nth-child(n) { float: left; clear: none; }
+  /* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-8 > *:nth-child(1n) { float: right; }
+  /* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-8 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-9 { float: left; clear: none; text-align: inherit; width: 73.97959%; margin-left: 0%; margin-right: 4.08163%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-9::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-9:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-9 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-9::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-9:last-child { margin-right: 0%; } }
+/* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.main-content .col-9, .col-8 .col-9 { float: left; clear: none; text-align: inherit; width: 73.52941%; margin-left: 0%; margin-right: 5.88235%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-9::after, .col-8 .col-9::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-9:last-child, .col-8 .col-9:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-9, .col-8 .col-9 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-9::after, .col-8 .col-9::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-9:last-child, .col-8 .col-9:last-child { margin-right: 0%; } }
+
+@media screen and (max-width: 736px) { /* line 77, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-mobile-9 { float: left; clear: none; text-align: inherit; width: 73.97959%; margin-left: 0%; margin-right: 4.08163%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-9::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-9:last-child { margin-right: 0%; } }
+@media screen and (max-width: 736px) { /* line 83, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-mobile-9, .col-8 .col-mobile-9 { float: left; clear: none; text-align: inherit; width: 73.52941%; margin-left: 0%; margin-right: 5.88235%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-9::after, .col-8 .col-mobile-9::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-9:last-child, .col-8 .col-mobile-9:last-child { margin-right: 0%; } }
+
+/* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.span-9 { float: left; clear: none; text-align: inherit; width: 75%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.span-9::after { content: ''; display: table; clear: both; }
+@media screen and (max-width: 736px) { /* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .span-9 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .span-9::after { content: ''; display: table; clear: both; } }
+
+/* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-col-9 > * { float: left; clear: none; text-align: inherit; width: 9.51047%; margin-left: 0%; margin-right: 1.80072%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-9 > *::after { content: ''; display: table; clear: both; }
+/* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-9 > *:nth-child(n) { margin-right: 1.80072%; float: left; clear: none; }
+/* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-9 > *:nth-child(9n) { margin-right: 0%; float: right; }
+/* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-9 > *:nth-child(9n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-col-9 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-9 > *::after { content: ''; display: table; clear: both; }
+  /* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-9 > *:nth-child(n) { margin-right: 0%; float: left; clear: none; }
+  /* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-9 > *:nth-child(1n) { margin-right: 0%; float: right; }
+  /* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-9 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-span-9 > * { float: left; clear: none; text-align: inherit; width: 11.11111%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-9 > *::after { content: ''; display: table; clear: both; }
+/* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-9 > *:nth-child(n) { float: left; clear: none; }
+/* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-9 > *:nth-child(9n) { float: right; }
+/* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-9 > *:nth-child(9n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-span-9 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-9 > *::after { content: ''; display: table; clear: both; }
+  /* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-9 > *:nth-child(n) { float: left; clear: none; }
+  /* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-9 > *:nth-child(1n) { float: right; }
+  /* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-9 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-10 { float: left; clear: none; text-align: inherit; width: 82.65306%; margin-left: 0%; margin-right: 4.08163%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-10::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-10:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-10 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-10::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-10:last-child { margin-right: 0%; } }
+/* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.main-content .col-10, .col-8 .col-10 { float: left; clear: none; text-align: inherit; width: 82.35294%; margin-left: 0%; margin-right: 5.88235%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-10::after, .col-8 .col-10::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-10:last-child, .col-8 .col-10:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-10, .col-8 .col-10 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-10::after, .col-8 .col-10::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-10:last-child, .col-8 .col-10:last-child { margin-right: 0%; } }
+
+@media screen and (max-width: 736px) { /* line 77, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-mobile-10 { float: left; clear: none; text-align: inherit; width: 82.65306%; margin-left: 0%; margin-right: 4.08163%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-10::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-10:last-child { margin-right: 0%; } }
+@media screen and (max-width: 736px) { /* line 83, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-mobile-10, .col-8 .col-mobile-10 { float: left; clear: none; text-align: inherit; width: 82.35294%; margin-left: 0%; margin-right: 5.88235%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-10::after, .col-8 .col-mobile-10::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-10:last-child, .col-8 .col-mobile-10:last-child { margin-right: 0%; } }
+
+/* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.span-10 { float: left; clear: none; text-align: inherit; width: 83.33333%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.span-10::after { content: ''; display: table; clear: both; }
+@media screen and (max-width: 736px) { /* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .span-10 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .span-10::after { content: ''; display: table; clear: both; } }
+
+/* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-col-10 > * { float: left; clear: none; text-align: inherit; width: 8.37935%; margin-left: 0%; margin-right: 1.80072%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-10 > *::after { content: ''; display: table; clear: both; }
+/* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-10 > *:nth-child(n) { margin-right: 1.80072%; float: left; clear: none; }
+/* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-10 > *:nth-child(10n) { margin-right: 0%; float: right; }
+/* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-10 > *:nth-child(10n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-col-10 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-10 > *::after { content: ''; display: table; clear: both; }
+  /* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-10 > *:nth-child(n) { margin-right: 0%; float: left; clear: none; }
+  /* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-10 > *:nth-child(1n) { margin-right: 0%; float: right; }
+  /* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-10 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-span-10 > * { float: left; clear: none; text-align: inherit; width: 10%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-10 > *::after { content: ''; display: table; clear: both; }
+/* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-10 > *:nth-child(n) { float: left; clear: none; }
+/* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-10 > *:nth-child(10n) { float: right; }
+/* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-10 > *:nth-child(10n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-span-10 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-10 > *::after { content: ''; display: table; clear: both; }
+  /* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-10 > *:nth-child(n) { float: left; clear: none; }
+  /* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-10 > *:nth-child(1n) { float: right; }
+  /* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-10 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-11 { float: left; clear: none; text-align: inherit; width: 91.32653%; margin-left: 0%; margin-right: 4.08163%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-11::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-11:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-11 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-11::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-11:last-child { margin-right: 0%; } }
+/* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.main-content .col-11, .col-8 .col-11 { float: left; clear: none; text-align: inherit; width: 91.17647%; margin-left: 0%; margin-right: 5.88235%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-11::after, .col-8 .col-11::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-11:last-child, .col-8 .col-11:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-11, .col-8 .col-11 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-11::after, .col-8 .col-11::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-11:last-child, .col-8 .col-11:last-child { margin-right: 0%; } }
+
+@media screen and (max-width: 736px) { /* line 77, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-mobile-11 { float: left; clear: none; text-align: inherit; width: 91.32653%; margin-left: 0%; margin-right: 4.08163%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-11::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-11:last-child { margin-right: 0%; } }
+@media screen and (max-width: 736px) { /* line 83, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-mobile-11, .col-8 .col-mobile-11 { float: left; clear: none; text-align: inherit; width: 91.17647%; margin-left: 0%; margin-right: 5.88235%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-11::after, .col-8 .col-mobile-11::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-11:last-child, .col-8 .col-mobile-11:last-child { margin-right: 0%; } }
+
+/* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.span-11 { float: left; clear: none; text-align: inherit; width: 91.66667%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.span-11::after { content: ''; display: table; clear: both; }
+@media screen and (max-width: 736px) { /* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .span-11 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .span-11::after { content: ''; display: table; clear: both; } }
+
+/* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-col-11 > * { float: left; clear: none; text-align: inherit; width: 7.45389%; margin-left: 0%; margin-right: 1.80072%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-11 > *::after { content: ''; display: table; clear: both; }
+/* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-11 > *:nth-child(n) { margin-right: 1.80072%; float: left; clear: none; }
+/* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-11 > *:nth-child(11n) { margin-right: 0%; float: right; }
+/* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-11 > *:nth-child(11n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-col-11 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-11 > *::after { content: ''; display: table; clear: both; }
+  /* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-11 > *:nth-child(n) { margin-right: 0%; float: left; clear: none; }
+  /* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-11 > *:nth-child(1n) { margin-right: 0%; float: right; }
+  /* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-11 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-span-11 > * { float: left; clear: none; text-align: inherit; width: 9.09091%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-11 > *::after { content: ''; display: table; clear: both; }
+/* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-11 > *:nth-child(n) { float: left; clear: none; }
+/* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-11 > *:nth-child(11n) { float: right; }
+/* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-11 > *:nth-child(11n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-span-11 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-11 > *::after { content: ''; display: table; clear: both; }
+  /* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-11 > *:nth-child(n) { float: left; clear: none; }
+  /* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-11 > *:nth-child(1n) { float: right; }
+  /* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-11 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-12 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 4.08163%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-12::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.col-12:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 60, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-12 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-12::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-12:last-child { margin-right: 0%; } }
+/* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.main-content .col-12, .col-8 .col-12 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 5.88235%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-12::after, .col-8 .col-12::after { content: ''; display: table; clear: both; }
+/* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.main-content .col-12:last-child, .col-8 .col-12:last-child { margin-right: 0%; }
+@media screen and (max-width: 736px) { /* line 67, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-12, .col-8 .col-12 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-12::after, .col-8 .col-12::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-12:last-child, .col-8 .col-12:last-child { margin-right: 0%; } }
+
+@media screen and (max-width: 736px) { /* line 77, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .col-mobile-12 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 4.08163%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-12::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .col-mobile-12:last-child { margin-right: 0%; } }
+@media screen and (max-width: 736px) { /* line 83, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .main-content .col-mobile-12, .col-8 .col-mobile-12 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 5.88235%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-12::after, .col-8 .col-mobile-12::after { content: ''; display: table; clear: both; }
+  /* line 54, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .main-content .col-mobile-12:last-child, .col-8 .col-mobile-12:last-child { margin-right: 0%; } }
+
+/* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.span-12 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.span-12::after { content: ''; display: table; clear: both; }
+@media screen and (max-width: 736px) { /* line 92, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .span-12 { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .span-12::after { content: ''; display: table; clear: both; } }
+
+/* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-col-12 > * { float: left; clear: none; text-align: inherit; width: 6.68267%; margin-left: 0%; margin-right: 1.80072%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-12 > *::after { content: ''; display: table; clear: both; }
+/* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-12 > *:nth-child(n) { margin-right: 1.80072%; float: left; clear: none; }
+/* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-12 > *:nth-child(12n) { margin-right: 0%; float: right; }
+/* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-col-12 > *:nth-child(12n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 102, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-col-12 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-12 > *::after { content: ''; display: table; clear: both; }
+  /* line 39, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-12 > *:nth-child(n) { margin-right: 0%; float: left; clear: none; }
+  /* line 45, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-12 > *:nth-child(1n) { margin-right: 0%; float: right; }
+  /* line 50, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-col-12 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.container-cycle-span-12 > * { float: left; clear: none; text-align: inherit; width: 8.33333%; margin-left: 0%; margin-right: 0%; }
+/* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-12 > *::after { content: ''; display: table; clear: both; }
+/* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-12 > *:nth-child(n) { float: left; clear: none; }
+/* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-12 > *:nth-child(12n) { float: right; }
+/* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+.container-cycle-span-12 > *:nth-child(12n + 1) { clear: both; }
+@media screen and (max-width: 736px) { /* line 113, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .container-cycle-span-12 > * { float: left; clear: none; text-align: inherit; width: 100%; margin-left: 0%; margin-right: 0%; }
+  /* line 288, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-12 > *::after { content: ''; display: table; clear: both; }
+  /* line 125, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-12 > *:nth-child(n) { float: left; clear: none; }
+  /* line 130, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-12 > *:nth-child(1n) { float: right; }
+  /* line 134, ../../../node_modules/rogiostrap/src/sass/libs/jeet/scss/_grid.scss */
+  .container-cycle-span-12 > *:nth-child(1n + 1) { clear: both; } }
+
+/* line 124, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-count-2 { column-count: 2; column-gap: 40px; }
+/* line 128, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-count-2 > * { -webkit-column-break-inside: avoid; page-break-inside: avoid; break-inside: avoid; }
+
+/* line 137, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-count-3 { column-count: 3; column-gap: 40px; }
+/* line 141, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-count-3 > * { -webkit-column-break-inside: avoid; page-break-inside: avoid; break-inside: avoid; }
+
+/* line 150, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-count-4 { column-count: 4; column-gap: 40px; }
+/* line 154, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-count-4 > * { -webkit-column-break-inside: avoid; page-break-inside: avoid; break-inside: avoid; }
+
+/* line 163, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-count-5 { column-count: 5; column-gap: 40px; }
+/* line 167, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-count-5 > * { -webkit-column-break-inside: avoid; page-break-inside: avoid; break-inside: avoid; }
+
+/* line 176, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-count-6 { column-count: 6; column-gap: 40px; }
+/* line 180, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.col-count-6 > * { -webkit-column-break-inside: avoid; page-break-inside: avoid; break-inside: avoid; }
+
+@media screen and (max-width: 736px) { /* line 191, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .mobile-switch-container { display: flex; flex-direction: column; } }
+
+@media screen and (max-width: 736px) { /* line 198, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .mobile-switch-1 { order: 1; } }
+
+@media screen and (max-width: 736px) { /* line 204, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .mobile-switch-2 { order: 2; } }
+
+@media screen and (max-width: 736px) { /* line 210, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .mobile-switch-3 { order: 3; } }
+
+@media screen and (max-width: 736px) { /* line 216, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+  .mobile-switch-4 { order: 4; } }
+
+/* line 224, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.flex { display: flex; }
+/* line 227, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.flex--column { flex-direction: column; }
+/* line 231, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.flex--center { align-items: center; }
+/* line 235, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.flex--end { justify-content: flex-end; }
+/* line 239, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.flex--between { justify-content: space-between; }
+/* line 243, ../../../node_modules/rogiostrap/src/sass/core/_grid.scss */
+.flex--around { justify-content: space-around; }
+
+/*
+.rail-800 {
+	min-height: 1000px;
+
+	@include smartphone {
+		min-height: 0;
+	}
+}*/
+/* line 5, ../../../src/sass/_no-js.scss */
+html.no-js .trends { height: auto; }
+/* line 9, ../../../src/sass/_no-js.scss */
+html.no-js .swiper-wrapper { flex-wrap: wrap; }
+/* line 12, ../../../src/sass/_no-js.scss */
+html.no-js .swiper-wrapper > * { margin: 6px; }
+
+/* line 3, ../../../src/sass/_customCore.scss */
+body { font-family: "Roboto", Arial, sans-serif; font-size: 16px; font-weight: normal; background-size: cover; background-repeat: no-repeat; background-position: center; background-attachment: fixed; }
+/* line 17, ../../../src/sass/_customCore.scss */
+body.bg-frontpage { background-image: url("../images/bg-frontpage.jpg"); }
+/* line 23, ../../../src/sass/_customCore.scss */
+body.bg-image .wrapper { overflow-y: scroll; height: calc(100% - 80px); position: fixed; bottom: 0; }
+/* line 31, ../../../src/sass/_customCore.scss */
+body .wrapper { width: 100%; }
+
+/* line 36, ../../../src/sass/_customCore.scss */
+.wrapper { background-color: transparent; margin-top: 80px; }
+
+/* line 42, ../../../src/sass/_customCore.scss */
+h1, h2, h3, h4, h5, h6 { font-family: "Avenir", serif; }
+
+/* line 62, ../../../src/sass/_customCore.scss */
+p { color: #000; font-family: "Roboto", Arial, sans-serif; font-weight: normal; font-size: 18px; line-height: 26px; }
+
+/* line 70, ../../../src/sass/_customCore.scss */
+a { color: #000; }
+
+/* line 74, ../../../src/sass/_customCore.scss */
+section { margin-bottom: 24px; }
+
+/* line 88, ../../../src/sass/_customCore.scss */
+.section-title { font-family: "Avenir", serif; font-size: 26px; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; padding: 24px 0; }
+/* line 100, ../../../src/sass/_customCore.scss */
+.section-title > * { color: #fff; margin: 0 12px; }
+/* line 105, ../../../src/sass/_customCore.scss */
+.section-title:before, .section-title:after { content: ''; background: rgba(255, 255, 255, 0.5); height: 2px; flex: 1; }
+/* line 112, ../../../src/sass/_customCore.scss */
+.section-title span { margin: 0 12px; }
+/* line 116, ../../../src/sass/_customCore.scss */
+.section-title--inverted { color: #000; }
+/* line 119, ../../../src/sass/_customCore.scss */
+.section-title--inverted > * { color: #000; }
+/* line 126, ../../../src/sass/_customCore.scss */
+.section-title--no-separator:before, .section-title--no-separator:after { content: none; }
+/* line 131, ../../../src/sass/_customCore.scss */
+.section-title--small { font-size: 20px; line-height: 24px; padding: 8px 0; }
+/* line 137, ../../../src/sass/_customCore.scss */
+.section-title--big { font-size: 32px; line-height: 38px; padding: 12px auto; }
+/* line 142, ../../../src/sass/_customCore.scss */
+.section-title--big > * { color: #FFE200; }
+
+/* line 150, ../../../src/sass/_customCore.scss */
+article.card, div.card { background-color: rgba(0, 0, 0, 0.5); position: relative; border-radius: 8px; border: 2px solid #fff; margin: 0 auto 24px; }
+/* line 159, ../../../src/sass/_customCore.scss */
+article.card .card__thumbnail picture, div.card .card__thumbnail picture { background-color: #ddd; border-top-left-radius: 8px; border-top-right-radius: 8px; }
+/* line 164, ../../../src/sass/_customCore.scss */
+.swiper-slide--full-image article.card .card__thumbnail picture, .swiper-slide--full-image div.card .card__thumbnail picture { border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
+/* line 173, ../../../src/sass/_customCore.scss */
+article.card .card__content--overlay, div.card .card__content--overlay { border-radius: 8px; overflow: hidden; }
+/* line 180, ../../../src/sass/_customCore.scss */
+article.card .card__content .card__title h3, div.card .card__content .card__title h3 { color: #fff; margin-bottom: 12px; }
+/* line 186, ../../../src/sass/_customCore.scss */
+article.card .card__content p, div.card .card__content p { color: #fff; }
+/* line 191, ../../../src/sass/_customCore.scss */
+article.card .card__footer, div.card .card__footer { padding: 8px 16px; }
+/* line 194, ../../../src/sass/_customCore.scss */
+article.card .card__footer ul, div.card .card__footer ul { display: flex; align-items: center; justify-content: space-between; }
+
+/* line 202, ../../../src/sass/_customCore.scss */
+.card-wrapper { max-width: 280px; width: 80%; margin: 0 auto 24px; }
+/* line 207, ../../../src/sass/_customCore.scss */
+.card-wrapper > * { width: 100%; margin-bottom: 24px; }
+
+/* line 213, ../../../src/sass/_customCore.scss */
+.card-scroller { width: calc(100% + 16px); }
+
+/* line 219, ../../../src/sass/_customCore.scss */
+time { color: #FFE200; font-weight: bold; margin: 6px 0 12px; text-align: center; display: inline-block; width: 100%; }
+
+/* line 231, ../../../src/sass/_customCore.scss */
+.social-comment { display: block; padding-left: 28px; color: #fff; font-weight: bold; font-size: 12px; line-height: 24px; }
+/* line 240, ../../../src/sass/_customCore.scss */
+.social-comment--fb-icon { background-position: 0 -94px; }
+/* line 244, ../../../src/sass/_customCore.scss */
+.social-comment--tw-icon { background-position: 0 -131px; }
+
+/* line 249, ../../../src/sass/_customCore.scss */
+.countdown { display: flex; justify-content: space-evenly; }
+/* line 253, ../../../src/sass/_customCore.scss */
+.countdown > div { display: flex; flex-direction: column; align-items: center; }
+/* line 258, ../../../src/sass/_customCore.scss */
+.countdown > div label { color: #fff; font-size: 13px; margin-bottom: 5px; }
+/* line 264, ../../../src/sass/_customCore.scss */
+.countdown > div span { background: #ffac6d; background: -moz-linear-gradient(top, #ffac6d 0%, #ff7400 50%, #ffac68 53%, #ff7400 100%); background: -webkit-linear-gradient(top, #ffac6d 0%, #ff7400 50%, #ffac68 53%, #ff7400 100%); background: linear-gradient(to bottom, #ffac6d 0%, #ff7400 50%, #ffac68 53%, #ff7400 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffac6d', endColorstr='#ff7400',GradientType=0 ); border-radius: 4px; font-size: 20px; font-weight: bold; color: #fff; margin-right: 2px; padding: 13px; position: relative; }
+/* line 278, ../../../src/sass/_customCore.scss */
+.countdown > div span:after { content: ''; width: 100%; position: absolute; top: 50%; height: 2px; background-color: #000; z-index: 1; left: 0; }
+
+/* line 292, ../../../src/sass/_customCore.scss */
+.cta-container { margin: 12px 0; }
+/* line 295, ../../../src/sass/_customCore.scss */
+.cta-container--center { text-align: center; }
+/* line 298, ../../../src/sass/_customCore.scss */
+.cta-container--center .cta { display: inline-block; margin: 0 auto; }
+
+/* line 308, ../../../src/sass/_customCore.scss */
+button { -webkit-appearance: none; background: transparent; border: none; }
+
+/* line 315, ../../../src/sass/_customCore.scss */
+.cta { border-radius: 6px; color: #000; display: inline-block; font-family: "Avenir", serif; font-size: 20px; padding: 8px; }
+/* line 324, ../../../src/sass/_customCore.scss */
+.cta--yellow { background-color: #FFE200; }
+/* line 328, ../../../src/sass/_customCore.scss */
+.cta--cyan { background-color: #6E96CB; color: #FFF; }
+/* line 333, ../../../src/sass/_customCore.scss */
+.cta--enter { background-position: right 0 top -1392px; padding-right: 40px; }
+/* line 339, ../../../src/sass/_customCore.scss */
+.cta--rounded { padding: 0 40px 0 12px; background-position: right 0 top -1400px; border-radius: 14px; font-size: 16px; line-height: 28px; }
+/* line 347, ../../../src/sass/_customCore.scss */
+.cta--back { background-position: left 10px top -1684px; padding: 0 12px 0 40px; }
+
+/* line 354, ../../../src/sass/_customCore.scss */
+.yellow-text-link { color: #FFE200; display: inline-block; font-family: "Avenir", serif; font-size: 18px; font-weight: bold; padding: 16px 40px; }
+/* line 363, ../../../src/sass/_customCore.scss */
+.yellow-text-link--enter { background-position: right 0 top -614px; }
+
+/* line 371, ../../../src/sass/_customCore.scss */
+.total-users { font-family: "Avenir", serif; color: #fff; display: block; text-align: center; font-size: 50px; }
+
+/* line 379, ../../../src/sass/_customCore.scss */
+.header-rounded-image { border: 4px solid #fff; box-shadow: 0 0 20px #fff; width: 130px; height: 130px; margin: 24px auto; border-radius: 50%; overflow: hidden; }
+
+/* line 389, ../../../src/sass/_customCore.scss */
+.separator { height: 2px; background-color: rgba(255, 255, 255, 0.5); margin: 24px 0; width: 100%; }
+
+/* page-demo.twig styles */
+/* header.twig styles */
+/* line 6, ../../../src/sass/components/sections/_header.scss */
+.header { padding-top: 16px; margin-bottom: 60px; position: fixed; z-index: 2; }
+@media screen and (max-width: 736px) { /* line 6, ../../../src/sass/components/sections/_header.scss */
+  .header { padding-top: 80px; margin-bottom: 0; } }
+/* line 17, ../../../src/sass/components/sections/_header.scss */
+.header__top { justify-content: space-between; align-items: flex-end; }
+@media screen and (max-width: 736px) { /* line 17, ../../../src/sass/components/sections/_header.scss */
+  .header__top { align-items: center; flex-direction: row !important; position: fixed; top: 0; left: 0; z-index: 111; width: 100%; } }
+/* line 31, ../../../src/sass/components/sections/_header.scss */
+.header__top .hamburger { display: none; background-position: 14px -697px; width: 50px; height: 50px; }
+@media screen and (max-width: 736px) { /* line 31, ../../../src/sass/components/sections/_header.scss */
+  .header__top .hamburger { display: block; } }
+/* line 43, ../../../src/sass/components/sections/_header.scss */
+.header__top .login { background-position: 13px -1616px; width: 50px; height: 50px; }
+/* line 51, ../../../src/sass/components/sections/_header.scss */
+.header__main-menu { box-shadow: 8px 0 20px rgba(0, 0, 0, 0.4); }
+/* line 55, ../../../src/sass/components/sections/_header.scss */
+.header__main-menu .main-menu__close { width: 50px; height: 50px; background-position: 14px -731px; margin-left: auto; }
+/* line 64, ../../../src/sass/components/sections/_header.scss */
+.header__main-menu__head { background-color: #6E96CB; height: 80px; display: flex; align-items: center; padding: 10px; display: none; }
+@media screen and (max-width: 736px) { /* line 64, ../../../src/sass/components/sections/_header.scss */
+  .header__main-menu__head { display: flex; } }
+/* line 76, ../../../src/sass/components/sections/_header.scss */
+.header__main-menu__head .profile-image { position: relative; }
+/* line 79, ../../../src/sass/components/sections/_header.scss */
+.header__main-menu__head .profile-image__container { border-radius: 50%; border: 2px solid #fff; overflow: hidden; width: 70px; height: 70px; }
+/* line 87, ../../../src/sass/components/sections/_header.scss */
+.header__main-menu__head .profile-image__notify-badge { color: #fff; font-weight: bold; background: #D01B22; border-radius: 50%; border: 2px solid #fff; position: absolute; bottom: -4px; right: -9px; width: 31px; height: 31px; text-align: center; line-height: 27px; }
+/* line 103, ../../../src/sass/components/sections/_header.scss */
+.header__main-menu__head .profile-name { font-style: italic; font-size: 20px; margin-left: 10px; }
+@media screen and (max-width: 736px) { /* line 110, ../../../src/sass/components/sections/_header.scss */
+  .header__main-menu__body { background-color: #496283; overflow-y: auto; padding: 0 16px; position: absolute; height: calc(100% - 80px); width: 100%; } }
+/* line 120, ../../../src/sass/components/sections/_header.scss */
+.header__main-menu__body .section-title { color: #FFE200; }
+/* line 123, ../../../src/sass/components/sections/_header.scss */
+.header__main-menu__body .section-title:before, .header__main-menu__body .section-title:after { content: none; }
+/* line 137, ../../../src/sass/components/sections/_header.scss */
+.header__main-menu li input:checked + .item-label--opener:after { transform: rotate(180deg); }
+/* line 142, ../../../src/sass/components/sections/_header.scss */
+.header__main-menu li input:checked ~ .submenu { max-height: 300px; }
+/* line 150, ../../../src/sass/components/sections/_header.scss */
+.header__main-menu li.single-item a { background-position: right 0 top -221px; }
+/* line 156, ../../../src/sass/components/sections/_header.scss */
+.header__main-menu li .submenu { max-height: 0; overflow: hidden; transition: max-height ease-out 0.3s; }
+/* line 162, ../../../src/sass/components/sections/_header.scss */
+.header__main-menu li .item-label { color: #fff; font-family: "Avenir", serif; font-size: 20px; font-weight: bold; padding: 12px 0; margin: 0 10px; position: relative; display: block; width: 100%; }
+@media screen and (max-width: 736px) { /* line 162, ../../../src/sass/components/sections/_header.scss */
+  .header__main-menu li .item-label { display: inline-block; margin: 10px 0; } }
+/* line 180, ../../../src/sass/components/sections/_header.scss */
+.header__main-menu li .item-label--opener:after { content: url("../images/caret-white.svg"); position: absolute; right: 10px; transition: transform ease-in-out 0.15s; }
+/* line 189, ../../../src/sass/components/sections/_header.scss */
+.header__main-menu li.divider-item { border-top: 1px solid rgba(255, 255, 255, 0.4); padding: 10px 0; }
+/* line 196, ../../../src/sass/components/sections/_header.scss */
+.header__main-menu li.block-item + .single-item { border-top: 1px solid rgba(255, 255, 255, 0.4); }
+@media screen and (max-width: 736px) { /* line 51, ../../../src/sass/components/sections/_header.scss */
+  .header__main-menu { position: fixed; top: 0; left: -110%; z-index: 20; background: #fff; transition: left ease-in-out 0.25s; height: 100%; width: 100%; }
+  /* line 212, ../../../src/sass/components/sections/_header.scss */
+  .header__main-menu.opened { left: 0; padding: 0; } }
+
+/* line 220, ../../../src/sass/components/sections/_header.scss */
+.logo { width: 270px; }
+/* line 223, ../../../src/sass/components/sections/_header.scss */
+.logo picture { padding-bottom: 80px; }
+/* line 226, ../../../src/sass/components/sections/_header.scss */
+.logo picture img { min-height: 0; max-width: 100%; max-height: 75%; min-width: 0; }
+@media screen and (max-width: 736px) { /* line 220, ../../../src/sass/components/sections/_header.scss */
+  .logo { width: 170px; } }
+/* line 238, ../../../src/sass/components/sections/_header.scss */
+.logo--modal { width: 100px; }
+
+/* footer.twig styles */
+/* line 3, ../../../src/sass/components/sections/_footer.scss */
+footer.footer { background-color: #6E96CB; flex-direction: row; justify-content: space-between; height: 90px; }
+/* line 9, ../../../src/sass/components/sections/_footer.scss */
+footer.footer .logo { width: 70px; padding: 0 32px; box-sizing: content-box; }
+/* line 15, ../../../src/sass/components/sections/_footer.scss */
+footer.footer .footer__info { padding: 0 32px; }
+/* line 18, ../../../src/sass/components/sections/_footer.scss */
+footer.footer .footer__info > a { margin: 6px 0; padding-left: 30px; }
+
+/* line 26, ../../../src/sass/components/sections/_footer.scss */
+.phone-link { background-position: 0 -1000px; font-family: "Avenir", serif; color: #fff; }
+
+/* line 32, ../../../src/sass/components/sections/_footer.scss */
+.mail-link { background-position: 0 -1050px; font-family: "Avenir", serif; color: #fff; }

@@ -1,0 +1,50 @@
+{% extends "base-modal.twig" %}
+{% block content %}
+
+    <!-- single-card.twig -->
+    {% set queryItem = posts.items.children[2] %}
+    {% set category = queryItem.category %}
+	{% set innerRelatedPost %}{% include 'components/partials/partial-innerrelated-post.twig' %}{% endset %}
+	{% set innerRelatedVideo %}{% include 'components/partials/partial-innerrelated-video.twig' %}{% endset %}
+	{% set innerRelatedLink %}{% include 'components/partials/partial-innerrelated-link.twig' %}{% endset %}
+    {% set innerRelatedPlayerVideoInside %}{% include 'components/partials/partial-innerrelated-playervideo--inside.twig' %}{% endset %}
+    {% set innerRelatedPlayerVideoAside %}{% include 'components/partials/partial-innerrelated-playervideo--aside.twig' %}{% endset %}
+	{% set innerRelatedSliderGallery %}{% include 'components/partials/partial-innerrelated-slider-gallery.twig' %}{% endset %}
+
+    <div class="single-card">
+        <div class="container sticky-parent sticky-offset-element" data-sticky-offset-top="10">
+            <div class="col-8">
+				<main class="single-card__main">
+
+					{# Card #}
+					<div class="editorial">
+
+						{# Card title #}
+		                <h1>{{ queryItem.title }}</h1>
+
+                        {# Static innercard cover - just first page #}
+                        {% include 'components/partials/partial-innercard-static-cover.twig' %}
+
+                        {# Static innercard content #}
+                        {% include 'components/partials/partial-innercard-static-content.twig' %}
+					</div>
+				</main>
+
+                {# Static adv - Mobile top #}
+                {% include 'components/partials/partial-static-adv.twig' %}
+
+                {# Section cards social #}
+                {% include 'components/sections/section-cards-social.twig' %}
+
+                {# Static adv - Mobile bottom #}
+                {% include 'components/partials/partial-static-adv.twig' %}
+            </div>
+
+            <aside class="col-4">
+                {% include 'components/partials/partial-card-social-instagram--k2.twig' %}
+				{% include 'components/partials/partial-sticky-adv.twig' %}
+			</aside>
+        </div>
+    </div>
+
+{% endblock %}

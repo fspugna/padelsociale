@@ -1,0 +1,11 @@
+/* macro tabs.twig styles */
+/* line 6, ../../../../../src/sass/components/partials/tabs.scss */
+.tabs { margin: 24px auto; }
+/* line 11, ../../../../../src/sass/components/partials/tabs.scss */
+.tabs .tabs__nav label { border-top-left-radius: 6px; border-top-right-radius: 6px; color: #fff; font-family: "Avenir", serif; font-size: 20px; font-weight: bold; display: inline-block; padding: 7px; margin: 0 7px; text-align: center; text-shadow: 0 0 5px #000; }
+/* line 31, ../../../../../src/sass/components/partials/tabs.scss */
+.tabs .tabs__body { overflow: hidden; }
+/* line 37, ../../../../../src/sass/components/partials/tabs.scss */
+.tabs .tabs__body__panel { padding: 24px 16px 16px; }
+/* line 43, ../../../../../src/sass/components/partials/tabs.scss */
+.tabs .tabs__body .featured-data__item:last-child { border-bottom: none; }
