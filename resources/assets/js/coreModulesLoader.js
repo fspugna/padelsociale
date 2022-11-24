@@ -4,7 +4,7 @@ Modules = [ {
         params: {
             url: "/resources/assets/js/libs/swiper.min.js",
             key: "swiper",
-            unique: Date.now(),
+            unique: "1565191008",
             skipCache: skipCache()
         }
     }
@@ -23,47 +23,28 @@ Modules = [ {
         params: {
             url: "/resources/assets/js/libs/chosen.jquery.min.js",
             key: "chosen",
-            unique: Date.now(),
+            unique: "1565191008",
             skipCache: skipCache()
         }
     }
-} ,{
-    fancybox: {
-        exists: document.getElementsByClassName('fancybox-js').length,
-        params: {
-            url: '/resources/assets/js/libs/jquery.fancybox.min.js',
-            key: 'fancybox-gallery-js',
-            skipCache: skipCache()
-        }
-    }
-},{
-    summernote: {
-        exists: document.getElementsByClassName('summernote-js').length,
-        params: {
-            url: '/resources/assets/js/libs/summernote.js',
-            key: 'summernote-js',
-            skipCache: skipCache()
-        }
-    }
-    
-}];
+} ];
 
 function modulesLoader() {
     var moduleMount = 0;
     if (tribooScriptModules != undefined) {
         tribooScriptModules.forEach(function(item, index) {
             for (var key in item) {
-                var lib = item[key];                             
+                var lib = item[key];
                 if ("skipCache" in lib.params) {
                     rogio.log(key + ": ha chiave SkipCache", "success");
                     $.extend(lib.params, {
-                        unique: Date.now(),
+                        unique: "1565191008",
                         skipCache: lib.params.skipCache,
                         execute: true
                     });
                 } else {
                     $.extend(lib.params, {
-                        unique: Date.now(),
+                        unique: "1565191008",
                         skipCache: false,
                         execute: true
                     });
@@ -76,7 +57,7 @@ function modulesLoader() {
                             params: {
                                 url: item.url,
                                 key: item.name + "-js",
-                                unique: Date.now(),
+                                unique: "1565191008",
                                 skipCache: skipCache(),
                                 execute: true
                             }
@@ -114,7 +95,7 @@ function modulesParser() {
                 urlsArray.push({
                     url: "/resources/assets/js/main.js",
                     key: "mainJS",
-                    unique: "1564001481",
+                    unique: "1565191008",
                     skipCache: skipCache()
                 });
                 basket.require.apply(basket, urlsArray);

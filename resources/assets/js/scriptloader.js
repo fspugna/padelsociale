@@ -9,7 +9,7 @@ function skipCache() {
     }
 }
 
-var basketVersion = "1564001481";
+var basketVersion = "1565191008";
 
 var jqueryFile = {
     url: "/resources/assets/js/libs/jquery.min.js",
@@ -18,7 +18,7 @@ var jqueryFile = {
     skipCache: skipCache()
 };
 
-var rogioFiles = [{
+var rogioFiles = [ {
     url: "/resources/assets/js/libs/bowser.js",
     key: "bowser",
     unique: basketVersion,
@@ -39,16 +39,6 @@ var rogioFiles = [{
     unique: basketVersion,
     skipCache: skipCache()
 }, {
-    url: "/resources/assets/js/libs/bootstrap-datepicker.min.js",
-    key: "datePicker",
-    unique: basketVersion,
-    skipCache: skipCache()
-}, {
-    url: "/resources/assets/js/libs/typeahead.bundle.min.js",
-    key: "typeAhead",
-    unique: basketVersion,
-    skipCache: skipCache()
-}, {
     url: "/resources/assets/js/coreModulesLoader.js",
     key: "coreModules",
     unique: basketVersion,
@@ -60,8 +50,8 @@ var rogioFiles = [{
     skipCache: skipCache()
 } ];
 
-if (typeof jQuery === "undefined") {    
-    rogioFiles.unshift(jqueryFile);    
+if (typeof jQuery === "undefined") {
+    rogioFiles.unshift(jqueryFile);
 }
 
 basket.require.apply(basket, rogioFiles);

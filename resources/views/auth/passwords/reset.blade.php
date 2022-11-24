@@ -35,7 +35,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ url('/') }}">La Disfida di Padel</a>
+        <a href="{{ url('/') }}">Padel Sociale</a>
     </div>
 
     <!-- /.login-logo -->

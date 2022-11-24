@@ -16,10 +16,10 @@
 			}
 		},{
 			mainJs: {
-				exists: document.getElementsByClassName('main-ladisfidadipadel-js').length,
+				exists: document.getElementsByClassName('main-padelsociale-js').length,
 				params: {
-					url: '/resources/assets/js/main-ladisfidadipadel.js',
-					key: 'main-ladisfidadipadel-js',
+					url: '/resources/assets/js/main-padelsociale.js',
+					key: 'main-padelsociale-js',
 				}
 			}
 		},{

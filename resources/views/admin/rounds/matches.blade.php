@@ -178,7 +178,7 @@ function openSubmatches(id_macro_match){
     var current_url = window.location.href;
     console.log(current_url);
     var new_url = current_url.split('?')[0] + '?id_macro_match='+id_macro_match;
-    history.replaceState('', 'La Disfida di Padel', new_url);
+    history.replaceState('', 'Padel Sociale', new_url);
     $("#panel_submatches_"+id_macro_match).toggle();
 
     document.getElementById("panel_submatches_"+id_macro_match).scrollIntoView();

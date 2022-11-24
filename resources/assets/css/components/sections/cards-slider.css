@@ -4,20 +4,8 @@
 /* line 9, ../../../../../src/sass/components/sections/cards-slider.scss */
 .cards-slider__container .swiper-slide { background-position: center; background-size: cover; width: 100%; max-width: 370px; }
 /* line 18, ../../../../../src/sass/components/sections/cards-slider.scss */
-.cards-slider__container .swiper-pagination { position: static; }
+.cards-slider__container .swiper-pagination { margin: 10px 0; position: static; }
 /* line 22, ../../../../../src/sass/components/sections/cards-slider.scss */
-.cards-slider__container .swiper-pagination .swiper-pagination-bullet { opacity: 1.3; width: 10px; height: 10px; border: 2px solid white; border-width: 2px 2px 2px 2px; display: inline-block; border-radius: 100%; }
+.cards-slider__container .swiper-pagination .swiper-pagination-bullet { opacity: 1.3; width: 20px; height: 20px; border: 2px solid white; border-width: 2px 2px 2px 2px; display: inline-block; border-radius: 100%; }
 /* line 33, ../../../../../src/sass/components/sections/cards-slider.scss */
 .cards-slider__container .swiper-pagination-bullet-active { background: #fff; opacity: 1 !important; }
-
-
-/* line 5, ../../../../../src/sass/components/sections/cards-slider.scss */
-.cards-slider-auto__container { margin: 12px 0; }
-/* line 9, ../../../../../src/sass/components/sections/cards-slider.scss */
-.cards-slider-auto__container .swiper-slide { background-position: center; background-size: cover; width: 100%; max-width: 370px; }
-/* line 18, ../../../../../src/sass/components/sections/cards-slider.scss */
-.cards-slider-auto__container .swiper-pagination { position: static; }
-/* line 22, ../../../../../src/sass/components/sections/cards-slider.scss */
-.cards-slider-auto__container .swiper-pagination .swiper-pagination-bullet { opacity: 1.3; width: 10px; height: 10px; border: 2px solid white; border-width: 2px 2px 2px 2px; display: inline-block; border-radius: 100%; }
-/* line 33, ../../../../../src/sass/components/sections/cards-slider.scss */
-.cards-slider-auto__container .swiper-pagination-bullet-active { background: #fff; opacity: 1 !important; }

@@ -1,23 +1,23 @@
 /* card-team-classifica.twig styles */
 /* line 5, ../../../../../src/sass/components/partials/card-team-classifica.scss */
-.card-team-classifica { display: flex; align-items: center; justify-content: space-around; padding: 5px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
-/* line 12, ../../../../../src/sass/components/partials/card-team-classifica.scss */
-.card-team-classifica .card__inner { align-items: center; min-width: 50%; padding: 0 8px; }
-/* line 18, ../../../../../src/sass/components/partials/card-team-classifica.scss */
+.card-team-classifica { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
+/* line 11, ../../../../../src/sass/components/partials/card-team-classifica.scss */
+.card-team-classifica .card__inner { display: flex; align-items: center; min-width: 220px; padding: 0 8px; }
+/* line 17, ../../../../../src/sass/components/partials/card-team-classifica.scss */
 .card-team-classifica .card__inner .player { width: 50%; }
-/* line 21, ../../../../../src/sass/components/partials/card-team-classifica.scss */
+/* line 20, ../../../../../src/sass/components/partials/card-team-classifica.scss */
 .card-team-classifica .card__inner .player__name { color: #fff; text-align: center; max-width: 110px; }
-/* line 27, ../../../../../src/sass/components/partials/card-team-classifica.scss */
+/* line 26, ../../../../../src/sass/components/partials/card-team-classifica.scss */
 .card-team-classifica .card__inner .player__ranking { color: #fff; font-size: 30px; font-weight: bold; }
-/* line 35, ../../../../../src/sass/components/partials/card-team-classifica.scss */
+/* line 34, ../../../../../src/sass/components/partials/card-team-classifica.scss */
 .card-team-classifica .card__thumbnail { width: 65px; border-radius: 50%; overflow: hidden; margin: 0 auto 8px; }
-/* line 42, ../../../../../src/sass/components/partials/card-team-classifica.scss */
+/* line 41, ../../../../../src/sass/components/partials/card-team-classifica.scss */
 .card-team-classifica .card__footer { padding: 0 8px !important; display: flex; justify-content: space-between !important; }
-/* line 47, ../../../../../src/sass/components/partials/card-team-classifica.scss */
+/* line 46, ../../../../../src/sass/components/partials/card-team-classifica.scss */
 .card-team-classifica .card__footer .card__footer__value { color: #FFE200; font-weight: bold; }
-/* line 55, ../../../../../src/sass/components/partials/card-team-classifica.scss */
+/* line 54, ../../../../../src/sass/components/partials/card-team-classifica.scss */
 .card-team-classifica--player .card__inner { max-width: 180px; min-width: 0; }
-/* line 59, ../../../../../src/sass/components/partials/card-team-classifica.scss */
+/* line 58, ../../../../../src/sass/components/partials/card-team-classifica.scss */
 .card-team-classifica--player .card__inner .player { width: auto; }
-/* line 63, ../../../../../src/sass/components/partials/card-team-classifica.scss */
+/* line 62, ../../../../../src/sass/components/partials/card-team-classifica.scss */
 .card-team-classifica--player .card__inner .player__ranking { width: auto; min-width: 70px; }

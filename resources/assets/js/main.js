@@ -39,9 +39,7 @@ function initChosenSelects() {
 $(window).resize($.debounce(300, onViewportChange));
 
 $(document).ready(function() {
-    
     onViewportChange();
-    
 });
 
 $(".back-to-top-btn").click(function(e) {
