@@ -44,7 +44,7 @@ class UserActivated extends Notification
     {
         //dd(env('MAIL_FROM_ADDR'));
         return (new MailMessage)
-                ->subject('Amatori Padel - Utente attivato' )
+                ->subject('Padel Sociale - Utente attivato' )
                 ->markdown('emails.user_activated', [ 'user' => $this->user ]);
     }
 
@@ -55,9 +55,9 @@ class UserActivated extends Notification
      * @return array
      */
     public function toDatabase($notifiable)
-    {        
+    {
         return [
-            'user' => $this->user            
+            'user' => $this->user
         ];
     }
 }

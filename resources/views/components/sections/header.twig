@@ -658,7 +658,7 @@
                     <label for="chisiamo-check" class="item-label item-label--opener"><i class="fab fa-battle-net"></i>  Chi Siamo</label>
                     <ul class="submenu">
                         <li class="header__main-menu__subitem chisiamo-inrelazionecon-subitem">
-                            <a href="/pages/in-relazione-con" class="yellow-text-link yellow-text-link--enter"><i class="far fa-handshake"></i>  In Relazione Con</a>
+                            <a href="/pages/Dorado-padel-center" class="yellow-text-link yellow-text-link--enter"><i class="far fa-handshake"></i>  Dorado Padel Center</a>
                         </li>
                         <li class="header__main-menu__subitem chisiamo-comitato-subitem">
                             <a href="/pages/staff" class="yellow-text-link yellow-text-link--enter"><i class="fas fa-sitemap"></i>  Staff</a>
@@ -721,7 +721,7 @@
 
                 <li class="header__main-menu__item circuitogiropadel-item block-item">
                     <input id="circuitogiropadel-check" hidden type="checkbox" />
-                    <label for="circuitogiropadel-check" class="item-label item-label--opener"><i class="fas fa-table-tennis"></i>   Circuito GiroPadel</label>
+                    <label for="circuitogiropadel-check" class="item-label item-label--opener"><i class="fas fa-table-tennis"></i>   Social League</label>
                     <ul style="margin-left: 20px; margin-right: 20px;" class="submenu">
                         {% for label, item in menu_tournaments %}
                             {% if item.items is defined %}
@@ -767,10 +767,11 @@
 
                 {# endif #}
 
-
+                {#
                 <li class="header__main-menu__item news-item circoli-item">
                     <a class="item-label" href="/clubs"><i class="fab fa-fort-awesome"></i>   Circoli</a>
                 </li>
+                #}
 
                 {# if auth_check() and (current_user.id_role != 3 and current_user.id_role != 4) #}
                 <li class="header__main-menu__item news-item archivio-item">

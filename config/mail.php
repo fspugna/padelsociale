@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'info@amatoripadel.it'),
-        'name' => env('MAIL_FROM_NAME', 'Amatori Padel'),
+        'name' => env('MAIL_FROM_NAME', 'Padel Sociale'),
     ],
 
     /*
@@ -84,11 +84,11 @@ return [
     |
     */
 
-    
+
     'username' => env('MAIL_USERNAME'),
 
-    'password' => env('MAIL_PASSWORD'),    
-        
+    'password' => env('MAIL_PASSWORD'),
+
 
     /*
     |--------------------------------------------------------------------------

@@ -1,12 +1,12 @@
-# Amatori Padel
+# Padel Sociale
 
-Amatori Padel is the web site of  "Giro padel tournament" 
+Padel Sociale is the web site of  "Giro padel tournament" 
 Is mobile-ready writing in laravel and powered HTML5 Markdown editor.
 
 
 ### Installation via SSH
 
-Amatori Padel requires [composer](https://getcomposer.org/) and  [Node.js](https://nodejs.org/) v4+ to run.
+Padel Sociale requires [composer](https://getcomposer.org/) and  [Node.js](https://nodejs.org/) v4+ to run.
 
 Install the dependencies and devDependencies and start the server.
 

@@ -95,7 +95,7 @@ class AppServiceProvider extends ServiceProvider
 
             //dd($menu_tournaments);
             //dd($user);
-            //dd($current_club);            
+            //dd($current_club);
 
             $view->with('avatar', $avatar)
                 ->with('current_user', $user)
@@ -221,7 +221,7 @@ class AppServiceProvider extends ServiceProvider
                         ->leftJoin('tournaments', 'tournaments.id_edition', '=', 'editions_zones.id_edition')
                         ->leftJoin('editions', 'tournaments.id_edition', '=', 'editions.id')
                         ->whereNotNull('tournaments.id')
-                        ->where('editions.edition_name', 'like', '%GiroPadel%')
+                        ->where('editions.edition_name', 'like', '%SocialLeague%')
                         ->where('tournaments.date_end', '>=', Carbon::now('Europe/Rome')->format('Y-m-d'))
                         ->where('tournaments.id_tournament_type', '=', 1)
                         ->where('tournaments.generated', '=', 1)
