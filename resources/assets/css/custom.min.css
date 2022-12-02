@@ -2955,11 +2955,11 @@ button { -webkit-appearance: none; background: transparent; border: none; }
 
 /* footer.twig styles */
 /* line 3, ../sass/components/sections/_footer.scss */
-footer.footer { background-color: #6E96CB; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; height: 90px; }
+footer.footer { display: flex; background-color: #013950; flex-direction: row; justify-content: space-between; height: 90px; }
 /* line 9, ../sass/components/sections/_footer.scss */
-footer.footer .logo { width: 70px; padding: 0 32px; -webkit-box-sizing: content-box; box-sizing: content-box; }
+footer.footer .logo { width: 100%; padding: 0 32px; box-sizing: content-box; }
 /* line 15, ../sass/components/sections/_footer.scss */
-footer.footer .footer__info { padding: 0 32px; }
+footer.footer .footer__info { padding: 0 32px; justify-content: center;}
 /* line 18, ../sass/components/sections/_footer.scss */
 footer.footer .footer__info > a { margin: 6px 0; padding-left: 30px; }
 

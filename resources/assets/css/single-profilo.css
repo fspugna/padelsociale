@@ -1,6 +1,6 @@
 /* single-profilo.twig styles */
 /* line 7, ../../../src/sass/single-profilo.scss */
-.single-profilo .card__inner, .single-circolo .card__inner { padding: 12px; }
+.single-profilo .card__inner, .single-circolo .card__inner { padding: 0px; }
 /* line 13, ../../../src/sass/single-profilo.scss */
 .single-profilo .card--player .card__thumbnail--big, .single-profilo .card--teacher .card__thumbnail--big, .single-circolo .card--player .card__thumbnail--big, .single-circolo .card--teacher .card__thumbnail--big { border-radius: 50%; border: 2px solid #fff; overflow: hidden; min-width: 100px; height: 100px; }
 /* line 25, ../../../src/sass/single-profilo.scss */

@@ -9,11 +9,11 @@
     front-page bg-image bg-frontpage
 {% endblock %}
 
-{% block content %}    
-      
+{% block content %}
+
 <!--front-page.twig page -->
 <div class="archive archive-giocatori" style="margin-top: 50px">
-    
+
     <article class="card card-events--big">
 
         <link rel="stylesheet" href="/resources/assets/css/components/partials/card-events--big.css?v={{version}}" />
@@ -25,9 +25,9 @@
                 {% if meta.meta == 'avatar' %}
                     {% set avatar = '/storage/' ~ meta.meta_value %}
                 {% endif %}
-            {% endfor %}   
-            
-            
+            {% endfor %}
+
+
             <picture data-link="/players/{{ queryItem.id }}/show">
                 <img class="lazyload" data-srcset="{{ avatar }}, {{  avatar }} 2x" alt="{{ queryItem.name  }}"/>
             </picture>
@@ -46,38 +46,38 @@
             <div class="card__title">
                 <h3>{{ macro_team.name }}</h3>
             </div>
-            <p class="abstract">{{ macro_team.club.name }}</p>            
-            <div class="abstract2" style="margin-top: 0 !important; font-size: 13px !important">{{ macro_team.club.address }} - {{ macro_team.club.phone }}</div>	
+            <p class="abstract">{{ macro_team.club.name }}</p>
+            <div class="abstract2" style="margin-top: 0 !important; font-size: 13px !important">{{ macro_team.club.address }} - {{ macro_team.club.phone }}</div>
             <br>
             <p class="abstract" style="text-align: center">
                 <span style="color:#FFE200">Giorno e ora partita in casa</span><br>
                 <span>{{ macro_team.info_match_home }}<span>
-            </p>            
+            </p>
             <br>
             <p class="abstract" style="text-align: center">
                 <span style="color:#FFE200">Capitano</span><br>
                 <span>{{ macro_team.captain }}<span>
-            </p>            
+            </p>
             <br>
             <p class="abstract" style="text-align: center">
                 <span style="color:#FFE200">Contatto telefonico della squadra</span><br>
                 <span>{{ macro_team.tel_captain }}<span>
-            </p>            
-        </div>                
-        
+            </p>
+        </div>
+
     </article>
 
     <div class="archive archive-giocatori">
         <div class="section-title "><span>Giocatori</span></div></br>
-        
+
 
         <div class="separator_list"></div>
-        {% for teamPlayer in macro_team.players %}			
+        {% for teamPlayer in macro_team.players %}
             {% set queryItem = teamPlayer.player %}
             {% include 'components/partials/list-item-giocatore.twig' %}
         {% endfor %}
     </div>
-    
+
     <div class="flex flex--column flex--center">
         <div class="section-title section-title--no-separator"><span>Classifica del Team</span></div>
         <div class="card card-scroller card-scroller--vertical card-classifica">
@@ -86,17 +86,17 @@
 
             <table>
                 <tbody>
-                    <tr>                        
-                        <td class="TDvalueName" ><span style="margin: 10px;">Giocatore</span></td>                        
-                        <td class="TDvalueName" ><span style="margin: 10px;">Punti</span></td>                                                
-                        <td class="TDvalueName" ><span style="margin: 10px;">Giocate</span></td>                                                
+                    <tr>
+                        <td class="TDvalueName" ><span style="margin: 10px;">Giocatore</span></td>
+                        <td class="TDvalueName" ><span style="margin: 10px;">Punti</span></td>
+                        <td class="TDvalueName" ><span style="margin: 10px;">Giocate</span></td>
                         <td class="TDvalueName" ><span style="margin: 30px;">G.Vinti/Persi.</span></td>
                     </tr>
                     {% for teamPlayer in classifica %}
                         {% include 'components/partials/card-player-stats-macro.twig' %}
                     {% endfor %}
                 </tbody>
-            </table>                            
+            </table>
 
             <style>
 
@@ -137,10 +137,10 @@
         </div>
     </div>
 
-    
-        <link href="/resources/assets/css/components/partials/card-macro-match.css?v=1.0.4" rel="stylesheet">    
-        <ul>            
-            {% for id_round, round in giornate %}                  
+
+        <link href="/resources/assets/css/components/partials/card-macro-match.css?v=1.0.4" rel="stylesheet">
+        <ul>
+            {% for id_round, round in giornate %}
                 {% if  macro_matches[round.id] is defined %}
                 <div class="section-title "><span>
                         {% if round.name == '1' %}
@@ -186,26 +186,26 @@
                         {% else %}
                             Giornata {{ round.name }}
                         {% endif %}
-                        
+
                         {% if( round.description != '' ) %}
                             <br>{{ round.description }}
                         {% endif %}
                  </span></div></br>
                  {% endif %}
-                
-                {% for macroMatch in macro_matches[round.id] %}                                            
+
+                {% for macroMatch in macro_matches[round.id] %}
                     <div  style="margin-bottom: 0px;"  >
-                        <li style="margin: 2px;" >			                            
+                        <li style="margin: 2px;" >
                             {% include 'components/partials/card-macro-match.twig' %}
                         </li>
-                    </div>                    
+                    </div>
                 {% endfor %}
             {% endfor %}
         </ul>
-    
-    
-       
-    
+
+
+
+
 </div>
 
 {% endblock %}

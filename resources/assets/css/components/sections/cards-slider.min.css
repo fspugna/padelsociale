@@ -11,3 +11,15 @@
 .cards-slider__container .swiper-pagination-bullet-active { background: #fff; opacity: 1 !important; }
 
 /*# sourceMappingURL=../../maps/cards-slider.min.css.map */
+
+/* cards-slider.twig styles */
+/* line 5, ../../../sass/components/sections/cards-slider.scss */
+.cards-slider-auto__container { margin: 24px 0; }
+/* line 9, ../../../sass/components/sections/cards-slider.scss */
+.cards-slider-auto__container .swiper-slide { background-position: center; background-size: cover; width: 75%; max-width: 280px; }
+/* line 16, ../../../sass/components/sections/cards-slider.scss */
+.cards-slider-auto__container .swiper-pagination { margin: 10px 0; position: static; }
+/* line 20, ../../../sass/components/sections/cards-slider.scss */
+.cards-slider-auto__container .swiper-pagination .swiper-pagination-bullet { opacity: 0.3; }
+/* line 25, ../../../sass/components/sections/cards-slider.scss */
+.cards-slider-auto__container .swiper-pagination-bullet-active { background: #fff; opacity: 1 !important; }

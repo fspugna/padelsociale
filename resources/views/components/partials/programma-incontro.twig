@@ -1,6 +1,6 @@
 <div style="text-align: center; margin-top: 15px; margin-left:1px; padding: 0px 0px;">
-    {% if not match.id_club %}	
-        <!-- button popup "Programma Incontro" -->    
+    {% if not match.id_club %}
+        <!-- button popup "Programma Incontro" -->
         <a style="margin-top: 20px;" href="#ProgMatch_{{match.id}}" class="legenda">Programma Incontro</a>
     {% else %}
         <a style="margin-top: 20px;" href="#ProgMatch_{{match.id}}" class="legenda">Cambia programma</a>
@@ -12,7 +12,7 @@
 
 
 <!-- <div style="border-bottom:1px solid #6E96CB; margin: 12px 0px;"></div> -->
-<!-- fine button popup "Programma Incontro" -->                    
+<!-- fine button popup "Programma Incontro" -->
 
 
 <link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v=">
@@ -26,23 +26,23 @@
                 <form id="form_schedule_{{ match.id }}" action="/admin/matches/schedule" method="post">
                     <div style="display: flex; justify-content: center; margin: 12px 0px;" class="select-div">
                         <select id="match_club" name="match_club" class="dropdown dropdown--light">
-                            <option selected="" disabled="">Seleziona Circolo</option>                                                
+                            <option selected="" disabled="">Seleziona Circolo</option>
                             {% if zone %}
-                                
+
                                 {% for club in zone.clubs %}
                                     <option value="{{ club.club.id }}">{{ club.club.name }}</option>
                                 {% endfor %}
-                            
+
                             {% endif %}
                         </select>
                     </div>
 
-                    <div style="display: flex; justify-content: center; margin: 12px 0px" class="select-div">                    
-                        <input style="" type="date" name="match_date" class="date-field">                                    
+                    <div style="display: flex; justify-content: center; margin: 12px 0px" class="select-div">
+                        <input style="" type="date" name="match_date" class="date-field">
                     </div>
 
-                    <div style="display: flex; justify-content: center; margin: 12px 0px" class="select-div">                    
-                        <input style="" type="time" name="match_hours" placeholder="Orario Es: 09:00">                                    
+                    <div style="display: flex; justify-content: center; margin: 12px 0px" class="select-div">
+                        <input style="" type="time" name="match_hours" placeholder="Orario Es: 09:00">
                     </div>
 
                     <div class="box">
@@ -54,7 +54,7 @@
                     </div>
                 </form>
 
-            </div>                                                    
+            </div>
         </div>
     </div>
     <a class="close" title="Chiudere" href="#close"></a>
@@ -66,14 +66,14 @@ function scheduleMatch(id_match){
 
 		data = [];
 
-		$("#form_schedule_"+id_match + " input").each(function(){			
+		$("#form_schedule_"+id_match + " input").each(function(){
 			data[ $(this).attr('name') ] = $(this).val();
 		});
 
-		$("#form_schedule_"+id_match + " select").each(function(){			
+		$("#form_schedule_"+id_match + " select").each(function(){
 			data[ $(this).attr('name') ] = $("option:selected", this).val();
-		});		
-		
+		});
+
 		console.log(data);
 
 		var errors = [];
@@ -103,13 +103,13 @@ function scheduleMatch(id_match){
 				match_club: data['match_club'],
 				id_match: data['id_match']
 			},
-			type: 'post', 
+			type: 'post',
 			dataType: 'json',
 			success: function(data){
                 console.log(data);
-				if(data.status == 'error'){                    
+				if(data.status == 'error'){
 					$(".programma_incontro_errors").html('<ul><li>' + data.msg + '</li></ul>');
-                    $(".programma_incontro_errors").show();					
+                    $(".programma_incontro_errors").show();
 				}else{
 					$(".programma_incontro_errors").html('');
 					$(".programma_incontro_errors").hide();
@@ -126,16 +126,16 @@ function scheduleMatch(id_match){
 			$.ajax({
 			url: '/admin/matches/del_schedule',
 			data: {
-				 "_token": "{{ csrf_token() }}",				
+				 "_token": "{{ csrf_token() }}",
 				id_match: id_match
 			},
-			type: 'post', 
+			type: 'post',
 			dataType: 'json',
 			success: function(data){
                 console.log(data);
-				if(data.status == 'error'){                    
+				if(data.status == 'error'){
 					$(".programma_incontro_errors").html('<ul><li>' + data.msg + '</li></ul>');
-                    $(".programma_incontro_errors").show();					
+                    $(".programma_incontro_errors").show();
 				}else{
 					$(".programma_incontro_errors").html('');
 					$(".programma_incontro_errors").hide();

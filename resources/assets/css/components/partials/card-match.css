@@ -1,23 +1,79 @@
 /* card-match.twig styles */
 /* line 5, ../../../../../src/sass/components/partials/card-match.scss */
-.card-match { background: none !important; border: none !important; margin: 0 12px 24px !important; }
-/* line 10, ../../../../../src/sass/components/partials/card-match.scss */
-.card-match .card__inner { background-color: rgba(0, 0, 0, 0.5); border-radius: 8px; border: 2px solid #fff; display: flex; padding: 12px; justify-content: space-evenly; }
-/* line 19, ../../../../../src/sass/components/partials/card-match.scss */
-.card-match__team { width: 50%; }
-/* line 23, ../../../../../src/sass/components/partials/card-match.scss */
-.card-match .vs { display: flex; flex-direction: column; align-items: center; color: #FFE200; font-size: 30px; font-weight: bold; padding: 6px; }
-/* line 32, ../../../../../src/sass/components/partials/card-match.scss */
-.card-match .vs span { padding: 12px 0px; }
-/* line 36, ../../../../../src/sass/components/partials/card-match.scss */
-.card-match .vs:before, .card-match .vs:after { content: ''; flex: 1; width: 1px; background: rgba(255, 255, 255, 0.5); height: 100px; }
+ul.flex.flex--column { width: 100%; }
+
+/* line 9, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match { background: none !important; border: none !important; margin: 0 0px 10px !important; width: 100%; }
+/* line 15, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match .card__inner { background-color: rgba(0, 0, 0, 0.5); border-radius: 8px; border: 2px solid #fff; display: flex; display: -webkit-flex; padding: 12px; justify-content: space-evenly; -webkit-justify-content: space-evenly; width: 100%; }
+/* line 27, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match__team { width: 45%; display: grid; display: -webkit-grid; justify-content: space-around; -webkit-justify-content: space-around; }
+/* line 35, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match .vs { display: flex; display: -webkit-flex; flex-direction: column; align-items: center; color: #FFE200; font-size: 30px; font-weight: bold; padding: 6px; }
 /* line 45, ../../../../../src/sass/components/partials/card-match.scss */
-.card-match .player { margin-bottom: 16px; }
-/* line 48, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match .vs span { padding: 12px 0px; }
+/* line 49, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match .vs:before, .card-match .vs:after { content: ''; flex: 1; width: 1px; background: #ffffff; max-height: 15px; }
+/* line 58, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match .player { margin-bottom: 0px; }
+/* line 61, ../../../../../src/sass/components/partials/card-match.scss */
 .card-match .player .card__thumbnail { width: 90px; height: 90px; border-radius: 50%; border: 2px solid #fff; overflow: hidden; margin: auto auto 12px; }
-/* line 57, ../../../../../src/sass/components/partials/card-match.scss */
-.card-match .player .player__name { color: #fff; font-family: "Avenir", serif; font-weight: bold; text-align: center; }
-/* line 65, ../../../../../src/sass/components/partials/card-match.scss */
-.card-match__result { display: flex; justify-content: center; margin: 12px 0; }
 /* line 70, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match .player .player__name { color: #fff; font-family: "Courgette", serif; font-weight: bold; }
+/* line 75, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match .player .player__name a { color: #fff; }
+/* line 81, ../../../../../src/sass/components/partials/card-match.scss */
+.card-match__result { display: flex; justify-content: center; margin: 12px 0; }
+/* line 86, ../../../../../src/sass/components/partials/card-match.scss */
 .card-match__result span { color: #fff; font-size: 20px; font-weight: bold; margin: 0 18px; }
+
+/* line 98, ../../../../../src/sass/components/partials/card-match.scss */
+a.legenda { background-color: #6E96CB; border-radius: 5px; border: 1px solid #fff; color: #fff; /* display: inline-block; */ font-size: 12px; padding: 2px; text-shadow: -1px 0 black, 0 1px black, 0 1px black, 1px 0 black, 0 -1px black; }
+
+/* line 108, ../../../../../src/sass/components/partials/card-match.scss */
+a.buttone { background-color: #6E96CB; border-radius: 5px; border: 1px solid #fff; color: #fff; /* display: inline-block; */ font-size: 12px; padding: 2px; text-shadow: -1px 0 black, 0 1px black, 0 1px black, 1px 0 black, 0 -1px black; text-decoration: none; }
+
+/* line 119, ../../../../../src/sass/components/partials/card-match.scss */
+.popup h1, .popup h2, .popup h3 { color: #ffe200; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); font-weight: normal; }
+
+/* line 126, ../../../../../src/sass/components/partials/card-match.scss */
+.popup h1 { /* titolo 1 */ font-size: 24px; }
+
+/* line 129, ../../../../../src/sass/components/partials/card-match.scss */
+.popup h2 { /* titolo 2 */ font-size: 1.5em; }
+
+/* line 132, ../../../../../src/sass/components/partials/card-match.scss */
+.popup h3 { /* titolo3 3 */ font-size: 1.2em; }
+
+/* Stili di base di ombreggiatura e finestra modale  */
+/* line 137, ../../../../../src/sass/components/partials/card-match.scss */
+.overlay { top: 0; right: 0; bottom: 0; left: 0; z-index: 9999; visibility: hidden; /* sfondo oscurante */ background-color: rgba(0, 0, 0, 0.7); opacity: 0; position: fixed; /* posizionamento fisso */ cursor: default; /* tipo del cursore */ -webkit-transition: all 0.6s; -moz-transition: all 0.6s; -ms-transition: all 0.6s; -o-transition: all 0.6s; transition: all 0.6s; }
+
+/* line 155, ../../../../../src/sass/components/partials/card-match.scss */
+.overlay:target { visibility: visible; opacity: 1; }
+
+/* Stili delle finestre modali */
+/* line 161, ../../../../../src/sass/components/partials/card-match.scss */
+.popup { top: 0; right: 50%; left: 50%; font-size: 14px; z-index: 10000; margin: 0 auto; width: 100%; max-width: 320px; max-height: 390px; overflow: auto; /* Posizionamento fisso, finestra rimane icolata allo scorimento della pagina */ position: fixed; padding: 5px; background: rgba(0, 0, 0, 0.5); border: 1px solid #fff; /* arrotondamento dei angoli */ -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; border-radius: 8px; /* ombra esetrna */ -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.22), 0 19px 60px rgba(0, 0, 0, 0.3); -moz-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.22), 0 19px 60px rgba(0, 0, 0, 0.3); -ms-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.22), 0 19px 60px rgba(0, 0, 0, 0.3); -o-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.22), 0 19px 60px rgba(0, 0, 0, 0.3); box-shadow: 0 15px 20px rgba(0, 0, 0, 0.22), 0 19px 60px rgba(0, 0, 0, 0.3); /* trasformazioni */ -webkit-transform: translate(-50%, -150%); -ms-transform: translate(-50%, -150%); -o-transform: translate(-50%, -150%); transform: translate(-50%, -150%); /* trasformazioni animate */ -webkit-transition: transform 0.6s ease-out; -moz-transition: transform 0.6s ease-out; -ms-transition: transform 0.6s ease-out; -o-transition: transform 0.6s ease-out; transition: transform 0.6s ease-out; }
+
+/* line 205, ../../../../../src/sass/components/partials/card-match.scss */
+.overlay:target + .popup { top: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); transform: translate(-50%, -50%); }
+
+/* line 213, ../../../../../src/sass/components/partials/card-match.scss */
+.close { position: absolute; padding: 0; top: 1px; right: 1px; width: 22px; height: 22px; border: 2px solid #ccc; -webkit-border-radius: 50%; -moz-border-radius: 50%; -ms-border-radius: 50%; -o-border-radius: 50%; border-radius: 50%; background-color: rgba(61, 61, 61, 0.8); -webkit-box-shadow: 0px 0px 10px #000; -moz-box-shadow: 0px 0px 10px #000; box-shadow: 0px 0px 10px #000; text-align: center; text-decoration: none; font-weight: bold; line-height: 20px; -webkit-transition: background-color ease .7s; -moz-transition: background-color ease .7s; -ms-transition: background-color ease .7s; -o-transition: background-color ease .7s; transition: background-color ease .7s; }
+
+/* line 241, ../../../../../src/sass/components/partials/card-match.scss */
+.close:before { color: rgba(255, 255, 255, 0.9); content: '\2715'; text-shadow: 0 -1px rgba(0, 0, 0, 0.9); font-size: 12px; }
+
+/* line 249, ../../../../../src/sass/components/partials/card-match.scss */
+.close:hover { background-color: #FFE200; }
+
+/* line 252, ../../../../../src/sass/components/partials/card-match.scss */
+.popup p { margin: 0; padding: 10px; }
+
+/* tablet */
+@media only screen and (min-width: 768px) and (max-width: 959px) { /* line 258, ../../../../../src/sass/components/partials/card-match.scss */
+  .popup { width: 95%; margin-top: 50px; } }
+/* smartfone*/
+@media only screen and (min-width: 320px) and (max-width: 767px) { /* line 265, ../../../../../src/sass/components/partials/card-match.scss */
+  .popup { width: 85%; margin-top: 50px; } }

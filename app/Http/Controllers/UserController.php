@@ -210,7 +210,7 @@ class UserController extends Controller
             if($request->hasFile('profile_image')):
 
                 $image_rule = [
-                    'profile_image' => 'image|mimes:jpg,jpeg,png|max:10240',
+                    'profile_image' => 'mimes:jpg,jpeg,png|max:10240',
                 ];
 
                 $image_messages = [
@@ -247,22 +247,22 @@ class UserController extends Controller
                 $userMeta->save();
             endif;
 
-            if($request->hasFile('gallery')):                
+            if($request->hasFile('gallery')):
 
                 $files = $request->file('gallery');
-                
+
                 foreach($files as $file):
 
                     $image_rule = [
-                        'gallery' => 'image|mimes:jpg,jpeg,png|max:10240',
+                        'gallery' => 'mimes:jpg,jpeg,png|max:10240',
                     ];
-    
+
                     $image_messages = [
                         'gallery.image' => "Il file caricato non è un'immagine",
                         'gallery.mimes' => "L'immagine deve essere di tipo .jpg o .png",
                         'gallery.max' => "ATTENZIONE: questo file presenta dei problemi. L'immagine supera i 10mb."
                     ];
-    
+
                     $image_validator = Validator::make(['gallery' => $file], $image_rule, $image_messages);
                     if($image_validator->fails()){
                         return back()->withErrors($image_validator);
@@ -357,7 +357,7 @@ class UserController extends Controller
             $user->email = $input['email'];
             $user->mobile_phone = $input['mobile_phone'];
 
-            $user->id_city = isset($input['id_city']) ? $input['id_city'] : null;            
+            $user->id_city = isset($input['id_city']) ? $input['id_city'] : null;
 
             if($user->id_role==2):
                 $user->gender = $input['gender'];
@@ -374,8 +374,8 @@ class UserController extends Controller
                 $user->dom = $input['domenica'];
                 $user->note_disp = $input['note_disp'];
 
-            endif; 
-            
+            endif;
+
             $user->save();
 
             if($user->id_role==3):
@@ -406,7 +406,7 @@ class UserController extends Controller
                 $partner->name = $input['club_name'];
                 $partner->id_city = isset($input['id_city']) ? $input['id_city'] : null;
                 $partner->address = $input['address'];
-                $partner->phone = $input['phone'];                
+                $partner->phone = $input['phone'];
                 $partner->description = $input['description'];
                 $partner->website = $input['website'];
                 $partner->save();

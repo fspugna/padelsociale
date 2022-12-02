@@ -62,7 +62,7 @@ class BannerController extends Controller
         if( $request->hasFile('file') ):
 
             $image_rule = [
-                'file' => 'image|mimes:jpg,jpeg,png|max:10240',
+                'file' => 'mimes:jpg,jpeg,png|max:10240',
             ];
 
             $image_messages = [
@@ -135,7 +135,7 @@ class BannerController extends Controller
         if( $request->hasFile('file') ):
 
             $image_rule = [
-                'file' => 'image|mimes:jpg,jpeg,png|max:10240',
+                'file' => 'mimes:jpg,jpeg,png|max:10240',
             ];
 
             $image_messages = [

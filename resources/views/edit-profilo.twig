@@ -26,7 +26,7 @@
     * {
     box-sizing: border-box;
     }
-                    
+
     /*the container must be positioned relative:*/
     .autocomplete {
     position: relative;
@@ -34,13 +34,13 @@
     }
 
     input {
-    background: rgba(0,0,0,0.1); 
-    border-radius: 8px; 
-    border: 1px solid #fff; 
+    background: rgba(0,0,0,0.1);
+    border-radius: 8px;
+    border: 1px solid #fff;
     color: white;
     padding:10px;
     }
-                
+
     input[type=submit] {
     background-color: rgba(0,0,0,0.7);
     color: #FFE200;
@@ -62,19 +62,19 @@
     .autocomplete-items div {
     padding: 10px;
     cursor: pointer;
-    background-color: #fff; 
-    border-bottom: 1px solid #fff; 
+    background-color: #fff;
+    border-bottom: 1px solid #fff;
     }
 
     /*when hovering an item:*/
     .autocomplete-items div:hover {
-    background-color: #e9e9e9; 
+    background-color: #e9e9e9;
     }
 
     /*when navigating through the items using the arrow keys:*/
     .autocomplete-active {
-    background-color: DodgerBlue !important; 
-    color: #ffffff; 
+    background-color: DodgerBlue !important;
+    color: #ffffff;
     }
 
     span.section-title-selection {
@@ -108,9 +108,9 @@
     }
 
     input {
-    background: rgba(0,0,0,0.1); 
-    border-radius: 8px; 
-    border: 1px solid #fff; 
+    background: rgba(0,0,0,0.1);
+    border-radius: 8px;
+    border: 1px solid #fff;
     color: white;
     padding:10px;
     }
@@ -136,19 +136,19 @@
     .autocomplete-items div {
     padding: 10px;
     cursor: pointer;
-    background-color: #fff; 
-    border-bottom: 1px solid #fff; 
+    background-color: #fff;
+    border-bottom: 1px solid #fff;
     }
 
     /*when hovering an item:*/
     .autocomplete-items div:hover {
-    background-color: #e9e9e9; 
+    background-color: #e9e9e9;
     }
 
     /*when navigating through the items using the arrow keys:*/
     .autocomplete-active {
-    background-color: DodgerBlue !important; 
-    color: #ffffff; 
+    background-color: DodgerBlue !important;
+    color: #ffffff;
     }
 
     li.list {
@@ -234,10 +234,10 @@
     }
 
     .note {
-    width: 100%; 
-    display: flex; 
-    justify-content: center; 
-    padding: 5px; 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
     border-top: 1px solid #6E96CB;
     }
 
@@ -254,10 +254,10 @@
     }
 
     .note {
-        width: 100%; 
-        display: flex; 
-        justify-content: center; 
-        padding: 5px; 
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 5px;
         border-top: 1px solid #6E96CB;
         }
 
@@ -390,7 +390,7 @@ color: rgba(255, 255, 255, 0.9);
 content: '\2715';
 text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
 font-size: 12px;
- 
+
 }
 
 .close:hover {
@@ -417,24 +417,24 @@ padding: 10px;
 <!-- fine banner -->
 
 <link rel="stylesheet" href="" />
-                    
+
 </style>
 
 
 
 <div class="page page-login">
 
-    <form action="{{ route('update_profile') }}" method="POST" enctype="multipart/form-data">                
+    <form action="{{ route('update_profile') }}" method="POST" enctype="multipart/form-data">
 
-	<section>		
-        
-		<article class="card card-info--big">            
-        
+	<section>
+
+		<article class="card card-info--big">
+
                 <input name="_token" type="hidden" value="{{ csrf_token() }}">
 
-                <span style="text-align: center; " class="section-title section-title--no-separator">Profilo Utente</span>                                                        
-                    
-                <div style="display: grid; justify-content: center; display:-webkit-grid; -webkit-justify-content: center; " >                         
+                <span style="text-align: center; " class="section-title section-title--no-separator">Profilo Utente</span>
+
+                <div style="display: grid; justify-content: center; display:-webkit-grid; -webkit-justify-content: center; " >
 
                     <div class="header-rounded-image">
                         <picture>
@@ -447,13 +447,13 @@ padding: 10px;
                                 <!--[if IE 9]></video><![endif]-->
                                 <img src="{{ avatar }}" alt=""/>
                             </picture>
-                        </noscript>					
+                        </noscript>
                     </div>
-                            
-                            
-                    
-                    {% if 'storage' in avatar %}                        
-                    <div style="display:flex; justify-content:space-around; display:-webkit-flex; 
+
+
+
+                    {% if 'storage' in avatar %}
+                    <div style="display:flex; justify-content:space-around; display:-webkit-flex;
                     padding: 1px; -webkit-justify-content: space-around; margin-bottom: 10px;" class="rotate">
                     <div style="text-align: center;">
                         <button type="submit" name="btn_rotate_left" value="rotate_left" class="legenda">
@@ -469,26 +469,26 @@ padding: 10px;
                     </div>
                     </div>
                     {% endif %}
-                    
 
-                                                
-                                                
-                                                
+
+
+
+
                     <div style="display: flex; justify-content: center;display:-webkit-flex; -webkit-justify-content: center;">
-                        <input type="file" name="profile_image"> 
+                        <input type="file" name="profile_image">
                     </div>
-                </div>                                                                      
+                </div>
 
-                        
-                <div  style="width: 100%; display: grid; padding: 5px;" class="">  
+
+                <div  style="width: 100%; display: grid; padding: 5px;" class="">
                     <!-- Name Field -->
-                    <div class="text-center">                        
+                    <div class="text-center">
                         <label style="text-align: center;"  for="name">Nome</label>
                         <input class="form-control" name="name" type="text" value="{{ current_user.name }}" id="name">
                     </div>
 
                     <!-- Cogname Field -->
-                    <div class="text-center">                        
+                    <div class="text-center">
                         <label  style="text-align: center;"  for="surname">Cognome</label>
                         <input class="form-control" name="surname" type="text" value="{{ current_user.surname }}" id="surname">
                     </div>
@@ -504,40 +504,40 @@ padding: 10px;
                         <label  style="text-align: center;"  for="mobile_phone">Cellulare</label>
                         <input class="form-control" name="mobile_phone" type="text" value="{{ current_user.mobile_phone }}" id="mobile_phone">
                     </div>
-                    
-                    
-                    <div class="text-center">          
-                        <!-- Sesso Field -->
-                        <label  style="text-align: center;" for="sesso">Sesso</label>                                                                                                              
-                        <select id="gender" name="gender" class="dropdown dropdown--light">
-                            <option selected="" disabled="" required="">Sesso</option>					
-                            <option value="m" {% if current_user.gender == 'm' %} selected {% endif %}>Maschio</option>					
-                            <option value="f" {% if current_user.gender == 'f' %} selected {% endif %}>Femmina</option>					
-                        </select>
-                    </div> 
 
-                    <div class="text-center">          
+
+                    <div class="text-center">
                         <!-- Sesso Field -->
-                        <label  style="text-align: center;" for="id_city">Città</label>                                                                                                              
+                        <label  style="text-align: center;" for="sesso">Sesso</label>
+                        <select id="gender" name="gender" class="dropdown dropdown--light">
+                            <option selected="" disabled="" required="">Sesso</option>
+                            <option value="m" {% if current_user.gender == 'm' %} selected {% endif %}>Maschio</option>
+                            <option value="f" {% if current_user.gender == 'f' %} selected {% endif %}>Femmina</option>
+                        </select>
+                    </div>
+
+                    <div class="text-center">
+                        <!-- Sesso Field -->
+                        <label  style="text-align: center;" for="id_city">Città</label>
                         <select id="id_city" name="id_city" class="dropdown dropdown--light">
-                            <option selected="" disabled="" required="">Città</option>					
+                            <option selected="" disabled="" required="">Città</option>
 
                             {% for city in cities %}
-                            <option value="{{ city.id }}" {% if current_user.id_city == city.id %} selected {% endif %}>{{ city.country.name }} - {{ city.name }}</option>					
+                            <option value="{{ city.id }}" {% if current_user.id_city == city.id %} selected {% endif %}>{{ city.country.name }} - {{ city.name }}</option>
                             {% endfor %}
                         </select>
-                    </div>        
-               
-                    {% for meta in metaTypes|keys %}           
+                    </div>
 
-                        {% if metaPrivate[meta] == 0 %}                        
-                        
+                    {% for meta in metaTypes|keys %}
+
+                        {% if metaPrivate[meta] == 0 %}
+
                             {% set found = false %}
 
-                            {% for user_meta in current_user.metas %}                                                                                    
-                                {% if user_meta.meta == meta %}                                
+                            {% for user_meta in current_user.metas %}
+                                {% if user_meta.meta == meta %}
                                     {% set found = true %}
-                                    {% if metaTypes[meta] == 'string' %}                                
+                                    {% if metaTypes[meta] == 'string' %}
                                         <div class="text-center">
                                             <label style="text-align: center;"  for="{{ meta }}">{{ metaLabels[meta] }}</label>
                                             <input class="form-control" name="{{ meta }}" type="text" value="{{ user_meta.meta_value }}" id="{{ meta }}"
@@ -548,18 +548,18 @@ padding: 10px;
                                             {% elseif meta == 'scarpe' %}
                                             placeholder="Scrivi la marca delle scarpe"
                                             {% endif %}
-                                            >                                                        
+                                            >
                                         </div>
                                     {% elseif metaTypes[meta] == 'select' %}
 
-                                        <div class="text-center">          
-                                            <label  style="text-align: center;" for="{{meta}}">{{ metaLabels[meta] }}</label>                                                                                                      
+                                        <div class="text-center">
+                                            <label  style="text-align: center;" for="{{meta}}">{{ metaLabels[meta] }}</label>
                                             <div style="display: flex; justify-content: center;" class="select-div">
                                             <select id="{{ meta }}" name="{{ meta }}" class="dropdown dropdown--light">
-                                                <option selected="" disabled="" required="">{{ metaLabels[meta] }}</option>					
+                                                <option selected="" disabled="" required="">{{ metaLabels[meta] }}</option>
                                                 {% set options =  metaValues[meta]|split(',') %}
                                                 {% for index, o in options %}
-                                                    <option value="{{ index }}" {% if user_meta.meta_value == (index) %} selected {% endif %} >{{ o }}</option>					
+                                                    <option value="{{ index }}" {% if user_meta.meta_value == (index) %} selected {% endif %} >{{ o }}</option>
                                                 {% endfor %}
                                             </select>
                                         </div>
@@ -571,41 +571,41 @@ padding: 10px;
                                             <a href="#win2" class="legenda">Legenda</a>
                                 		</div>
                                         <!-- <div style="border-bottom:1px solid #6E96CB; margin: 12px 0px;"></div> -->
-                                        <!-- fine button popup -->                    
+                                        <!-- fine button popup -->
                                     {% endif %}
 
-                                                                                                                                                                                                                  
-                                        
+
+
                                     {% elseif metaTypes[meta] == 'date' %}
 
                                         <div class="text-center">
                                             <label  style="text-align: center;"  for="mobile_phone">{{ metaLabels[meta] }}</label>
-                                            <input class="form-control" name="{{ meta }}" type="date" value="{{ user_meta.meta_value }}" id="{{ meta }}">                                                        
+                                            <input class="form-control" name="{{ meta }}" type="date" value="{{ user_meta.meta_value }}" id="{{ meta }}">
                                         </div>
 
                                     {% endif %}
-                                    
+
                                 {% endif %}
                             {% endfor %}
 
                             {% if found == false %}
-                                
+
                                 {% if metaTypes[meta] == 'string' %}
                                     <div class="text-center">
                                         <label  style="text-align: center;"  for="mobile_phone">{{ metaLabels[meta] }}</label>
-                                        <input class="form-control" name="{{ meta }}" type="text" value="" id="{{ meta }}">                                                        
+                                        <input class="form-control" name="{{ meta }}" type="text" value="" id="{{ meta }}">
                                     </div>
                                 {% elseif metaTypes[meta] == 'select' %}
 
-                                    <div class="text-center">          
-                                        <label  style="text-align: center;" for="racchetta">{{ metaLabels[meta] }}</label>                                                              
-                                        
+                                    <div class="text-center">
+                                        <label  style="text-align: center;" for="racchetta">{{ metaLabels[meta] }}</label>
+
                                         <div style="display: flex; justify-content: center;" class="select-div">
                                         <select id="{{ meta }}" name="{{ meta }}" class="dropdown dropdown--light">
-                                            <option selected="" disabled="" required="">{{ metaLabels[meta] }}</option>					
+                                            <option selected="" disabled="" required="">{{ metaLabels[meta] }}</option>
                                             {% set options =  metaValues[meta]|split(',') %}
                                             {% for index, o in options %}
-                                                <option value="{{ index }}">{{ o }}</option>					
+                                                <option value="{{ index }}">{{ o }}</option>
                                             {% endfor %}
                                         </select>
                                     </div>
@@ -617,39 +617,39 @@ padding: 10px;
                                             <a href="#win2" class="legenda">Legenda</a>
                                 		</div>
                                         <!-- <div style="border-bottom:1px solid #6E96CB; margin: 12px 0px;"></div> -->
-                                        <!-- fine button popup -->                    
+                                        <!-- fine button popup -->
                                     {% endif %}
 
 
-                                    
+
                                 {% elseif metaTypes[meta] == 'date' %}
                                     <div class="text-center">
                                         <label  style="text-align: center;"  for="mobile_phone">{{ metaLabels[meta] }}</label>
-                                        <input class="form-control" name="{{ meta }}" type="date" value="" id="{{ meta }}">                                                        
+                                        <input class="form-control" name="{{ meta }}" type="date" value="" id="{{ meta }}">
                                     </div>
                                 {% endif %}
-                                
+
                             {% endif %}
 
                         {% endif %}
 
-                    {% endfor %}                    
-                                                                                                                                                
+                    {% endfor %}
+
                 </div>
 
 
-                <div class="text-center">          
+                <div class="text-center">
                     <!-- Circolo Preferito -->
                     <label  style="text-align: center;" for="id_club">Circolo preferito</label>
                     <select id="id_club" name="id_club" class="dropdown dropdown--light">
-                        <option selected="" disabled="" required="">Circolo</option>					
-                        
+                        <option selected="" disabled="" required="">Circolo</option>
+
                         {% for club in clubs %}
-                        <option value="{{ club.id }}" {% if current_user.id_club == club.id %} selected {% endif %}>{{ club.city.name }} - {{ club.name }}</option>					
+                        <option value="{{ club.id }}" {% if current_user.id_club == club.id %} selected {% endif %}>{{ club.city.name }} - {{ club.name }}</option>
                         {% endfor %}
-                        
+
                     </select>
-                </div>        
+                </div>
 
         </article>
 
@@ -657,143 +657,143 @@ padding: 10px;
 
             <span  style="text-align: center;" class="section-title-del">Questi dati non saranno visualizzati sul profilo pubblico, ma sono necessari per il Tesseramento</span>
             <div style="display: flex; justify-content: center; margin: 12px 0px;" class="select-div">
-                <div  style="width: 100%; display: grid; padding: 5px;" class="">                                                    
-                    
-                    {% for meta in metaTypes|keys %}           
+                <div  style="width: 100%; display: grid; padding: 5px;" class="">
 
-                        {% if metaPrivate[meta] == 1 %}                        
-                        
+                    {% for meta in metaTypes|keys %}
+
+                        {% if metaPrivate[meta] == 1 %}
+
                             {% set found = false %}
 
-                            {% for user_meta in current_user.metas %}                                                    
-                                {% if user_meta.meta == meta %}                                
+                            {% for user_meta in current_user.metas %}
+                                {% if user_meta.meta == meta %}
                                     {% set found = true %}
-                                    {% if metaTypes[meta] == 'string' %}                                
+                                    {% if metaTypes[meta] == 'string' %}
                                         <div class="text-center">
                                             <label style="text-align: center;"  for="mobile_phone">{{ metaLabels[meta] }}</label>
-                                            <input class="form-control" name="{{ meta }}" type="text" value="{{ user_meta.meta_value }}" id="{{ meta }}">                                                        
+                                            <input class="form-control" name="{{ meta }}" type="text" value="{{ user_meta.meta_value }}" id="{{ meta }}">
                                         </div>
                                     {% elseif metaTypes[meta] == 'select' %}
 
-                                        <div class="text-center">          
-                                            <label  style="text-align: center;" for="{{meta}}">{{ metaLabels[meta] }}</label>                                                                                                      
+                                        <div class="text-center">
+                                            <label  style="text-align: center;" for="{{meta}}">{{ metaLabels[meta] }}</label>
                                             <div style="display: flex; justify-content: center;" class="select-div">
                                             <select id="{{ meta }}" name="{{ meta }}" class="dropdown dropdown--light">
-                                                <option selected="" disabled="" required="">{{ metaLabels[meta] }}</option>					
+                                                <option selected="" disabled="" required="">{{ metaLabels[meta] }}</option>
                                                 {% set options =  metaValues[meta]|split(',') %}
                                                 {% for o in options %}
-                                                    <option value="{{ o }}" {% if meta == o %} selected {% endif %} >{{ o }}</option>					
+                                                    <option value="{{ o }}" {% if meta == o %} selected {% endif %} >{{ o }}</option>
                                                 {% endfor %}
                                             </select>
                                         </div>
-                                        
+
                                     {% elseif metaTypes[meta] == 'date' %}
 
                                         <div class="text-center">
                                             <label  style="text-align: center;"  for="mobile_phone">{{ metaLabels[meta] }}</label>
-                                            <input class="form-control" name="{{ meta }}" type="date" value="{{ user_meta.meta_value }}" id="{{ meta }}">                                                        
+                                            <input class="form-control" name="{{ meta }}" type="date" value="{{ user_meta.meta_value }}" id="{{ meta }}">
                                         </div>
 
                                     {% endif %}
-                                    
+
                                 {% endif %}
                             {% endfor %}
 
                             {% if found == false %}
-                                
+
                                 {% if metaTypes[meta] == 'string' %}
                                     <div class="text-center">
                                         <label  style="text-align: center;"  for="mobile_phone">{{ metaLabels[meta] }}</label>
-                                        <input class="form-control" name="{{ meta }}" type="text" value="" id="{{ meta }}">                                                        
+                                        <input class="form-control" name="{{ meta }}" type="text" value="" id="{{ meta }}">
                                     </div>
                                 {% elseif metaTypes[meta] == 'select' %}
 
-                                    <div class="text-center">          
-                                        <label  style="text-align: center;" for="racchetta">{{ metaLabels[meta] }}</label>                                                              
-                                        
+                                    <div class="text-center">
+                                        <label  style="text-align: center;" for="racchetta">{{ metaLabels[meta] }}</label>
+
                                         <div style="display: flex; justify-content: center;" class="select-div">
                                         <select id="{{ meta }}" name="{{ meta }}" class="dropdown dropdown--light">
-                                            <option selected="" disabled="" required="">{{ metaLabels[meta] }}</option>					
+                                            <option selected="" disabled="" required="">{{ metaLabels[meta] }}</option>
                                             {% set options =  metaValues[meta]|split(',') %}
                                             {% for o in options %}
-                                                <option value="{{ o }}">{{ o }}</option>					
+                                                <option value="{{ o }}">{{ o }}</option>
                                             {% endfor %}
                                         </select>
                                     </div>
 
-                                    
+
                                 {% elseif metaTypes[meta] == 'date' %}
                                     <div class="text-center">
                                         <label  style="text-align: center;"  for="mobile_phone">{{ metaLabels[meta] }}</label>
-                                        <input class="form-control" name="{{ meta }}" type="date" value="" id="{{ meta }}">                                                        
+                                        <input class="form-control" name="{{ meta }}" type="date" value="" id="{{ meta }}">
                                     </div>
                                 {% endif %}
-                                
+
                             {% endif %}
 
                         {% endif %}
 
-                    {% endfor %}      
+                    {% endfor %}
 
-                </div>                                                   
-            </div>                                                    
+                </div>
+            </div>
 
 
-                              
+
         </article>
 
-            
 
-        <article class="card card-info--big">  
+
+        <article class="card card-info--big">
 
             <link rel="stylesheet" href="/resources/assets/css/components/partials/forms.css?v=1.0.4">
 
             <span  style="text-align: center; " class="section-title section-title--no-separator">Disponibilità di Gioco</span>
             <span  style="text-align: center;" class="section-disponibilità">Riporta indicativamente la disponibilità nei differenti giorni della settimana</span>
 
-            <span  style="" class="section-title-giorno">Lunedì</span>            
+            <span  style="" class="section-title-giorno">Lunedì</span>
             <div class="container">
                 <div   style="justify-content: center; margin-left: -10px;  margin-right: 10px;"  class="flex">
                 <label for="lunedi"></label>
                 <input id="lunedi" type="text" name="lunedi" value="{{ current_user.lun }}" autocomplete="off" placeholder="Orario" data-validation="">
             </div>
 
-            <span  style="" class="section-title-giorno">Martedì</span>            
+            <span  style="" class="section-title-giorno">Martedì</span>
             <div class="container">
                 <div   style="justify-content: center; margin-left: -10px;  margin-right: 10px;"  class="flex">
                 <label for="martedi"></label>
                 <input id="martedi" type="text" name="martedi" value="{{ current_user.mar }}" autocomplete="off" placeholder="Orario" data-validation="">
             </div>
 
-            <span  style="" class="section-title-giorno">Mercoledi</span>            
+            <span  style="" class="section-title-giorno">Mercoledi</span>
             <div class="container">
                 <div   style="justify-content: center; margin-left: -10px;  margin-right: 10px;"  class="flex">
                 <label for="mercoledi"></label>
                 <input id="mercoledi" type="text" name="mercoledi" value="{{ current_user.mer }}" autocomplete="off" placeholder="Orario" data-validation="">
             </div>
 
-            <span  style="" class="section-title-giorno">Giovedì</span>            
+            <span  style="" class="section-title-giorno">Giovedì</span>
             <div class="container">
                 <div   style="justify-content: center; margin-left: -10px;  margin-right: 10px;"  class="flex">
                 <label for="giovedi"></label>
                 <input id="giovedi" type="text" name="giovedi" value="{{ current_user.gio }}" autocomplete="off" placeholder="Orario" data-validation="">
             </div>
 
-            <span  style="" class="section-title-giorno">Venerdì</span>            
+            <span  style="" class="section-title-giorno">Venerdì</span>
             <div class="container">
                 <div   style="justify-content: center; margin-left: -10px;  margin-right: 10px;"  class="flex">
                 <label for="venerdi"></label>
                 <input id="venerdi" type="text" name="venerdi" value="{{ current_user.ven }}" autocomplete="off" placeholder="Orario" data-validation="">
             </div>
 
-            <span  style="" class="section-title-giorno">Sabato</span>            
+            <span  style="" class="section-title-giorno">Sabato</span>
             <div class="container">
                 <div   style="justify-content: center; margin-left: -10px;  margin-right: 10px;"  class="flex">
                 <label for="sabato"></label>
                 <input id="sabato" type="text" name="sabato" value="{{ current_user.sab }}" autocomplete="off" placeholder="Orario" data-validation="">
             </div>
 
-            <span  style="" class="section-title-giorno">Domenica</span>            
+            <span  style="" class="section-title-giorno">Domenica</span>
             <div class="container">
                 <div   style="justify-content: center; margin-left: -10px;  margin-right: 10px;"  class="flex">
                 <label for="domenica"></label>
@@ -809,35 +809,35 @@ padding: 10px;
                 <div   style="justify-content: center; margin-left: -10px;  margin-right: 10px;"  class="flex">
                 <label for="note_disp"></label>
                 <input id="note_disp" type="text" name="note_disp" value="{{ current_user.dom }}" autocomplete="off" placeholder="Note" data-validation="">
-            </div>            
+            </div>
 
-        </article>  
+        </article>
 
-        <article class="card card-info--big">                            
+        <article class="card card-info--big">
 
-                <span style="text-align: center; " class="section-title section-title--no-separator">Cambia Password</span>                                                        
-                                                            
-                <div  style="width: 100%; display: grid; padding: 5px;" class="">  
+                <span style="text-align: center; " class="section-title section-title--no-separator">Cambia Password</span>
+
+                <div  style="width: 100%; display: grid; padding: 5px;" class="">
                     <!-- New Password -->
-                    <div class="text-center">                        
+                    <div class="text-center">
                         <label style="text-align: center;"  for="new_password">Nuova Password</label>
                         <input class="form-control" name="new_password" type="password" value="" id="new_password">
                     </div>
 
                     <!-- Cogname Field -->
-                    <div class="text-center">                        
+                    <div class="text-center">
                         <label style="text-align: center;"  for="confirm_new_password">Conferma Nuova Password</label>
                         <input class="form-control" name="confirm_new_password" type="password" value="" id="confirm_new_password">
                     </div>
 
                     <span  style="text-align: center;" class="section-disponibilità">Compila entrambi i campi per impostare una nuova password</span>
                 </div>
-                 
+
         </article>
 
         {% set user = current_user %}
         {% include 'components/partials/edit-user-gallery.twig' %}
-        
+
 {#
 <div style="margin-bottom:10px;" class="cta-container cta-container--center">
 
@@ -870,11 +870,11 @@ padding: 10px;
                 Per chi ha già esperienza con i tornei, gioca già da un pò di tempo, ma non ha ancora raggiunto livelli avanzati.</p>
                 <p><strong style="color: #FFE200;" >Elevato:</strong>
                 Per chi gioca già da tempo, ha già un’esperienza comprovata e riesce a raggiungere nei tornei ottimi livelli.</p>
-            </div>                                                    
+            </div>
         </div>
     </div>
     <a class="close" title="Chiudere" href="#close"></a>
 </div>
 <!-- fine finestra popup -->
-    
+
 {% endblock %}

@@ -133,7 +133,7 @@ class RegisterController extends Controller
         if($request->hasFile('profile_image')):
 
             $image_rule = [
-                'profile_image' => 'image|mimes:jpg,jpeg,png|max:10240',
+                'profile_image' => 'mimes:jpg,jpeg,png|max:10240',
             ];
 
             $image_messages = [

@@ -1,22 +1,22 @@
 /* search-form.twig styles */
-/* line 29, /Users/Giordano/CLIENTI/MadeInApp/rogiostrap.amatoripadel/src/sass/_mixins.scss */
+/* line 29, /Users/concettaorlandi/rogiostrap.ladisfidadipadelULTIMA/src/sass/_mixins.scss */
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */ color: #445C69; }
 
-/* line 33, /Users/Giordano/CLIENTI/MadeInApp/rogiostrap.amatoripadel/src/sass/_mixins.scss */
+/* line 33, /Users/concettaorlandi/rogiostrap.ladisfidadipadelULTIMA/src/sass/_mixins.scss */
 ::-moz-placeholder { /* Firefox 19+ */ color: #445C69; opacity: 1; }
 
-/* line 38, /Users/Giordano/CLIENTI/MadeInApp/rogiostrap.amatoripadel/src/sass/_mixins.scss */
+/* line 38, /Users/concettaorlandi/rogiostrap.ladisfidadipadelULTIMA/src/sass/_mixins.scss */
 :-ms-input-placeholder { /* IE 10+ */ color: #445C69; }
 
-/* line 42, /Users/Giordano/CLIENTI/MadeInApp/rogiostrap.amatoripadel/src/sass/_mixins.scss */
+/* line 42, /Users/concettaorlandi/rogiostrap.ladisfidadipadelULTIMA/src/sass/_mixins.scss */
 :-moz-placeholder { /* Firefox 18- */ color: #445C69; }
 
-/* line 52, /Users/Giordano/CLIENTI/MadeInApp/rogiostrap.amatoripadel/src/sass/_mixins.scss */
+/* line 52, /Users/concettaorlandi/rogiostrap.ladisfidadipadelULTIMA/src/sass/_mixins.scss */
 .search-form__field__submit { background-image: url("../../../images/icons.svg"); background-repeat: no-repeat; background-size: 24px 2700px; }
 
 /* line 8, ../../../../../src/sass/components/partials/search-form.scss */
-.search-form__field { display: flex; justify-content: space-between; }
-/* line 12, ../../../../../src/sass/components/partials/search-form.scss */
+.search-form__field { display: flex; justify-content: space-between; background: rgba(0, 0, 0, 0.6); border-radius: 8px; margin: 0px 10px 20px 10px; }
+/* line 15, ../../../../../src/sass/components/partials/search-form.scss */
 .search-form__field #search-field { width: calc(100% - 50px); }
-/* line 16, ../../../../../src/sass/components/partials/search-form.scss */
+/* line 19, ../../../../../src/sass/components/partials/search-form.scss */
 .search-form__field__submit { background-position: 16px 10px; width: 50px; background-size: 30px auto; }

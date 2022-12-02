@@ -64,7 +64,7 @@ class PageController extends AppBaseController
         if($request->hasFile('image')):
 
             $image_rule = [
-                'image' => 'image|mimes:jpg,jpeg,png|max:10240',
+                'image' => 'mimes:jpg,jpeg,png|max:10240',
             ];
 
             $image_messages = [
@@ -179,7 +179,7 @@ class PageController extends AppBaseController
         if($request->hasFile('image')):
 
             $image_rule = [
-                'image' => 'image|mimes:jpg,jpeg,png|max:10240',
+                'image' => 'mimes:jpg,jpeg,png|max:10240',
             ];
 
             $image_messages = [

@@ -97,7 +97,7 @@ class EditionController extends AppBaseController
         if($request->hasFile('logo')):
 
             $image_rule = [
-                'logo' => 'image|mimes:jpg,jpeg,png|max:10240',
+                'logo' => 'mimes:jpg,jpeg,png|max:10240',
             ];
 
             $image_messages = [
@@ -319,7 +319,7 @@ class EditionController extends AppBaseController
             if($request->hasFile('logo')):
 
                 $image_rule = [
-                    'logo' => 'image|mimes:jpg,jpeg,png|max:10240',
+                    'logo' => 'mimes:jpg,jpeg,png|max:10240',
                 ];
 
                 $image_messages = [
