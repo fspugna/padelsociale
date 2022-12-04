@@ -161,10 +161,10 @@ class RegisterController extends Controller
         endif;
 
         /** Notify administrators about the new registration */
-        $users = User::where('id_role', '=', 1)->get();
-        foreach($users as $user_notify):
-            $user_notify->notify(new NewUser($user));
-        endforeach;
+        // $users = User::where('id_role', '=', 1)->get();
+        // foreach($users as $user_notify):
+        //     $user_notify->notify(new NewUser($user));
+        // endforeach;
 
         Session::flash('message', 'L\'utenza è stata creata con successo. Verrai notificato non appena sarai stato abilitato dall\'amministratore');
 
@@ -218,10 +218,10 @@ class RegisterController extends Controller
 
 
             /** Notify administrators about the new registration */
-            $users = User::where('id_role', '=', 1)->get();
-            foreach($users as $user_notify):
-                $user_notify->notify(new NewUser($user));
-            endforeach;
+            // $users = User::where('id_role', '=', 1)->get();
+            // foreach($users as $user_notify):
+            //     $user_notify->notify(new NewUser($user));
+            // endforeach;
 
         endif;
 

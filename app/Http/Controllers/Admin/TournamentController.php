@@ -394,10 +394,10 @@ class TournamentController extends AppBaseController
             if( $subscription->save() ){
 
                 /** Notify administrators about the new registration */
-                $users = User::where('id_role', '=', 1)->get();
-                foreach($users as $user):
-                    $user->notify(new NewSubscription($subscription));
-                endforeach;
+                // $users = User::where('id_role', '=', 1)->get();
+                // foreach($users as $user):
+                //     $user->notify(new NewSubscription($subscription));
+                // endforeach;
 
                 return view('admin.tournaments.subscription_confirmed');
 

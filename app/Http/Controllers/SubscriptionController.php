@@ -22,29 +22,29 @@ class SubscriptionController extends Controller
 
     public function list(Request $request){
 
-        $input = $request->all();        
+        $input = $request->all();
 
-        $id_tournament    = $input['id_tournament'];                
+        $id_tournament    = $input['id_tournament'];
         $id_zone          = $input['id_zone'];
 
-        $subscriptions = Subscription::where('id_tournament', '=', $id_tournament)                                     
-                                     ->where('id_zone', '=', $id_zone)                                     
+        $subscriptions = Subscription::where('id_tournament', '=', $id_tournament)
+                                     ->where('id_zone', '=', $id_zone)
                                      ->get();
 
         return response()->json($subscriptions);
     }
 
     public function subscription(Request $request){
-        $input = $request->all();        
+        $input = $request->all();
 
         $tournament = Tournament::where('id', '=', $input['id_tournament'])->first();
         $tournament['srcImgFeaturedBig'] = asset('storage/'.$tournament->edition->logo);
-        $tournament['srcImgFeaturedBigx2'] = asset('storage/'.$tournament->edition->logo);              
+        $tournament['srcImgFeaturedBigx2'] = asset('storage/'.$tournament->edition->logo);
 
-        $categoryTypes = $tournament->edition->categoryTypes;        
+        $categoryTypes = $tournament->edition->categoryTypes;
 
         $zone = Zone::where('id', '=', $input['id_zone'])->first();
-        $zones = $tournament->edition->zones;    
+        $zones = $tournament->edition->zones;
         $players = User::where('status', '=', 1)
                         ->where('id_role', '=', 2)
                         ->get();
@@ -60,15 +60,15 @@ class SubscriptionController extends Controller
                     ->with('players', $players)
                     ->with('category_types', $categoryTypes)
                     ;
-        
+
     }
 
 
     public function subscribe(Request $request){
-        $input = $request->all();                    
+        $input = $request->all();
 
         if(isset($input['select-category-type']) && isset($input['select-player-1']) && isset($input['select-player-2']) ):
-            
+
             $team = new Team;
             $team->save();
             $team->name = 'Squadra' . $team->id;
@@ -93,7 +93,7 @@ class SubscriptionController extends Controller
                 $teamPlayer->starter = 0;
                 $teamPlayer->save();
             endif;
-                
+
             $subscription = new Subscription;
             $subscription->id_tournament = $input['id_tournament'];
             $subscription->id_zone = $input['id_zone'];
@@ -101,18 +101,18 @@ class SubscriptionController extends Controller
             $subscription->id_team = $team->id;
 
             if( $subscription->save() ){
-                
+
                 /** Notify administrators about the new registration */
-                $users = User::where('id_role', '=', 1)->get();
-                foreach($users as $user):
-                    $user->notify(new NewSubscription($subscription));        
-                endforeach;
+                // $users = User::where('id_role', '=', 1)->get();
+                // foreach($users as $user):
+                //     $user->notify(new NewSubscription($subscription));
+                // endforeach;
 
                 return view('page-conferma-iscrizione');
             }
 
         endif;
-        
+
     }
-    
+
 }

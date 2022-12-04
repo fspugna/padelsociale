@@ -70,6 +70,7 @@ class UserController extends AppBaseController
         else:
             $q = $input['q'] ?? '';
             $status = 0;
+
             if($input['filter-status'] == 'attivo'):
                 $status = 1;
             endif;
@@ -321,9 +322,9 @@ class UserController extends AppBaseController
             $club->save();
         }
 
-        if($old_status == 0 && $new_status == 1){
-            $user->notify(new UserActivated($user));
-        }
+        // if($old_status == 0 && $new_status == 1){
+        //     $user->notify(new UserActivated($user));
+        // }
 
         Flash::success('User updated successfully.');
 

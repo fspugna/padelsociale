@@ -18,8 +18,8 @@ class PasswordResetController extends Controller
      * @return [string] message
      */
     public function create(Request $request)
-    {        
-       
+    {
+
         $request->validate([
             'email' => 'required|string|email',
         ]);
@@ -36,9 +36,9 @@ class PasswordResetController extends Controller
              ]
         );
         if ($user && $passwordReset)
-            $user->notify(
-                new PasswordResetRequest($passwordReset->token)
-            );
+            // $user->notify(
+            //     new PasswordResetRequest($passwordReset->token)
+            // );
         return response()->json([
             'message' => 'Ti abbiamo inviato un\'email con le istruzioni per il reset!'
         ]);
@@ -57,18 +57,18 @@ class PasswordResetController extends Controller
         if (!$passwordReset)
             return view('auth.passwords.reset')
             ->with('error', 'Il token non è valido')
-            ;            
+            ;
         if (Carbon::parse($passwordReset->updated_at)->addMinutes(720)->isPast()) {
             $passwordReset->delete();
             return view('auth.passwords.reset')
                     ->with('error', 'Il token non è valido')
-                    ;            
+                    ;
         }
         //return response()->json($passwordReset);
         return view('auth.passwords.reset')
                     ->with('id', $passwordReset->id)
                     ->with('email', $passwordReset->email)
-                    ->with('token', $passwordReset->token)                    
+                    ->with('token', $passwordReset->token)
                     ;
     }
      /**
@@ -104,7 +104,7 @@ class PasswordResetController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
         $passwordReset->delete();
-        $user->notify(new PasswordResetSuccess($passwordReset));
+        // $user->notify(new PasswordResetSuccess($passwordReset));
         return response()->json($user);
     }
 }

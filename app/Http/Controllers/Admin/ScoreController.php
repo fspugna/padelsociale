@@ -64,7 +64,7 @@ class ScoreController extends AppBaseController
         endif;
 
         Score::where('id_match', '=', $id_match)->delete();
-        //Ranking::where('id_match', '=', $id_match)->delete();
+        Ranking::where('id_match', '=', $id_match)->delete();
         Classification::where('id_match', '=', $id_match)->delete();
         MatchPlayer::where('id_match', '=', $id_match)->delete();
 
@@ -120,31 +120,30 @@ class ScoreController extends AppBaseController
 
 
         //if( empty($match->id_macro_match) ):
+            /** Salvo i giocatori che hanno effettivamente giocato la partita, i titolari in quel momento */
+            $teamPlayers = TeamPlayer::where('id_team', '=', $input['score-id-team1'])->get();
+            foreach($teamPlayers as $teamPlayer):
+                if( $teamPlayer->starter ):
+                    $matchPlayer = new MatchPlayer;
+                    $matchPlayer->id_match = $input['score-id-match'];
+                    $matchPlayer->side = 'team1';
+                    $matchPlayer->id_team = $input['score-id-team1'];;
+                    $matchPlayer->id_player = $teamPlayer->id_player;
+                    $matchPlayer->save();
+                endif;
+            endforeach;
 
-        /** Salvo i giocatori che hanno effettivamente giocato la partita, i titolari in quel momento */
-        $teamPlayers = TeamPlayer::where('id_team', '=', $input['score-id-team1'])->get();
-        foreach($teamPlayers as $teamPlayer):
-            if( $teamPlayer->starter ):
-                $matchPlayer = new MatchPlayer;
-                $matchPlayer->id_match = $input['score-id-match'];
-                $matchPlayer->side = 'team1';
-                $matchPlayer->id_team = $input['score-id-team1'];;
-                $matchPlayer->id_player = $teamPlayer->id_player;
-                $matchPlayer->save();
-            endif;
-        endforeach;
-
-        $teamPlayers = TeamPlayer::where('id_team', '=', $input['score-id-team2'])->get();
-        foreach($teamPlayers as $teamPlayer):
-            if( $teamPlayer->starter ):
-                $matchPlayer = new MatchPlayer;
-                $matchPlayer->id_match = $input['score-id-match'];
-                $matchPlayer->side = 'team2';
-                $matchPlayer->id_team = $input['score-id-team2'];
-                $matchPlayer->id_player = $teamPlayer->id_player;
-                $matchPlayer->save();
-            endif;
-        endforeach;
+            $teamPlayers = TeamPlayer::where('id_team', '=', $input['score-id-team2'])->get();
+            foreach($teamPlayers as $teamPlayer):
+                if( $teamPlayer->starter ):
+                    $matchPlayer = new MatchPlayer;
+                    $matchPlayer->id_match = $input['score-id-match'];
+                    $matchPlayer->side = 'team2';
+                    $matchPlayer->id_team = $input['score-id-team2'];
+                    $matchPlayer->id_player = $teamPlayer->id_player;
+                    $matchPlayer->save();
+                endif;
+            endforeach;
         //endif;
 
 
@@ -187,7 +186,7 @@ class ScoreController extends AppBaseController
                         $score->id_submatch = $match->id;
                         $score->id_team = $macroMatch->id_team1;
                         $score->side = 'team1';
-                        $score->set = $set;
+                        $score->set = 1;
                         $score->points = $score_t1;
                         $score->save();
 
@@ -197,7 +196,7 @@ class ScoreController extends AppBaseController
                         $score->id_submatch = $match->id;
                         $score->id_team = $macroMatch->id_team2;
                         $score->side = 'team2';
-                        $score->set = $set;
+                        $score->set = 1;
                         $score->points = $score_t2;
                         $score->save();
                     endif;
@@ -393,14 +392,14 @@ class ScoreController extends AppBaseController
 
 
 
-                /** Update Rankings *
+                /** Update Rankings */
                 foreach( $match->team1->players as $teamPlayer ):
                     if($teamPlayer->starter):
                         /*
                         $ranking = Ranking::where('year', '=', Group::where('id', '=', $id_group)->first()->division->tournament->date_start->format('Y'))
                                           ->where('id_player', '=', $teamPlayer->player->id)
                                           ->first();
-                                          *
+                                          */
 
                         $ranking = new Ranking;
                         $ranking->id_player = $teamPlayer->player->id;
@@ -458,13 +457,13 @@ class ScoreController extends AppBaseController
                     endif;
                 endforeach;
 
-                /** Update Rankings *
+                /** Update Rankings */
                 foreach( $match->team2->players as $teamPlayer ):
                     if($teamPlayer->starter):
                         /*
                         $ranking = Ranking::where('year', '=', Group::where('id', '=', $id_group)->first()->division->tournament->date_start->format('Y'))
                                           ->where('id_player', '=', $teamPlayer->player->id)
-                                          ->first();*
+                                          ->first();*/
 
 
                         $ranking = new Ranking;
@@ -521,7 +520,6 @@ class ScoreController extends AppBaseController
 
                     endif;
                 endforeach;
-                */
 
             elseif($match->matchcodes->ref_type == 'phase'):
 
@@ -560,7 +558,7 @@ class ScoreController extends AppBaseController
 
                 endif;
 
-                /** Update Rankings *
+                /** Update Rankings */
                 foreach( $match->team1->players as $teamPlayer ):
                     if($teamPlayer->starter):
                         /*
@@ -594,12 +592,13 @@ class ScoreController extends AppBaseController
                         $ranking->games_won = $games_won_t1;
                         $ranking->games_lost = $games_won_t2;
                         $ranking->save();
-                        *
+                        */
+
 
                     endif;
                 endforeach;
 
-                /** Update Rankings *
+                /** Update Rankings */
                 foreach( $match->team2->players as $teamPlayer ):
                     if($teamPlayer->starter):
                         /*$ranking = Ranking::where('year', '=', $curPhase->bracket->tournament->date_start->format('Y'))
@@ -631,11 +630,11 @@ class ScoreController extends AppBaseController
                         $ranking->games_won = $games_won_t2;
                         $ranking->games_lost = $games_won_t1;
                         $ranking->save();
-                        *
+                        */
+
 
                     endif;
                 endforeach;
-                */
 
             endif;
         endif;
@@ -650,7 +649,6 @@ class ScoreController extends AppBaseController
                         ->get();
                         */
 
-        /*
         $rankings_m = Ranking::selectRaw('id_player, sum(points) as points, sum(match_won) match_won, sum(match_lost) match_lost, sum(set_won) set_won, sum(set_lost) set_lost, sum(games_won) games_won, sum(games_lost) games_lost')
                         ->join('users', 'users.id', '=', 'rankings.id_player')
                         ->where('date', '>', Carbon::now()->subYear(1))
@@ -659,7 +657,6 @@ class ScoreController extends AppBaseController
                         ->orderBy('points', 'DESC')
                         ->get()
                         ;
-                        */
 
         /*
         $rankings_f = DB::table('rankings')
@@ -671,7 +668,6 @@ class ScoreController extends AppBaseController
                         ->get();
                         */
 
-        /*
         $rankings_f = Ranking::selectRaw('id_player, sum(points) as points, sum(match_won) match_won, sum(match_lost) match_lost, sum(set_won) set_won, sum(set_lost) set_lost, sum(games_won) games_won, sum(games_lost) games_lost')
                         ->join('users', 'users.id', '=', 'rankings.id_player')
                         ->where('date', '>', Carbon::now()->subYear(1))
@@ -679,7 +675,7 @@ class ScoreController extends AppBaseController
                         ->groupBy('id_player')
                         ->orderBy('points', 'DESC')
                         ->get()
-                        ;*/
+                        ;
 
         /*
         $rankings = Ranking::selectRaw('sum(points) as points, id_player')
@@ -690,7 +686,6 @@ class ScoreController extends AppBaseController
                             ->get();
                             */
 
-        /*
         foreach( $rankings_m as $position => $ranking ):
             $user = User::where('id', '=', $ranking->id_player)->first();
             $user->position = $position+1;
@@ -702,7 +697,6 @@ class ScoreController extends AppBaseController
             $user->position = $position+1;
             $user->save();
         endforeach;
-        */
 
         if( isset($input['ajax']) && $input['ajax'] == 1 )
             return response()->json(array('status' => 'ok'));
@@ -1085,7 +1079,7 @@ class ScoreController extends AppBaseController
         foreach($macroMatch->subMatches as $match):
             Score::where('id_match', '=', $match->id)->delete();
             Classification::where('id_match', '=', $match->id)->delete();
-            //Ranking::where('id_match', '=', $match->id)->delete();
+            Ranking::where('id_match', '=', $match->id)->delete();
             MatchPlayer::where('id_match', '=', $match->id)->delete();
 
             $match->a_tavolino = 0;
@@ -1132,47 +1126,5 @@ class ScoreController extends AppBaseController
         endforeach;
 
         echo json_encode(array('status' => 'OK'));
-    }
-
-    function winner($score){
-
-        $arr_teams = [];
-        $arr_points = [];
-
-        foreach($score as $id_team => $points):
-            $arr_teams[] = $id_team;
-            $arr_points[] = $points;
-        endforeach;
-
-        if( count($arr_teams) === 2 && count($arr_points) === 2 ){
-            if( $arr_points[0] > $arr_points[1] ):
-                return $arr_teams[0];
-            else:
-                return $arr_teams[1];
-            endif;
-        }else{
-            return null;
-        }
-    }
-
-    function loser($score){
-
-        $arr_teams = [];
-        $arr_points = [];
-
-        foreach($score as $id_team => $points):
-            $arr_teams[] = $id_team;
-            $arr_points[] = $points;
-        endforeach;
-
-        if( count($arr_teams) === 2 && count($arr_points) === 2 ){
-            if( $arr_points[0] < $arr_points[1] ):
-                return $arr_teams[0];
-            else:
-                return $arr_teams[1];
-            endif;
-        }else{
-            return null;
-        }
     }
 }

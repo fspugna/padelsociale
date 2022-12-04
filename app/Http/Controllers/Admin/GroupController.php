@@ -591,6 +591,7 @@ class GroupController extends AppBaseController
             $group->flag_online = 0;
         $group->save();
 
+        /*
         if($group->flag_online == 1):
 
             $groupTeams = GroupTeam::where('id_group', '=', $group->id)->get();
@@ -602,6 +603,7 @@ class GroupController extends AppBaseController
             endforeach;
 
         endif;
+        */
 
         return response()->json(array('status'=>'OK'));
     }
