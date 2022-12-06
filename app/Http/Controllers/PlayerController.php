@@ -82,7 +82,7 @@ class PlayerController extends Controller
                 $posizioni_players[$id_player] = ($pos+1);
             endforeach;
         endforeach;
-        
+
         $livelli = ["n.d.","principiante","esordiente","intermendio","avanzato","pro"];
         foreach($players as $player):
             $player->stats = ["pv"=>rand(1,100),"pp"=>rand(1,100),"livello"=>$livelli[rand(0,5)]];
@@ -129,26 +129,26 @@ class PlayerController extends Controller
 
         endif;
 
-        $rankings = Ranking::selectRaw('id_player, sum(points) as points, sum(match_won) match_won, sum(match_lost) match_lost, sum(set_won) set_won, sum(set_lost) set_lost, sum(games_won) games_won, sum(games_lost) games_lost')
-                                ->where('date', '>', Carbon::now()->subYear(1))
-                                ->groupBy('id_player')
-                                ->get()
-                                ;
+        // $rankings = Ranking::selectRaw('id_player, sum(points) as points, sum(match_won) match_won, sum(match_lost) match_lost, sum(set_won) set_won, sum(set_lost) set_lost, sum(games_won) games_won, sum(games_lost) games_lost')
+        //                         ->where('date', '>', Carbon::now()->subYear(1))
+        //                         ->groupBy('id_player')
+        //                         ->get()
+        //                         ;
 
         $stats = [];
         $posizioni = [];
 
-        foreach($rankings as $ranking):
+        // foreach($rankings as $ranking):
 
-            $points = isset($ranking->points) && $ranking->points > 0 ? $ranking->points : 0;
-            $match_won = isset($ranking->match_won) && $ranking->match_won > 0 ? $ranking->match_won : 0;
-            $match_lost = isset($ranking->match_lost) && $ranking->match_lost > 0 ? $ranking->match_lost : 0;
+        //     $points = isset($ranking->points) && $ranking->points > 0 ? $ranking->points : 0;
+        //     $match_won = isset($ranking->match_won) && $ranking->match_won > 0 ? $ranking->match_won : 0;
+        //     $match_lost = isset($ranking->match_lost) && $ranking->match_lost > 0 ? $ranking->match_lost : 0;
 
-            $stats[$ranking->id_player] = ["pt"=>$points,"pv"=>$match_won,"pp"=>$match_lost];
+        //     $stats[$ranking->id_player] = ["pt"=>$points,"pv"=>$match_won,"pp"=>$match_lost];
 
-            if( !isset($posizioni[$ranking->points]) ) $posizioni[$ranking->points] = [];
-            $posizioni[$ranking->points][] = $ranking->id_player;
-        endforeach;
+        //     if( !isset($posizioni[$ranking->points]) ) $posizioni[$ranking->points] = [];
+        //     $posizioni[$ranking->points][] = $ranking->id_player;
+        // endforeach;
 
         /*
         $livelli = ["n.d.","principiante","esordiente","intermendio","avanzato","pro"];
@@ -185,6 +185,7 @@ class PlayerController extends Controller
                         ->where('status', '=', 1)
                         ->first();
 
+        $metaPrivate = [];
 
         if( $user->id_role == 2 ):
 
@@ -205,7 +206,7 @@ class PlayerController extends Controller
                 endif;
 
                 $metaTypes[$meta['meta_key']] = $meta['meta_type'];
-                $metaValues[$meta['meta_key']] = explode(",", $meta['meta_values']);
+                $meta_values[$meta['meta_key']] = explode(",", $meta['meta_values']);
                 $metaPrivate[$meta['meta_key']] = $meta['private'];
 
             endforeach;
@@ -238,7 +239,7 @@ class PlayerController extends Controller
                                     endif;
                                 endif;
 
-                                $metaValues['eta'] = '';
+                                $meta_values['eta'] = '';
                                 if($dbDate):
                                     $arr_metas['eta'] = Carbon::now()->diffInYears($dbDate);
                                 endif;
@@ -452,7 +453,7 @@ class PlayerController extends Controller
 
                 }
             }
-            
+
 
             return view('single-profilo')
                         ->with('player', $player)
@@ -466,7 +467,7 @@ class PlayerController extends Controller
                         ->with('match_players', $matchPlayers)
                         ->with('meta_labels', $metaLabels)
                         ->with('meta_types', $metaTypes)
-                        ->with('meta_values', $metaValues)
+                        // ->with('meta_values', $metaValues)
                         ->with('editions', $editions)
                         ->with('posizione', $posizione)
                         ->with('punti', $punti)

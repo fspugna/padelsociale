@@ -54,7 +54,11 @@ class UserController extends Controller
     }
 
     public function editProfile(Request $request){
-
+        $metaTypes = [];
+        $metaValues = [];
+        $metaLabels = [];
+        $metaPrivate = [];
+        
         $userMetaItems = UserMetaItem::where('meta_cat', '=', 'info')->get();
         foreach($userMetaItems as $metaItem):
             $metaTypes[$metaItem->meta_key] = $metaItem->meta_type;
