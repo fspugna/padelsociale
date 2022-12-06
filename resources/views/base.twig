@@ -13,13 +13,11 @@
 		{% include 'components/sections/header.twig' %}
 		<div class="wrapper">
 			<div class="container">
-
 				{# Block content #}
 				{% block content %}{% endblock %}
-
 			</div>
+			{% include 'components/sections/footer.twig' %}
 		</div>
-        {% include 'components/sections/footer.twig' %}
 	</div>
 	<div class="bg-container">
 		<img class="bg-frontpage" src="/resources/assets/images/bg-frontpage.jpg" />
