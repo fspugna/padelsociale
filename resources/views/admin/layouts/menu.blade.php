@@ -21,7 +21,7 @@
             <i class="fa fa-angle-left pull-right"></i>
         </span>
     </a>
-    <ul class="treeview-menu" style="{{ ( Request::is('*banners*') ) ? '' : 'display: none' }}">        
+    <ul class="treeview-menu" style="{{ ( Request::is('*banners*') ) ? '' : 'display: none' }}">
         <li class="{{ Request::is('*banners*') ? 'active' : '' }}">
             <a href="{!! route('admin.banners.positions') !!}"><i class="fa fa-circle"></i><span>Posizioni</span></a>
         </li>
@@ -39,7 +39,7 @@
             <i class="fa fa-angle-left pull-right"></i>
         </span>
     </a>
-    <ul class="treeview-menu" style="display: none;">        
+    <ul class="treeview-menu" style="display: none;">
         <li class="{{ Request::is('*images*') ? 'active' : '' }}">
             <a href="{!! route('admin.images.index') !!}"><i class="fa fa-image"></i><span>Immagini</span></a>
         </li>
@@ -55,14 +55,14 @@
             <i class="fa fa-angle-left pull-right"></i>
         </span>
     </a>
-    <ul class="treeview-menu" style="{{ (Request::is('*countries*') || Request::is('*cities*') ||  Request::is('*zones*') ) ? '' : 'display: none' }}">        
+    <ul class="treeview-menu" style="{{ (Request::is('*countries*') || Request::is('*cities*') ||  Request::is('*zones*') ) ? '' : 'display: none' }}">
         <li class="{{ Request::is('*news*') ? 'active' : '' }}">
             <a href="{!! route('admin.news.index') !!}"><i class="fa fa-circle"></i><span>Elenco news</span></a>
         </li>
         <li class="{{ Request::is('*cities*') ? 'active' : '' }}">
             <a href="{!! route('admin.newsCategories.index') !!}"><i class="fa fa-circle"></i><span>Categorie news</span></a>
         </li>
-       
+
     </ul>
 </li>
 
@@ -82,7 +82,7 @@
             <i class="fa fa-angle-left pull-right"></i>
         </span>
     </a>
-    <ul class="treeview-menu" style="{{ (Request::is('*countries*') || Request::is('*cities*') ||  Request::is('*zones*') ) ? '' : 'display: none' }}">        
+    <ul class="treeview-menu" style="{{ (Request::is('*countries*') || Request::is('*cities*') ||  Request::is('*zones*') ) ? '' : 'display: none' }}">
         <li class="{{ Request::is('*countries*') ? 'active' : '' }}">
             <a href="{!! route('admin.countries.index') !!}"><i class="fa fa-circle"></i><span>Nazioni</span></a>
         </li>
@@ -95,6 +95,9 @@
     </ul>
 </li>
 
+<li class="{{ Request::is('*event*') ? 'active' : '' }}">
+    <a href="{!! route('admin.events.index') !!}"><i class="fa fa-calendar"></i><span>Eventi</span></a>
+</li>
 
 <li class="treeview">
     <a href="#">
@@ -104,7 +107,7 @@
             <i class="fa fa-angle-left pull-right"></i>
         </span>
     </a>
-    <ul class="treeview-menu" style="display: {{ Request::is('categor*') || Request::is('cit*') || Request::is('edition*') || Request::is('tournament*')? 'block' : 'none' }};">      
+    <ul class="treeview-menu" style="display: {{ Request::is('categor*') || Request::is('cit*') || Request::is('edition*') || Request::is('tournament*')? 'block' : 'none' }};">
         <li class="treeview">
             <a href="#">
                 <i class="fa fa-tags"></i>
@@ -113,18 +116,18 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>
-            <ul class="treeview-menu" style="display: none;">        
+            <ul class="treeview-menu" style="display: none;">
 
                 <li class="{{ Request::is('categor*') ? 'active' : '' }}">
                     <a href="{!! route('admin.categories.index') !!}"><i class="fa fa-circle-o"></i><span>Categorie</span></a>
-                </li>        
+                </li>
 
                 <li class="{{ Request::is('cit*') ? 'active' : '' }}">
                     <a href="{!! route('admin.categoryTypes.index') !!}"><i class="fa fa-circle-o"></i><span>Tipologie</span></a>
                 </li>
-                
+
             </ul>
-        </li>  
+        </li>
         @foreach($menu_tournaments as $t)
         <li>
             <a href="{!! route('admin.editions.edit', ['id'=>$t->edition->id]) !!}"><i class="fa fa-circle-o"></i><span>{!! $t->edition->edition_name !!}</span></a>
@@ -144,15 +147,15 @@
             <i class="fa fa-angle-left pull-right"></i>
         </span>
     </a>
-    <ul class="treeview-menu" style="{{ Request::is('*ranking*') ? '' : 'display: none' }}">    
-        {{-- 
+    <ul class="treeview-menu" style="{{ Request::is('*ranking*') ? '' : 'display: none' }}">
+        {{--
         <li class="{{ Request::is('*ranking*') ? 'active' : '' }}">
             <a href="{!! route('admin.rankings.index') !!}"><i class="fa fa-circle"></i><span>Mostra</span></a>
         </li>
-         --}}    
+         --}}
         <li class="{{ Request::is('*ranking*') ? 'active' : '' }}">
             <a href="{!! route('admin.rankings.assign') !!}"><i class="fa fa-circle"></i><span>Assegna punti</span></a>
-        </li>        
+        </li>
     </ul>
 </li>
 
@@ -165,10 +168,10 @@
             <i class="fa fa-angle-left pull-right"></i>
         </span>
     </a>
-    <ul class="treeview-menu" style="display: none;">                
+    <ul class="treeview-menu" style="display: none;">
         <li class="{{ Request::is('teams*') ? 'active' : '' }}">
             <a href="{!! route('admin.player.tournament.currents') !!}"><i class="fa fa-circle"></i><span>I miei tornei</span></a>
-        </li>        
+        </li>
     </ul>
 </li>
 

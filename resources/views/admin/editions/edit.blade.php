@@ -178,7 +178,7 @@ saveTournament = function(){
         //,description : $("#modal-tournament #description").val(),
     }
 
-    console.log("save tournament data", data);
+    //console.log("save tournament data", data);
 
     var url = '/admin/tournaments/store';
     if( data.id_tournament != '' ){

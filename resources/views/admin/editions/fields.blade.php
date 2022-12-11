@@ -17,6 +17,12 @@
 
                         <!-- Name Field -->
                         <div class="form-group col-sm-6 col-lg-6 col-sm-offset-2 col-lg-offset-2">
+                            {!! Form::label('id_event', 'Evento') !!}
+                            {!! Form::select('id_event', $events, $edition->id_event, ['class' => 'form-control']) !!}
+                        </div>
+
+                        <!-- Name Field -->
+                        <div class="form-group col-sm-6 col-lg-6 col-sm-offset-2 col-lg-offset-2">
                             {!! Form::label('edition_name', 'Nome Torneo') !!}
                             {!! Form::text('edition_name', $edition->edition_name, ['class' => 'form-control']) !!}
                         </div>
