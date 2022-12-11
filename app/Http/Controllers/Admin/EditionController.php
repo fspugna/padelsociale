@@ -243,14 +243,14 @@ class EditionController extends AppBaseController
             $tournament->tournamentType->tournament_type = trans('labels.'.$tournament->tournamentType->tournament_type);
         }
 
-        $tournaments_ref = Tournament::where('id_edition', '=', $id)
-                                     ->where('id_tournament_type', '=', TournamentType::where('tournament_type', '=', 'step_1')->first()->id )
-                                     ->orderBy('date_start', 'desc')
-                                     ->get()
-                                     ->pluck('name', 'id')
-                                     ->toArray();
+        // $tournaments_ref = Tournament::where('id_edition', '=', $id)
+        //                             //  ->where('id_tournament_type', '=', TournamentType::where('tournament_type', '=', 'step_1')->first()->id )
+        //                              ->orderBy('date_start', 'desc')
+        //                              ->get()
+        //                              ->pluck('name', 'id')
+        //                              ->toArray();
 
-        $tournaments_ref[0] = 'NESSUNO';
+        // $tournaments_ref[0] = 'NESSUNO';
 
         if (empty($edition)) {
             Flash::error('Edition not found');
@@ -269,7 +269,7 @@ class EditionController extends AppBaseController
                 ->with('categoryTypes', $categoryTypes)
                 ->with('editionCategoryTypes', $editionCategoryTypes)
                 ->with('tournaments', $tournaments)
-                ->with('tournaments_ref', $tournaments_ref)
+                // ->with('tournaments_ref', $tournaments_ref)
                 ;
     }
 
