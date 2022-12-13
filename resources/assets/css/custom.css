@@ -3044,7 +3044,7 @@ td.cellStaff { color: #6E96CB; }
 /* line 144, ../../../src/sass/components/sections/_header.scss */
 .header__main-menu__body { overflow-y: auto; width: 100%; }
 /* line 151, ../../../src/sass/components/sections/_header.scss */
-.header .header__main-menu__body { background-color: rgba(73, 98, 131, 0.97); transform: translate3d(0, 0); position: absolute; height: calc(100% - 90px); }
+.header .header__main-menu__body { background-color: #013950; transform: translate3d(0, 0); position: absolute; height: calc(100% - 90px); }
 /* line 158, ../../../src/sass/components/sections/_header.scss */
 .header__main-menu__body .section-title { color: #FFE200; display: none; }
 /* line 162, ../../../src/sass/components/sections/_header.scss */

@@ -49,10 +49,10 @@
                             {!! Form::textarea('edition_description', $edition->edition_description, ['id' => 'edition_description', 'class' => 'form-control']) !!}
                         </div>
 
-                        <div class="form-group col-sm-6 col-lg-6">
+                        {{-- <div class="form-group col-sm-6 col-lg-6">
                             {!! Form::label('edition_zones_and_clubs', 'Zone e Circoli') !!}
                             {!! Form::textarea('edition_zones_and_clubs', $edition->edition_zones_and_clubs, ['id' => 'edition_zones_and_clubs', 'class' => 'form-control']) !!}
-                        </div>
+                        </div> --}}
 
                         <!-- Edition Rules Field -->
                         <div class="form-group col-sm-6 col-lg-6">
@@ -61,10 +61,10 @@
                         </div>
 
                         <!-- Edition Rules Field -->
-                        <div class="form-group col-sm-6 col-lg-6">
+                        {{-- <div class="form-group col-sm-6 col-lg-6">
                             {!! Form::label('edition_zone_rules', 'Regolamento Torneo di Zona') !!}
                             {!! Form::textarea('edition_zone_rules', $edition->edition_zone_rules, ['id' => 'edition_zone_rules', 'class' => 'form-control']) !!}
-                        </div>
+                        </div> --}}
 
                         <!-- Edition Awards -->
                         <div class="form-group col-sm-6 col-lg-6">

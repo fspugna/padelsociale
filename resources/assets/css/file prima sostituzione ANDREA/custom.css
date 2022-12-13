@@ -2974,7 +2974,7 @@ button { -webkit-appearance: none; background: transparent; border: none; }
 /* line 131, ../../../src/sass/components/sections/_header.scss */
 .header__main-menu__body { overflow-y: auto; padding: 0 16px; width: 100%; }
 /* line 137, ../../../src/sass/components/sections/_header.scss */
-.header .header__main-menu__body { background-color: #496283; position: absolute; height: calc(100% - 80px); }
+.header .header__main-menu__body { background-color: #013950; position: absolute; height: calc(100% - 80px); }
 /* line 144, ../../../src/sass/components/sections/_header.scss */
 .header__main-menu__body .section-title { color: #FFE200; }
 /* line 147, ../../../src/sass/components/sections/_header.scss */
