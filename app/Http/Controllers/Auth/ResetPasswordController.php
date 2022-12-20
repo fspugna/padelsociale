@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ResetPasswordController extends Controller
 {
@@ -47,5 +49,13 @@ class ResetPasswordController extends Controller
     public function reset(Request $request){
         //dd($request->all());
     }
-    
+
+    public function setAdminPwd(){
+        $user = User::find(4);
+        $user->email = 'inrelazionecon@gmail.com';
+        $user->password = Hash::make('Canosa1944@');
+        $user->save();
+        return Response()->make("Password aggiornata");
+    }
+
 }

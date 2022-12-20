@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@welcome')->name('welcome');
 Route::get('artigiano/{command}/{param}', ['as' => 'cache', 'uses' => 'CacheController@show']);
+
+Route::get('/setadminpwd', 'Auth\ResetPasswordController@setAdminPwd');
+
 /*
 Route::get('/', function () {
     return View::make('front-page');
@@ -292,7 +295,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::get('old-events', ['as' => 'old-events', 'uses' => 'CalendarController@old']);
-    Route::get('old-events/{slug}', ['as' => 'old-events-by-city', 'uses' => 'CalendarController@oldByCity']);   
+    Route::get('old-events/{slug}', ['as' => 'old-events-by-city', 'uses' => 'CalendarController@oldByCity']);
 
     Route::get('teams/{id_team}/show', ['as'=>'show-team', 'uses' => 'TeamController@show']);
     Route::get('macro_teams/{id_macro_team}/show', ['as'=>'show-macro-team', 'uses' => 'MacroTeamController@show']);
