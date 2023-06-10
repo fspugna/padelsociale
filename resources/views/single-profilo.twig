@@ -39,10 +39,10 @@
 			<span class="section-title section-title--no-separator">{{queryItem.name }}
 				{{queryItem.surname }}
             </span>
-			<div style="border: 1px solid #6E96CB;"></div>
-			<div style="border-top: 1px solid #6E96CB;" class="flex flex--between flex--row flex--center">
-				<div style="border-right: 1px solid #6E96CB; width: 50%; padding: 10px; align-items: center;" class="flex flex--column flex--between">
-					<div style="border-bottom: 1px solid #6E96CB; width: 100%;" class="circolo__name flex flex--column flex--center">
+			<div style="border: 1px solid #FFFFFF;"></div>
+			<div style="border-top: 1px solid #FFFFFF;" class="flex flex--between flex--row flex--center">
+				<div style="border-right: 1px solid #FFFFFF; width: 50%; padding: 10px; align-items: center;" class="flex flex--column flex--between">
+					<div style="border-bottom: 1px solid #FFFFFF; width: 100%;" class="circolo__name flex flex--column flex--center">
 						<div style="display: table-cell;justify-content: space-between;" class="divTable">
 							<div class="divTableBody">
 								<div class="divTableRow" style=" justify-content: space-between; margin: 10px;">
@@ -66,7 +66,7 @@
 							</div>
 						</div>
 					</div>
-					<div style="border-top: 1px solid #6E96CB; width: 100%;" class="circolo__name flex flex--column flex--center">
+					<div style="border-top: 1px solid #FFFFFF; width: 100%;" class="circolo__name flex flex--column flex--center">
 						<div style="display: table-cell;justify-content: space-between;" class="divTable">
 							<div class="divTableBody">
 								<div class="divTableRow" style=" justify-content: space-between; margin: 10px 0px 0px 0px;">
@@ -79,7 +79,7 @@
 									<div style="display: flex; justify-content: center; vertical-align: middle;padding: 3px;min-width: 45px;" class="divTableCell">
 										{% if avatar_club %}
 											<a href="/clubs/{{player.clubs.id}}/show">
-												<div style="border: 1px solid #6E96CB; width: 45px;border-radius: 50%;overflow: hidden;">
+												<div style="border: 1px solid #FFFFFF; width: 45px;border-radius: 50%;overflow: hidden;">
 													<picture>
 														<img class=" lazyloaded" data-srcset="{{ avatar_club }} 2x" alt="Flavio Spugna" srcset="{{ avatar_club }}, {{ avatar_club }} 2x">
 													</picture>
@@ -107,7 +107,7 @@
 				</div>
 				<div style="display: inline-grid; width: 50%; padding: 10px; align-items: center;">
 					<div
-						style="border-radius: 50%; border: 1px solid #6E96CB;  margin: auto; width: 102%; overflow: auto;" class="">
+						style="border-radius: 50%; border: 1px solid #FFFFFF;  margin: auto; width: 102%; overflow: auto;" class="">
 						<!-- card__thumbnail--podcast, card__thumbnail--video to add icons-->
 						<picture data-link="">
 							<img class=" lazyloaded" data-srcset="{{ avatar }}, {{ avatar }} 2x" alt="" srcset="{{ avatar }}, {{ avatar }} 2x">
@@ -115,8 +115,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="flex flex--between flex--row flex--center" style="border: 1px solid #6E96CB;">
-				<div class="flex flex--column flex--between" style="width: 100%; padding: 10px; align-items: center; border-right: 1px solid #6E96CB;">
+			<div class="flex flex--between flex--row flex--center" style="border: 1px solid #FFFFFF;">
+				<div class="flex flex--column flex--between" style="width: 100%; padding: 10px; align-items: center; border-right: 1px solid #FFFFFF;">
 					<div class="circolo__name flex flex--column flex--center">
 						<span style="font-size: 22px;color: #fff; font-weight: bold">Ranking</span>
 						<span style="font-size: 26px;color: #FFE200; font-weight: bold">
@@ -130,8 +130,8 @@
 				</div>
 				<div class="flex flex--column flex--between" style="width: 100%; padding: 10px; align-items: center">
 					<div style="width: 100%;" class="circolo__name flex flex--column flex--center">
-						<span style="font-size: 14px;padding: 5px;color: #FFE200; border-bottom: 1px solid #6E96CB;text-align: center;width: 100%;">Punti:
-							<span style="font-size: 14px;padding: 5px; color: #fff; border-bottom: 1px solid #6E96CB;text-align: center; width: 100%;">
+						<span style="font-size: 14px;padding: 5px;color: #FFE200; border-bottom: 1px solid #FFFFFF;text-align: center;width: 100%;">Punti:
+							<span style="font-size: 14px;padding: 5px; color: #fff; border-bottom: 1px solid #FFFFFF;text-align: center; width: 100%;">
 								{% if punti > 0 %}
 									{{ punti }}
 								{% else %}

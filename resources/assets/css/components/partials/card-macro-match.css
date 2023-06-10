@@ -28,10 +28,10 @@ ul.flex.flex--column { width: 100%; }
 .card-match__result span { color: #fff; font-size: 20px; font-weight: bold; margin: 0 18px; }
 
 /* line 98, ../../../../../src/sass/components/partials/card-match.scss */
-a.legenda { background-color: #6E96CB; border-radius: 5px; border: 1px solid #fff; color: #fff; /* display: inline-block; */ font-size: 12px; padding: 2px; text-shadow: -1px 0 black, 0 1px black, 0 1px black, 1px 0 black, 0 -1px black; }
+a.legenda { background-color: #FFFFFF; border-radius: 5px; border: 1px solid #fff; color: #fff; /* display: inline-block; */ font-size: 12px; padding: 2px; text-shadow: -1px 0 black, 0 1px black, 0 1px black, 1px 0 black, 0 -1px black; }
 
 /* line 108, ../../../../../src/sass/components/partials/card-match.scss */
-a.buttone { background-color: #6E96CB; border-radius: 5px; border: 1px solid #fff; color: #fff; /* display: inline-block; */ font-size: 12px; padding: 2px; text-shadow: -1px 0 black, 0 1px black, 0 1px black, 1px 0 black, 0 -1px black; text-decoration: none; }
+a.buttone { background-color: #FFFFFF; border-radius: 5px; border: 1px solid #fff; color: #fff; /* display: inline-block; */ font-size: 12px; padding: 2px; text-shadow: -1px 0 black, 0 1px black, 0 1px black, 1px 0 black, 0 -1px black; text-decoration: none; }
 
 /* line 119, ../../../../../src/sass/components/partials/card-match.scss */
 .popup h1, .popup h2, .popup h3 { color: #ffe200; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); font-weight: normal; }

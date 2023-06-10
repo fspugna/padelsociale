@@ -2852,7 +2852,7 @@ button { -webkit-appearance: none; background: transparent; border: none; }
 /* line 328, ../sass/_customCore.scss */
 .cta--yellow { background-color: #FFE200; }
 /* line 332, ../sass/_customCore.scss */
-.cta--cyan { background-color: #6E96CB; color: #FFF; }
+.cta--cyan { background-color: #FFFFFF; color: #FFF; }
 /* line 337, ../sass/_customCore.scss */
 .cta--enter { background-position: right 0 top -1392px; padding-right: 40px !important; }
 /* line 343, ../sass/_customCore.scss */
@@ -2902,7 +2902,7 @@ button { -webkit-appearance: none; background: transparent; border: none; }
 /* line 55, ../sass/components/sections/_header.scss */
 .header__main-menu .main-menu__close { width: 50px; height: 50px; background-position: 14px -731px; margin-left: auto; }
 /* line 64, ../sass/components/sections/_header.scss */
-.header__main-menu__head { background-color: #6E96CB; height: 80px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; padding: 10px; display: none; }
+.header__main-menu__head { background-color: #FFFFFF; height: 80px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; padding: 10px; display: none; }
 @media screen and (max-width: 736px) { /* line 64, ../sass/components/sections/_header.scss */
   .header__main-menu__head { display: -webkit-box; display: -ms-flexbox; display: flex; } }
 /* line 76, ../sass/components/sections/_header.scss */
@@ -2955,7 +2955,7 @@ button { -webkit-appearance: none; background: transparent; border: none; }
 
 /* footer.twig styles */
 /* line 3, ../sass/components/sections/_footer.scss */
-footer.footer { display: flex; background-color: #013950; flex-direction: row; justify-content: space-between; height: 90px; }
+footer.footer { display: flex; background-color: #2b2b2b; flex-direction: row; justify-content: space-between; height: 90px; }
 /* line 9, ../sass/components/sections/_footer.scss */
 footer.footer .logo { width: 100%; padding: 0 32px; box-sizing: content-box; }
 /* line 15, ../sass/components/sections/_footer.scss */

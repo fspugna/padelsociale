@@ -2850,7 +2850,7 @@ button { -webkit-appearance: none; background: transparent; border: none; }
 /* line 324, ../../../src/sass/_customCore.scss */
 .cta--yellow { background-color: #FFE200; }
 /* line 328, ../../../src/sass/_customCore.scss */
-.cta--cyan { background-color: #6E96CB; color: #FFF; }
+.cta--cyan { background-color: #FFFFFF; color: #FFF; }
 /* line 333, ../../../src/sass/_customCore.scss */
 .cta--enter { background-position: right 0 top -1392px; padding-right: 40px; }
 /* line 339, ../../../src/sass/_customCore.scss */
@@ -2893,7 +2893,7 @@ button { -webkit-appearance: none; background: transparent; border: none; }
 /* line 55, ../../../src/sass/components/sections/_header.scss */
 .header__main-menu .main-menu__close { width: 50px; height: 50px; background-position: 14px -731px; margin-left: auto; }
 /* line 64, ../../../src/sass/components/sections/_header.scss */
-.header__main-menu__head { background-color: #6E96CB; height: 80px; display: flex; align-items: center; padding: 10px; display: none; }
+.header__main-menu__head { background-color: #FFFFFF; height: 80px; display: flex; align-items: center; padding: 10px; display: none; }
 @media screen and (max-width: 736px) { /* line 64, ../../../src/sass/components/sections/_header.scss */
   .header__main-menu__head { display: flex; } }
 /* line 76, ../../../src/sass/components/sections/_header.scss */
@@ -2946,7 +2946,7 @@ button { -webkit-appearance: none; background: transparent; border: none; }
 
 /* footer.twig styles */
 /* line 3, ../../../src/sass/components/sections/_footer.scss */
-footer.footer { background-color: #6E96CB; flex-direction: row; justify-content: space-between; height: 90px; }
+footer.footer { background-color: #FFFFFF; flex-direction: row; justify-content: space-between; height: 90px; }
 /* line 9, ../../../src/sass/components/sections/_footer.scss */
 footer.footer .logo { width: 70px; padding: 0 32px; box-sizing: content-box; }
 /* line 15, ../../../src/sass/components/sections/_footer.scss */

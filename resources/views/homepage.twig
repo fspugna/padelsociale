@@ -1,6 +1,6 @@
 {% extends "base.twig" %}
 
-{% block head %}    
+{% block head %}
     <title>{{ site.name}} - homepage</title>
     {{ parent() }}
 {% endblock %}
@@ -56,7 +56,7 @@
         {% endif %}
         <!-- PROSSIMI EVENTI END -->
 
-        <!-- EVENTI IN CORSO START --> 
+        <!-- EVENTI IN CORSO START -->
         {% if currents is not empty %}
             <section class="started-events">
                 <div class="section-title"><span>Eventi in corso</span></div>
@@ -76,7 +76,7 @@
                 {% set cardeventsbig = defined %}
             </section>
         {% endif %}
-        <!-- EVENTI IN CORSO END --> 
+        <!-- EVENTI IN CORSO END -->
 
         <!-- BANNER START -->
         {% set banner_city = null %}
@@ -100,7 +100,7 @@
                 <div class="swiper-pagination"></div>
             </div>
             {% set cardnewsbig = defined %}
-        </section>   
+        </section>
         <!-- NEWS END -->
 
         <!-- BANNER START -->
@@ -126,15 +126,21 @@
                 </div>
                 {% set cardmatchbig = defined %}
             </section>
-        {% endif %}        
+        {% endif %}
         <!-- MATCH IN PROGRAMMA END -->
-                             
+
         <section>
             {% include 'components/partials/card-social.twig' %}
         </section>
-        <section>
+        {# <section>
             {% include 'components/partials/card-circolo.twig' %}
-        </section>        
+        </section> #}
+        <section>
+            {% include 'components/partials/card-whatsapp.twig' %}
+        </section>
+        <section>
+            {% include 'components/partials/card-montefalcone.twig' %}
+        </section>
 
         <section>
             <div class="section-title"><span>Utenti registrati</span></div>

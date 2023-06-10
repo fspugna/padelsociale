@@ -10,6 +10,6 @@
 /* line 37, ../../../../../src/sass/components/partials/card-team-torneo.scss */
 .card-team-torneo .player .player__name { color: #fff; font-family: "Courgette", serif; font-weight: bold; text-align: center; max-width: 110px; }
 /* line 46, ../../../../../src/sass/components/partials/card-team-torneo.scss */
-.card-team-torneo .card__footer--separated { background-color: #6E96CB; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; padding: 8px; display: flex; display: -webkit-flex; justify-content: space-around; -webkit-justify-content: space-around; border-left: 2px solid #fff; border-right: 2px solid #fff; border-bottom: 2px solid #fff; }
+.card-team-torneo .card__footer--separated { background-color: #FFFFFF; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; padding: 8px; display: flex; display: -webkit-flex; justify-content: space-around; -webkit-justify-content: space-around; border-left: 2px solid #fff; border-right: 2px solid #fff; border-bottom: 2px solid #fff; }
 /* line 60, ../../../../../src/sass/components/partials/card-team-torneo.scss */
 .card-team-torneo .card__footer--separated span { color: #fff; font-family: "Courgette", serif; font-weight: bold; text-align: center; }

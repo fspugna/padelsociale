@@ -12,7 +12,7 @@
 /* line 46, ../../../../../src/sass/components/partials/card-team-stats.scss */
 .card-team-stats .card__footer span { display: block; text-align: center; }
 /* line 51, ../../../../../src/sass/components/partials/card-team-stats.scss */
-.card-team-stats .card__footer--separated { background-color: #6E96CB; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; padding: 8px; margin-top: 6px; display: flex; justify-content: space-between; }
+.card-team-stats .card__footer--separated { background-color: #FFFFFF; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; padding: 8px; margin-top: 6px; display: flex; justify-content: space-between; }
 /* line 60, ../../../../../src/sass/components/partials/card-team-stats.scss */
 .card-team-stats .card__footer--separated > div { flex: 1; border-right: 1px solid rgba(255, 255, 255, 0.5); }
 /* line 64, ../../../../../src/sass/components/partials/card-team-stats.scss */

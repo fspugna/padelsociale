@@ -10,6 +10,6 @@
 /* line 31, ../../../../../src/sass/components/partials/card-team-torneo.scss */
 .card-team-torneo .player .player__name { color: #fff; font-family: "Avenir", serif; font-weight: bold; text-align: center; }
 /* line 39, ../../../../../src/sass/components/partials/card-team-torneo.scss */
-.card-team-torneo .card__footer--separated { background-color: #6E96CB; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; padding: 8px; margin-top: 6px; display: flex; justify-content: space-evenly; }
+.card-team-torneo .card__footer--separated { background-color: #FFFFFF; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; padding: 8px; margin-top: 6px; display: flex; justify-content: space-evenly; }
 /* line 48, ../../../../../src/sass/components/partials/card-team-torneo.scss */
 .card-team-torneo .card__footer--separated span { color: #fff; font-family: "Avenir", serif; font-weight: bold; }

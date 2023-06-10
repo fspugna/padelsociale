@@ -2854,7 +2854,7 @@ time { color: #FFE200; font-weight: bold; margin: 6px 0 12px; text-align: center
 /* line 362, ../../../src/sass/_customCore.scss */
 .countdown > div label { color: #fff; font-size: 13px; margin-bottom: 5px; }
 /* line 368, ../../../src/sass/_customCore.scss */
-.countdown > div span { background: #6E96CB; background: -moz-linear-gradient(top, #425a79 0%, #6E96CB 50%, #6387b6 53%, #a8c0df 100%); background: -webkit-linear-gradient(top, #425a79 0%, #6E96CB 50%, #6387b6 53%, #a8c0df 100%); background: linear-gradient(to bottom, #425a79 0%, #6E96CB 50%, #6387b6 53%, #a8c0df 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffac6d', endColorstr='#ff7400',GradientType=0 ); border-radius: 4px; font-size: 20px; font-weight: bold; color: #fff; margin-right: 2px; padding: 13px; position: relative; }
+.countdown > div span { background: #FFFFFF; background: -moz-linear-gradient(top, #425a79 0%, #FFFFFF 50%, #6387b6 53%, #a8c0df 100%); background: -webkit-linear-gradient(top, #425a79 0%, #FFFFFF 50%, #6387b6 53%, #a8c0df 100%); background: linear-gradient(to bottom, #425a79 0%, #FFFFFF 50%, #6387b6 53%, #a8c0df 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffac6d', endColorstr='#ff7400',GradientType=0 ); border-radius: 4px; font-size: 20px; font-weight: bold; color: #fff; margin-right: 2px; padding: 13px; position: relative; }
 /* line 384, ../../../src/sass/_customCore.scss */
 .countdown > div span:after { content: ''; width: 100%; position: absolute; top: 50%; height: 2px; background-color: #000; z-index: 1; left: 0; }
 
@@ -2869,9 +2869,9 @@ time { color: #FFE200; font-weight: bold; margin: 6px 0 12px; text-align: center
 button { -webkit-appearance: none; background: transparent; border: none; }
 
 /* line 423, ../../../src/sass/_customCore.scss */
-.cta { background-color: #6E96CB; border-radius: 6px; color: #fff; display: inline-block; font-size: 20px; padding: 8px 8px 8px 15px; text-shadow: -1px 0 black, 0 1px black, 0 1px black, 1px 0 black, 0 -1px black; }
+.cta { background-color: #FFFFFF; border-radius: 6px; color: #fff; display: inline-block; font-size: 20px; padding: 8px 8px 8px 15px; text-shadow: -1px 0 black, 0 1px black, 0 1px black, 1px 0 black, 0 -1px black; }
 /* line 434, ../../../src/sass/_customCore.scss */
-.cta--cyan { background-color: #6E96CB; color: #FFF; }
+.cta--cyan { background-color: #FFFFFF; color: #FFF; }
 /* line 439, ../../../src/sass/_customCore.scss */
 .cta--enter { background-image: url("../images/caret-enter.svg"); background-size: 7px; background-repeat: no-repeat; background-position: right 10px top 49% !important; padding-right: 40px !important; }
 /* line 447, ../../../src/sass/_customCore.scss */
@@ -2962,7 +2962,7 @@ button { -webkit-appearance: none; background: transparent; border: none; }
 /* line 81, ../../../src/sass/components/sections/_header.scss */
 .header__main-menu .main-menu__close { width: 50px; height: 50px; background-position: 14px -731px; margin-left: auto; }
 /* line 90, ../../../src/sass/components/sections/_header.scss */
-.header__main-menu__head { background-color: #6E96CB; height: 80px; display: flex; align-items: center; padding: 10px; }
+.header__main-menu__head { background-color: #FFFFFF; height: 80px; display: flex; align-items: center; padding: 10px; }
 /* line 97, ../../../src/sass/components/sections/_header.scss */
 .header__main-menu__head .profile-image { position: relative; }
 /* line 100, ../../../src/sass/components/sections/_header.scss */
@@ -2974,7 +2974,7 @@ button { -webkit-appearance: none; background: transparent; border: none; }
 /* line 131, ../../../src/sass/components/sections/_header.scss */
 .header__main-menu__body { overflow-y: auto; padding: 0 16px; width: 100%; }
 /* line 137, ../../../src/sass/components/sections/_header.scss */
-.header .header__main-menu__body { background-color: #013950; position: absolute; height: calc(100% - 80px); }
+.header .header__main-menu__body { background-color: #496283; position: absolute; height: calc(100% - 80px); }
 /* line 144, ../../../src/sass/components/sections/_header.scss */
 .header__main-menu__body .section-title { color: #FFE200; }
 /* line 147, ../../../src/sass/components/sections/_header.scss */
@@ -3013,7 +3013,7 @@ button { -webkit-appearance: none; background: transparent; border: none; }
 
 /* footer.twig styles */
 /* line 3, ../../../src/sass/components/sections/_footer.scss */
-footer.footer { background-color: #6E96CB; flex-direction: row; justify-content: space-between; height: 90px; }
+footer.footer { background-color: #FFFFFF; flex-direction: row; justify-content: space-between; height: 90px; }
 /* line 9, ../../../src/sass/components/sections/_footer.scss */
 footer.footer .logo { width: 70px; padding: 0 32px; box-sizing: content-box; }
 /* line 15, ../../../src/sass/components/sections/_footer.scss */

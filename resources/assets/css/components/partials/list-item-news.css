@@ -14,6 +14,6 @@
 /* line 56, ../../../../../src/sass/components/partials/list-item-news.scss */
 .list-item-news .card__thumbnail { border: 2px solid #fff; min-width: 65px; border-radius: 50%; height: 65px; overflow: hidden; margin-right: 12px; }
 /* line 65, ../../../../../src/sass/components/partials/list-item-news.scss */
-.list-item-news .player__data { border-radius: 4px; display: flex; justify-content: space-between; background-color: #6E96CB; margin-top: 6px; padding: 4px; }
+.list-item-news .player__data { border-radius: 4px; display: flex; justify-content: space-between; background-color: #FFFFFF; margin-top: 6px; padding: 4px; }
 /* line 73, ../../../../../src/sass/components/partials/list-item-news.scss */
 .list-item-news .player__data span { color: #FFE200; }

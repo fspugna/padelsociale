@@ -57,11 +57,11 @@
 								{% endif %}
 
                                 {% if current_user.id_role in [2, 3, 4] %}
-                                <!--div style="margin: 5px; border:1px solid #6E96CB;"></div-->
+                                <!--div style="margin: 5px; border:1px solid #FFFFFF;"></div-->
                                     <a href="/edit-profile" class="btn" >Modifica Profilo</a>
                                 {% endif %}
 
-                                <!--div style="margin: 5px; border:1px solid #6E96CB;"></div-->
+                                <!--div style="margin: 5px; border:1px solid #FFFFFF;"></div-->
                                 {% if current_user.id_role == 1 %}
                                     <a href="/admin/home" class="btn" >Amministrazione</a>
                                 {% endif %}
@@ -538,7 +538,7 @@
             .hamburger--slider.is-active .hamburger-inner::after {
                 transform: translate3d(0, -20px, 0) rotate(-90deg); }
 
-            .lightblue-text-link { color: #6E96CB; display: inline-block; font-size: 18px; font-weight: bold; margin: 0 0 18px; margin-top: 7px; margin-bottom: 7px; padding: 0 40px 0 20px; }
+            .lightblue-text-link { color: #FFFFFF; display: inline-block; font-size: 18px; font-weight: bold; margin: 0 0 18px; margin-top: 7px; margin-bottom: 7px; padding: 0 40px 0 20px; }
 
             .lightblue-text-link:hover { color: white; }
 
@@ -658,7 +658,7 @@
                     <label for="chisiamo-check" class="item-label item-label--opener"><i class="fab fa-battle-net"></i>  Chi Siamo</label>
                     <ul class="submenu">
                         <li class="header__main-menu__subitem chisiamo-inrelazionecon-subitem">
-                            <a href="/clubs/2/show" class="yellow-text-link yellow-text-link--enter"><i class="far fa-handshake"></i>  Dorado Padel Center</a>
+                            <a href="/clubs/2/show" class="yellow-text-link yellow-text-link--enter"><i class="far fa-handshake"></i> Montefalcone Padel Village</a>
                         </li>
                         <li class="header__main-menu__subitem chisiamo-comitato-subitem">
                             <a href="/pages/staff" class="yellow-text-link yellow-text-link--enter"><i class="fas fa-sitemap"></i>  Staff</a>
@@ -721,7 +721,7 @@
 
                 <li class="header__main-menu__item circuitogiropadel-item block-item">
                     <input id="circuitogiropadel-check" hidden type="checkbox" />
-                    <label for="circuitogiropadel-check" class="item-label item-label--opener"><i class="fas fa-table-tennis"></i>   Social League</label>
+                    <label for="circuitogiropadel-check" class="item-label item-label--opener"><i class="fas fa-table-tennis"></i>   Padel League</label>
                     <ul style="margin-left: 20px; margin-right: 20px;" class="submenu">
                         {% for label, item in menu_tournaments %}
                             {% if item.items is defined %}

@@ -1,0 +1,27 @@
+<!-- card-circolo.twig partial -->
+
+<div class="card card-circolo">
+
+	{% if loop.index <= 1 and cardcircolo is not defined or loop.index is not defined and cardcircolo is not defined %}
+
+	<link rel="stylesheet" href="/resources/assets/css/components/partials/card-circolo.css?v={{version}}" />
+
+	{% endif %}
+
+	<div class="card__content">
+		<div class="card__title">
+			<h3>Montefalcone Padel League</h3>
+		</div>
+		<p class="abstract">Partecipa al Campionato Sociale di Padel<br>del circolo, suddiviso per livelli di gioco.<br />Giochi quando vuoi concordando i match.<br/>Gironi e Play Off / Play Out.<br /><span style="color: #FFE200">Prossimamente!</span></p>
+	</div>
+	{#
+	<div class="card__footer">
+		<div class="cta-container cta-container--center">
+			<a href="/register">
+				<button class="cta cta--enter cta--yellow">Iscrivi il tuo circolo</button>
+			</a>
+		</div>
+	</div>
+	#}
+
+</div>

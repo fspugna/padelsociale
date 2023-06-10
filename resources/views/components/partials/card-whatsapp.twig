@@ -1,0 +1,27 @@
+<!-- card-circolo.twig partial -->
+
+<div class="card card-circolo">
+
+	{% if loop.index <= 1 and cardcircolo is not defined or loop.index is not defined and cardcircolo is not defined %}
+
+	<link rel="stylesheet" href="/resources/assets/css/components/partials/card-circolo.css?v={{version}}" />
+
+	{% endif %}
+
+	<div class="card__content">
+		<div class="card__title">
+			<h3>Gruppi WhatsApp per livello</h3>
+		</div>
+		<p class="abstract">Hai difficoltà nel trovare avversari<br>dello stesso livello di gioco?<br />Insoddisfatto del solito <br />gruppo WhatsApp multilivello?<br/><span style="color: #FFE200">Inserisciti in uno dei gruppi WhatsApp,<br/>suddivisi per livello di gioco.</style></p>
+	</div>
+	{#
+	<div class="card__footer">
+		<div class="cta-container cta-container--center">
+			<a href="/register">
+				<button class="cta cta--enter cta--yellow">Iscrivi il tuo circolo</button>
+			</a>
+		</div>
+	</div>
+	#}
+
+</div>

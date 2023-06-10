@@ -22,7 +22,7 @@
 /* line 42, ../../../../../src/sass/components/partials/list-item-giocatore.scss */
 .list-item-giocatore .card__thumbnail { border: 2px solid #fff; width: 65px; border-radius: 50%; overflow: hidden; margin-right: 12px; }
 /* line 50, ../../../../../src/sass/components/partials/list-item-giocatore.scss */
-.list-item-giocatore .player__data { border-radius: 4px; display: flex; justify-content: space-between; background-color: #6E96CB; margin-top: 6px; padding: 4px; }
+.list-item-giocatore .player__data { border-radius: 4px; display: flex; justify-content: space-between; background-color: #FFFFFF; margin-top: 6px; padding: 4px; }
 /* line 58, ../../../../../src/sass/components/partials/list-item-giocatore.scss */
 .list-item-giocatore .player__data span { color: #FFE200; }
 
