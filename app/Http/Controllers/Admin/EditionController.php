@@ -284,7 +284,7 @@ class EditionController extends AppBaseController
     public function update(Request $request, $id_edition)
     {
         $input = $request->all();
-        // dd($input);
+
         $edition = Edition::find($id_edition);
         $edition->id_event = $input['id_event'];
         $edition->edition_name = $input['edition_name'];
