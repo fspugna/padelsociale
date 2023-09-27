@@ -1121,13 +1121,13 @@ class CalendarController extends AppBaseController
         if( !isset($input['search']) || empty($input['search']) ):
 
             $arr_editions = Edition::whereHas('tournaments', function($query){
-                                            $query->where('id_tournament_type', '=', 2);
+                                            // $query->where('id_tournament_type', '=', 2);
                                             $query->where('date_end', '<', Carbon::now('Europe/Rome')->format('Y-m-d'));
                                         })
-                                      ->whereHas('tournaments', function($query) use($year_sel) {
-                                            $query->where('id_tournament_type', '=', 1);
-                                            $query->whereRaw("DATE_FORMAT(date_start, '%Y') =  ?", [$year_sel]);
-                                        })
+                                    //   ->whereHas('tournaments', function($query) use($year_sel) {
+                                    //         $query->where('id_tournament_type', '=', 1);
+                                    //         $query->whereRaw("DATE_FORMAT(date_start, '%Y') =  ?", [$year_sel]);
+                                    //     })
                                         ->orderBy('id', 'DESC')
                                         ->get();
 
@@ -1136,13 +1136,14 @@ class CalendarController extends AppBaseController
             $search = $input['search'];
 
             $arr_editions = Edition::whereHas('tournaments', function($query){
-                                            $query->where('id_tournament_type', '=', 2);
+                                            // $query->where('id_tournament_type', '=', 2);
                                             $query->where('date_end', '<', Carbon::now('Europe/Rome')->format('Y-m-d'));
-                                        })
-                                      ->whereHas('tournaments', function($query) use($year_sel) {
-                                            $query->where('id_tournament_type', '=', 1);
                                             $query->whereRaw("DATE_FORMAT(date_start, '%Y') =  ?", [$year_sel]);
                                         })
+                                    //   ->whereHas('tournaments', function($query) use($year_sel) {
+                                    //         $query->where('id_tournament_type', '=', 1);
+                                    //         $query->whereRaw("DATE_FORMAT(date_start, '%Y') =  ?", [$year_sel]);
+                                    //     })
                                         ->where('edition_name', 'like', '%'.$search.'%')
                                         ->orderBy('id', 'DESC')
                                         ->get();
