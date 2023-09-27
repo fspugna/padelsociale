@@ -15,14 +15,6 @@
 
     <div class="page front-page">
 
-        <!-- BANNER START -->
-        {% set banner_city = null %}
-        {% set banner_edition = null %}
-        {% set card_class = 'card-banner-home' %}
-        {% set banner_position = 'BANNER_HOME_1' %}
-        {% include 'components/partials/banner.twig' %}
-        <!-- BANNER END -->
-
         <!--- INFO START -->
         {%
 		set query = {
@@ -81,7 +73,8 @@
         <!-- BANNER START -->
         {% set banner_city = null %}
         {% set banner_edition = null %}
-        {% set banner_position = 'BANNER_HOME_2' %}
+        {% set card_class = 'card-banner-home' %}
+        {% set banner_position = 'BANNER_HOME_1' %}
         {% include 'components/partials/banner.twig' %}
         <!-- BANNER END -->
 
@@ -106,32 +99,31 @@
         <!-- BANNER START -->
         {% set banner_city = null %}
         {% set banner_edition = null %}
-        {% set banner_position = 'BANNER_HOME_3' %}
+        {% set banner_position = 'BANNER_HOME_2' %}
         {% include 'components/partials/banner.twig' %}
         <!-- BANNER END -->
+
 
         <!-- MATCH IN PROGRAMMA START -->
         {% if auth_check() and calendar is not empty %}
             <section>
-                <div class="section-title section-news"><span>Match in programma</span></div>
-                <div class="cards-slider-auto__container">
-                    <div class="swiper-wrapper">
-                        {% for queryItem in calendar %}
-                            <div class="swiper-slide">
-                                {% include 'components/partials/card-match-programma.twig' %}
-                            </div>
-                        {% endfor %}
-                    </div>
-                    {# <div class="swiper-pagination"></div> #}
+            <div class="section-title section-news"><span>Match in programma</span></div>
+
+            <div class="cards-slider__container">
+                <div class="swiper-wrapper">
+                    {% for queryItem in calendar %}
+                        <div class="swiper-slide">
+                            {% include 'components/partials/card-match-programma.twig' %}
+                        </div>
+                    {% endfor %}
                 </div>
-                {% set cardmatchbig = defined %}
-            </section>
+                <div class="swiper-pagination"></div>
+            </div>
+            {% set cardnewsbig = defined %}
+        </section>
         {% endif %}
         <!-- MATCH IN PROGRAMMA END -->
 
-        <section>
-            {% include 'components/partials/card-social.twig' %}
-        </section>
         {# <section>
             {% include 'components/partials/card-circolo.twig' %}
         </section> #}
@@ -141,6 +133,17 @@
         <section>
             {% include 'components/partials/card-level-social-war-series.twig' %}
         </section>
+
+        <section>
+            {% include 'components/partials/card-social.twig' %}
+        </section>
+
+        <!-- BANNER START -->
+        {% set banner_city = null %}
+        {% set banner_edition = null %}
+        {% set banner_position = 'BANNER_HOME_3' %}
+        {% include 'components/partials/banner.twig' %}
+        <!-- BANNER END -->
 
         <section>
             <div class="section-title"><span>Utenti registrati</span></div>

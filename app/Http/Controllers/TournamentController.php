@@ -171,7 +171,7 @@ class TournamentController extends Controller
 
 
     public function showGroup($id_tournament, $id_zone, $id_category_type, $id_category, $id_group){
-
+        
         $tournament = Tournament::where('id', '=', $id_tournament)->first();
         $edition = $tournament->edition;
 
@@ -198,7 +198,7 @@ class TournamentController extends Controller
 
 
     public function showGroupDouble($id_tournament, $id_zone, $id_category_type, $id_category, $id_group){
-
+        
         $tournament = Tournament::where('id', '=', $id_tournament)->first();
         $tournament['srcImgFeaturedBig'] = asset('storage/'.$tournament->edition->logo);
         $tournament['srcImgFeaturedBigx2'] = asset('storage/'.$tournament->edition->logo);
@@ -585,7 +585,7 @@ class TournamentController extends Controller
             endforeach;
 
         endforeach;
-
+        
         return view('page-torneo')
                 ->with('tournament', $tournament)
                 ->with('fase_a_gironi', $tournament)

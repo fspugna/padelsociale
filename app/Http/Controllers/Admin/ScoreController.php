@@ -64,7 +64,7 @@ class ScoreController extends AppBaseController
         endif;
 
         Score::where('id_match', '=', $id_match)->delete();
-        Ranking::where('id_match', '=', $id_match)->delete();
+        // Ranking::where('id_match', '=', $id_match)->delete();
         Classification::where('id_match', '=', $id_match)->delete();
         MatchPlayer::where('id_match', '=', $id_match)->delete();
 
@@ -393,133 +393,133 @@ class ScoreController extends AppBaseController
 
 
                 /** Update Rankings */
-                foreach( $match->team1->players as $teamPlayer ):
-                    if($teamPlayer->starter):
-                        /*
-                        $ranking = Ranking::where('year', '=', Group::where('id', '=', $id_group)->first()->division->tournament->date_start->format('Y'))
-                                          ->where('id_player', '=', $teamPlayer->player->id)
-                                          ->first();
-                                          */
+                // foreach( $match->team1->players as $teamPlayer ):
+                //     if($teamPlayer->starter):
+                //         /*
+                //         $ranking = Ranking::where('year', '=', Group::where('id', '=', $id_group)->first()->division->tournament->date_start->format('Y'))
+                //                           ->where('id_player', '=', $teamPlayer->player->id)
+                //                           ->first();
+                //                           */
 
-                        $ranking = new Ranking;
-                        $ranking->id_player = $teamPlayer->player->id;
-                        $ranking->year = Group::where('id', '=', $id_group)->first()->division->tournament->date_start->format('Y');
-                        if( $match->date ):
-                            $ranking->date = $match->date;
-                        else:
-                            $ranking->date = date('Y-m-d');
-                        endif;
-                        $ranking->id_match = $match->id;
-                        $ranking->id_edition = $id_edition;
-                        if( $match->club ):
-                            $ranking->id_city = $match->club->id_city;
-                        else:
-                            $ranking->id_city = 0;
-                        endif;
+                //         $ranking = new Ranking;
+                //         $ranking->id_player = $teamPlayer->player->id;
+                //         $ranking->year = Group::where('id', '=', $id_group)->first()->division->tournament->date_start->format('Y');
+                //         if( $match->date ):
+                //             $ranking->date = $match->date;
+                //         else:
+                //             $ranking->date = date('Y-m-d');
+                //         endif;
+                //         $ranking->id_match = $match->id;
+                //         $ranking->id_edition = $id_edition;
+                //         if( $match->club ):
+                //             $ranking->id_city = $match->club->id_city;
+                //         else:
+                //             $ranking->id_city = 0;
+                //         endif;
 
-                        //Team 1 won
-                        if( $set_won_t1 > $set_won_t2 ):
-                            $ranking->match_won = 1;
-                            $ranking->match_lost = 0;
-                            $ranking->match_deuce = 0;
+                //         //Team 1 won
+                //         if( $set_won_t1 > $set_won_t2 ):
+                //             $ranking->match_won = 1;
+                //             $ranking->match_lost = 0;
+                //             $ranking->match_deuce = 0;
 
-                            // Team1 won 2 - 0
-                            if( $set_won_t1 == 2 && $set_won_t2 == 0 ):
-                                $ranking->points = 20;
-                            elseif( $set_won_t1 == 2 && $set_won_t2 == 1 ):
-                                $ranking->points = 15;
-                            endif;
+                //             // Team1 won 2 - 0
+                //             if( $set_won_t1 == 2 && $set_won_t2 == 0 ):
+                //                 $ranking->points = 20;
+                //             elseif( $set_won_t1 == 2 && $set_won_t2 == 1 ):
+                //                 $ranking->points = 15;
+                //             endif;
 
 
-                        //Team 1 lost 1 - 2
-                        elseif( $set_won_t1 < $set_won_t2 ):
-                            $ranking->match_won = 0;
-                            $ranking->match_lost = 1;
-                            $ranking->match_deuce = 0;
+                //         //Team 1 lost 1 - 2
+                //         elseif( $set_won_t1 < $set_won_t2 ):
+                //             $ranking->match_won = 0;
+                //             $ranking->match_lost = 1;
+                //             $ranking->match_deuce = 0;
 
-                            if( $set_won_t1 == 1 && $set_won_t2 == 2 ):
-                                $ranking->points = 5;
-                            endif;
+                //             if( $set_won_t1 == 1 && $set_won_t2 == 2 ):
+                //                 $ranking->points = 5;
+                //             endif;
 
-                        //Deuce
-                        elseif( $set_won_t1 == $set_won_t2 ):
-                            $ranking->match_won = 0;
-                            $ranking->match_lost = 0;
-                            $ranking->match_deuce = 1;
-                        endif;
+                //         //Deuce
+                //         elseif( $set_won_t1 == $set_won_t2 ):
+                //             $ranking->match_won = 0;
+                //             $ranking->match_lost = 0;
+                //             $ranking->match_deuce = 1;
+                //         endif;
 
-                        $ranking->set_won = $set_won_t1;
-                        $ranking->set_lost = $set_won_t2;
-                        $ranking->games_won = $games_won_t1;
-                        $ranking->games_lost = $games_won_t2;
-                        $ranking->save();
+                //         $ranking->set_won = $set_won_t1;
+                //         $ranking->set_lost = $set_won_t2;
+                //         $ranking->games_won = $games_won_t1;
+                //         $ranking->games_lost = $games_won_t2;
+                //         $ranking->save();
 
-                    endif;
-                endforeach;
+                //     endif;
+                // endforeach;
 
                 /** Update Rankings */
-                foreach( $match->team2->players as $teamPlayer ):
-                    if($teamPlayer->starter):
-                        /*
-                        $ranking = Ranking::where('year', '=', Group::where('id', '=', $id_group)->first()->division->tournament->date_start->format('Y'))
-                                          ->where('id_player', '=', $teamPlayer->player->id)
-                                          ->first();*/
+                // foreach( $match->team2->players as $teamPlayer ):
+                //     if($teamPlayer->starter):
+                //         /*
+                //         $ranking = Ranking::where('year', '=', Group::where('id', '=', $id_group)->first()->division->tournament->date_start->format('Y'))
+                //                           ->where('id_player', '=', $teamPlayer->player->id)
+                //                           ->first();*/
 
 
-                        $ranking = new Ranking;
-                        $ranking->id_player = $teamPlayer->player->id;
-                        $ranking->year = Group::where('id', '=', $id_group)->first()->division->tournament->date_start->format('Y');
-                        if( $match->date ):
-                            $ranking->date = $match->date;
-                        else:
-                            $ranking->date = date('Y-m-d');
-                        endif;
-                        $ranking->id_match = $match->id;
-                        $ranking->id_edition = $id_edition;
-                        if( $match->club ):
-                            $ranking->id_city = $match->club->id_city;
-                        else:
-                            $ranking->id_city = 0;
-                        endif;
+                //         $ranking = new Ranking;
+                //         $ranking->id_player = $teamPlayer->player->id;
+                //         $ranking->year = Group::where('id', '=', $id_group)->first()->division->tournament->date_start->format('Y');
+                //         if( $match->date ):
+                //             $ranking->date = $match->date;
+                //         else:
+                //             $ranking->date = date('Y-m-d');
+                //         endif;
+                //         $ranking->id_match = $match->id;
+                //         $ranking->id_edition = $id_edition;
+                //         if( $match->club ):
+                //             $ranking->id_city = $match->club->id_city;
+                //         else:
+                //             $ranking->id_city = 0;
+                //         endif;
 
-                        //Team 2 won
-                        if( $set_won_t2 > $set_won_t1 ):
-                            $ranking->match_won = 1;
-                            $ranking->match_lost = 0;
-                            $ranking->match_deuce = 0;
+                //         //Team 2 won
+                //         if( $set_won_t2 > $set_won_t1 ):
+                //             $ranking->match_won = 1;
+                //             $ranking->match_lost = 0;
+                //             $ranking->match_deuce = 0;
 
-                            if( $set_won_t2 == 2 && $set_won_t1 == 0 ):
-                                $ranking->points = 20;
-                            elseif( $set_won_t2 == 2 && $set_won_t1 == 1 ):
-                                $ranking->points = 15;
-                            endif;
-
-
-                        //Team 2 lost
-                        elseif( $set_won_t2 < $set_won_t1 ):
-                            $ranking->match_won = 0;
-                            $ranking->match_lost = 1;
-                            $ranking->match_deuce = 0;
-
-                            if( $set_won_t1 == 1 && $set_won_t2 == 2 ):
-                                $ranking->points = 5;
-                            endif;
-
-                        //Deuce
-                        elseif( $set_won_t2 == $set_won_t1 ):
-                            $ranking->match_won = 0;
-                            $ranking->match_lost = 0;
-                            $ranking->match_deuce = 1;
-                        endif;
-                        $ranking->set_won = $set_won_t2;
-                        $ranking->set_lost = $set_won_t1;
-                        $ranking->games_won = $games_won_t2;
-                        $ranking->games_lost = $games_won_t1;
-                        $ranking->save();
+                //             if( $set_won_t2 == 2 && $set_won_t1 == 0 ):
+                //                 $ranking->points = 20;
+                //             elseif( $set_won_t2 == 2 && $set_won_t1 == 1 ):
+                //                 $ranking->points = 15;
+                //             endif;
 
 
-                    endif;
-                endforeach;
+                //         //Team 2 lost
+                //         elseif( $set_won_t2 < $set_won_t1 ):
+                //             $ranking->match_won = 0;
+                //             $ranking->match_lost = 1;
+                //             $ranking->match_deuce = 0;
+
+                //             if( $set_won_t1 == 1 && $set_won_t2 == 2 ):
+                //                 $ranking->points = 5;
+                //             endif;
+
+                //         //Deuce
+                //         elseif( $set_won_t2 == $set_won_t1 ):
+                //             $ranking->match_won = 0;
+                //             $ranking->match_lost = 0;
+                //             $ranking->match_deuce = 1;
+                //         endif;
+                //         $ranking->set_won = $set_won_t2;
+                //         $ranking->set_lost = $set_won_t1;
+                //         $ranking->games_won = $games_won_t2;
+                //         $ranking->games_lost = $games_won_t1;
+                //         $ranking->save();
+
+
+                //     endif;
+                // endforeach;
 
             elseif($match->matchcodes->ref_type == 'phase'):
 
@@ -559,82 +559,82 @@ class ScoreController extends AppBaseController
                 endif;
 
                 /** Update Rankings */
-                foreach( $match->team1->players as $teamPlayer ):
-                    if($teamPlayer->starter):
-                        /*
-                        $ranking = Ranking::where('year', '=', $curPhase->bracket->tournament->date_start->format('Y'))
-                                          ->where('id_player', '=', $teamPlayer->player->id)
-                                          ->first(); */
+                // foreach( $match->team1->players as $teamPlayer ):
+                //     if($teamPlayer->starter):
+                //         /*
+                //         $ranking = Ranking::where('year', '=', $curPhase->bracket->tournament->date_start->format('Y'))
+                //                           ->where('id_player', '=', $teamPlayer->player->id)
+                //                           ->first(); */
 
-                        /*
-                        $ranking = new Ranking;
-                        $ranking->id_player = $teamPlayer->player->id;
-                        $ranking->year = $curPhase->bracket->tournament->date_start->format('Y');
-                        $ranking->date = $match->date;
-                        $ranking->points = $ranking->points + ( $games_won_t1 + ( 5 * $curPhase->name ));
-                        $ranking->id_match = $match->id;
-                        $ranking->id_city = $match->club->id_city;
+                //         /*
+                //         $ranking = new Ranking;
+                //         $ranking->id_player = $teamPlayer->player->id;
+                //         $ranking->year = $curPhase->bracket->tournament->date_start->format('Y');
+                //         $ranking->date = $match->date;
+                //         $ranking->points = $ranking->points + ( $games_won_t1 + ( 5 * $curPhase->name ));
+                //         $ranking->id_match = $match->id;
+                //         $ranking->id_city = $match->club->id_city;
 
-                        //Team 1 won
-                        if( $set_won_t1 > $set_won_t2 ):
-                            $ranking->match_won = 1;
-                            $ranking->match_lost = 0;
-                            $ranking->match_deuce = 0;
-                        //Team 1 lost
-                        elseif( $set_won_t1 < $set_won_t2 ):
-                            $ranking->match_won = 0;
-                            $ranking->match_lost = 1;
-                            $ranking->match_deuce = 0;
-                        endif;
+                //         //Team 1 won
+                //         if( $set_won_t1 > $set_won_t2 ):
+                //             $ranking->match_won = 1;
+                //             $ranking->match_lost = 0;
+                //             $ranking->match_deuce = 0;
+                //         //Team 1 lost
+                //         elseif( $set_won_t1 < $set_won_t2 ):
+                //             $ranking->match_won = 0;
+                //             $ranking->match_lost = 1;
+                //             $ranking->match_deuce = 0;
+                //         endif;
 
-                        $ranking->set_won = $set_won_t1;
-                        $ranking->set_lost = $set_won_t2;
-                        $ranking->games_won = $games_won_t1;
-                        $ranking->games_lost = $games_won_t2;
-                        $ranking->save();
-                        */
+                //         $ranking->set_won = $set_won_t1;
+                //         $ranking->set_lost = $set_won_t2;
+                //         $ranking->games_won = $games_won_t1;
+                //         $ranking->games_lost = $games_won_t2;
+                //         $ranking->save();
+                //         */
 
 
-                    endif;
-                endforeach;
+                //     endif;
+                // endforeach;
 
                 /** Update Rankings */
-                foreach( $match->team2->players as $teamPlayer ):
-                    if($teamPlayer->starter):
-                        /*$ranking = Ranking::where('year', '=', $curPhase->bracket->tournament->date_start->format('Y'))
-                                          ->where('id_player', '=', $teamPlayer->player->id)
-                                          ->first();*/
+                // foreach( $match->team2->players as $teamPlayer ):
+                //     if($teamPlayer->starter):
+                //         /*$ranking = Ranking::where('year', '=', $curPhase->bracket->tournament->date_start->format('Y'))
+                //                           ->where('id_player', '=', $teamPlayer->player->id)
+                //                           ->first();*/
 
-                        /*
-                        $ranking = new Ranking;
-                        $ranking->id_player = $teamPlayer->player->id;
-                        $ranking->year = $curPhase->bracket->tournament->date_start->format('Y');
-                        $ranking->date = $match->date;
-                        $ranking->points = $ranking->points + ( $games_won_t2 + ( 5 * $curPhase->name ));
-                        $ranking->id_match = $match->id;
-                        $ranking->id_city = $match->club->id_city;
+                //         /*
+                //         $ranking = new Ranking;
+                //         $ranking->id_player = $teamPlayer->player->id;
+                //         $ranking->year = $curPhase->bracket->tournament->date_start->format('Y');
+                //         $ranking->date = $match->date;
+                //         $ranking->points = $ranking->points + ( $games_won_t2 + ( 5 * $curPhase->name ));
+                //         $ranking->id_match = $match->id;
+                //         $ranking->id_city = $match->club->id_city;
 
-                        //Team 2 won
-                        if( $set_won_t2 > $set_won_t1 ):
-                            $ranking->match_won = 1;
-                            $ranking->match_lost = 0;
-                            $ranking->match_deuce = 0;
-                        //Team 2 lost
-                        elseif( $set_won_t2 < $set_won_t1 ):
-                            $ranking->match_won = 0;
-                            $ranking->match_lost = 1;
-                            $ranking->match_deuce = 0;
-                        endif;
-                        $ranking->set_won = $set_won_t2;
-                        $ranking->set_lost = $set_won_t1;
-                        $ranking->games_won = $games_won_t2;
-                        $ranking->games_lost = $games_won_t1;
-                        $ranking->save();
-                        */
+                //         //Team 2 won
+                //         if( $set_won_t2 > $set_won_t1 ):
+                //             $ranking->match_won = 1;
+                //             $ranking->match_lost = 0;
+                //             $ranking->match_deuce = 0;
+                //         //Team 2 lost
+                //         elseif( $set_won_t2 < $set_won_t1 ):
+                //             $ranking->match_won = 0;
+                //             $ranking->match_lost = 1;
+                //             $ranking->match_deuce = 0;
+                //         endif;
+                //         $ranking->set_won = $set_won_t2;
+                //         $ranking->set_lost = $set_won_t1;
+                //         $ranking->games_won = $games_won_t2;
+                //         $ranking->games_lost = $games_won_t1;
+                //         $ranking->save();
+                //         */
 
 
-                    endif;
-                endforeach;
+                //     endif;
+                // endforeach;
 
             endif;
         endif;
@@ -649,14 +649,14 @@ class ScoreController extends AppBaseController
                         ->get();
                         */
 
-        $rankings_m = Ranking::selectRaw('id_player, sum(points) as points, sum(match_won) match_won, sum(match_lost) match_lost, sum(set_won) set_won, sum(set_lost) set_lost, sum(games_won) games_won, sum(games_lost) games_lost')
-                        ->join('users', 'users.id', '=', 'rankings.id_player')
-                        ->where('date', '>', Carbon::now()->subYear(1))
-                        ->where('users.gender', '=', 'm')
-                        ->groupBy('id_player')
-                        ->orderBy('points', 'DESC')
-                        ->get()
-                        ;
+        // $rankings_m = Ranking::selectRaw('id_player, sum(points) as points, sum(match_won) match_won, sum(match_lost) match_lost, sum(set_won) set_won, sum(set_lost) set_lost, sum(games_won) games_won, sum(games_lost) games_lost')
+        //                 ->join('users', 'users.id', '=', 'rankings.id_player')
+        //                 ->where('date', '>', Carbon::now()->subYear(1))
+        //                 ->where('users.gender', '=', 'm')
+        //                 ->groupBy('id_player')
+        //                 ->orderBy('points', 'DESC')
+        //                 ->get()
+        //                 ;
 
         /*
         $rankings_f = DB::table('rankings')
@@ -668,14 +668,14 @@ class ScoreController extends AppBaseController
                         ->get();
                         */
 
-        $rankings_f = Ranking::selectRaw('id_player, sum(points) as points, sum(match_won) match_won, sum(match_lost) match_lost, sum(set_won) set_won, sum(set_lost) set_lost, sum(games_won) games_won, sum(games_lost) games_lost')
-                        ->join('users', 'users.id', '=', 'rankings.id_player')
-                        ->where('date', '>', Carbon::now()->subYear(1))
-                        ->where('users.gender', '=', 'f')
-                        ->groupBy('id_player')
-                        ->orderBy('points', 'DESC')
-                        ->get()
-                        ;
+        // $rankings_f = Ranking::selectRaw('id_player, sum(points) as points, sum(match_won) match_won, sum(match_lost) match_lost, sum(set_won) set_won, sum(set_lost) set_lost, sum(games_won) games_won, sum(games_lost) games_lost')
+        //                 ->join('users', 'users.id', '=', 'rankings.id_player')
+        //                 ->where('date', '>', Carbon::now()->subYear(1))
+        //                 ->where('users.gender', '=', 'f')
+        //                 ->groupBy('id_player')
+        //                 ->orderBy('points', 'DESC')
+        //                 ->get()
+        //                 ;
 
         /*
         $rankings = Ranking::selectRaw('sum(points) as points, id_player')
@@ -686,17 +686,17 @@ class ScoreController extends AppBaseController
                             ->get();
                             */
 
-        foreach( $rankings_m as $position => $ranking ):
-            $user = User::where('id', '=', $ranking->id_player)->first();
-            $user->position = $position+1;
-            $user->save();
-        endforeach;
+        // foreach( $rankings_m as $position => $ranking ):
+        //     $user = User::where('id', '=', $ranking->id_player)->first();
+        //     $user->position = $position+1;
+        //     $user->save();
+        // endforeach;
 
-        foreach( $rankings_f as $position => $ranking ):
-            $user = User::where('id', '=', $ranking->id_player)->first();
-            $user->position = $position+1;
-            $user->save();
-        endforeach;
+        // foreach( $rankings_f as $position => $ranking ):
+        //     $user = User::where('id', '=', $ranking->id_player)->first();
+        //     $user->position = $position+1;
+        //     $user->save();
+        // endforeach;
 
         if( isset($input['ajax']) && $input['ajax'] == 1 )
             return response()->json(array('status' => 'ok'));

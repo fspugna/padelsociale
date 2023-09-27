@@ -17,13 +17,14 @@ class EditionRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
+        'id_event',
         'edition_name',
         'edition_type',
-        'edition_description',                
-        'edition_rules', 
-        'edition_zone_rules', 
-        'edition_awards', 
-        'edition_zones_and_clubs', 
+        'edition_description',
+        'edition_rules',
+        'edition_zone_rules',
+        'edition_awards',
+        'edition_zones_and_clubs',
         'logo',
         'subscription_fee'
     ];

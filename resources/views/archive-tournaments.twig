@@ -16,9 +16,9 @@
 	<div class="section-title "><span>Archivio</span></div></br>
 	{% include 'components/partials/search-form.twig' %}
 
-	<div class="input-field input-field--select input-field--center">			
-            <select id="year_sel" name="year_sel" class="dropdown dropdown--light">			                                
-                {% for year in 2019..current_year %}
+	<div class="input-field input-field--select input-field--center">
+            <select id="year_sel" name="year_sel" class="dropdown dropdown--light">
+                {% for year in 2023..current_year %}
                         <option value="{{year}}" {% if selected_year == year %} selected {% endif %}>{{ year }}</option>
                 {% endfor %}
             </select>
@@ -26,7 +26,7 @@
 
 	<div class="separator_list"></div>
 	{% for queryItem in tournaments %}
-        
+
             <a href="{{ queryItem.link }}">
                 {% include 'components/partials/card-events--big.twig' %}
             </a>
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('year_sel').addEventListener('change', function(){
         var year_select = document.getElementById('year_sel');
         var sel_year = year_select.options[year_select.selectedIndex];
-        
+
         if( sel_year.value !== '' ){
             document.location.href = "/archive/matches/"+sel_year.value+window.location.search;
         }else{

@@ -36,6 +36,7 @@ class Edition extends Model
 
 
     public $fillable = [
+        'id_event',
         'edition_name',
         'edition_type',
         'edition_description',
@@ -53,6 +54,7 @@ class Edition extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'id_event' => 'integer',
         'edition_name' => 'string',
         'edition_type' => 'integer',
         'edition_description' => 'string',
@@ -70,6 +72,7 @@ class Edition extends Model
      * @var array
      */
     public static $rules = [
+        'id_event' => 'required',
         'edition_name' => 'required',
         'edition_type' => 'required'
     ];
