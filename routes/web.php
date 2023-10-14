@@ -174,6 +174,7 @@ Route::group(['middleware' => ['auth']], function () {
 
             Route::get('/matches/{id_match}/delete', ['as' => 'del_match' , 'uses' => 'MatchController@delete']);
             Route::post('/matches/{id_match}/deleteAjax', ['as' => 'del_match' , 'uses' => 'MatchController@deleteAjax']);
+            Route::post('/matches/{id_match}/pitch', ['as' => 'match_pitch' , 'uses' => 'MatchController@pitch']);
 
             Route::post('/brackets/teams/add', ['as' => 'brackets.teams.add', 'uses' => 'BracketController@addTeam']);
             Route::post('/brackets/teams/remove', ['as' => 'brackets.teams.remove', 'uses' => 'BracketController@removeTeam']);

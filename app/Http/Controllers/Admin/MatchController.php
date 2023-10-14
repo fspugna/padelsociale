@@ -264,6 +264,14 @@ class MatchController extends AppBaseController
 
         return Response()->json(array('status'=>'ok'));
     }
+
+    public function pitch(Request $request, $id_match){
+        $input = $request->all();
+        $match = Match::find($id_match);
+        $match->pitch = $input['pitch'];
+        $match->save();
+        return Response()->json(array('status'=>'ok'));
+    }
 }
 
 

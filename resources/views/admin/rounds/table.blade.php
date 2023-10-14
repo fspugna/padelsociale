@@ -34,7 +34,19 @@
                     @endif
 
                     <tr>
-                        <td class="text-center" width="45%" style="border: 0" data-id-team="{{ $match->id_team1}}">                            
+                        <td colspan="3" class="text-center" style="border: 0">
+                            Campo
+                            <select name="pitch_{!! $match->id !!}" value="{!! $round->description !!}">
+                                <option value=""> / </option>
+                                @for ($i = 1; $i <= 15; $i++)
+                                    <option value={!! $i !!} @if($match->pitch == $i) selected @endif>{!! $i !!}</option>
+                                @endfor
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text-center" width="45%" style="border: 0" data-id-team="{{ $match->id_team1}}">
                             <table class="table table-responsive" style="border: none;">
                                 @foreach($match->team1->players as $player)
                                 @if($player->starter)

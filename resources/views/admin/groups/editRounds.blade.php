@@ -12,14 +12,14 @@
 
         <form method="post" action="/admin/groups/updateRounds">
             @csrf
-            <input type="hidden" name="id_group" value="{!! $group->id !!}">            
+            <input type="hidden" name="id_group" value="{!! $group->id !!}">
 
             <div class="row" style="margin-bottom: 5px">
             @foreach($rounds as $round)
-            
+
                 <div class="col-lg-6">
                     <div class="box box-primary">
-                        <div class="box-body">                    
+                        <div class="box-body">
                             <table class="table">
                                 <tr>
                                     <td class="text-center">
@@ -31,7 +31,7 @@
                                         <input type="text" name="id_round_{!! $round->id !!}" value="{!! $round->description !!}" class="form-control" placeholder="Descrizione giornata">
                                     </td>
                                 </tr>
-                            </table>                                                                                                            
+                            </table>
 
                             <table class="table">
                             @foreach($round->matches as $match)
@@ -39,38 +39,38 @@
                                     <td>
                                         <select class="form-control" name="match_{!! $match->id !!}_team1">
                                         @foreach($groupTeams as $groupTeam)
-                                            @if( $edition_type == 0 ) 
-                                                @foreach( $groupTeam->team->players as $teamPlayer )                                            
-                                                    <option value="{!! $teamPlayer->id_team !!}" @if( $teamPlayer->id_team == $match->id_team1) selected @endif>{!! $teamPlayer->player->name !!} {!! $teamPlayer->player->surname !!}</option>                                                    
+                                            @if( $edition_type == 0 )
+                                                @foreach( $groupTeam->team->players as $teamPlayer )
+                                                    <option value="{!! $teamPlayer->id_team !!}" @if( $teamPlayer->id_team == $match->id_team1) selected @endif>{!! $teamPlayer->player->name !!} {!! $teamPlayer->player->surname !!}</option>
                                                 @endforeach
-                                            @else 
-                                                <option value="{!! $groupTeam->id_team !!}" @if( $groupTeam->id_team == $match->id_team1) selected @endif>{!! $groupTeam->team->name !!}</option>                                                
+                                            @else
+                                                <option value="{!! $groupTeam->id_team !!}" @if( $groupTeam->id_team == $match->id_team1) selected @endif>{!! $groupTeam->team->name !!}</option>
                                             @endif
                                         @endforeach
-                                        </select>                                        
+                                        </select>
                                     </td>
                                     <td>VS</td>
                                     <td>
                                         <select class="form-control"  name="match_{!! $match->id !!}_team2">
                                         @foreach($groupTeams as $groupTeam)
-                                            @if( $edition_type == 0 ) 
-                                                @foreach( $groupTeam->team->players as $teamPlayer )                                            
+                                            @if( $edition_type == 0 )
+                                                @foreach( $groupTeam->team->players as $teamPlayer )
                                                     <option value="{!! $teamPlayer->id_team !!}"  @if( $teamPlayer->id_team == $match->id_team2) selected @endif>{!! $teamPlayer->player->name !!} {!! $teamPlayer->player->surname !!}</option>
                                                 @endforeach
-                                            @else 
-                                                <option value="{!! $groupTeam->id_team !!}" @if( $groupTeam->id_team == $match->id_team2) selected @endif>{!! $groupTeam->team->name !!}</option>                                                
+                                            @else
+                                                <option value="{!! $groupTeam->id_team !!}" @if( $groupTeam->id_team == $match->id_team2) selected @endif>{!! $groupTeam->team->name !!}</option>
                                             @endif
                                         @endforeach
-                                        </select>                                        
+                                        </select>
                                     </td>
                                 </tr>
                             @endforeach
                             </table>
-                        </div>                        
+                        </div>
                         <button type="submit" name="btn_delete_round" value="{!! $round->id !!}" class="btn btn-danger btn-block">Elimina giornata</button>
-                    </div>                    
+                    </div>
 
-                </div>                               
+                </div>
             @endforeach
             </div>
 
@@ -86,7 +86,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach( $groupTeam->team->players as $teamPlayer )                                            
+                                @foreach( $groupTeam->team->players as $teamPlayer )
                                 <tr>
                                     <td>{!! $teamPlayer->player->name !!} {!! $teamPlayer->player->surname !!}</td>
                                 </tr>
@@ -102,6 +102,6 @@
             <button type="submit" class="btn btn-primary" name="btn_add_round" value="{!! $group->id !!}"><i class="fa fa-plus"></i> Aggiungi giornata</button>
             <a href="/admin/rounds/{!! $group->id !!}/index" class="btn btn-default">Annulla</a>
 
-        </form>            
+        </form>
     </div>
 @endsection

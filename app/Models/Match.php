@@ -25,7 +25,7 @@ class Match extends Model
     //use SoftDeletes;
 
     public $table = 'matches';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -45,7 +45,8 @@ class Match extends Model
         'a_tavolino',
         'note',
         'id_macro_match',
-        'match_order'
+        'match_order',
+        'pitch'
     ];
 
     /**
@@ -65,7 +66,8 @@ class Match extends Model
         'a_tavolino' => 'integer',
         'note' => 'string',
         'id_macro_match' => 'integer',
-        'match_order' => 'integer'
+        'match_order' => 'integer',
+        'pitch' => 'integer'
     ];
 
     /**
@@ -115,13 +117,13 @@ class Match extends Model
     }
 
     public function club()
-    {        
-        return $this->belongsTo(\App\Models\Club::class, 'id_club', 'id', 'clubs');        
-    }    
-    
+    {
+        return $this->belongsTo(\App\Models\Club::class, 'id_club', 'id', 'clubs');
+    }
+
     public function macroMatch()
     {
-        return $this->belongsTo(\App\Models\MacroMatch::class, 'id_macro_match', 'id', 'macro_matches');        
+        return $this->belongsTo(\App\Models\MacroMatch::class, 'id_macro_match', 'id', 'macro_matches');
     }
 
 }
