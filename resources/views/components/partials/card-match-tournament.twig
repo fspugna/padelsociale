@@ -24,8 +24,10 @@
 
     <div class="card__inner-tournament flex flex--column">
 
-        <div class="section-title-ottavo">        
-            {% if phase.matches|length == 8 %}
+        <div class="section-title-ottavo">
+            {% if phase.matches|length == 16 %}
+            {{index+1}}o Sedicesimo
+            {% elseif phase.matches|length == 8 %}
             {{index+1}}o Ottavo
             {% elseif phase.matches|length == 4 %}
             {{index+1}}o Quarto
@@ -37,7 +39,7 @@
         </div>
 
         <div style="justify-content: center; -webkit-justify-content: center;" class="flex">
-            <div class="card-match__team-tournament">                                
+            <div class="card-match__team-tournament">
                 {% if scores[phase.id][match.id] == null %}
                 {% for teamPlayer in match.team1.players %}
                 {% if teamPlayer.starter %}
@@ -99,7 +101,7 @@
             </div>
         </div>
 
-        <div class="card__risultato-tournament">            
+        <div class="card__risultato-tournament">
             {% if scores[phase.id][match.id] == null and match.id_team1 is not empty and match.id_team2 is not empty %}
             <span style="margin-top: 0px; margin-bottom: 35px;" class="section-title section-title--no-separator section-title--small">Da Disputare</span>
 
@@ -108,7 +110,7 @@
                         {# include 'components/partials/risultato-incontro.twig' #}
                     {% endif %}
                 {% endif %}
-                
+
             {% else %}
 
                 {% if match.id_team1 is not empty and match.id_team2 is not empty %}
@@ -134,7 +136,7 @@
                         {% endif %}
                     </div>
                 {% endif %}
-                
+
                 <p class="abstract_match-tournament">
                     {{ match.note }}
                 </p>
