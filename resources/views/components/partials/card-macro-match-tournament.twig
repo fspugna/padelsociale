@@ -4,12 +4,14 @@
 
     {% if loop.index <= 1 and cardmatch is not defined or loop.index is not defined and cardmatch is not defined %}
     <link href="/resources/assets/css/components/partials/card-match.css?v={{version}}" rel="stylesheet"/>
-    {% endif %}       
+    {% endif %}
 
     <div class="card__inner-tournament flex flex--column">
 
-        <div class="section-title-ottavo">        
-            {% if phase.macro_matches|length == 8 %}
+        <div class="section-title-ottavo">
+            {% if phase.macro_matches|length == 16 %}
+            {{index+1}}o Sedicesimo
+            {% elseif phase.macro_matches|length == 8 %}
             {{index+1}}o Ottavo
             {% elseif phase.macro_matches|length == 4 %}
             {{index+1}}o Quarto
@@ -21,13 +23,13 @@
         </div>
 
         <div style="justify-content: center; -webkit-justify-content: center;" class="flex">
-            <div class="card-match__team-tournament">                                                                
+            <div class="card-match__team-tournament">
                 <div class="player">
                     <div class="divTable" style="display: table-cell;justify-content: space-between;">
                         <div class="divTableBody">
                             <div class="divTableRow" style=" justify-content: space-between;">
-                                {% if macroMatch.team1.name is not empty %}                                    
-                    
+                                {% if macroMatch.team1.name is not empty %}
+
                                     {% set avatar = '' %}
                                     {% for meta in macroMatch.team1.club.user.metas %}
                                         {% if meta.meta == 'avatar' %}
@@ -68,14 +70,14 @@
             <div class="vs-tournament">
                 <span>VS</span>
             </div>
-            <div class="card-match__team-tournament">                                                                
+            <div class="card-match__team-tournament">
                 <div class="player">
                     <div class="divTable" style="display: table-cell;justify-content: space-between;">
                         <div class="divTableBody">
-                            <div class="divTableRow" style=" justify-content: space-between;">                
+                            <div class="divTableRow" style=" justify-content: space-between;">
 
                                 {% if macroMatch.team2.name is not empty %}
-                                
+
                                     {% set avatar = '' %}
                                     {% for meta in macroMatch.team2.club.user.metas %}
                                         {% if meta.meta == 'avatar' %}
@@ -105,17 +107,17 @@
                                             <a href="">{{ macroMatch.team2.name }}</a>
                                         </div>
                                     </div>
-                                
+
                                 {% endif %}
 
                             </div>
                         </div>
                     </div>
-                </div>                                                                                               
+                </div>
             </div>
         </div>
 
-        
+
     </div>
 
     <style>
