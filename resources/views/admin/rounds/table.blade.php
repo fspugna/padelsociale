@@ -48,36 +48,67 @@
                     <tr>
                         <td class="text-center" width="45%" style="border: 0" data-id-team="{{ $match->id_team1}}">
                             <table class="table table-responsive" style="border: none;">
-                                @foreach($match->team1->players as $player)
-                                @if($player->starter)
-                                <tr>
-                                    <td class="text-right" data-id-player="{{ $player->id_player }}">{!! $player->player->name !!} {!! $player->player->surname
-                                        !!}</td>
-                                    <td style="width: 55px;">
-                                        @php
-                                        $avatar = false
-                                        @endphp
-                                        @if( count($player->player->metas) > 0 )
-                                        @foreach($player->player->metas as $meta)
-                                        @if($meta->meta == 'avatar' && !empty($meta->meta_value))
-                                        <img src="{!! env('APP_URL') !!}/storage/{!! $meta->meta_value !!}"
-                                            class="img-circle pull-left" style="width: 40px; height: 40px;">
-                                        @php
-                                        $avatar = true
-                                        @endphp
+                                @if($match->matchPlayers)
+                                    @foreach($match->matchPlayers as $index => $matchPlayer)
+                                        @if( $matchPlayer->side === 'team1')
+                                            <tr>
+                                                <td class="text-right" data-id-player="{{ $matchPlayer->player->id }}">
+                                                    {!! $matchPlayer->player->name !!} {!! $matchPlayer->player->surname !!}
+                                                </td>
+                                                <td style="width: 55px;">
+                                                    @php
+                                                    $avatar = false
+                                                    @endphp
+                                                    @if( count($matchPlayer->player->metas) > 0 )
+                                                    @foreach($matchPlayer->player->metas as $meta)
+                                                    @if($meta->meta == 'avatar' && !empty($meta->meta_value))
+                                                    <img src="{!! env('APP_URL') !!}/storage/{!! $meta->meta_value !!}"
+                                                        class="img-circle pull-left" style="width: 40px; height: 40px;">
+                                                    @php
+                                                    $avatar = true
+                                                    @endphp
+                                                    @endif
+                                                    @endforeach
+                                                    @if(!$avatar)
+                                                    <img src="https://via.placeholder.com/40?text=?" class="img-circle pull-left">
+                                                    @endif
+                                                    @else
+                                                    <img src="https://via.placeholder.com/40?text=?" class="img-circle pull-left">
+                                                    @endif
+                                                </td>
+                                            </tr>
                                         @endif
-                                        @endforeach
-                                        @if(!$avatar)
-                                        <img src="https://via.placeholder.com/40?text=?" class="img-circle pull-left">
+                                    @endforeach
+                                @else
+                                    @foreach($match->team1->players as $player)
+                                        @if($player->starter)
+                                        <tr>
+                                            <td class="text-right" data-id-player="{{ $player->id_player }}">{!! $player->player->name !!} {!! $player->player->surname!!}</td>
+                                            <td style="width: 55px;">
+                                                @php
+                                                $avatar = false
+                                                @endphp
+                                                @if( count($player->player->metas) > 0 )
+                                                @foreach($player->player->metas as $meta)
+                                                @if($meta->meta == 'avatar' && !empty($meta->meta_value))
+                                                <img src="{!! env('APP_URL') !!}/storage/{!! $meta->meta_value !!}"
+                                                    class="img-circle pull-left" style="width: 40px; height: 40px;">
+                                                @php
+                                                $avatar = true
+                                                @endphp
+                                                @endif
+                                                @endforeach
+                                                @if(!$avatar)
+                                                <img src="https://via.placeholder.com/40?text=?" class="img-circle pull-left">
+                                                @endif
+                                                @else
+                                                <img src="https://via.placeholder.com/40?text=?" class="img-circle pull-left">
+                                                @endif
+                                            </td>
+                                        </tr>
                                         @endif
-                                        @else
-                                        <img src="https://via.placeholder.com/40?text=?" class="img-circle pull-left">
-                                        @endif
-                                    </td>
-
-                                </tr>
+                                    @endforeach
                                 @endif
-                                @endforeach
                                 <tr>
                                     <td colspan="2" class="text-right"><a href="javascript:void(0);"
                                             onClick="vittoriaATavolino({!! $match->id !!}, {!! $match->team1->id !!}, {!! $match->team2->id !!})"><i
@@ -90,35 +121,68 @@
                         </td>
                         <td class="text-center" width="45%" style="border: 0" data-id-team="{{ $match->id_team2}}">
                             <table class="table table-responsive" style="border: none;">
-                                @foreach($match->team2->players as $player)
-                                @if($player->starter)
-                                <tr>
-                                    <td style="width: 55px;">
-                                        @php
-                                        $avatar = false
-                                        @endphp
-                                        @if( count($player->player->metas) > 0 )
-                                        @foreach($player->player->metas as $meta)
-                                        @if($meta->meta == 'avatar' && !empty($meta->meta_value))
-                                        <img src="{!! env('APP_URL') !!}/storage/{!! $meta->meta_value !!}"
-                                            class="img-circle pull-left" style="width: 40px; height: 40px;">
-                                        @php
-                                        $avatar = true
-                                        @endphp
+                                @if($match->matchPlayers)
+                                    @foreach($match->matchPlayers as $index => $matchPlayer)
+                                        @if( $matchPlayer->side === 'team2')
+                                            <tr>
+                                                <td style="width: 55px;">
+                                                    @php
+                                                    $avatar = false
+                                                    @endphp
+                                                    @if( count($matchPlayer->player->metas) > 0 )
+                                                    @foreach($matchPlayer->player->metas as $meta)
+                                                    @if($meta->meta == 'avatar' && !empty($meta->meta_value))
+                                                    <img src="{!! env('APP_URL') !!}/storage/{!! $meta->meta_value !!}"
+                                                        class="img-circle pull-left" style="width: 40px; height: 40px;">
+                                                    @php
+                                                    $avatar = true
+                                                    @endphp
+                                                    @endif
+                                                    @endforeach
+                                                    @if(!$avatar)
+                                                    <img src="https://via.placeholder.com/40?text=?" class="img-circle pull-left">
+                                                    @endif
+                                                    @else
+                                                    <img src="https://via.placeholder.com/40?text=?" class="img-circle pull-left">
+                                                    @endif
+                                                </td>
+                                                <td class="text-left" data-id-player="{{ $matchPlayer->player->id }}">
+                                                    {!! $matchPlayer->player->name !!} {!! $matchPlayer->player->surname !!}
+                                                </td>
+                                            </tr>
                                         @endif
-                                        @endforeach
-                                        @if(!$avatar)
-                                        <img src="https://via.placeholder.com/40?text=?" class="img-circle pull-left">
+                                    @endforeach
+                                @else
+                                    @foreach($match->team2->players as $player)
+                                        @if($player->starter)
+                                        <tr>
+                                            <td style="width: 55px;">
+                                                @php
+                                                $avatar = false
+                                                @endphp
+                                                @if( count($player->player->metas) > 0 )
+                                                @foreach($player->player->metas as $meta)
+                                                @if($meta->meta == 'avatar' && !empty($meta->meta_value))
+                                                <img src="{!! env('APP_URL') !!}/storage/{!! $meta->meta_value !!}"
+                                                    class="img-circle pull-left" style="width: 40px; height: 40px;">
+                                                @php
+                                                $avatar = true
+                                                @endphp
+                                                @endif
+                                                @endforeach
+                                                @if(!$avatar)
+                                                <img src="https://via.placeholder.com/40?text=?" class="img-circle pull-left">
+                                                @endif
+                                                @else
+                                                <img src="https://via.placeholder.com/40?text=?" class="img-circle pull-left">
+                                                @endif
+                                            </td>
+                                            <td class="text-left" data-id-player="{{ $player->id_player }}">{!! $player->player->name !!} {!! $player->player->surname !!}
+                                            </td>
+                                        </tr>
                                         @endif
-                                        @else
-                                        <img src="https://via.placeholder.com/40?text=?" class="img-circle pull-left">
-                                        @endif
-                                    </td>
-                                    <td class="text-left" data-id-player="{{ $player->id_player }}">{!! $player->player->name !!} {!! $player->player->surname !!}
-                                    </td>
-                                </tr>
+                                    @endforeach
                                 @endif
-                                @endforeach
                                 <td colspan="2" class="text-left"><a href="javascript:void(0);"
                                         onClick="vittoriaATavolino({!! $match->id !!}, {!! $match->team2->id !!}, {!! $match->team1->id !!})"><i
                                             class="fa fa-trophy"></i> Assegna vittoria a tavolino</button></a></td>

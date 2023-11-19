@@ -126,4 +126,8 @@ class Match extends Model
         return $this->belongsTo(\App\Models\MacroMatch::class, 'id_macro_match', 'id', 'macro_matches');
     }
 
+    public function matchPlayers()
+    {
+        return $this->hasMany(\App\Models\MatchPlayer::class, 'id_match', 'id', 'match_players');
+    }
 }
