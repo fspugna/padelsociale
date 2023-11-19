@@ -48,7 +48,7 @@
                     <tr>
                         <td class="text-center" width="45%" style="border: 0" data-id-team="{{ $match->id_team1}}">
                             <table class="table table-responsive" style="border: none;">
-                                @if($match->matchPlayers)
+                                @if($match->matchPlayers()->exists())
                                     @foreach($match->matchPlayers as $index => $matchPlayer)
                                         @if( $matchPlayer->side === 'team1')
                                             <tr>
@@ -121,7 +121,7 @@
                         </td>
                         <td class="text-center" width="45%" style="border: 0" data-id-team="{{ $match->id_team2}}">
                             <table class="table table-responsive" style="border: none;">
-                                @if($match->matchPlayers)
+                                @if($match->matchPlayers()->exists())
                                     @foreach($match->matchPlayers as $index => $matchPlayer)
                                         @if( $matchPlayer->side === 'team2')
                                             <tr>
