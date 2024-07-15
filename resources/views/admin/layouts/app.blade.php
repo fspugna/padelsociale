@@ -7,38 +7,36 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css">
+    <link rel="stylesheet" href="{{ url('public/css') }}/bootstrap.min.css" />
+    <link rel="stylesheet" href="{{ url('public/css') }}/bootstrap-toggle.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url('public/css') }}/font-awesome.min.css">
 
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{ url('public/css') }}/ionicons.min.css">
 
     <!-- Theme style -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="{{ url('public/css') }}/AdminLTE.min.css">
+    <link rel="stylesheet" href="{{ url('public/css') }}/_all-skins.min.css">
 
     <!-- iCheck -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/all.css" />   
+    <link rel="stylesheet" href="{{ url('public/css') }}/iCheck/all.css" />
 
     <!-- slider -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/css/bootstrap-slider.min.css" integrity="sha256-G3IAYJYIQvZgPksNQDbjvxd/Ca1SfCDFwu2s2lt0oGo=" crossorigin="anonymous" /> 
+    <link rel="stylesheet" href="{{ url('public/css') }}/bootstrap-slider.min.css" integrity="sha256-G3IAYJYIQvZgPksNQDbjvxd/Ca1SfCDFwu2s2lt0oGo=" crossorigin="anonymous" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css">
+    <link rel="stylesheet" href="{{ url('public/css') }}/select2.min.css">
 
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    {{-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> --}}
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" /> 
+    <link rel="stylesheet" href="{{ url('public/css') }}/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" href="{{ url('public/css') }}/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url('public/css') }}/daterangepicker.css" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.10.6/jquery.typeahead.min.css" />    
+    <link rel="stylesheet" href="{{ url('public/css') }}/jquery.typeahead.min.css" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
-
-    
+    <link rel="stylesheet" href="{{ url('public/css') }}/swiper.min.css">
 
     @yield('css')
 </head>
@@ -68,7 +66,7 @@
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 @if($avatar !== null)
-                                    <img src="{!! $avatar !!}" class="img-circle" style="width: 25px; height: 25px;">                
+                                    <img src="{!! $avatar !!}" class="img-circle" style="width: 25px; height: 25px;">
                                 @else
                                     <img src="https://via.placeholder.com/25?text=?" class="img-circle">
                                 @endif
@@ -77,14 +75,14 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
-                                <li class="user-header">                                   
+                                <li class="user-header">
 
                                     @if($avatar !== null)
-                                        <img src="{!! $avatar !!}" class="img-circle" style="width: 100px; height: 100px;">                
+                                        <img src="{!! $avatar !!}" class="img-circle" style="width: 100px; height: 100px;">
                                     @else
                                         <img src="https://via.placeholder.com/100?text=?" class="img-circle">
                                     @endif
-                                                        
+
                                     <p>
                                         {!! Auth::user()->name !!}
                                         <small>{!! trans('labels.member_since') !!} {!! Auth::user()->created_at->format('M. Y') !!}</small>
@@ -172,29 +170,29 @@
     @endif
 
     <!-- jQuery 3.1.1 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{{ url('public/js') }}/jquery.min.js"></script>
+    <script src="{{ url('public/js') }}/moment.min.js"></script>
+    <script src="{{ url('public/js') }}/bootstrap.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.it.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>    
+    <script src="{{ url('public/js') }}/bootstrap-datepicker.min.js"></script>
+    <script src="{{ url('public/js') }}/bootstrap-datepicker.it.min.js"></script>
+    <script src="{{ url('public/js') }}/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="{{ url('public/js') }}/daterangepicker.min.js"></script>
 
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script src="{{ url('public/js') }}/bootstrap-toggle.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/js/adminlte.min.js"></script>
+    <script src="{{ url('public/js') }}/adminlte.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/bootstrap-slider.min.js" integrity="sha256-oj52qvIP5c7N6lZZoh9z3OYacAIOjsROAcZBHUaJMyw=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
+    <script src="{{ url('public/js') }}/icheck.min.js"></script>
+    <script src="{{ url('public/js') }}/bootstrap-slider.min.js" integrity="sha256-oj52qvIP5c7N6lZZoh9z3OYacAIOjsROAcZBHUaJMyw=" crossorigin="anonymous"></script>
+    <script src="{{ url('public/js') }}/select2.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>   
+    <script src="{{ url('public/js') }}/typeahead.bundle.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script> 
-    
+    <script src="{{ url('public/js') }}/swiper.min.js"></script>
+
     <script>
-        $(document).ready(function(){   
+        $(document).ready(function(){
 
             $('input[type="checkbox"]').each(function(){
                 var self = $(this),
@@ -206,9 +204,9 @@
                     checkboxClass: 'icheckbox_flat-red',
                     radioClass: 'iradio_flat-red'
                 });
-                
+
             });
-            
+
             if( $('input[name="daterange"]').length ){
                 var locale = {
                     "format": "DD/MM/YYYY",
@@ -243,23 +241,23 @@
                         "Dicembre"
                     ],
                     "firstDay": 1
-                };                
+                };
 
                 $('input[name="daterange"]').daterangepicker({
                     startDate: ( $("#date_start").val() != '' ) ? $("#date_start").val() : moment().format('DD/MM/YYYY'),
                     endDate: ( $("#date_end").val() != '' ) ? $("#date_end").val() : moment().format('DD/MM/YYYY'),
                     opens: 'left',
                     locale: locale
-                }, function(start, end, label) {        
-                    setTimeout(function(){                
+                }, function(start, end, label) {
+                    setTimeout(function(){
                         $("#date_start").val( start.format('DD/MM/YYYY') );
-                        $("#date_end").val( end.format('DD/MM/YYYY') );            
+                        $("#date_end").val( end.format('DD/MM/YYYY') );
                     }, 500);
-                });    
-                
+                });
+
                 var period = $('#daterange').val().split(' - ');
                 $("#date_start").val( period[0] );
-                $("#date_end").val( period[1] );                    
+                $("#date_end").val( period[1] );
             }
         });
         </script>

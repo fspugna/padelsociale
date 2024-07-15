@@ -51,7 +51,7 @@
                     {% endfor %}
 
                 {% else %}
-                    
+
                     {# Elenco giocatori che hanno effettivamente giocato la partita #}
                     {% for player in match_players[match.id]['team1'] %}
                         {% include 'components/partials/card-match-player-left.twig' %}

@@ -20,6 +20,7 @@ use App\Models\Group;
 use App\Models\Edition;
 use App\Models\Club;
 use App\Models\Partner;
+use Illuminate\Support\Facades\Log;
 
 use Carbon\Carbon;
 
@@ -122,7 +123,7 @@ class AppServiceProvider extends ServiceProvider
 
                     foreach($teamPlayers as $teamPlayer):
                         foreach($teamPlayer->team->subscriptions as $subscription):
-                            if($subscription->tournament->date_end->isFuture()){
+                            if(!empty($subscription->tournament->date_end) && $subscription->tournament->date_end->isFuture()){
                                 $divisions = Division::where('id_tournament', '=', $subscription->id_tournament)
                                                         ->where('id_zone', '=', $subscription->id_zone)
                                                         //->where('id_category_type', '=', $subscription->id_category_type)
@@ -213,24 +214,26 @@ class AppServiceProvider extends ServiceProvider
             );
 
             //DB::enableQueryLog(); // Enable query log
-
-            $t_cities = DB::table('cities')
+            $query = DB::table('cities')
                         ->select(DB::raw("cities.name as city, cities.slug,  tournaments.date_start, editions.edition_name as edition_name, editions.id as id_edition, min(zones.id) id_zone"))
                         ->leftJoin('zones', 'cities.id', '=', 'zones.id_city')
                         ->leftJoin('editions_zones', 'editions_zones.id_zone', '=', 'zones.id')
                         ->leftJoin('tournaments', 'tournaments.id_edition', '=', 'editions_zones.id_edition')
                         ->leftJoin('editions', 'tournaments.id_edition', '=', 'editions.id')
+                        ->leftJoin('events', 'editions.id_event', '=', 'events.id')
                         ->whereNotNull('tournaments.id')
-                        ->where('editions.id_event', 1)
+                        ->where('editions.id_event', 4)
                         ->where('tournaments.date_end', '>=', Carbon::now('Europe/Rome')->format('Y-m-d'))
                         ->where('tournaments.id_tournament_type', '=', 1)
                         ->where('tournaments.generated', '=', 1)
                         ->groupBy(DB::Raw('cities.name, cities.slug, tournaments.date_start, editions.edition_name, editions.id'))
                         ->orderBy('cities.name', 'ASC')
-                        ->orderBy('tournaments.date_start', 'ASC')
-                        ->get();
+                        ->orderBy('tournaments.date_start', 'ASC');
+                        
+            $t_cities = $query->get();
 
-            //dd(DB::getQueryLog()); // Show results of log
+            Log::info($query->toSql());
+            //DB::getQueryLog(); // Show results of log
             //dd($t_cities);
 
             $menu_tournaments = array();

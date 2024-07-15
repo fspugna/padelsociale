@@ -13,7 +13,7 @@
 {% block content %}
     <!--front-page.twig page -->
 
-    <div class="page front-page">
+    <div class="page front-page">       
 
         <!--- INFO START -->
         {%
@@ -69,7 +69,7 @@
             </section>
         {% endif %}
         <!-- EVENTI IN CORSO END -->
-
+        
         <!-- BANNER START -->
         {% set banner_city = null %}
         {% set banner_edition = null %}
@@ -102,28 +102,7 @@
         {% set banner_position = 'BANNER_HOME_2' %}
         {% include 'components/partials/banner.twig' %}
         <!-- BANNER END -->
-
-
-        <!-- MATCH IN PROGRAMMA START -->
-        {% if auth_check() and calendar is not empty %}
-            <section>
-            <div class="section-title section-news"><span>Match in programma</span></div>
-
-            <div class="cards-slider__container">
-                <div class="swiper-wrapper">
-                    {% for queryItem in calendar %}
-                        <div class="swiper-slide">
-                            {% include 'components/partials/card-match-programma.twig' %}
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-            {% set cardnewsbig = defined %}
-        </section>
-        {% endif %}
-        <!-- MATCH IN PROGRAMMA END -->
-
+      
         {# <section>
             {% include 'components/partials/card-circolo.twig' %}
         </section> #}
@@ -144,6 +123,26 @@
         {% set banner_position = 'BANNER_HOME_3' %}
         {% include 'components/partials/banner.twig' %}
         <!-- BANNER END -->
+        
+        <!-- MATCH IN PROGRAMMA START - auth_check() -->
+        {% if calendar is not empty %}
+            <section>
+            <div class="section-title section-news"><span>Match in programma</span></div>
+
+            <div class="cards-slider__container">
+                <div class="swiper-wrapper">
+                    {% for queryItem in calendar %}
+                        <div class="swiper-slide">
+                            {% include 'components/partials/card-match-programma.twig' %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            {% set cardnewsbig = defined %}
+        </section>
+        {% endif %}
+        <!-- MATCH IN PROGRAMMA END -->
 
         <section>
             <div class="section-title"><span>Utenti registrati</span></div>

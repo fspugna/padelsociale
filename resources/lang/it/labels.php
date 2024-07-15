@@ -24,6 +24,7 @@ return [
     'racchetta'=> 'Marca Racchetta',
     'gioco'=> 'Gioco',
     'livello_di_gioco'=> 'Livello di Gioco',
+    'posizione_in_campo'=> 'Posizione in Campo',
     'codice_fiscale' => 'Codice Fiscale',
     'eta' => 'Età',
     'maestro'=> 'Maestro',
