@@ -171,7 +171,7 @@ class TournamentController extends Controller
 
 
     public function showGroup($id_tournament, $id_zone, $id_category_type, $id_category, $id_group){
-        
+
         $tournament = Tournament::where('id', '=', $id_tournament)->first();
         $edition = $tournament->edition;
 
@@ -198,7 +198,7 @@ class TournamentController extends Controller
 
 
     public function showGroupDouble($id_tournament, $id_zone, $id_category_type, $id_category, $id_group){
-        
+
         $tournament = Tournament::where('id', '=', $id_tournament)->first();
         $tournament['srcImgFeaturedBig'] = asset('storage/'.$tournament->edition->logo);
         $tournament['srcImgFeaturedBigx2'] = asset('storage/'.$tournament->edition->logo);
@@ -585,7 +585,7 @@ class TournamentController extends Controller
             endforeach;
 
         endforeach;
-        
+
         return view('page-torneo')
                 ->with('tournament', $tournament)
                 ->with('fase_a_gironi', $tournament)
@@ -877,11 +877,20 @@ class TournamentController extends Controller
             }
         endif;
 
-        if($id_round == 0):
-            $sel_round = $rounds[0];
-        else:
-            $sel_round = Round::find($id_round);
-        endif;
+        switch($id_round){
+            case 0: {
+                if(!empty($rounds)){
+                    $sel_round = $rounds[0];
+                }else{
+                    $sel_round = 0;
+                }
+                break;
+            }
+            default: {
+                $sel_round = Round::find($id_round);
+                break;
+            }
+        }
 
         $subscriptions = MacroSubscription::where('id_tournament', '=', $tournament->id)
                                             ->where('id_category_type', '=', $id_category_type)
