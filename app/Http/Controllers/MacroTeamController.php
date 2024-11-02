@@ -16,6 +16,7 @@ use App\Models\Round;
 use App\Models\MacroMatch;
 use App\Models\Classification;
 use App\Models\MatchPlayer;
+use Illuminate\Support\Facades\Log;
 
 class MacroTeamController extends Controller
 {
@@ -36,11 +37,13 @@ class MacroTeamController extends Controller
                         })
                         ->first();
 
-        if(!empty($goup)){
+        if(!empty($group)){
             $rounds = Round::where('id_group', $group->id)->get();
         }else{
             $rounds = null;
         }
+
+
 
         $classifica = []; // giocatore -> punti
 
@@ -72,6 +75,8 @@ class MacroTeamController extends Controller
         $match_players = [];
         $scores = [];
         $allMacroScores = [];
+
+
 
         if($rounds){
             foreach($rounds as $round):
