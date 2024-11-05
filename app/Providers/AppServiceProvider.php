@@ -19,6 +19,7 @@ use App\Models\Division;
 use App\Models\Group;
 use App\Models\Edition;
 use App\Models\Club;
+use App\Models\MacroTeamPlayer;
 use App\Models\Partner;
 use Illuminate\Support\Facades\Log;
 
@@ -115,6 +116,10 @@ class AppServiceProvider extends ServiceProvider
             $my_editions_links = [];
             $my_editions_teams = [];
 
+            $my_macro_editions = [];
+            $my_macro_editions_links = [];
+            $my_macro_editions_teams = [];
+
             if(Auth::check()):
                 if(Auth::user()->id_role == 2): //Giocatore
 
@@ -123,6 +128,7 @@ class AppServiceProvider extends ServiceProvider
 
                     foreach($teamPlayers as $teamPlayer):
                         foreach($teamPlayer->team->subscriptions as $subscription):
+
                             if(!empty($subscription->tournament->date_end) && $subscription->tournament->date_end->isFuture()){
                                 $divisions = Division::where('id_tournament', '=', $subscription->id_tournament)
                                                         ->where('id_zone', '=', $subscription->id_zone)
@@ -140,6 +146,40 @@ class AppServiceProvider extends ServiceProvider
                                                 $my_editions_links[$subscription->tournament->id_edition][$division->id] = '/tournament/'.$subscription->id_tournament.'/zone/'.$division->id_zone.'/category-type/'.$division->id_category_type.'/category/'.$division->id_category.'/group/'.$group->id.'/show';
 
                                                 $my_editions_teams[$subscription->tournament->id_edition][$division->id] = $teamPlayer->team;
+
+                                            endif;
+                                        endforeach;
+                                    endforeach;
+                                endforeach;
+
+                            }
+                        endforeach;
+                    endforeach;
+
+                    $macroTeamPlayers = MacroTeamPlayer::where('id_player', '=', Auth::id())->get();
+
+                    foreach($macroTeamPlayers as $teamPlayer):
+                        foreach($teamPlayer->team->subscriptions as $subscription):
+                            if(!empty($subscription->tournament->date_end) && $subscription->tournament->date_end->isFuture()){
+
+                                $divisions = Division::where('id_tournament', '=', $subscription->id_tournament)
+                                                        ->where('id_zone', '=', $subscription->id_zone)
+                                                        //->where('id_category_type', '=', $subscription->id_category_type)
+                                                        ->get();
+
+                                foreach($divisions as $division):
+
+                                    $groups = Group::where('id_division', '=', $division->id)->get();
+                                    foreach($groups as $group):
+
+                                        foreach($group->macro_teams as $groupMacroTeam):
+                                            if($groupMacroTeam->id_team == $teamPlayer->id_team):
+
+                                                $my_macro_editions[$subscription->tournament->id_edition][$division->id] = $division;
+
+                                                $my_macro_editions_links[$subscription->tournament->id_edition][$division->id] = '/tournament/'.$subscription->id_tournament.'/zone/'.$division->id_zone.'/category-type/'.$division->id_category_type.'/category/'.$division->id_category.'/group/'.$group->id.'/show';
+
+                                                $my_macro_editions_teams[$subscription->tournament->id_edition][$division->id] = $teamPlayer->team;
 
                                             endif;
                                         endforeach;
@@ -198,9 +238,14 @@ class AppServiceProvider extends ServiceProvider
             dd($my_editions_teams);
             */
 
+            Log::info($my_editions);
+
             $view->with('my_editions', $my_editions)
                  ->with('my_editions_links', $my_editions_links)
                  ->with('my_editions_teams', $my_editions_teams)
+                 ->with('my_macro_editions', $my_macro_editions)
+                 ->with('my_macro_editions_links', $my_macro_editions_links)
+                 ->with('my_macro_editions_teams', $my_macro_editions_teams)
                  ;
         });
 
@@ -229,7 +274,7 @@ class AppServiceProvider extends ServiceProvider
                         ->groupBy(DB::Raw('cities.name, cities.slug, tournaments.date_start, editions.edition_name, editions.id'))
                         ->orderBy('cities.name', 'ASC')
                         ->orderBy('tournaments.date_start', 'ASC');
-                        
+
             $t_cities = $query->get();
 
             Log::info($query->toSql());

@@ -647,6 +647,39 @@
                                 </li>
 
                             {% endif %}
+
+                            {% if my_macro_editions is not empty %}
+
+                                <li class="header__main-menu__item {{edition.edition_name|lower}}-item block-item">
+                                    <input id="{{edition.edition_name|lower}}-check" hidden type="checkbox" />
+                                    <label for="{{edition.edition_name|lower}}-check" class="item-label item-label--opener noarrow">
+                                    {% if current_user.id_role == 2 %}
+                                        I tornei in cui sono iscritto
+                                    {% elseif current_user.id_role == 3 %}
+                                        I tornei del mio circolo
+                                    {% endif %}
+                                    </label>
+                                    <ul class="submenu2">
+                                        {% for id_edition, edition in my_macro_editions %}
+                                            {% for id_division, division in edition %}
+                                                <li class="header__main-menu__subitem {{division.tournament.edition.edition_name|lower}}-subitem">
+                                                    <a href="{{ my_macro_editions_links[id_edition][id_division] }}" class="yellow-text-link yellow-text-link--enter">
+                                                        {% if current_user.id_role == 2 %}
+                                                        {{division.tournament.edition.edition_name}} - {{division.zone.name}} - {{ division.categoryType.name }}
+                                                        {% elseif current_user.id_role == 3 %}
+                                                        {{division.tournament.edition.edition_name}} - {{division.category.name}} - {{ division.categoryType.name }}
+                                                        {% endif %}
+                                                    </a>
+                                                    {% if current_user.id_role == 2 and division.tournament.edition.edition_type > 0 %}
+                                                        <a href="/macro_teams/{{my_macro_editions_teams[id_edition][division.id].id}}/show" class="lightblue-text-link lightblue-text-link--enter"> - La mia squadra</a>
+                                                    {% endif %}
+                                                </li>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+
+                            {% endif %}
                         </ul>
 
                     </li>
