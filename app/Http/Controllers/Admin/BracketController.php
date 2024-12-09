@@ -30,8 +30,7 @@ use App\Models\Tournament;
 use App\Models\Matchcode;
 use App\Models\Subscription;
 use App\Models\MacroSubscription;
-
-
+use Illuminate\Support\Facades\Log;
 
 class BracketController extends AppBaseController
 {
@@ -557,8 +556,9 @@ class BracketController extends AppBaseController
             $bracket->flag_online = 0;
             $bracket->edit_mode = 1;
         else:
-
             foreach($input as $index => $description):
+                Log::info("Edit macro bracket description: " . $description);
+                Log::info("Edit macro bracket index: " . $index);
                 /* Aggiorno le descrizioni */
                 if( strpos($index, 'description-') !== false ):
                     $phase_name = substr($index, strlen('description-'));
