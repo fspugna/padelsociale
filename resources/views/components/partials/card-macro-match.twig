@@ -304,7 +304,8 @@
         </div>
         {# fine jolly #}
             <ul>
-                {% for match in macroMatch.subMatches %}
+                {# {{ macroMatch.submatches }} #}
+                {% for match in macroMatch.submatches %}
                     <div  style="margin-bottom: 0px;"  >
                         <li style="margin: 2px;" >
                             {% include 'components/partials/card-submatch.twig' %}

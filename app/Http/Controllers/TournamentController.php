@@ -1428,12 +1428,12 @@ class TournamentController extends Controller
         endif;
 
 
-        $scores = [];
+        $macroScores = [];
         $rounds = [];
 
         $matchPlayers = [];
 
-        /*
+
         if($phases):
             foreach($phases as $iphase):
 
@@ -1463,25 +1463,28 @@ class TournamentController extends Controller
                                                     ->get();
 
                         foreach($players_team2 as $matchPlayer){
-                            $matchPlayers[$match->id]['team2'][] = $matchPlayer->player;
+                            $matchPlayers[$macroMatch->id]['team2'][] = $matchPlayer->player;
                         }
 
-                        foreach($match->scores as $score){
-
-                            if($score->id_team == $match->id_team1):
-                                $scores[$match->id][$score->set]['team1'] = $score->points;
-                            else:
-                                $scores[$match->id][$score->set]['team2'] = $score->points;
-                            endif;
-
+                        foreach($macroMatch->macro_scores as $score){
+                            if($score->id_team == $macroMatch->id_team1){
+                                if(!isset($macroScores[$macroMatch->id]['team1'])){
+                                    $macroScores[$macroMatch->id]['team1'] = 0;
+                                }
+                                $macroScores[$macroMatch->id]['team1'] += $score->points;
+                            }else{
+                                if(!isset($macroScores[$macroMatch->id]['team2'])){
+                                    $macroScores[$macroMatch->id]['team2'] = 0;
+                                }
+                                $macroScores[$macroMatch->id]['team2'] += $score->points;
+                            }
                         }
 
                     endforeach;
                 endif;
             endforeach;
         endif;
-         *
-         */
+
 
         $logged_in = false;
         if( Auth::id() ):
@@ -1507,8 +1510,6 @@ class TournamentController extends Controller
                         ->where('id_role', '=', 2)
                         ->get();
 
-
-
         $images = $this->images($tournament->id_edition);
 
         $zone = Zone::where('id', '=', $id_zone)->first();
@@ -1531,14 +1532,33 @@ class TournamentController extends Controller
 
         //dd($groups->toArray());
         $macro_matches = [];
+        $scores = [];
 
         if( isset($phase->macro_matches) && !empty($phase->macro_matches) ):
             foreach($phase->macro_matches as $macroMatch):
+                $macroMatch->load('submatches.team1.players');
+                $macroMatch->load('submatches.team2.players');
+                $macroMatch->load('submatches.scores');
+                $macroMatch->load('submatches.matchPlayers.player');
+
                 if( intval($phase->name) == 1 && ( !empty($macroMatch->id_team1) || !empty($macroMatch->id_team2) )):
                     $macro_matches[$phase->name][$macroMatch->next_matchcode] = $macroMatch;
                 else:
                     $macro_matches[$phase->name][$macroMatch->next_matchcode] = $macroMatch;
                 endif;
+
+                foreach($macroMatch->submatches as $match){
+                    foreach($match->scores as $score){
+
+                        if($score->id_team == $match->id_team1):
+                            $scores[$match->id][$score->set]['team1'] = $score->points;
+                        else:
+                            $scores[$match->id][$score->set]['team2'] = $score->points;
+                        endif;
+
+                    }
+                }
+
             endforeach;
         endif;
 
@@ -1578,8 +1598,6 @@ class TournamentController extends Controller
             }
         }
 
-
-
         return view('page-torneo-squadre')
                  ->with('tournament', $tournament)
                  ->with('id_zone', $id_zone)
@@ -1590,7 +1608,6 @@ class TournamentController extends Controller
                  ->with('id_category', $id_category)
                  ->with('classification', $classification)
                  ->with('rounds', $rounds)
-                 ->with('scores', $scores)
                  ->with('group', $group)
                  ->with('subscriptions', $subscriptions)
                  ->with('subscribed', $subscribed)
@@ -1608,8 +1625,10 @@ class TournamentController extends Controller
                  ->with('phase', $phase)
                  ->with('zone', $zone)
                  ->with('zone_clubs', $zone_clubs)
+                 ->with('scores', $scores)
                  ->with('macro_matches', $macro_matches)
                  ->with('match_players', $matchPlayers)
+                 ->with('macro_scores', $macroScores)
                  ;
 
     }
